@@ -1,0 +1,121 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Sprout, ArrowRight, CheckCircle2 } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
+import { CTASection } from "@/components/CTASection";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "agri_page" });
+  return {
+    title: t("meta_title"),
+    description: t("meta_desc"),
+    alternates: { canonical: `https://polcero.com/${locale}/solutions/agriculture` },
+  };
+}
+
+export default async function AgriculturePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations("agri_page");
+  const base = `/${locale}`;
+
+  const tasks = [t("task1"), t("task2"), t("task3"), t("task4"), t("task5"), t("task6")];
+  const robots = [
+    { name: t("robot1_name"), note: t("robot1_note") },
+    { name: t("robot2_name"), note: t("robot2_note") },
+    { name: t("robot3_name"), note: t("robot3_note") },
+    { name: t("robot4_name"), note: t("robot4_note") },
+  ];
+
+  return (
+    <>
+      <section className="py-16 px-6 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <Breadcrumbs crumbs={[
+            { label: t("breadcrumb_home"), href: `/${locale}` },
+            { label: t("breadcrumb_solutions"), href: `${base}/solutions` },
+            { label: t("breadcrumb_page") },
+          ]} />
+          <div className="max-w-3xl mb-12">
+            <span data-animate className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4
+              bg-[rgba(var(--primary),0.1)] border border-[rgba(var(--primary),0.2)]
+              text-[rgb(var(--primary))] text-xs font-bold uppercase tracking-wide">
+              <Sprout size={12} /> {t("hero_badge")}
+            </span>
+            <h1 data-animate data-animate-delay="100"
+              className="text-[clamp(2rem,4vw,3.5rem)] font-bold tracking-tight leading-tight mb-4 font-display">
+              {t("hero_h1")}
+            </h1>
+            <p data-animate data-animate-delay="200" className="text-lg font-semibold text-gradient mb-6">
+              {t("hero_h2")}
+            </p>
+            <p data-animate data-animate-delay="300" className="text-base leading-relaxed mb-6" style={{ color: "var(--text-muted)" }}>
+              {t("hero_desc")}
+            </p>
+            <Link href={`${base}/farma-ai`} className="btn-premium h-11 px-7 inline-flex mr-3">
+              {t("hero_cta1")} <ArrowRight size={15} />
+            </Link>
+            <Link href={`${base}/contact`} className="btn-secondary h-11 px-7 inline-flex">
+              {t("hero_cta2")}
+            </Link>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            <div data-animate className="nl-card p-6">
+              <h2 className="font-bold mb-4 font-display" style={{ color: "var(--text-strong)" }}>
+                {t("tasks_title")}
+              </h2>
+              <ul className="space-y-3">
+                {tasks.map((task, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--text-muted)" }}>
+                    <CheckCircle2 size={15} className="text-[rgb(var(--primary))] mt-0.5 shrink-0" />
+                    {task}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div data-animate data-animate-delay="100" className="nl-card p-6">
+              <h2 className="font-bold mb-4 font-display" style={{ color: "var(--text-strong)" }}>
+                {t("platforms_title")}
+              </h2>
+              <div className="space-y-4">
+                {robots.map((r, i) => (
+                  <div key={i}>
+                    <p className="font-mono text-[rgb(var(--primary))] text-xs font-bold">{r.name}</p>
+                    <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>{r.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <SectionHeader badge={t("value_badge")} title={<>{t("value_title")}</>} />
+          <div className="grid sm:grid-cols-3 gap-4 mb-12">
+            {[
+              { stat: t("val1_stat"), desc: t("val1_desc") },
+              { stat: t("val2_stat"), desc: t("val2_desc") },
+              { stat: t("val3_stat"), desc: t("val3_desc") },
+            ].map(({ stat, desc }, i) => (
+              <div key={i} data-animate data-animate-delay={String(i * 100)} className="bento-card text-center">
+                <p className="text-lg font-black text-gradient mb-1">{stat}</p>
+                <p className="text-xs" style={{ color: "var(--text-muted)" }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection
+        title={t("cta_title")}
+        subtitle={t("cta_subtitle")}
+        description={t("cta_desc")}
+        cta={t("cta_primary")}
+        ctaHref={`${base}/contact`}
+        secondaryCta={t("cta_secondary")}
+        secondaryCtaHref={`${base}/farma-ai`}
+      />
+    </>
+  );
+}

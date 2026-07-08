@@ -21,12 +21,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t("meta_title"),
     description: t("meta_desc"),
     alternates: {
-      canonical: `https://polcero.com/${locale}/robots`,
+      canonical: `https://robotic4u.com/${locale}/robots`,
       languages: {
-        en: "https://polcero.com/en/robots",
-        pl: "https://polcero.com/pl/robots",
-        de: "https://polcero.com/de/robots",
-        "x-default": "https://polcero.com/en/robots",
+        en: "https://robotic4u.com/en/robots",
+        pl: "https://robotic4u.com/pl/robots",
+        de: "https://robotic4u.com/de/robots",
+        "x-default": "https://robotic4u.com/en/robots",
       },
     },
   };
@@ -119,7 +119,7 @@ export default async function RobotsPage({ params }: { params: Promise<{ locale:
     "@type": "CollectionPage",
     name: t("meta_title"),
     description: t("meta_desc"),
-    url: `https://polcero.com/${locale}/robots`,
+    url: `https://robotic4u.com/${locale}/robots`,
   };
 
   return (

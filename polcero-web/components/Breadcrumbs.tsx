@@ -19,7 +19,7 @@ export function Breadcrumbs({ crumbs }: BreadcrumbsProps) {
       "@type": "ListItem",
       position: i + 1,
       name: c.label,
-      ...(c.href ? { item: `https://polcero.com${c.href}` } : {}),
+      ...(c.href ? { item: `https://robotic4u.com${c.href}` } : {}),
     })),
   };
 

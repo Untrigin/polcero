@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: t("meta_title"),
     description: t("meta_desc"),
-    alternates: { canonical: `https://polcero.com/${locale}/photonic-processors` },
+    alternates: { canonical: `https://robotic4u.com/${locale}/photonic-processors` },
   };
 }
 
@@ -45,8 +45,8 @@ export default async function PhotonicProcessorsPage({ params }: { params: Promi
     "@type": "ResearchProject",
     name: t("meta_title"),
     description: t("meta_desc"),
-    url: `https://polcero.com/${locale}/photonic-processors`,
-    funder: { "@id": "https://polcero.com/#org" },
+    url: `https://robotic4u.com/${locale}/photonic-processors`,
+    funder: { "@id": "https://robotic4u.com/#org" },
   };
 
   return (

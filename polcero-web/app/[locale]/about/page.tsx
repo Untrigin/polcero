@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: "About POLCERO — Polish Robotics Center",
     description: t("vision_desc"),
-    alternates: { canonical: `https://polcero.com/${locale}/about` },
+    alternates: { canonical: `https://robotic4u.com/${locale}/about` },
   };
 }
 
@@ -31,7 +31,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     "@type": "AboutPage",
     name: "About POLCERO",
     description: "POLCERO group — vision, platform, manufacturing and energy.",
-    url: `https://polcero.com/${locale}/about`,
+    url: `https://robotic4u.com/${locale}/about`,
   };
 
   const sections = [

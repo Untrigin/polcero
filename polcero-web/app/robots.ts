@@ -18,6 +18,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Applebot", allow: "/" },
       { userAgent: "Bingbot", allow: "/" },
     ],
-    sitemap: "https://polcero.com/sitemap.xml",
+    sitemap: "https://robotic4u.com/sitemap.xml",
   };
 }

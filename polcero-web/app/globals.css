@@ -84,6 +84,21 @@
 }
 
 /* ──────────────────────────────────────
+   LOGO — theme swap
+   ────────────────────────────────────── */
+.logo-dark {
+  display: none;
+}
+
+[data-theme='dark'] .logo-light {
+  display: none;
+}
+
+[data-theme='dark'] .logo-dark {
+  display: block;
+}
+
+/* ──────────────────────────────────────
    BODY / BACKGROUND GRADIENTS
    ────────────────────────────────────── */
 body {

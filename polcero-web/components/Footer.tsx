@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Mail, Phone } from "lucide-react";
+import { Logo } from "./Logo";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -44,13 +44,7 @@ export async function Footer() {
           {/* Brand */}
           <div className="col-span-2">
             <Link href={`/${locale}`} className="inline-flex mb-5">
-              <Image
-                src="/polecero.png"
-                alt="POLCERO"
-                width={130}
-                height={36}
-                className="h-8 w-auto object-contain"
-              />
+              <Logo className="h-8" />
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-xs" style={{ color: "var(--text-muted)" }}>
               {t("tagline")}

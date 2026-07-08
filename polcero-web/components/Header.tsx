@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { useRef, useState } from "react";
 import {
@@ -10,6 +9,7 @@ import {
 } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { Logo } from "./Logo";
 
 // ── Static mega-menu data ─────────────────────────────────────────────────────
 
@@ -73,14 +73,7 @@ export function Header() {
 
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center shrink-0" onClick={closeMobile}>
-            <Image
-              src="/polecero.png"
-              alt="POLCERO"
-              width={140}
-              height={40}
-              className="h-9 w-auto object-contain"
-              priority
-            />
+            <Logo className="h-7 sm:h-9" />
           </Link>
 
           {/* Desktop nav */}
@@ -158,7 +151,7 @@ export function Header() {
           </div>
 
           {/* Mobile right */}
-          <div className="flex lg:hidden items-center gap-2 ml-auto">
+          <div className="flex lg:hidden items-center gap-1 sm:gap-2 ml-auto">
             <LocaleSwitcher />
             <ThemeToggle />
             <button

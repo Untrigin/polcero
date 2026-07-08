@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: t("meta_title"),
     description: t("meta_desc"),
-    alternates: { canonical: `https://polcero.com/${locale}/solutions/industry` },
+    alternates: { canonical: `https://robotic4u.com/${locale}/solutions/industry` },
   };
 }
 

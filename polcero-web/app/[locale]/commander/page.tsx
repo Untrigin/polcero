@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: t("meta_title"),
     description: t("meta_desc"),
-    alternates: { canonical: `https://polcero.com/${locale}/commander` },
+    alternates: { canonical: `https://robotic4u.com/${locale}/commander` },
   };
 }
 
@@ -51,8 +51,8 @@ export default async function CommanderPage({ params }: { params: Promise<{ loca
     "@type": "Service",
     name: t("meta_title"),
     description: t("meta_desc"),
-    provider: { "@id": "https://polcero.com/#org" },
-    url: `https://polcero.com/${locale}/commander`,
+    provider: { "@id": "https://robotic4u.com/#org" },
+    url: `https://robotic4u.com/${locale}/commander`,
   };
 
   return (

@@ -31,18 +31,18 @@ export async function generateMetadata({
     title: icb("meta_title"),
     description: icb("meta_desc"),
     alternates: {
-      canonical: `https://polcero.com/${locale}/robots-icb`,
+      canonical: `https://robotic4u.com/${locale}/robots-icb`,
       languages: {
-        en: "https://polcero.com/en/robots-icb",
-        pl: "https://polcero.com/pl/robots-icb",
-        de: "https://polcero.com/de/robots-icb",
-        "x-default": "https://polcero.com/en/robots-icb",
+        en: "https://robotic4u.com/en/robots-icb",
+        pl: "https://robotic4u.com/pl/robots-icb",
+        de: "https://robotic4u.com/de/robots-icb",
+        "x-default": "https://robotic4u.com/en/robots-icb",
       },
     },
     openGraph: {
       title: icb("meta_title"),
       description: icb("meta_desc"),
-      url: `https://polcero.com/${locale}/robots-icb`,
+      url: `https://robotic4u.com/${locale}/robots-icb`,
       siteName: "POLCERO",
       locale,
       type: "website",
@@ -92,10 +92,10 @@ export default async function RobotsIcbPage({
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `https://polcero.com/${locale}/robots-icb#service`,
+    "@id": `https://robotic4u.com/${locale}/robots-icb#service`,
     name: "ICB Robots — Industrial Cobots & AMR",
     description: icbCompany.description,
-    provider: { "@id": "https://polcero.com/#org" },
+    provider: { "@id": "https://robotic4u.com/#org" },
     serviceType: "Robotics Integration",
     areaServed: ["PL", "EU"],
     hasOfferCatalog: {

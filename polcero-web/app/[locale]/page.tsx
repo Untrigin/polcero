@@ -21,15 +21,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t("defaultTitle"),
     description: t("defaultDescription"),
     alternates: {
-      canonical: `https://polcero.com/${locale}`,
+      canonical: `https://robotic4u.com/${locale}`,
       languages: {
-        "en": "https://polcero.com/en",
-        "pl": "https://polcero.com/pl",
-        "de": "https://polcero.com/de",
-        "fr": "https://polcero.com/fr",
-        "es": "https://polcero.com/es",
-        "it": "https://polcero.com/it",
-        "x-default": "https://polcero.com/en",
+        "en": "https://robotic4u.com/en",
+        "pl": "https://robotic4u.com/pl",
+        "de": "https://robotic4u.com/de",
+        "fr": "https://robotic4u.com/fr",
+        "es": "https://robotic4u.com/es",
+        "it": "https://robotic4u.com/it",
+        "x-default": "https://robotic4u.com/en",
       },
     },
   };

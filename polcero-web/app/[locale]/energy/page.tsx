@@ -22,7 +22,7 @@ export async function generateMetadata({
     title: t("meta_title"),
     description: t("meta_desc"),
     alternates: {
-      canonical: `https://polcero.com/${locale}/energy`,
+      canonical: `https://robotic4u.com/${locale}/energy`,
     },
   };
 }
@@ -65,12 +65,12 @@ export default async function EnergyPage({
     "@type": "WebPage",
     name: t("meta_title"),
     description: t("meta_desc"),
-    url: `https://polcero.com/${locale}/energy`,
+    url: `https://robotic4u.com/${locale}/energy`,
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: t("breadcrumb_home"), item: `https://polcero.com/${locale}` },
-        { "@type": "ListItem", position: 2, name: t("breadcrumb_page"), item: `https://polcero.com/${locale}/energy` },
+        { "@type": "ListItem", position: 1, name: t("breadcrumb_home"), item: `https://robotic4u.com/${locale}` },
+        { "@type": "ListItem", position: 2, name: t("breadcrumb_page"), item: `https://robotic4u.com/${locale}/energy` },
       ],
     },
   };

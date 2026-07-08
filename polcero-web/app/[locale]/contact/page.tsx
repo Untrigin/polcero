@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: "Contact — Submit an inquiry | POLCERO",
     description: t("subtitle"),
-    alternates: { canonical: `https://polcero.com/${locale}/contact` },
+    alternates: { canonical: `https://robotic4u.com/${locale}/contact` },
   };
 }
 
@@ -23,7 +23,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "POLCERO — Contact",
-    url: `https://polcero.com/${locale}/contact`,
+    url: `https://robotic4u.com/${locale}/contact`,
     mainEntity: {
       "@type": "Organization",
       name: "POLCERO sp. z o.o.",

@@ -1,9 +1,9 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import {
   motion, AnimatePresence,
-  useScroll, useTransform, useMotionValueEvent,
+  useScroll, useTransform, useMotionValue, useMotionValueEvent,
 } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -72,6 +72,16 @@ export function RobotScrollSection({
     offset: ["start end", "end end"],
   });
 
+  // ── Mobile detection ──────────────────────────────────────────────────────
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px)");
+    setIsMobile(mq.matches);
+    const fn = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", fn);
+    return () => mq.removeEventListener("change", fn);
+  }, []);
+
   // ── Active text stage ─────────────────────────────────────────────────────
   // State updates ONLY at stage-boundary crossings - no per-frame re-renders.
   // Stage 0 means no text is shown (before/between/after active windows).
@@ -86,18 +96,27 @@ export function RobotScrollSection({
     setStage(s => s !== next ? next : s);
   });
 
-  // ── Cluster: zoom from hero right-column position → screen centre ─────────
-  const clusterX     = useTransform(scrollYProgress, [0, 0.22], ["25vw", "0vw"], { clamp: true });
-  const clusterScale = useTransform(scrollYProgress, [0, 0.22], [0.65,   1.30],  { clamp: true });
+  // ── Cluster: desktop zooms from hero right column; mobile rises from bottom ─
+  const clusterXD     = useTransform(scrollYProgress, [0, 0.22], ["25vw", "0vw"], { clamp: true });
+  const clusterScaleD = useTransform(scrollYProgress, [0, 0.22], [0.65,   1.30],  { clamp: true });
+  const clusterYD     = useMotionValue("0px");
+
+  const clusterXM     = useMotionValue("0px");
+  const clusterScaleM = useTransform(scrollYProgress, [0, 0.22], [0.62,   0.82],  { clamp: true });
+  const clusterYM     = useTransform(scrollYProgress, [0, 0.22], ["14vh", "0vh"],  { clamp: true });
+
+  const clusterX     = isMobile ? clusterXM     : clusterXD;
+  const clusterScale = isMobile ? clusterScaleM : clusterScaleD;
+  const clusterY     = isMobile ? clusterYM     : clusterYD;
 
   // ── Q4 legs (3.png): static in cluster, exits LEFT ───────────────────────
-  const q4X = useTransform(scrollYProgress, [0.28, 0.40], ["0vw", "-130vw"],     { clamp: true });
+  const q4X = useTransform(scrollYProgress, [0.28, 0.40], ["0vw", "-180vw"],     { clamp: true });
 
   // ── T6 tracks (4.png): RIGHT → centre → LEFT ─────────────────────────────
   const t6X = useTransform(
     scrollYProgress,
     [0.36, 0.46, 0.53, 0.63],
-    ["130vw", "0vw", "0vw", "-130vw"],
+    ["180vw", "0vw", "0vw", "-180vw"],
     { clamp: true }
   );
 
@@ -105,7 +124,7 @@ export function RobotScrollSection({
   const arm2X = useTransform(
     scrollYProgress,
     [0.36, 0.46, 0.53, 0.63],
-    ["130vw", "0vw", "0vw", "-130vw"],
+    ["180vw", "0vw", "0vw", "-180vw"],
     { clamp: true }
   );
 
@@ -113,15 +132,15 @@ export function RobotScrollSection({
   const w4X = useTransform(
     scrollYProgress,
     [0.59, 0.69, 0.74, 0.82],
-    ["130vw", "0vw", "0vw", "-130vw"],
+    ["180vw", "0vw", "0vw", "-180vw"],
     { clamp: true }
   );
 
   // ── WL4 wheel-legs (6.png): enters RIGHT, stays ──────────────────────────
-  const wl4X = useTransform(scrollYProgress, [0.78, 0.88], ["130vw", "0vw"],     { clamp: true });
+  const wl4X = useTransform(scrollYProgress, [0.78, 0.88], ["180vw", "0vw"],     { clamp: true });
 
   // ── Arm - Stage 4 (5.png alongside WL4): enters RIGHT just after WL4 ─────
-  const armX  = useTransform(scrollYProgress, [0.82, 0.90], ["130vw", "0vw"],    { clamp: true });
+  const armX  = useTransform(scrollYProgress, [0.82, 0.90], ["180vw", "0vw"],    { clamp: true });
 
   // ── Background colour ─────────────────────────────────────────────────────
   // Transparent at 0 so the robot is visible over the hero with no overlay.
@@ -182,7 +201,7 @@ export function RobotScrollSection({
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
             className="relative"
-            style={{ x: clusterX, scale: clusterScale, width: 480, height: 540 }}
+            style={{ x: clusterX, y: clusterY, scale: clusterScale, width: 480, height: 540 }}
           >
             {/* Q4 quadruped legs - exits LEFT at Stage 1 end */}
             <motion.div className="absolute inset-0" style={{ x: q4X }}>

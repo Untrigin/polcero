@@ -108,7 +108,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <JsonLd data={faqJsonLd} />
 
       {/* ── HERO ─────────────────────────────── */}
-      <section className="relative z-20 w-full overflow-hidden flex items-center"
+      <section className="relative z-20 w-full overflow-hidden flex items-start lg:items-center"
         style={{ minHeight: "calc(100vh - 3.5rem)" }}>
         <AmbientGlow />
 
@@ -393,11 +393,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             title={<>{t("tech_core.title")}</>}
             subtitle={t("tech_core.subtitle")}
           />
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 min-w-0">
             {/* Platform layers */}
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4 min-w-0">
               {techLayers.map(({ Icon, title, desc }, i) => (
-                <div key={i} data-animate data-animate-delay={String(i * 100)} className="nl-card p-5">
+                <div key={i} data-animate data-animate-delay={String(i * 100)} className="nl-card p-5 min-w-0">
                   <Icon size={20} className="text-[rgb(var(--primary))] mb-3" />
                   <h3 className="font-bold text-sm mb-1.5 font-display" style={{ color: "var(--text-strong)" }}>{title}</h3>
                   <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{desc}</p>
@@ -406,7 +406,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </div>
 
             {/* Code-preview AI stack */}
-            <div data-animate className="code-preview p-6">
+            <div data-animate className="code-preview p-6 min-w-0 overflow-hidden">
               <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[rgba(var(--border))]">
                 <div className="w-3 h-3 rounded-full bg-red-500/70" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/70" />

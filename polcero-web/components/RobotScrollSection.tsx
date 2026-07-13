@@ -69,7 +69,7 @@ export function RobotScrollSection({
 
   const { scrollYProgress } = useScroll({
     target: outerRef,
-    offset: ["start start", "end end"],
+    offset: ["start end", "end end"],
   });
 
   // ── Active text stage ─────────────────────────────────────────────────────
@@ -129,9 +129,10 @@ export function RobotScrollSection({
   // hero-to-animation transition feels natural rather than abrupt.
   const bgColor = useTransform(
     scrollYProgress,
-    [0,    0.08,               0.40,              0.41,              0.63,              0.64,              0.82            ],
+    [0,             0.20,             0.28,               0.40,              0.41,              0.63,              0.64,              0.82            ],
     [
       "rgba(0,0,0,0)",
+      "rgba(0,0,0,0)",        // transparent through hero scroll
       "rgba(8,8,18,0.88)",    // neutral dark - Q4
       "rgba(8,8,18,0.88)",
       "rgba(4,9,28,0.93)",    // deep navy    - T6 + Arm

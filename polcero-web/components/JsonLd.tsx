@@ -20,7 +20,7 @@ export const orgJsonLd = {
   url: "https://robotic4u.com",
   logo: "https://robotic4u.com/robotic4u_black.svg",
   description:
-    "POLCERO designs and manufactures robots, AI systems and components in Poland — make-to-order. One modular platform serving agriculture, construction, logistics, industry and defense.",
+    "POLCERO designs and manufactures robots, AI systems and components in Poland - make-to-order. One modular platform serving agriculture, construction, logistics, industry and defense.",
   address: {
     "@type": "PostalAddress",
     addressCountry: "PL",

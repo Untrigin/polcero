@@ -99,6 +99,14 @@
 }
 
 /* ──────────────────────────────────────
+   HEADER — dark mode near-black (matches webdesign.jpg reference)
+   ────────────────────────────────────── */
+[data-theme='dark'] .glass-header {
+  background: rgba(8, 8, 14, 0.96);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ──────────────────────────────────────
    BODY / BACKGROUND GRADIENTS
    ────────────────────────────────────── */
 body {

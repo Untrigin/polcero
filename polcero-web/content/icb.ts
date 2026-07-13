@@ -1,5 +1,5 @@
 /**
- * ICB Robots branch content — migrated from the legacy polcero.com site.
+ * ICB Robots branch content - migrated from the legacy polcero.com site.
  *
  * Real content extracted from specICB.md (direct polcero.com scrape, 2026-07-05).
  * Placeholder / Industrium theme content discarded.
@@ -12,7 +12,7 @@
 export interface IcbCompanyInfo {
   fullName: string;
   tagline: string;
-  /** Core differentiator — verbatim from the old site (translated) */
+  /** Core differentiator - verbatim from the old site (translated) */
   coreDifferentiator: string;
   description: string;
   status: "live" | "pilot" | "development";
@@ -31,12 +31,12 @@ export interface IcbCompanyInfo {
 }
 
 export const icbCompany: IcbCompanyInfo = {
-  fullName: "Polskie Centrum Robotyzacji — ICB Robots",
+  fullName: "Polskie Centrum Robotyzacji - ICB Robots",
   tagline: "We connect robots with AI",
   coreDifferentiator:
-    "Robots already exist — what is missing are the systems that control them. We build that missing layer: we install knowledge, a plan and eyes (cameras, sensors) into the machine, connect it with artificial intelligence and make it work on its own — without a driver and without constant human supervision.",
+    "Robots already exist - what is missing are the systems that control them. We build that missing layer: we install knowledge, a plan and eyes (cameras, sensors) into the machine, connect it with artificial intelligence and make it work on its own - without a driver and without constant human supervision.",
   description:
-    "ICB Robots is the live operating branch of POLCERO: we design, build and deploy collaborative robots (cobots), autonomous forklifts, AMR platforms and automated production systems for manufacturing, logistics and allied industries. We combine hardware, software and AI into solutions for industry, agriculture and logistics — supporting the client at every stage: from process analysis, through testing in our own facility, to full deployment and service.",
+    "ICB Robots is the live operating branch of POLCERO: we design, build and deploy collaborative robots (cobots), autonomous forklifts, AMR platforms and automated production systems for manufacturing, logistics and allied industries. We combine hardware, software and AI into solutions for industry, agriculture and logistics - supporting the client at every stage: from process analysis, through testing in our own facility, to full deployment and service.",
   status: "live",
   contact: {
     email: "biuro@polcero.com",
@@ -51,7 +51,7 @@ export const icbCompany: IcbCompanyInfo = {
 };
 
 // ---------------------------------------------------------------------------
-// Product lines — 6 categories from the real site
+// Product lines - 6 categories from the real site
 // ---------------------------------------------------------------------------
 
 export type IcbProductCategory =
@@ -69,7 +69,7 @@ export interface IcbProduct {
   category: IcbProductCategory;
   headline: string;
   description: string;
-  /** Verb list from the original site — short capability bullets */
+  /** Verb list from the original site - short capability bullets */
   verbCapabilities: string[];
   targetApplications: string[];
 }
@@ -82,7 +82,7 @@ export const icbProducts: IcbProduct[] = [
     category: "cobot",
     headline: "Support people, automate, supply, assemble, transport",
     description:
-      "Our cobots work alongside human operators — no safety cages required in certified configurations. They handle repetitive, ergonomically demanding or precision tasks while humans focus on judgment and quality control. Programmed in Python, C++ and ROS, matched to your process.",
+      "Our cobots work alongside human operators - no safety cages required in certified configurations. They handle repetitive, ergonomically demanding or precision tasks while humans focus on judgment and quality control. Programmed in Python, C++ and ROS, matched to your process.",
     verbCapabilities: [
       "Support human workers at shared workstations",
       "Automate repetitive or ergonomically demanding tasks",
@@ -105,12 +105,12 @@ export const icbProducts: IcbProduct[] = [
     category: "autonomous-forklift",
     headline: "Transport, lift, scan, locate, avoid obstacles",
     description:
-      "Our autonomous forklifts handle intra-facility logistics 24/7 — picking up pallets or loads, transporting across the facility and placing at the target location without a driver. SLAM navigation: no floor markers or infrastructure changes required. WMS/ERP integration as standard.",
+      "Our autonomous forklifts handle intra-facility logistics 24/7 - picking up pallets or loads, transporting across the facility and placing at the target location without a driver. SLAM navigation: no floor markers or infrastructure changes required. WMS/ERP integration as standard.",
     verbCapabilities: [
       "Transport pallets and loads autonomously across the facility",
       "Lift and place loads at target locations without a driver",
       "Scan barcodes and QR codes for load identification",
-      "Locate within the facility via SLAM — no floor markers needed",
+      "Locate within the facility via SLAM - no floor markers needed",
       "Avoid obstacles and people in real time",
     ],
     targetApplications: [
@@ -197,7 +197,7 @@ export const icbProducts: IcbProduct[] = [
     category: "production-lines",
     headline: "Optimise, automate, control, integrate, monitor, improve",
     description:
-      "We design and automate complete production lines — integrating cobots, AMRs, conveyors and control software into a single orchestrated system. Each line is built to the customer's process; we test it in our own facility before delivery.",
+      "We design and automate complete production lines - integrating cobots, AMRs, conveyors and control software into a single orchestrated system. Each line is built to the customer's process; we test it in our own facility before delivery.",
     verbCapabilities: [
       "Optimise production flow and reduce cycle times",
       "Automate previously manual workstations",
@@ -216,7 +216,7 @@ export const icbProducts: IcbProduct[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Featured product — the only item with published real specifications
+// Featured product - the only item with published real specifications
 // ---------------------------------------------------------------------------
 
 export interface IcbFeaturedProduct {
@@ -246,7 +246,7 @@ export const icbFeaturedProducts: IcbFeaturedProduct[] = [
     features: [
       "AI vision system for real-time motion correction",
       "Works across different production environments without retooling",
-      "Custom programming per process — we configure, deploy and service",
+      "Custom programming per process - we configure, deploy and service",
       "Deployable in manufacturing, logistics and quality-control applications",
     ],
   },
@@ -254,7 +254,7 @@ export const icbFeaturedProducts: IcbFeaturedProduct[] = [
     name: "Intelligent 6-axis robotic arms",
     namePl: "Inteligentne ramiona robotyczne 6-osiowe",
     description:
-      "Six degrees of movement for complex tasks in limited production space. Compact and easy to integrate — precision and speed wherever floor space is constrained. Available in a ceiling-mounted variant.",
+      "Six degrees of movement for complex tasks in limited production space. Compact and easy to integrate - precision and speed wherever floor space is constrained. Available in a ceiling-mounted variant.",
     specs: [
       { label: "Degrees of freedom", labelPl: "Osie ruchu",          value: "6" },
       { label: "Repeatability",      labelPl: "Powtarzalność",       value: "High" },
@@ -265,14 +265,14 @@ export const icbFeaturedProducts: IcbFeaturedProduct[] = [
     features: [
       "High repeatability for precision tasks",
       "High permitted load capacity",
-      "Ceiling-mounted version available — saves floor space",
+      "Ceiling-mounted version available - saves floor space",
       "Applications: assembly, packaging, welding, quality control",
     ],
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Case studies (from the old site — with their stated stage)
+// Case studies (from the old site - with their stated stage)
 // ---------------------------------------------------------------------------
 
 export interface IcbCaseStudy {
@@ -292,7 +292,7 @@ export const icbCaseStudies: IcbCaseStudy[] = [
     stage: "concept",
     stageLabel: "Concept (construction expertise in team)",
     description:
-      "Autonomous robots for transporting construction materials — bricks, hollow blocks, prefabricated elements — across active building sites. Concept stage with construction domain expertise in the team.",
+      "Autonomous robots for transporting construction materials - bricks, hollow blocks, prefabricated elements - across active building sites. Concept stage with construction domain expertise in the team.",
   },
   {
     id: "construction-inspection",
@@ -301,7 +301,7 @@ export const icbCaseStudies: IcbCaseStudy[] = [
     stage: "rd",
     stageLabel: "R&D (based on market analysis)",
     description:
-      "Drones and mobile robots for inspection, measurement and monitoring of construction sites. Based on analysis of the construction market — R&D stage.",
+      "Drones and mobile robots for inspection, measurement and monitoring of construction sites. Based on analysis of the construction market - R&D stage.",
   },
   {
     id: "warehouse-amr",
@@ -388,7 +388,7 @@ export const icbWorkflow: IcbWorkflowStep[] = [
     id: "team-project",
     title: "Team project",
     description:
-      "Our engineering team designs the robot or AMR system — mechanical, electrical and software — and fine-tunes the AI brain on customer data or process simulations.",
+      "Our engineering team designs the robot or AMR system - mechanical, electrical and software - and fine-tunes the AI brain on customer data or process simulations.",
   },
   {
     step: 3,

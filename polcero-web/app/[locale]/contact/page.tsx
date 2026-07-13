@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
   return {
-    title: "Contact — Submit an inquiry | POLCERO",
+    title: "Contact - Submit an inquiry | POLCERO",
     description: t("subtitle"),
     alternates: { canonical: `https://robotic4u.com/${locale}/contact` },
   };
@@ -22,7 +22,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const contactJsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "POLCERO — Contact",
+    name: "POLCERO - Contact",
     url: `https://robotic4u.com/${locale}/contact`,
     mainEntity: {
       "@type": "Organization",

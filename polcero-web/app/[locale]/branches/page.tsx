@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
   return {
-    title: "Business Branches — POLCERO",
+    title: "Business Branches - POLCERO",
     description: t("branches_section.subtitle"),
     alternates: { canonical: `https://robotic4u.com/${locale}/branches` },
   };

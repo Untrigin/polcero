@@ -1,5 +1,5 @@
 /**
- * POLCERO robot catalog — typed list of robots that POLCERO can deploy
+ * POLCERO robot catalog - typed list of robots that POLCERO can deploy
  * with its AI brain layer. Each entry reflects real 2024-2025 market data.
  */
 
@@ -55,7 +55,7 @@ const humanoids: Robot[] = [
     },
     marketStatus: 'commercial',
     polceroNote:
-      'Our AI brain layer for Tesla Optimus deployments — we fine-tune the task intelligence and fleet management on top of Tesla hardware for European factory clients.',
+      'Our AI brain layer for Tesla Optimus deployments - we fine-tune the task intelligence and fleet management on top of Tesla hardware for European factory clients.',
     priceRange: 'Commercial (limited availability)',
   },
   {
@@ -72,7 +72,7 @@ const humanoids: Robot[] = [
     },
     marketStatus: 'pilot',
     polceroNote:
-      'POLCERO integrates Figure 03 for home and consumer-facing deployments — our AI brain adds Polish-language interaction and task customisation.',
+      'POLCERO integrates Figure 03 for home and consumer-facing deployments - our AI brain adds Polish-language interaction and task customisation.',
   },
   {
     slug: 'boston-dynamics-atlas-electric',
@@ -101,7 +101,7 @@ const humanoids: Robot[] = [
     },
     marketStatus: 'commercial',
     polceroNote:
-      'Digit is our preferred humanoid for warehouse tote-transfer workflows — POLCERO provides WMS integration and fleet orchestration.',
+      'Digit is our preferred humanoid for warehouse tote-transfer workflows - POLCERO provides WMS integration and fleet orchestration.',
   },
   {
     slug: 'unitree-g1',
@@ -146,7 +146,7 @@ const humanoids: Robot[] = [
     },
     marketStatus: 'commercial',
     polceroNote:
-      'The H2 on-board compute capacity lets us run heavier AI inference at the edge — ideal for POLCERO deployments where cloud latency is unacceptable.',
+      'The H2 on-board compute capacity lets us run heavier AI inference at the edge - ideal for POLCERO deployments where cloud latency is unacceptable.',
   },
   {
     slug: 'apptronik-apollo',
@@ -178,7 +178,7 @@ const humanoids: Robot[] = [
     },
     marketStatus: 'pilot',
     polceroNote:
-      'We partner on NEO for home and service-sector deployments under a RaaS model — our AI brain handles task customisation and remote fleet oversight.',
+      'We partner on NEO for home and service-sector deployments under a RaaS model - our AI brain handles task customisation and remote fleet oversight.',
     priceRange: '~$20,000 / month (RaaS)',
   },
   {
@@ -194,7 +194,7 @@ const humanoids: Robot[] = [
     },
     marketStatus: 'research',
     polceroNote:
-      'POLCERO evaluates the GR-2 for healthcare and rehabilitation pilots — high DOF count enables nuanced assistive tasks that our AI fine-tunes per care protocol.',
+      'POLCERO evaluates the GR-2 for healthcare and rehabilitation pilots - high DOF count enables nuanced assistive tasks that our AI fine-tunes per care protocol.',
   },
 ];
 
@@ -214,7 +214,7 @@ const warehouseRobots: Robot[] = [
     },
     marketStatus: 'commercial',
     polceroNote:
-      'Stretch is our primary robot for automated trailer unloading — POLCERO integrates it with WMS and our fleet AI for autonomous unload scheduling.',
+      'Stretch is our primary robot for automated trailer unloading - POLCERO integrates it with WMS and our fleet AI for autonomous unload scheduling.',
   },
   {
     slug: 'locus-origin',
@@ -254,7 +254,7 @@ const warehouseRobots: Robot[] = [
     },
     marketStatus: 'commercial',
     polceroNote:
-      'MiR250 AMRs handle heavy inter-department transport in POLCERO factory automation projects — our fleet layer handles traffic and dynamic re-routing.',
+      'MiR250 AMRs handle heavy inter-department transport in POLCERO factory automation projects - our fleet layer handles traffic and dynamic re-routing.',
   },
   {
     slug: 'omron-ld-250',
@@ -310,7 +310,7 @@ const constructionRobots: Robot[] = [
     },
     marketStatus: 'commercial',
     polceroNote:
-      'POLCERO deploys the FieldPrinter 2 for BIM-to-field layout workflows on construction sites — our AI pipeline converts BIM models directly to FieldPrinter job files.',
+      'POLCERO deploys the FieldPrinter 2 for BIM-to-field layout workflows on construction sites - our AI pipeline converts BIM models directly to FieldPrinter job files.',
   },
   {
     slug: 'built-robotics-exosystem',
@@ -332,7 +332,7 @@ const constructionRobots: Robot[] = [
     specs: {},
     marketStatus: 'commercial',
     polceroNote:
-      'Jaibot handles overhead drilling on ceiling-mounted MEP installations — POLCERO integrates Jaibot into multi-robot construction workflows with schedule and BIM sync.',
+      'Jaibot handles overhead drilling on ceiling-mounted MEP installations - POLCERO integrates Jaibot into multi-robot construction workflows with schedule and BIM sync.',
   },
 ];
 

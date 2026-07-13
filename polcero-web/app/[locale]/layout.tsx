@@ -79,7 +79,7 @@ export default async function LocaleLayout({
           <ScrollRevealInit />
           <div className="min-h-screen relative overflow-x-hidden flex flex-col">
             <Header />
-            <main className="flex-1 pt-16">
+            <main className="flex-1 pt-14">
               {children}
             </main>
             <Footer />

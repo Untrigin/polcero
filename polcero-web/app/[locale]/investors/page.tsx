@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "investors" });
   return {
-    title: "Investors — POLCERO",
+    title: "Investors - POLCERO",
     description: t("desc"),
     alternates: { canonical: `https://robotic4u.com/${locale}/investors` },
   };
@@ -23,7 +23,7 @@ export default async function InvestorsPage({ params }: { params: Promise<{ loca
 
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebPage", name: "POLCERO — Investors", url: `https://robotic4u.com/${locale}/investors` }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebPage", name: "POLCERO - Investors", url: `https://robotic4u.com/${locale}/investors` }} />
 
       <section className="relative z-20 py-16 px-6 overflow-hidden">
         <AmbientGlow />

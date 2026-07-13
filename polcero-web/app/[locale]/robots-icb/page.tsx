@@ -93,7 +93,7 @@ export default async function RobotsIcbPage({
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `https://robotic4u.com/${locale}/robots-icb#service`,
-    name: "ICB Robots — Industrial Cobots & AMR",
+    name: "ICB Robots - Industrial Cobots & AMR",
     description: icbCompany.description,
     provider: { "@id": "https://robotic4u.com/#org" },
     serviceType: "Robotics Integration",

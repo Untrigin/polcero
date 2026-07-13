@@ -1,5 +1,5 @@
 /**
- * POLCERO solution/market catalog — the five market verticals the POLCERO
+ * POLCERO solution/market catalog - the five market verticals the POLCERO
  * platform serves.
  *
  * - id              : stable machine identifier

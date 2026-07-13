@@ -1,5 +1,5 @@
 /**
- * POLCERO branch catalog — the 8 business branches of the group.
+ * POLCERO branch catalog - the 8 business branches of the group.
  *
  * - id         : stable machine identifier (matches i18n key root)
  * - slug       : URL path segment (e.g. /branches/[slug])
@@ -11,7 +11,7 @@
 export interface Branch {
   id: string;
   slug: string;
-  /** lucide-react icon name — import via `import { <icon> } from 'lucide-react'` */
+  /** lucide-react icon name - import via `import { <icon> } from 'lucide-react'` */
   icon: string;
   badge: string;
   /** Key inside the `branches` namespace of messages/*.json */

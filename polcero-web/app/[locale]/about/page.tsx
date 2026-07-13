@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
   return {
-    title: "About POLCERO — Polish Robotics Center",
+    title: "About POLCERO - Polish Robotics Center",
     description: t("vision_desc"),
     alternates: { canonical: `https://robotic4u.com/${locale}/about` },
   };
@@ -30,7 +30,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "About POLCERO",
-    description: "POLCERO group — vision, platform, manufacturing and energy.",
+    description: "POLCERO group - vision, platform, manufacturing and energy.",
     url: `https://robotic4u.com/${locale}/about`,
   };
 

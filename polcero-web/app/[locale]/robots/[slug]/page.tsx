@@ -21,7 +21,7 @@ export async function generateMetadata({
   const robot = getRobotBySlug(slug);
   if (!robot) return { title: "Robot not found" };
   return {
-    title: `${robot.name} — ${robot.manufacturer} | POLCERO Robot Catalog`,
+    title: `${robot.name} - ${robot.manufacturer} | POLCERO Robot Catalog`,
     description: `${robot.name} by ${robot.manufacturer}. ${robot.applications.join(", ")}. ${robot.polceroNote}`,
     alternates: { canonical: `https://robotic4u.com/${locale}/robots/${slug}` },
   };
@@ -184,7 +184,7 @@ export default async function RobotPage({
       </section>
 
       <CTASection title="Want to deploy this robot?"
-        subtitle="POLCERO builds AI and integrates — to order."
+        subtitle="POLCERO builds AI and integrates - to order."
         description="Submit an inquiry and we'll discuss the deployment scenario, AI brain configuration, and service model for your application."
         cta="Ask about deployment" ctaHref={`${base}/contact`} />
     </>

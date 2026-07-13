@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-/* Platform data is factual / proper-noun — stays in English */
+/* Platform data is factual / proper-noun - stays in English */
 const platforms = [
   { name: "Boston Dynamics Spot", note: "Inspection, 3D scanning, BIM comparison, EHS patrol. 1,500+ deployed globally." },
   { name: "Dusty Robotics FieldPrinter 2", note: "Autonomous floor layout from BIM. 1.6mm accuracy. Commercially available." },

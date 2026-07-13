@@ -13,6 +13,7 @@ import { ChipRow } from "@/components/ChipRow";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { DigitalConnections } from "@/components/DigitalConnections";
+import { RobotScrollSection } from "@/components/RobotScrollSection";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -67,6 +68,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const faq = await getTranslations("faq");
   const ct = await getTranslations("common");
   const chassis_t = await getTranslations("chassis");
+  const rs = await getTranslations("robotScroll");
   const base = `/${locale}`;
 
   const steps = [
@@ -106,69 +108,130 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <JsonLd data={faqJsonLd} />
 
       {/* ── HERO ─────────────────────────────── */}
-      <section className="relative z-20 pt-8 pb-8 w-full overflow-hidden min-h-[88vh] flex flex-col justify-center">
-
-        {/* Background image — full screen width, shifted up 20% */}
-        <Image
-          src="/god_robot.png"
-          alt="POLCERO autonomous robot — AI-controlled industrial robot designed and built in Poland to order"
-          fill
-          priority
-          quality={85}
-          className="object-cover"
-          sizes="100vw"
-          style={{ position: "absolute", zIndex: 0, objectPosition: "center 140%" }}
-        />
-
+      <section className="relative z-20 w-full overflow-hidden flex items-center"
+        style={{ minHeight: "calc(100vh - 3.5rem)" }}>
         <AmbientGlow />
 
-        {/* Centered text — original layout, z-index above image */}
-        <div className="relative z-20 px-6 max-w-[1200px] mx-auto text-center">
-          <div data-animate className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6
-            border border-[rgba(var(--primary),0.2)] bg-[rgba(var(--primary),0.05)]
-            text-xs font-semibold tracking-wide uppercase text-[rgb(var(--primary))]">
-            {t("badge")}
-          </div>
+        <div className="relative z-20 px-6 py-10 max-w-[1280px] mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-8 xl:gap-12 items-center">
 
-          <h1 data-animate data-animate-delay="100"
-            className="text-[clamp(2rem,5vw,4.25rem)] font-bold tracking-[-0.04em] leading-[1.04]
-              mb-4 max-w-4xl mx-auto font-display" style={{ color: "rgb(var(--foreground))" }}>
-            {t("h1")}
-          </h1>
+            {/* ── Left: text content (kept short to match reference) ── */}
+            <div>
+              <h1 data-animate
+                className="text-[clamp(2rem,4.2vw,3.75rem)] font-bold tracking-[-0.04em]
+                  leading-[1.05] mb-4 font-display"
+                style={{ color: "rgb(var(--foreground))" }}>
+                {t("h1")}
+              </h1>
 
-          <h2 data-animate data-animate-delay="200"
-            className="text-[clamp(1rem,2vw,1.4rem)] font-semibold text-gradient mb-6">
-            {t("h2")}
-          </h2>
+              <p data-animate data-animate-delay="100"
+                className="text-gradient font-semibold text-base md:text-lg mb-6 leading-snug max-w-md">
+                {t("h2")}
+              </p>
 
-          <p data-animate data-animate-delay="300"
-            className="text-sm md:text-base text-[rgb(var(--muted-foreground))]
-              max-w-2xl mx-auto mb-8 leading-relaxed font-medium">
-            {t("description")}
-          </p>
+              {/* Two key stats */}
+              <div data-animate data-animate-delay="200"
+                className="flex flex-wrap gap-x-6 gap-y-1.5 mb-7 text-xs font-semibold"
+                style={{ color: "var(--text-muted)" }}>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-[rgb(var(--primary))] shrink-0" />
+                  {t("stats.branches")}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-[rgb(var(--primary))] shrink-0" />
+                  {t("stats.compliance")}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-[rgb(var(--primary))] shrink-0" />
+                  {t("stats.origin")}
+                </span>
+              </div>
 
-          <div data-animate data-animate-delay="400"
-            className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href={`${base}/branches`} className="btn-premium w-full sm:w-auto h-11 px-7">
-              {t("cta_branches")} <ArrowRight size={16} />
-            </Link>
-            <Link href={`${base}/contact`} className="btn-secondary w-full sm:w-auto h-11 px-7">
-              {t("cta_inquiry")}
-            </Link>
-          </div>
+              {/* CTAs */}
+              <div data-animate data-animate-delay="300"
+                className="flex flex-col sm:flex-row items-start gap-3">
+                <Link href={`${base}/branches`} className="btn-premium h-10 px-6 text-sm">
+                  {t("cta_branches")} <ArrowRight size={14} />
+                </Link>
+                <Link href={`${base}/contact`} className="btn-secondary h-10 px-6 text-sm">
+                  {t("cta_inquiry")}
+                </Link>
+              </div>
+            </div>
 
-          <div data-animate data-animate-delay="500"
-            className="mt-12 flex flex-wrap items-center justify-center gap-6
-              text-sm font-semibold text-[rgb(var(--muted-foreground))]">
-            {[t("stats.branches"), t("stats.origin"), t("stats.model"), t("stats.compliance")].map((s) => (
-              <span key={s} className="flex items-center gap-1.5">
-                <CheckCircle2 size={15} className="text-[rgb(var(--primary))]" />
-                {s}
-              </span>
-            ))}
+            {/* ── Right: decorative chassis preview (robots live in scroll section below) ── */}
+            <div
+              data-animate data-animate-delay="200"
+              className="hidden lg:flex items-center justify-center relative min-h-[400px]"
+            >
+              {/* Central circular glow - mirrors webdesign.jpg reference element */}
+              <div aria-hidden="true"
+                className="rounded-full border border-[rgba(var(--primary),0.18)]"
+                style={{
+                  width: 276, height: 276,
+                  background: "radial-gradient(circle at 50% 40%, rgba(124,58,237,0.22) 0%, rgba(124,58,237,0.05) 58%, transparent 76%)",
+                  boxShadow: "0 0 90px rgba(124,58,237,0.09), inset 0 0 60px rgba(124,58,237,0.06)",
+                }}
+              />
+
+              {/* Center text */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 pointer-events-none">
+                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-[rgb(var(--primary))]">
+                  ONE AI BRAIN
+                </p>
+                <p className="text-[8px] font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--text-faint)" }}>
+                  any chassis · any market
+                </p>
+              </div>
+
+              {/* Floating chassis chips - hint at the animation below */}
+              <div className="absolute top-[12%] right-[6%] nl-chip text-[9px] font-black uppercase tracking-widest">
+                Q4 QUADRUPED
+              </div>
+              <div className="absolute top-[40%] right-[0%] nl-chip text-[9px] font-black uppercase tracking-widest">
+                T6 TRACKED
+              </div>
+              <div className="absolute bottom-[26%] right-[6%] nl-chip text-[9px] font-black uppercase tracking-widest">
+                W4 WHEELED
+              </div>
+              <div className="absolute bottom-[12%] left-[8%] nl-chip text-[9px] font-black uppercase tracking-widest">
+                WL4 WHEEL-LEG
+              </div>
+              <div className="absolute top-[18%] left-[4%]">
+                <p className="text-[8px] font-bold uppercase tracking-widest"
+                  style={{ color: "var(--text-faint)" }}>MADE IN</p>
+                <p className="text-[8px] font-black uppercase tracking-widest text-[rgb(var(--primary))]">
+                  POLAND / EU
+                </p>
+              </div>
+
+              {/* Subtle scroll nudge */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-35">
+                <p className="text-[8px] uppercase tracking-[0.18em] font-bold"
+                  style={{ color: "var(--text-faint)" }}>scroll</p>
+                <div className="w-px h-7"
+                  style={{ background: "linear-gradient(to bottom, rgba(124,58,237,0.55), transparent)" }} />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
+
+      {/* ── ROBOT SCROLL SECTION ─────────────── */}
+      <RobotScrollSection
+        label1={rs("label1")} title1={rs("title1")} desc1={rs("desc1")}
+        label2={rs("label2")} title2={rs("title2")} desc2={rs("desc2")}
+        label3={rs("label3")} title3={rs("title3")} desc3={rs("desc3")}
+        label4={rs("label4")} title4={rs("title4")} desc4={rs("desc4")}
+      />
+
+      {/* ── CONTENT COVER ────────────────────────────────────────────────────
+          z-[40] > robot panel z-30: this div slides up over the fixed panel
+          as the user scrolls, naturally covering the frozen Stage 4 robot.
+          Background must be opaque so it fully hides the panel behind it.   */}
+      <div className="relative z-[40]" style={{ background: "var(--bg-app)" }}>
 
       {/* ── THREE PILLARS ────────────────────── */}
       <section className="pt-24 pb-0 px-6 relative z-10">
@@ -206,7 +269,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </p>
             </div>
 
-            {/* Middle card — sits at the top of the grid row (half-height higher) */}
+            {/* Middle card - sits at the top of the grid row (half-height higher) */}
             <div data-animate data-animate-delay="100" className="bento-card min-h-48">
               <div className="w-12 h-12 rounded-xl bg-[rgba(var(--primary),0.1)] border border-[rgba(var(--primary),0.2)]
                 flex items-center justify-center mb-5">
@@ -238,13 +301,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           {/* Digital connection lines from tiles to image */}
           <DigitalConnections />
 
-          {/* Image below the tiles — relative z-20 places it above the SVG lines (z-10)
+          {/* Image below the tiles - relative z-20 places it above the SVG lines (z-10)
               so lines show through the transparent top of the photo and disappear
               behind the opaque robot content. */}
           <div data-animate className="mt-6 rounded-3xl overflow-hidden relative z-20">
             <Image
               src="/robot_earth.png"
-              alt="POLCERO robot platform deployed across EU — make-to-order industrial robotics manufactured in Poland"
+              alt="POLCERO robot platform deployed across EU - make-to-order industrial robotics manufactured in Poland"
               width={1400}
               height={600}
               quality={85}
@@ -363,8 +426,8 @@ const aiStack = {
     abstraction: "swap base model without retraining",
   },
   architecture: {
-    system2: "VLM — scene & language understanding",
-    system1: "motion policy — high frequency control",
+    system2: "VLM - scene & language understanding",
+    system1: "motion policy - high frequency control",
     classic: "PID for simple grasping/cutting",
   },
   deployment: {
@@ -463,6 +526,8 @@ const aiStack = {
         secondaryCta={t("final_cta.secondary_cta")}
         secondaryCtaHref={`${base}/branches`}
       />
+
+      </div>{/* end content-cover */}
     </>
   );
 }

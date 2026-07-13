@@ -11,7 +11,7 @@ export function useScrollReveal() {
     );
 
     // 1. Synchronously mark everything already in the viewport as visible
-    //    BEFORE the CSS hiding rule is activated — no async flash possible.
+    //    BEFORE the CSS hiding rule is activated - no async flash possible.
     allEls.forEach((el) => {
       const { top, bottom } = el.getBoundingClientRect();
       if (top < window.innerHeight && bottom > 0) {

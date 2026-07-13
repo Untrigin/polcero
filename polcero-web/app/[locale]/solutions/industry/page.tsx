@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-/* Platform specs are factual — stays in English */
+/* Platform specs are factual - stays in English */
 const platforms = [
   { name: "UR / FANUC / ABB cobots", note: "Collaborative robot arms for assembly, inspection and machine tending." },
   { name: "MiR AMRs", note: "250–1,350 kg AMRs for intra-factory material flow." },

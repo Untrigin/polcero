@@ -1,7 +1,7 @@
 "use client";
 
 /*
-  viewBox 0 0 1000 400  —  SVG top:192px (middle-tile bottom).
+  viewBox 0 0 1000 400  -  SVG top:192px (middle-tile bottom).
 
   Line 2 starts at SVG y=40 → page y=192+(40/400×h) → 10% below the bottom edge of tile 2.
   Lines 1 & 3 start at SVG y=165.  At the narrowest responsive height (240 px):
@@ -53,10 +53,10 @@ export function DigitalConnections() {
 
       {/* ── NODES ─────────────────────────────────────────────────────────── */}
 
-      {/* Line 2 — start node, 10% below tile-2 bottom */}
+      {/* Line 2 - start node, 10% below tile-2 bottom */}
       <circle cx="500" cy="40"  r="4" fill="currentColor" />
 
-      {/* Lines 1 & 3 — start nodes */}
+      {/* Lines 1 & 3 - start nodes */}
       <circle cx="165" cy="165" r="5" fill="currentColor" />
       <circle cx="835" cy="165" r="5" fill="currentColor" />
 

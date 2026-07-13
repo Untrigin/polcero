@@ -16,13 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-/* Platform specs are factual — stays in English */
+/* Platform specs are factual - stays in English */
 const platforms = [
-  { name: "Boston Dynamics Stretch", note: "Mobile case-handling robot — trailer unloading, suction gripper, 22.7 kg/case." },
+  { name: "Boston Dynamics Stretch", note: "Mobile case-handling robot - trailer unloading, suction gripper, 22.7 kg/case." },
   { name: "Locus Robotics", note: "AMR fleet for pick-and-put: 36–1,361 kg payload range, LocusONE fleet orchestration." },
   { name: "Geek+ Shelf-to-Person", note: "600 kg payload AMR + robot arm picking station. 200-300% efficiency vs. manual." },
   { name: "MiR250 / MiR1350", note: "250–1,350 kg payload AMRs for facility transport. Fleet management up to 100 robots." },
-  { name: "AutoStore", note: "Cube-based AS/RS — 400% storage density. 99.8% uptime." },
+  { name: "AutoStore", note: "Cube-based AS/RS - 400% storage density. 99.8% uptime." },
   { name: "POLCERO-W4 + AMR module", note: "POLCERO wheeled chassis configured for warehouse AMR with our AI brain." },
 ];
 

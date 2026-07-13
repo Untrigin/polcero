@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-/* Comparison table and companies data is technical/factual — stays in English */
+/* Comparison table and companies data is technical/factual - stays in English */
 const comparison = [
   { property: "Matrix multiply latency", photonic: "Sub-nanosecond (single optical pass)", electronic: "Microsecond–millisecond" },
   { property: "Energy per MAC", photonic: "Sub-picojoule (target)", electronic: "10–100 picojoules" },
@@ -32,7 +32,7 @@ const companies = [
   { name: "Lightmatter (USA)", note: "Passage M1000: 114 Tbps photonic interposer; $400M Series D 2025; first photonic to run transformers, CNNs and RL without modification." },
   { name: "Q.ANT (Germany)", note: "~50× performance advantage vs. NVIDIA GPU in matrix-vector multiplication benchmarks, validated at LRZ supercomputing center." },
   { name: "Neurophos (USA)", note: "1,000×1,000 optical matrix chip demonstrated; claims 10× NVIDIA Vera Rubin NVL72 in FP4/INT4 workloads at similar power." },
-  { name: "Celestial AI → Marvell", note: "1.6T light engines for AI networks — acquired by Marvell for $3.25B (Dec 2025)." },
+  { name: "Celestial AI → Marvell", note: "1.6T light engines for AI networks - acquired by Marvell for $3.25B (Dec 2025)." },
 ];
 
 export default async function PhotonicProcessorsPage({ params }: { params: Promise<{ locale: string }> }) {

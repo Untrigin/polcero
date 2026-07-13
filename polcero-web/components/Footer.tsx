@@ -36,8 +36,8 @@ export async function Footer() {
 
   return (
     <footer
-      className="relative z-10 pt-20 pb-10 px-6"
-      style={{ background: "var(--bg-sidebar)", borderTop: "1px solid var(--nl-border)" }}
+      className="relative z-[40] pt-20 pb-10 px-6"
+      style={{ background: "var(--bg-app)", borderTop: "1px solid var(--nl-border)" }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-16">

@@ -65,10 +65,10 @@ export function Header() {
   };
 
   return (
-    // No h-16 on the outer element — it would clip the absolute mega-menu panel.
+    // No h-14 on the outer element - it would clip the absolute mega-menu panel.
     <header className="glass-header fixed top-0 left-0 right-0 z-50">
       {/* ── Bar ── */}
-      <div className="px-6 h-16 flex items-center">
+      <div className="px-6 h-14 flex items-center">
         <div className="mx-auto max-w-7xl w-full flex items-center justify-between gap-4">
 
           {/* Logo */}
@@ -145,8 +145,11 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-2.5 shrink-0 ml-auto">
             <LocaleSwitcher />
             <ThemeToggle />
-            <Link href={`${base}/contact`} className="btn-premium h-9 px-5 text-sm">
-              {t("inquiry")} <ArrowRight size={14} />
+            <Link href={`${base}/contact`}
+              className="inline-flex items-center justify-center gap-1.5 h-9 px-5 text-sm
+                font-semibold rounded-full whitespace-nowrap transition-opacity hover:opacity-80
+                bg-[var(--text-strong)] text-[var(--bg-app)]">
+              {t("inquiry")}
             </Link>
           </div>
 
@@ -165,10 +168,10 @@ export function Header() {
         </div>
       </div>
 
-      {/* ── Mega menu — Branches ─────────────────────────────────────────── */}
+      {/* ── Mega menu - Branches ─────────────────────────────────────────── */}
       {activeMenu === "branches" && (
         <div
-          className="absolute top-16 left-0 right-0 border-t border-[var(--nl-border)]"
+          className="absolute top-14 left-0 right-0 border-t border-[var(--nl-border)]"
           style={{ background: "var(--bg-sidebar)", boxShadow: "0 8px 32px rgba(0,0,0,0.12)" }}
           onMouseEnter={cancelClose}
           onMouseLeave={scheduleClose}
@@ -218,10 +221,10 @@ export function Header() {
         </div>
       )}
 
-      {/* ── Mega menu — Solutions ─────────────────────────────────────────── */}
+      {/* ── Mega menu - Solutions ─────────────────────────────────────────── */}
       {activeMenu === "solutions" && (
         <div
-          className="absolute top-16 left-0 right-0 border-t border-[var(--nl-border)]"
+          className="absolute top-14 left-0 right-0 border-t border-[var(--nl-border)]"
           style={{ background: "var(--bg-sidebar)", boxShadow: "0 8px 32px rgba(0,0,0,0.12)" }}
           onMouseEnter={cancelClose}
           onMouseLeave={scheduleClose}
@@ -364,7 +367,9 @@ export function Header() {
             </Link>
 
             <Link href={`${base}/contact`} onClick={closeMobile}
-              className="btn-premium mt-3 w-full justify-center">
+              className="mt-3 w-full h-10 rounded-full font-semibold text-sm
+                inline-flex items-center justify-center gap-1.5 transition-opacity hover:opacity-80
+                bg-[var(--text-strong)] text-[var(--bg-app)]">
               {t("inquiry")} <ArrowRight size={14} />
             </Link>
           </nav>

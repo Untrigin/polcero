@@ -1,9 +1,9 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   motion, AnimatePresence,
-  useScroll, useTransform, useMotionValue, useMotionValueEvent,
+  useScroll, useTransform, useMotionValueEvent,
 } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -72,16 +72,6 @@ export function RobotScrollSection({
     offset: ["start end", "end end"],
   });
 
-  // ── Mobile detection ──────────────────────────────────────────────────────
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 1023px)");
-    setIsMobile(mq.matches);
-    const fn = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", fn);
-    return () => mq.removeEventListener("change", fn);
-  }, []);
-
   // ── Active text stage ─────────────────────────────────────────────────────
   // State updates ONLY at stage-boundary crossings - no per-frame re-renders.
   // Stage 0 means no text is shown (before/between/after active windows).
@@ -96,18 +86,14 @@ export function RobotScrollSection({
     setStage(s => s !== next ? next : s);
   });
 
-  // ── Cluster: desktop zooms from hero right column; mobile rises from bottom ─
+  // ── Cluster transforms ────────────────────────────────────────────────────
+  // Desktop (lg+): zooms from hero right-column position to screen centre.
   const clusterXD     = useTransform(scrollYProgress, [0, 0.22], ["25vw", "0vw"], { clamp: true });
   const clusterScaleD = useTransform(scrollYProgress, [0, 0.22], [0.65,   1.30],  { clamp: true });
-  const clusterYD     = useMotionValue("0px");
 
-  const clusterXM     = useMotionValue("0px");
+  // Mobile (<lg): centred horizontally, rises from bottom half of hero.
   const clusterScaleM = useTransform(scrollYProgress, [0, 0.22], [0.62,   0.82],  { clamp: true });
   const clusterYM     = useTransform(scrollYProgress, [0, 0.22], ["14vh", "0vh"],  { clamp: true });
-
-  const clusterX     = isMobile ? clusterXM     : clusterXD;
-  const clusterScale = isMobile ? clusterScaleM : clusterScaleD;
-  const clusterY     = isMobile ? clusterYM     : clusterYD;
 
   // ── Q4 legs (3.png): static in cluster, exits LEFT ───────────────────────
   const q4X = useTransform(scrollYProgress, [0.28, 0.40], ["0vw", "-180vw"],     { clamp: true });
@@ -195,51 +181,75 @@ export function RobotScrollSection({
         </div>
 
         {/* ── ROBOT CLUSTER ─────────────────────────────────────────────────
-            Zooms from hero right-column (x=25vw, scale=0.65) to centre
-            (x=0, scale=1.30) by progress 0.22. Chassis images then slide
-            in/out horizontally as stages advance.                             */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            className="relative"
-            style={{ x: clusterX, y: clusterY, scale: clusterScale, width: 480, height: 540 }}
-          >
-            {/* Q4 quadruped legs - exits LEFT at Stage 1 end */}
+            Two versions selected by CSS media query — no JS state, no
+            hydration flash. Both share the same chassis MotionValues.
+            Desktop (lg+): zooms from hero right-column to centre.
+            Mobile (<lg): centred, rises from bottom half of hero.            */}
+
+        {/* Desktop cluster */}
+        <div className="hidden lg:flex absolute inset-0 items-center justify-center">
+          <motion.div className="relative"
+            style={{ x: clusterXD, scale: clusterScaleD, width: 480, height: 540 }}>
             <motion.div className="absolute inset-0" style={{ x: q4X }}>
               <Image src="/robot/3.png" alt="Q4 quadruped chassis"
                 fill sizes="480px" className="object-contain" style={imgShadow} />
             </motion.div>
-
-            {/* T6 tracked chassis - RIGHT → centre → LEFT */}
             <motion.div className="absolute inset-0" style={{ x: t6X }}>
               <Image src="/robot/4.png" alt="T6 tracked chassis"
                 fill sizes="480px" className="object-contain" style={imgShadow} />
             </motion.div>
-
-            {/* Arm module - Stage 2: enters and exits with T6 */}
             <motion.div className="absolute inset-0" style={{ x: arm2X }}>
               <Image src="/robot/5.png" alt="Robot arm module"
                 fill sizes="480px" className="object-contain" style={imgShadow} />
             </motion.div>
-
-            {/* W4 wheeled chassis - RIGHT → centre → LEFT */}
             <motion.div className="absolute inset-0" style={{ x: w4X }}>
               <Image src="/robot/2.png" alt="W4 wheeled chassis"
                 fill sizes="480px" className="object-contain" style={imgShadow} />
             </motion.div>
-
-            {/* WL4 wheel-leg chassis - enters RIGHT, stays */}
             <motion.div className="absolute inset-0" style={{ x: wl4X }}>
               <Image src="/robot/6.png" alt="WL4 wheel-leg chassis"
                 fill sizes="480px" className="object-contain" style={imgShadow} />
             </motion.div>
-
-            {/* Arm module - Stage 4: enters RIGHT just after WL4, stays */}
             <motion.div className="absolute inset-0" style={{ x: armX }}>
               <Image src="/robot/5.png" alt="Robot arm module"
                 fill sizes="480px" className="object-contain" style={imgShadow} />
             </motion.div>
+            <div className="absolute inset-0 z-20">
+              <Image src="/robot/1.png" alt="POLCERO AI robot body"
+                fill sizes="480px" className="object-contain"
+                style={{ filter: "drop-shadow(0 10px 32px rgba(0,0,0,0.22))" }} />
+            </div>
+          </motion.div>
+        </div>
 
-            {/* Body (1.png) - always centred, always on top */}
+        {/* Mobile cluster */}
+        <div className="flex lg:hidden absolute inset-0 items-center justify-center">
+          <motion.div className="relative"
+            style={{ y: clusterYM, scale: clusterScaleM, width: 480, height: 540 }}>
+            <motion.div className="absolute inset-0" style={{ x: q4X }}>
+              <Image src="/robot/3.png" alt="Q4 quadruped chassis"
+                fill sizes="480px" className="object-contain" style={imgShadow} />
+            </motion.div>
+            <motion.div className="absolute inset-0" style={{ x: t6X }}>
+              <Image src="/robot/4.png" alt="T6 tracked chassis"
+                fill sizes="480px" className="object-contain" style={imgShadow} />
+            </motion.div>
+            <motion.div className="absolute inset-0" style={{ x: arm2X }}>
+              <Image src="/robot/5.png" alt="Robot arm module"
+                fill sizes="480px" className="object-contain" style={imgShadow} />
+            </motion.div>
+            <motion.div className="absolute inset-0" style={{ x: w4X }}>
+              <Image src="/robot/2.png" alt="W4 wheeled chassis"
+                fill sizes="480px" className="object-contain" style={imgShadow} />
+            </motion.div>
+            <motion.div className="absolute inset-0" style={{ x: wl4X }}>
+              <Image src="/robot/6.png" alt="WL4 wheel-leg chassis"
+                fill sizes="480px" className="object-contain" style={imgShadow} />
+            </motion.div>
+            <motion.div className="absolute inset-0" style={{ x: armX }}>
+              <Image src="/robot/5.png" alt="Robot arm module"
+                fill sizes="480px" className="object-contain" style={imgShadow} />
+            </motion.div>
             <div className="absolute inset-0 z-20">
               <Image src="/robot/1.png" alt="POLCERO AI robot body"
                 fill sizes="480px" className="object-contain"

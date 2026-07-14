@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import {
   Brain, Puzzle, Move3d, Wrench,
@@ -197,8 +198,28 @@ export default async function RobotsPage({ params }: { params: Promise<{ locale:
             ))}
           </div>
 
+          {/* Robotic4u external link */}
+          <div data-animate className="mt-8 mb-4">
+            <a href="https://robotic4u.com" target="_blank" rel="noopener noreferrer"
+              className="nl-card p-5 flex items-center gap-5 hover:border-[rgba(var(--primary),0.3)] transition-all group">
+              <div className="shrink-0">
+                <Image src="/robotic4u_black.svg" alt="ROBOTIC4U" width={124} height={28}
+                  className="logo-light w-auto" style={{ height: 22 }} />
+                <Image src="/robotic4u.svg" alt="ROBOTIC4U" width={124} height={28}
+                  className="logo-dark w-auto" style={{ height: 22 }} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-bold uppercase tracking-wide mb-0.5 text-[rgb(var(--primary))]">robotic4u.com</p>
+                <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                  POLCERO's AI integration arm - deploying the platform layer above onto robots for EU clients.
+                </p>
+              </div>
+              <ArrowRight size={15} className="text-[rgb(var(--primary))] shrink-0 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+
           {/* Energy note */}
-          <div data-animate className="mt-8 nl-card p-5 flex flex-wrap items-start gap-4">
+          <div data-animate className="nl-card p-5 flex flex-wrap items-start gap-4">
             <div className="shrink-0">
               <BatteryCharging size={22} className="text-[rgb(var(--primary))]" />
             </div>

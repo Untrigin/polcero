@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Brain, Eye, Cloud, Cpu, Wrench, HardHat, Warehouse, ArrowRight } from "lucide-react";
 import { AmbientGlow } from "@/components/AmbientGlow";
@@ -185,7 +186,7 @@ export default async function AiSystemsPage({ params }: { params: Promise<{ loca
           </div>
 
           {/* Cross-links */}
-          <div data-animate className="grid sm:grid-cols-2 gap-4 mb-8">
+          <div data-animate className="grid sm:grid-cols-2 gap-4 mb-4">
             <Link href={`${base}/farma-ai`} className="nl-card p-5 hover:border-[rgba(var(--primary),0.3)] transition-all group">
               <p className="text-xs font-bold uppercase tracking-wide mb-1 text-[rgb(var(--primary))]">{t("related_badge")}</p>
               <p className="font-bold font-display group-hover:text-[rgb(var(--primary))] transition-colors">{t("farma_link")}</p>
@@ -196,6 +197,26 @@ export default async function AiSystemsPage({ params }: { params: Promise<{ loca
               <p className="font-bold font-display group-hover:text-[rgb(var(--primary))] transition-colors">{t("commander_link")}</p>
               <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>{t("commander_desc")}</p>
             </Link>
+          </div>
+
+          {/* Robotic4u external link */}
+          <div data-animate className="mb-8">
+            <a href="https://robotic4u.com" target="_blank" rel="noopener noreferrer"
+              className="nl-card p-5 flex items-center gap-5 hover:border-[rgba(var(--primary),0.3)] transition-all group">
+              <div className="shrink-0">
+                <Image src="/robotic4u_black.svg" alt="ROBOTIC4U" width={124} height={28}
+                  className="logo-light w-auto" style={{ height: 22 }} />
+                <Image src="/robotic4u.svg" alt="ROBOTIC4U" width={124} height={28}
+                  className="logo-dark w-auto" style={{ height: 22 }} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-bold uppercase tracking-wide mb-0.5 text-[rgb(var(--primary))]">robotic4u.com</p>
+                <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                  AI integration for existing robots - POLCERO's platform deployed across EU industrial clients.
+                </p>
+              </div>
+              <ArrowRight size={15} className="text-[rgb(var(--primary))] shrink-0 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
       </section>

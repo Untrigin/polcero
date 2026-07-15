@@ -40,7 +40,7 @@ export async function generateMetadata({
       template: `%s | POLCERO`,
     },
     description: t("defaultDescription"),
-    metadataBase: new URL("https://robotic4u.com"),
+    metadataBase: new URL("https://polcero.com"),
     openGraph: {
       type: "website",
       siteName: t("siteName"),

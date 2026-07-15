@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { locales } from "@/i18n/routing";
 import { robots as robotCatalog } from "@/content/robots";
 
-const BASE_URL = "https://robotic4u.com";
+const BASE_URL = "https://polcero.com";
 
 const staticRoutes = [
   "",

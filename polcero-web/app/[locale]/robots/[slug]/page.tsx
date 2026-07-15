@@ -23,7 +23,7 @@ export async function generateMetadata({
   return {
     title: `${robot.name} - ${robot.manufacturer} | POLCERO Robot Catalog`,
     description: `${robot.name} by ${robot.manufacturer}. ${robot.applications.join(", ")}. ${robot.polceroNote}`,
-    alternates: { canonical: `https://robotic4u.com/${locale}/robots/${slug}` },
+    alternates: { canonical: `https://polcero.com/${locale}/robots/${slug}` },
   };
 }
 
@@ -67,7 +67,7 @@ export default async function RobotPage({
     brand: { "@type": "Brand", name: robot.manufacturer },
     description: robot.polceroNote,
     category: CATEGORY_LABELS[robot.category],
-    url: `https://robotic4u.com/${locale}/robots/${robot.slug}`,
+    url: `https://polcero.com/${locale}/robots/${robot.slug}`,
   };
 
   return (

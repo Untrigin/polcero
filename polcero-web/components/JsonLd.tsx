@@ -14,11 +14,11 @@ export function JsonLd({ data }: JsonLdProps) {
 export const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://robotic4u.com/#org",
+  "@id": "https://polcero.com/#org",
   name: "POLCERO",
   alternateName: "Polskie Centrum Robotyzacji",
-  url: "https://robotic4u.com",
-  logo: "https://robotic4u.com/robotic4u_black.svg",
+  url: "https://polcero.com",
+  logo: "https://polcero.com/robotic4u_black.svg",
   description:
     "POLCERO designs and manufactures robots, AI systems and components in Poland - make-to-order. One modular platform serving agriculture, construction, logistics, industry and defense.",
   address: {
@@ -42,9 +42,9 @@ export const orgJsonLd = {
 export const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://robotic4u.com/#website",
-  url: "https://robotic4u.com",
+  "@id": "https://polcero.com/#website",
+  url: "https://polcero.com",
   name: "POLCERO",
   inLanguage: ["en", "pl", "de", "fr", "es", "it", "pt", "nl", "sv", "cs", "ro", "el", "zh", "hi", "ar", "ru", "ja", "uk"],
-  publisher: { "@id": "https://robotic4u.com/#org" },
+  publisher: { "@id": "https://polcero.com/#org" },
 };

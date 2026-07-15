@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: t("meta_title"),
     description: t("meta_desc"),
-    alternates: { canonical: `https://robotic4u.com/${locale}/ai-systems` },
+    alternates: { canonical: `https://polcero.com/${locale}/ai-systems` },
   };
 }
 
@@ -42,9 +42,9 @@ export default async function AiSystemsPage({ params }: { params: Promise<{ loca
     "@type": "Service",
     name: t("meta_title"),
     description: t("meta_desc"),
-    provider: { "@id": "https://robotic4u.com/#org" },
+    provider: { "@id": "https://polcero.com/#org" },
     areaServed: "EU",
-    url: `https://robotic4u.com/${locale}/ai-systems`,
+    url: `https://polcero.com/${locale}/ai-systems`,
   };
 
   const faqJsonLd = {

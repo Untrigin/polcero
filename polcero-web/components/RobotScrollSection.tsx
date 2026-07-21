@@ -91,9 +91,13 @@ export function RobotScrollSection({
   const clusterXD     = useTransform(scrollYProgress, [0, 0.22], ["25vw", "0vw"], { clamp: true });
   const clusterScaleD = useTransform(scrollYProgress, [0, 0.22], [0.65,   1.30],  { clamp: true });
 
-  // Mobile (<lg): centred horizontally, rises from bottom half of hero.
+  // Mobile (<lg): starts in the bottom half of the hero (inside its glow),
+  // then rises to screen centre as the hero scrolls away. The offset is in
+  // vh so the robot stays proportionally in the bottom half on every screen,
+  // and its glow is a CHILD of the cluster (below) so the two are always
+  // concentric — no drift as the viewport grows.
   const clusterScaleM = useTransform(scrollYProgress, [0, 0.22], [0.62,   0.82],  { clamp: true });
-  const clusterYM     = useTransform(scrollYProgress, [0, 0.22], ["14vh", "0vh"],  { clamp: true });
+  const clusterYM     = useTransform(scrollYProgress, [0, 0.22], ["26vh", "0vh"],  { clamp: true });
 
   // ── Q4 legs (3.png): static in cluster, exits LEFT ───────────────────────
   const q4X = useTransform(scrollYProgress, [0.28, 0.40], ["0vw", "-180vw"],     { clamp: true });
@@ -171,9 +175,10 @@ export function RobotScrollSection({
         {/* Background colour overlay */}
         <motion.div className="absolute inset-0" style={{ backgroundColor: bgColor }} />
 
-        {/* Ambient glow */}
+        {/* Ambient glow — desktop only. On mobile the glow is a child of the
+            cluster (below) so it stays concentric with the robot at any size. */}
         <div aria-hidden="true"
-          className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          className="absolute inset-0 hidden lg:flex items-center justify-center pointer-events-none">
           <div className="rounded-full" style={{
             width: 720, height: 720,
             background: "radial-gradient(circle, rgba(124,58,237,0.13) 0%, transparent 65%)",
@@ -226,6 +231,12 @@ export function RobotScrollSection({
         <div className="flex lg:hidden absolute inset-0 items-center justify-center">
           <motion.div className="relative"
             style={{ y: clusterYM, scale: clusterScaleM, width: 480, height: 540 }}>
+            {/* Concentric glow — a child of the cluster, so it scales and moves
+                with the robot and stays centred on it at every screen size. */}
+            <div aria-hidden="true"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+              style={{ width: 640, height: 640,
+                background: "radial-gradient(circle, rgba(124,58,237,0.16) 0%, transparent 65%)" }} />
             <motion.div className="absolute inset-0" style={{ x: q4X }}>
               <Image src="/robot/3.png" alt="Q4 quadruped chassis"
                 fill sizes="480px" className="object-contain" style={imgShadow} />

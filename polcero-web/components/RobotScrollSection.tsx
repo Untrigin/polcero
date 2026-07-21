@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   motion, AnimatePresence,
-  useScroll, useTransform, useMotionValueEvent,
+  useScroll, useTransform, useMotionTemplate, useMotionValueEvent,
 } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -87,17 +87,23 @@ export function RobotScrollSection({
   });
 
   // ── Cluster transforms ────────────────────────────────────────────────────
-  // Desktop (lg+): zooms from hero right-column position to screen centre.
-  const clusterXD     = useTransform(scrollYProgress, [0, 0.22], ["25vw", "0vw"], { clamp: true });
-  const clusterScaleD = useTransform(scrollYProgress, [0, 0.22], [0.65,   1.30],  { clamp: true });
+  // Desktop (lg+): starts inside the hero "One AI Brain" circle, then zooms to
+  // screen centre. The circle lives in the 1280px content container, so its
+  // horizontal offset from the viewport centre maxes out at ~320px — we cap
+  // translateX with CSS min() so on wide screens the robot lands ON the circle
+  // instead of overshooting far to the right. translateY corrects the 3.5rem
+  // header offset so it's vertically centred on the circle too.
+  const clusterXvwD   = useTransform(scrollYProgress, [0, 0.22], [24,   0],    { clamp: true });
+  const clusterYpxD   = useTransform(scrollYProgress, [0, 0.22], [28,   0],    { clamp: true });
+  const clusterScaleD = useTransform(scrollYProgress, [0, 0.22], [0.56, 1.30], { clamp: true });
+  const clusterTransformD = useMotionTemplate`translateX(min(${clusterXvwD}vw, 320px)) translateY(${clusterYpxD}px) scale(${clusterScaleD})`;
 
-  // Mobile (<lg): starts in the bottom half of the hero (inside its glow),
-  // then rises to screen centre as the hero scrolls away. The offset is in
-  // vh so the robot stays proportionally in the bottom half on every screen,
-  // and its glow is a CHILD of the cluster (below) so the two are always
-  // concentric — no drift as the viewport grows.
-  const clusterScaleM = useTransform(scrollYProgress, [0, 0.22], [0.62,   0.82],  { clamp: true });
-  const clusterYM     = useTransform(scrollYProgress, [0, 0.22], ["26vh", "0vh"],  { clamp: true });
+  // Mobile (<lg): sits in the bottom half of the hero (inside its glow), then
+  // rises to screen centre as the hero scrolls away. A bottom-half wrapper
+  // (below) guarantees the top half stays free for the text and buttons on any
+  // screen height; the glow is a CHILD of the cluster so the two stay concentric.
+  const clusterScaleM = useTransform(scrollYProgress, [0, 0.22], [0.62,    0.82],   { clamp: true });
+  const clusterYM     = useTransform(scrollYProgress, [0, 0.22], ["0vh", "-25vh"],  { clamp: true });
 
   // ── Q4 legs (3.png): static in cluster, exits LEFT ───────────────────────
   const q4X = useTransform(scrollYProgress, [0.28, 0.40], ["0vw", "-180vw"],     { clamp: true });
@@ -194,7 +200,7 @@ export function RobotScrollSection({
         {/* Desktop cluster */}
         <div className="hidden lg:flex absolute inset-0 items-center justify-center">
           <motion.div className="relative"
-            style={{ x: clusterXD, scale: clusterScaleD, width: 480, height: 540 }}>
+            style={{ transform: clusterTransformD, width: 480, height: 540 }}>
             <motion.div className="absolute inset-0" style={{ x: q4X }}>
               <Image src="/robot/3.png" alt="Q4 quadruped chassis"
                 fill sizes="480px" className="object-contain" style={imgShadow} />
@@ -227,8 +233,9 @@ export function RobotScrollSection({
           </motion.div>
         </div>
 
-        {/* Mobile cluster */}
-        <div className="flex lg:hidden absolute inset-0 items-center justify-center">
+        {/* Mobile cluster — confined to the bottom half so the top half stays
+            free for the hero text and buttons on any screen height. */}
+        <div className="flex lg:hidden absolute inset-x-0 bottom-0 top-1/2 items-center justify-center">
           <motion.div className="relative"
             style={{ y: clusterYM, scale: clusterScaleM, width: 480, height: 540 }}>
             {/* Concentric glow — a child of the cluster, so it scales and moves

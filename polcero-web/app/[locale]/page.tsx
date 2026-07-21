@@ -147,13 +147,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </span>
               </div>
 
-              {/* CTAs */}
+              {/* CTAs — single row on every breakpoint. On mobile both share the
+                  row (flex-1 + min-w-0 so they actually clamp to half width),
+                  text is compact and may wrap, and the arrow is hidden — so
+                  neither button spills past the screen edge. */}
               <div data-animate data-animate-delay="300"
-                className="flex flex-col sm:flex-row items-start gap-3">
-                <Link href={`${base}/branches`} className="btn-premium h-10 px-6 text-sm">
-                  {t("cta_branches")} <ArrowRight size={14} />
+                className="flex flex-row items-stretch gap-2 sm:gap-3">
+                <Link href={`${base}/branches`}
+                  className="btn-premium flex-1 min-w-0 sm:flex-none text-center leading-tight
+                    whitespace-normal sm:whitespace-nowrap h-auto min-h-9 sm:h-10
+                    py-1.5 sm:py-0 px-2.5 sm:px-6 text-xs sm:text-sm">
+                  {t("cta_branches")} <ArrowRight size={14} className="hidden sm:inline shrink-0" />
                 </Link>
-                <Link href={`${base}/contact`} className="btn-secondary h-10 px-6 text-sm">
+                <Link href={`${base}/contact`}
+                  className="btn-secondary flex-1 min-w-0 max-w-30 sm:flex-none text-center leading-tight
+                    whitespace-normal sm:whitespace-nowrap h-auto min-h-9 sm:h-10
+                    py-1.5 sm:py-0 px-2.5 sm:px-6 text-xs sm:text-sm">
                   {t("cta_inquiry")}
                 </Link>
               </div>

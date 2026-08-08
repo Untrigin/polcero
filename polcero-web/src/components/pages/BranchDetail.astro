@@ -106,7 +106,7 @@ const description = (branch.intro ?? branch.desc).slice(0, 154);
                     <h3 class="rb-cat__name">{s.name}</h3>
                     <p class="rb-cat__tagline">{s.tagline}</p>
                     <p class="rb-cat__desc">{s.desc}</p>
-                    <ul class="rb-plist">{s.points.map((pt) => <li>{pt}</li>)}</ul>
+                    {s.points && <ul class="rb-plist">{s.points.map((pt) => <li>{pt}</li>)}</ul>}
                   </article>
                 </Reveal>
               ))}

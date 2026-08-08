@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { getLocale, htmlLang, htmlDir, type Locale } from '../lib/i18n';
 import { getContent } from '../data/content';
 
@@ -46,6 +47,7 @@ const c = getContent(locale);
       <slot />
     </main>
     {chrome && <SiteFooter locale={locale} content={c} />}
+    {chrome && <CookieConsent locale={locale} />}
 
     <script>
       import '../scripts/motion.ts';

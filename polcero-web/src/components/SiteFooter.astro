@@ -1,6 +1,6 @@
 ---
 import type { SiteContent } from '../data/content';
-import { localizedPath, alternatePath, type Locale } from '../lib/i18n';
+import { localizedPath, type Locale } from '../lib/i18n';
 
 interface Props {
   locale: Locale;
@@ -52,9 +52,9 @@ const homeHref = localizedPath('/', locale);
       <p>© {year} POLCERO sp. z o.o. · KRS 0001178417 · NIP 8971955510. {content.footer.rights}</p>
       <div class="site-footer__legal-links">
         <a href={localizedPath('/privacy/', locale)}>{content.footer.legal}</a>
-        <a href={alternatePath(Astro.url.pathname, locale === 'pl' ? 'en' : 'pl')} hreflang={locale === 'pl' ? 'en' : 'pl'}>
-          {locale === 'pl' ? 'English' : 'Polski'}
-        </a>
+        <a href={localizedPath('/cookies/', locale)}>{locale === 'pl' ? 'Polityka cookie' : 'Cookie Policy'}</a>
+        <a href={localizedPath('/terms/', locale)}>{locale === 'pl' ? 'Regulamin' : 'Terms'}</a>
+        <button type="button" class="site-footer__cookie-btn" data-cookie-settings>{locale === 'pl' ? 'Ustawienia cookie' : 'Cookie settings'}</button>
       </div>
     </div>
   </div>
@@ -129,8 +129,10 @@ const homeHref = localizedPath('/', locale);
     color: var(--color-mute);
     font-size: 0.85rem;
   }
-  .site-footer__legal-links { display: flex; gap: 1.5rem; }
+  .site-footer__legal-links { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
   .site-footer__legal-links a:hover { color: var(--color-accent); }
+  .site-footer__cookie-btn { background: none; border: none; padding: 0; cursor: pointer; color: var(--color-mute); font: inherit; font-size: 0.85rem; }
+  .site-footer__cookie-btn:hover { color: var(--color-accent); }
 
   @media (max-width: 900px) {
     .site-footer__top { grid-template-columns: 1fr; }

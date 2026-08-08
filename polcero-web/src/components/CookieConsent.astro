@@ -1,0 +1,211 @@
+---
+// Framework-free cookie-consent panel (ported from the CDPro/untrigin React CMP).
+// Banner + preferences modal; Essential is always on, Analytics/Marketing opt-in.
+// Consent is stored in localStorage and broadcast as a `polcero:consent` event so
+// any non-essential script can gate itself on window.__polceroConsent.
+import { localizedPath, type Locale } from '../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = (path: string) => localizedPath(path, locale);
+
+const dict = {
+  en: {
+    title: 'We value your privacy',
+    desc: 'We use essential cookies to make this site work. With your consent we also use analytics and marketing cookies to improve it. You can change your choice at any time.',
+    acceptAll: 'Accept all',
+    rejectOptional: 'Reject optional',
+    moreOptions: 'More options',
+    prefTitle: 'Cookie preferences',
+    prefDesc: 'Choose which categories of cookies you allow. Essential cookies are always on.',
+    essential: 'Essential', essentialDesc: 'Required for core site functionality and security. Always active.',
+    alwaysActive: 'Always active',
+    analytics: 'Analytics', analyticsDesc: 'Help us understand how the site is used so we can improve it.',
+    marketing: 'Marketing', marketingDesc: 'Used to measure and personalise campaigns.',
+    save: 'Save choices', cancel: 'Cancel',
+    footer: 'Read our', privacyLink: 'Privacy Policy', cookieLink: 'Cookie Policy',
+    close: 'Close',
+  },
+  pl: {
+    title: 'Szanujemy Twoją prywatność',
+    desc: 'Używamy niezbędnych plików cookie, aby strona działała. Za Twoją zgodą używamy też cookie analitycznych i marketingowych, aby ją ulepszać. Możesz zmienić wybór w każdej chwili.',
+    acceptAll: 'Akceptuj wszystkie',
+    rejectOptional: 'Odrzuć opcjonalne',
+    moreOptions: 'Więcej opcji',
+    prefTitle: 'Ustawienia cookie',
+    prefDesc: 'Wybierz, które kategorie plików cookie akceptujesz. Niezbędne cookie są zawsze włączone.',
+    essential: 'Niezbędne', essentialDesc: 'Wymagane do podstawowego działania i bezpieczeństwa strony. Zawsze aktywne.',
+    alwaysActive: 'Zawsze aktywne',
+    analytics: 'Analityczne', analyticsDesc: 'Pomagają nam zrozumieć, jak używana jest strona, abyśmy mogli ją ulepszać.',
+    marketing: 'Marketingowe', marketingDesc: 'Służą do pomiaru i personalizacji kampanii.',
+    save: 'Zapisz wybór', cancel: 'Anuluj',
+    footer: 'Przeczytaj naszą', privacyLink: 'Politykę prywatności', cookieLink: 'Politykę cookie',
+    close: 'Zamknij',
+  },
+} as const;
+
+const t = dict[locale as 'pl' | 'en'] ?? dict.en;
+---
+<div class="cc" data-cookie-consent hidden>
+  <!-- Preferences modal -->
+  <div class="cc-modal" data-cc-modal hidden role="dialog" aria-modal="true" aria-labelledby="cc-pref-title">
+    <div class="cc-modal__card">
+      <div class="cc-modal__head">
+        <p class="cc-modal__title" id="cc-pref-title">{t.prefTitle}</p>
+        <button class="cc-x" data-cc-close aria-label={t.close}>&times;</button>
+      </div>
+      <p class="cc-modal__desc">{t.prefDesc}</p>
+      <div class="cc-rows">
+        <div class="cc-row">
+          <div>
+            <p class="cc-row__name">{t.essential}</p>
+            <p class="cc-row__desc">{t.essentialDesc}</p>
+          </div>
+          <span class="cc-always">{t.alwaysActive}</span>
+        </div>
+        <div class="cc-row">
+          <div>
+            <p class="cc-row__name">{t.analytics}</p>
+            <p class="cc-row__desc">{t.analyticsDesc}</p>
+          </div>
+          <label class="cc-switch">
+            <input type="checkbox" data-cc-analytics />
+            <span class="cc-switch__track"><span class="cc-switch__thumb"></span></span>
+          </label>
+        </div>
+        <div class="cc-row">
+          <div>
+            <p class="cc-row__name">{t.marketing}</p>
+            <p class="cc-row__desc">{t.marketingDesc}</p>
+          </div>
+          <label class="cc-switch">
+            <input type="checkbox" data-cc-marketing />
+            <span class="cc-switch__track"><span class="cc-switch__thumb"></span></span>
+          </label>
+        </div>
+      </div>
+      <div class="cc-actions">
+        <button class="btn-pill btn-accent cc-grow" data-cc-save>{t.save}</button>
+        <button class="btn-pill btn-ghost cc-grow" data-cc-close>{t.cancel}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <div class="cc-banner" data-cc-banner role="region" aria-label={t.title}>
+    <p class="cc-banner__title">{t.title}</p>
+    <p class="cc-banner__desc">{t.desc}</p>
+    <div class="cc-banner__actions">
+      <button class="btn-pill btn-accent" data-cc-accept>{t.acceptAll}</button>
+      <div class="cc-banner__row">
+        <button class="btn-pill btn-ghost" data-cc-prefs>{t.moreOptions}</button>
+        <button class="btn-pill btn-ghost" data-cc-reject>{t.rejectOptional}</button>
+      </div>
+    </div>
+    <p class="cc-banner__foot">
+      {t.footer} <a href={p('/privacy/')}>{t.privacyLink}</a> · <a href={p('/cookies/')}>{t.cookieLink}</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  const KEY = 'polcero_consent_v1';
+  const root = document.querySelector<HTMLElement>('[data-cookie-consent]');
+  if (root) {
+    const banner = root.querySelector<HTMLElement>('[data-cc-banner]')!;
+    const modal = root.querySelector<HTMLElement>('[data-cc-modal]')!;
+    const analytics = root.querySelector<HTMLInputElement>('[data-cc-analytics]')!;
+    const marketing = root.querySelector<HTMLInputElement>('[data-cc-marketing]')!;
+
+    type Consent = { essential: true; analytics: boolean; marketing: boolean; ts: number };
+
+    const read = (): Consent | null => {
+      try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { return null; }
+    };
+    const broadcast = (c: Consent) => {
+      (window as any).__polceroConsent = c;
+      window.dispatchEvent(new CustomEvent('polcero:consent', { detail: c }));
+    };
+    const save = (analyticsOn: boolean, marketingOn: boolean) => {
+      const c: Consent = { essential: true, analytics: analyticsOn, marketing: marketingOn, ts: Date.now() };
+      localStorage.setItem(KEY, JSON.stringify(c));
+      broadcast(c);
+      hide();
+    };
+
+    const showBanner = () => { root.hidden = false; banner.hidden = false; };
+    const hide = () => { root.hidden = true; banner.hidden = true; modal.hidden = true; };
+    const openPrefs = () => {
+      const c = read();
+      analytics.checked = !!c?.analytics;
+      marketing.checked = !!c?.marketing;
+      root.hidden = false; modal.hidden = false;
+    };
+    const closePrefs = () => { modal.hidden = true; if (!read()) banner.hidden = false; else hide(); };
+
+    root.querySelector('[data-cc-accept]')?.addEventListener('click', () => save(true, true));
+    root.querySelector('[data-cc-reject]')?.addEventListener('click', () => save(false, false));
+    root.querySelector('[data-cc-prefs]')?.addEventListener('click', () => { banner.hidden = true; openPrefs(); });
+    root.querySelector('[data-cc-save]')?.addEventListener('click', () => save(analytics.checked, marketing.checked));
+    root.querySelectorAll('[data-cc-close]').forEach((b) => b.addEventListener('click', closePrefs));
+
+    // Re-open from anywhere (e.g. footer "Cookie settings")
+    (window as any).polceroOpenCookiePrefs = openPrefs;
+    document.querySelectorAll('[data-cookie-settings]').forEach((el) =>
+      el.addEventListener('click', (e) => { e.preventDefault(); openPrefs(); }),
+    );
+
+    const existing = read();
+    if (existing) broadcast(existing);
+    else showBanner();
+  }
+</script>
+
+<style>
+  .cc[hidden] { display: none; }
+  .cc-banner {
+    position: fixed; z-index: 60; bottom: 1rem; left: 1rem; right: 1rem;
+    background: var(--color-surface); border: 1px solid var(--color-line);
+    border-radius: var(--radius-card); padding: 1.25rem; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  @media (min-width: 640px) { .cc-banner { left: auto; right: 1.5rem; max-width: 24rem; } }
+  .cc-banner__title { font-weight: 600; color: var(--color-ice); margin-bottom: 0.4rem; }
+  .cc-banner__desc { font-size: 0.82rem; color: var(--color-mute); line-height: 1.55; margin-bottom: 1rem; }
+  .cc-banner__actions { display: flex; flex-direction: column; gap: 0.5rem; }
+  .cc-banner__actions .btn-pill { width: 100%; justify-content: center; }
+  .cc-banner__row { display: flex; gap: 0.5rem; }
+  .cc-banner__row .btn-pill { flex: 1; }
+  .cc-banner__foot { font-size: 0.7rem; color: var(--color-mute); margin-top: 0.9rem; }
+  .cc-banner__foot a { color: var(--color-accent); }
+
+  .cc-modal {
+    position: fixed; inset: 0; z-index: 70; display: flex; align-items: center; justify-content: center;
+    padding: 1rem; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  }
+  .cc-modal[hidden] { display: none; }
+  .cc-modal__card {
+    width: 100%; max-width: 28rem; background: var(--color-surface); border: 1px solid var(--color-line);
+    border-radius: var(--radius-card); padding: 1.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .cc-modal__head { display: flex; align-items: center; justify-content: space-between; }
+  .cc-modal__title { font-weight: 700; color: var(--color-ice); }
+  .cc-modal__desc { font-size: 0.8rem; color: var(--color-mute); margin: 0.4rem 0 1.25rem; line-height: 1.55; }
+  .cc-x { background: none; border: none; color: var(--color-mute); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+  .cc-x:hover { color: var(--color-ice); }
+  .cc-rows { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+  .cc-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .cc-row__name { font-size: 0.9rem; font-weight: 600; color: var(--color-ice); }
+  .cc-row__desc { font-size: 0.75rem; color: var(--color-mute); line-height: 1.5; margin-top: 0.15rem; }
+  .cc-always { flex-shrink: 0; font-size: 0.72rem; font-weight: 500; color: var(--color-accent); white-space: nowrap; margin-top: 0.15rem; }
+  .cc-actions { display: flex; gap: 0.5rem; }
+  .cc-grow { flex: 1; justify-content: center; }
+
+  /* toggle switch */
+  .cc-switch { position: relative; display: inline-flex; flex-shrink: 0; cursor: pointer; }
+  .cc-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .cc-switch__track { width: 2.6rem; height: 1.5rem; border-radius: 999px; background: color-mix(in srgb, var(--color-mute) 35%, transparent); transition: background 0.2s; display: inline-flex; align-items: center; padding: 0 2px; }
+  .cc-switch__thumb { width: 1.15rem; height: 1.15rem; border-radius: 50%; background: #fff; transition: transform 0.2s; }
+  .cc-switch input:checked + .cc-switch__track { background: var(--color-accent); }
+  .cc-switch input:checked + .cc-switch__track .cc-switch__thumb { transform: translateX(1.1rem); }
+  .cc-switch input:focus-visible + .cc-switch__track { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+</style>

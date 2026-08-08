@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import { getLegalDoc } from '../../data/legal';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale; slug: 'privacy' | 'cookies' | 'terms' }
+const { locale, slug } = Astro.props;
+const p = (path: string) => localizedPath(path, locale);
+const doc = getLegalDoc(slug, locale);
+const homeLabel = locale === 'pl' ? 'Start' : 'Home';
+const updatedLabel = locale === 'pl' ? 'Ostatnia aktualizacja' : 'Last updated';
+const crumbs = [
+  { label: homeLabel, href: p('/') },
+  { label: doc.title, href: p(`/${slug}/`) },
+];
+---
+<Layout title={`${doc.title} - POLCERO`} description={doc.intro.slice(0, 154)} canonicalPath={p(`/${slug}/`)}>
+  <PageHeader title={doc.title} lead={doc.intro} crumbs={crumbs} />
+  <section class="section">
+    <div class="container-x legal">
+      <p class="legal__updated label-mono">{updatedLabel}: {doc.updated}</p>
+      {doc.sections.map((s) => (
+        <div class="legal__section">
+          <h2 class="h3 legal__heading">{s.heading}</h2>
+          {s.body.map((para) => <p class="legal__p">{para}</p>)}
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal { max-width: 52rem; }
+  .legal__updated { color: var(--color-mute); margin-bottom: 2.5rem; }
+  .legal__section { margin-bottom: 2rem; }
+  .legal__heading { margin-bottom: 0.9rem; color: var(--color-ice); }
+  .legal__p { color: var(--color-mute); line-height: 1.7; margin-bottom: 0.75rem; }
+  .legal__p:last-child { margin-bottom: 0; }
+</style>

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="404 - POLCERO" description="Nie znaleziono strony. / Page not found." noindex>
+  <section class="section notfound">
+    <div class="container-x">
+      <p class="eyebrow">404</p>
+      <h1 class="h1 notfound__title">Nie znaleziono strony</h1>
+      <p class="lead">Strona, której szukasz, nie istnieje lub została przeniesiona.<br />The page you are looking for does not exist or has moved.</p>
+      <div class="notfound__cta">
+        <a class="btn-pill btn-accent" href="/">Strona główna</a>
+        <a class="btn-pill btn-ghost" href="/en/">Home (EN)</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .notfound { padding-top: calc(var(--header-h) + clamp(4rem, 10vw, 8rem)); min-height: 70vh; }
+  .notfound__title { margin: 1.5rem 0; }
+  .notfound__cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+</style>

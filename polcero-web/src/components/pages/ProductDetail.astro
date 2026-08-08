@@ -1,0 +1,267 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import MediaFrame from '../MediaFrame.astro';
+import BoxArrowLink from '../BoxArrowLink.astro';
+import JsonLd from '../JsonLd.astro';
+import Reveal from '../Reveal.astro';
+import { getContent } from '../../data/content';
+import { getProductSpecs } from '../../data/productSpecs';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale; slug: string }
+const { locale, slug } = Astro.props;
+const c = getContent(locale);
+const product = c.products.find((p) => p.slug === slug)!;
+const specGroups = getProductSpecs(product, locale);
+const specNote = locale === 'pl'
+  ? 'Wartości mają charakter założeń projektowych; produkt jest w rozwoju, a konfiguracja może się zmienić. Prosimy potwierdzić szczegóły z działem sprzedaży.'
+  : 'Values are design assumptions; the product is under development and configuration may change. Please confirm details with sales.';
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl'
+  ? { home: 'Start', products: 'Produkty', related: 'Powiązane', cta: 'Zapytaj o wdrożenie', specs: 'W skrócie', industries: 'Branże', back: 'Wszystkie produkty', uses: 'Zastosowania', usesLead: 'Do czego wykorzystujemy ten model.' }
+  : { home: 'Home', products: 'Products', related: 'Related', cta: 'Ask about deployment', specs: 'At a glance', industries: 'Industries', back: 'All products', uses: 'Use cases', usesLead: 'What we use this model for.' };
+
+const related = c.products.filter((x) => x.slug !== slug && x.category === product.category).slice(0, 2);
+const fallback = c.products.filter((x) => x.slug !== slug && !related.includes(x)).slice(0, 2 - related.length);
+const relatedFinal = [...related, ...fallback];
+const relatedIndustry = c.industries[0];
+
+// Shared modular core - robots only (skipped for the transport drone).
+const showConstruction = product.kind !== 'drone';
+const construction = locale === 'pl'
+  ? {
+      title: 'Budowa modułowa',
+      lead: 'Wspólny rdzeń pozostaje ten sam: podwozie, sterowanie, percepcja i szybkozłącze narzędziowe. Zmienia się końcówka robocza i program - nie cała maszyna. Moduł korpusu z systemem sterowania i AI łączymy z dowolnym podwoziem specjalistycznym albo uzupełniamy o nogi i ramiona, tworząc humanoida. Po dołożeniu modułu zadaniowego - ramion z chwytakiem, głowicy zbioru czy lasera do odchwaszczania - ten sam robot wykonuje kolejne prace.',
+      parts: [
+        { img: '/media/module-front.webp', name: 'Moduł korpusu', spec: 'Sterowanie, percepcja i AI w jednym module.' },
+        { img: '/media/chassis-lineup.webp', name: 'Wymienne podwozie', spec: 'Kołowe, gąsienicowe, kroczące lub kołowo-nożne.' },
+        { img: '/media/module-back.webp', name: 'Wymienne baterie', spec: 'Trzy baterie hot-swap z tyłu korpusu.' },
+        { img: '/media/part-head.webp', name: 'Percepcja', spec: 'Kamery, LiDAR, przetwarzanie na urządzeniu.' },
+      ],
+    }
+  : {
+      title: 'Modular construction',
+      lead: 'The common core stays the same: chassis, controls, perception and a quick-release tool connector. The working end and the program change - not the whole machine. We mount the core module (control system + AI) on any specialized chassis, or add legs and arms to make a humanoid. Add a task module - arms with a gripper, a harvest head or a weeding laser - and the same robot takes on the next job.',
+      parts: [
+        { img: '/media/module-front.webp', name: 'Core module', spec: 'Control, perception and AI in one module.' },
+        { img: '/media/chassis-lineup.webp', name: 'Swappable chassis', spec: 'Wheeled, tracked, legged or wheel-leg.' },
+        { img: '/media/module-back.webp', name: 'Swappable batteries', spec: 'Three hot-swap batteries in the back.' },
+        { img: '/media/part-head.webp', name: 'Perception', spec: 'Cameras, LiDAR, on-device compute.' },
+      ],
+    };
+
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.products, href: p('/products/') },
+  { label: product.name, href: p(`/products/${slug}/`) },
+];
+
+const site = Astro.site ?? new URL('https://polcero.com');
+const productLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  category: product.category,
+  description: product.blurb,
+  image: new URL(product.image, site).href,
+  brand: { '@type': 'Brand', name: 'POLCERO' },
+  manufacturer: { '@type': 'Organization', name: 'POLCERO' },
+  url: new URL(p(`/products/${slug}/`), site).href,
+};
+
+const title = `${product.name} - POLCERO`;
+const description = product.blurb.slice(0, 154);
+---
+<Layout title={title} description={description} canonicalPath={p(`/products/${slug}/`)}>
+  <JsonLd slot="head" schema={productLd} />
+  <PageHeader eyebrow={product.category} title={product.name} lead={product.blurb} crumbs={crumbs} />
+
+  <section class="section">
+    <div class="container-x product-detail">
+      <Reveal class="product-detail__media">
+        <MediaFrame src={product.image} alt={`${product.name} - POLCERO`} width={1024} height={1024} radius="media" />
+      </Reveal>
+      <Reveal delay={80} class="product-detail__body">
+        {product.subtitle && <p class="product-detail__subtitle">{product.subtitle}</p>}
+        <p class="label-mono">{t.specs}</p>
+        <p class="lead">{product.blurb}</p>
+        {product.specs && (
+          <dl class="product-specs">
+            {product.specs.map((s) => (
+              <div class="product-specs__row">
+                <dt>{s.label}</dt>
+                <dd>{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        <p class="product-detail__note">
+          {locale === 'pl'
+            ? 'Roboty budujemy pod konkretny proces u klienta - punktem wyjścia są nasze własne prototypy, które modyfikujemy pod przeznaczenie. Dopasowujemy technologię do procesu, a nie odwrotnie.'
+            : 'We build robots around the client’s specific process - starting from our own prototypes, adapted to purpose. We fit the technology to the process, not the other way around.'}
+        </p>
+        {product.price && (
+          <p class="product-detail__price"><span>{locale === 'pl' ? 'Cena' : 'Price'}</span>{product.price}</p>
+        )}
+        <div class="product-detail__cta">
+          <a class="btn-pill btn-accent" href={p('/contact/')}>{t.cta}</a>
+          <BoxArrowLink href={p(`/industries/${relatedIndustry.slug}/`)} label={relatedIndustry.name} variant="dark" />
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  {product.uses && product.uses.length > 0 && (
+    <section class="section uses-section">
+      <div class="container-x">
+        <div class="uses-head">
+          <p class="eyebrow">{t.uses}</p>
+          <p class="lead uses-head__lead">{t.usesLead}</p>
+        </div>
+        <Reveal>
+          <ul class="uses-grid">
+            {product.uses.map((u, i) => (
+              <li class="use">
+                <span class="use__num label-mono">{String(i + 1).padStart(2, '0')}</span>
+                <span class="use__text">{u}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  {showConstruction && (
+    <section class="section construction">
+      <div class="container-x">
+        <div class="construction__head">
+          <h2 class="h3">{construction.title}</h2>
+          <p class="lead construction__lead">{construction.lead}</p>
+        </div>
+        <div class="construction__grid">
+          {construction.parts.map((part, i) => (
+            <Reveal delay={i * 60}>
+              <div class="construction__item">
+                <span class="construction__tile"><img src={part.img} alt={part.name} width="360" height="360" loading="lazy" decoding="async" /></span>
+                <span class="construction__name">{part.name}</span>
+                <span class="construction__spec">{part.spec}</span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section pspec">
+    <div class="container-x">
+      <h2 class="h3 pspec__title">{locale === 'pl' ? 'Specyfikacja' : 'Specification'}</h2>
+      <div class="pspec__grid">
+        {specGroups.map((g) => (
+          <div class="pspec__group">
+            <p class="pspec__group-title label-mono">{g.title}</p>
+            <dl class="pspec__rows">
+              {g.rows.map((r) => (
+                <div class="pspec__row"><dt>{r.label}</dt><dd>{r.value}</dd></div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+      <p class="pspec__note">{specNote}</p>
+    </div>
+  </section>
+
+  <section class="section related">
+    <div class="container-x">
+      <div class="related__head">
+        <h2 class="h3">{t.related}</h2>
+        <BoxArrowLink href={p('/products/')} label={t.back} variant="dark" />
+      </div>
+      <div class="related__grid">
+        {relatedFinal.map((r) => (
+          <a class="related__card" href={p(`/products/${r.slug}/`)}>
+            <span class="related__thumb"><img src={r.image} alt="" width="256" height="256" loading="lazy" /></span>
+            <span>
+              <span class="label-mono">{r.category}</span>
+              <span class="related__name">{r.name}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .product-detail__body { display: flex; flex-direction: column; gap: 1.25rem; }
+  .product-detail__subtitle { color: var(--color-accent); font-family: var(--font-display); font-weight: 500; font-size: clamp(1.15rem, 1.8vw, 1.45rem); }
+  .product-detail__price { display: flex; align-items: baseline; gap: 0.75rem; font-family: var(--font-display); font-weight: 500; font-size: 1.35rem; color: var(--color-ice); }
+  .product-detail__price span { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-mute); }
+  .product-detail__note { color: var(--color-mute); line-height: 1.65; }
+  .product-specs { margin: 0.5rem 0 0; display: grid; gap: 0; border-top: 1px solid var(--color-line); }
+  .product-specs__row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--color-line); }
+  .product-specs dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mute); }
+  .product-specs dd { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; color: var(--color-ice); text-align: right; }
+  .product-detail__cta { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-top: 0.75rem; }
+  .uses-section { border-top: 1px solid var(--color-line); }
+  .uses-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .uses-head .eyebrow { margin-bottom: 0.85rem; }
+  .uses-head__lead { color: var(--color-mute); }
+  .uses-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .use { display: flex; gap: 1rem; align-items: baseline; padding: 1.15rem 0; border-top: 1px solid var(--color-line); }
+  .use__num { color: var(--color-accent); flex: 0 0 auto; }
+  .use__text { color: var(--color-ice); font-size: 1.05rem; line-height: 1.5; }
+  @media (min-width: 721px) { .use:nth-child(2) { border-top: 1px solid var(--color-line); } }
+  @media (max-width: 720px) { .uses-grid { grid-template-columns: 1fr; } }
+
+  .construction { background: var(--color-surface); border-top: 1px solid var(--color-line); }
+  .construction__head { max-width: 60rem; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+  .construction__lead { margin-top: 1rem; }
+  .construction__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); }
+  .construction__item { display: flex; flex-direction: column; gap: 0.4rem; height: 100%; }
+  .construction__name, .construction__spec { display: block; }
+  .construction__tile {
+    display: block;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-card);
+    background: var(--color-panel);
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    margin-bottom: 0.5rem;
+  }
+  .construction__tile img { width: 100%; height: 100%; object-fit: contain; padding: 12%; }
+  .construction__name { font-family: var(--font-display); font-weight: 500; font-size: 1.1rem; color: var(--color-ice); }
+  .construction__spec { font-size: 0.9rem; color: var(--color-mute); line-height: 1.5; }
+  @media (max-width: 900px) { .construction__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .construction__grid { grid-template-columns: 1fr; } }
+
+  .pspec { border-top: 1px solid var(--color-line); }
+  .pspec__title { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .pspec__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .pspec__group { border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(1.25rem, 2vw, 1.75rem); }
+  .pspec__group-title { color: var(--color-accent); margin-bottom: 0.75rem; }
+  .pspec__rows { margin: 0; }
+  .pspec__row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.65rem 0; border-top: 1px solid var(--color-line); }
+  .pspec__row:first-child { border-top: 0; }
+  .pspec__row dt { color: var(--color-mute); font-size: 0.92rem; }
+  .pspec__row dd { margin: 0; color: var(--color-ice); font-size: 0.92rem; font-weight: 500; text-align: right; }
+  .pspec__note { margin-top: 1.5rem; color: var(--color-mute); font-size: 0.82rem; line-height: 1.6; max-width: 80ch; }
+  @media (max-width: 720px) { .pspec__grid { grid-template-columns: 1fr; } }
+
+  .related { border-top: 1px solid var(--color-line); }
+  .related__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; gap: 1rem; flex-wrap: wrap; }
+  .related__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .related__card { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; border: 1px solid var(--color-line); border-radius: var(--radius-card); transition: border-color 0.2s var(--ease-out); }
+  .related__card:hover { border-color: var(--color-accent); }
+  .related__thumb { flex: 0 0 auto; width: 64px; height: 64px; border-radius: 14px; background: var(--color-void); overflow: hidden; border: 1px solid var(--color-line); }
+  .related__thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .related__name { display: block; font-family: var(--font-display); font-size: 1.2rem; margin-top: 0.25rem; }
+  @media (max-width: 820px) {
+    .product-detail { grid-template-columns: 1fr; }
+    .related__grid { grid-template-columns: 1fr; }
+  }
+</style>

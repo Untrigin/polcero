@@ -1,0 +1,11 @@
+---
+import NewsArticle from '../../components/pages/NewsArticle.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news', (e) => e.data.locale === 'pl' && !e.data.draft);
+  return posts.map((entry) => ({ params: { slug: entry.id.split('/').pop() }, props: { entry } }));
+}
+const { entry } = Astro.props;
+---
+<NewsArticle locale="pl" entry={entry} />

@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import BranchGrid from '../BranchGrid.astro';
+import BoxArrowLink from '../BoxArrowLink.astro';
+import Reveal from '../Reveal.astro';
+import { getContent } from '../../data/content';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = getContent(locale);
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl'
+  ? { home: 'Start', services: 'Kierunki', title: 'Kierunki biznesowe', cta: 'Złóż zapytanie', closing: 'Nie wiesz, który kierunek pasuje do Twojego procesu?' }
+  : { home: 'Home', services: 'Branches', title: 'Business branches', cta: 'Submit an inquiry', closing: 'Not sure which branch fits your process?' };
+
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.services, href: p('/services/') },
+];
+---
+<Layout title={`${t.title} - POLCERO`} description={c.services.lead.slice(0, 154)} canonicalPath={p('/services/')}>
+  <PageHeader eyebrow={c.services.eyebrow} title={t.title} lead={c.services.lead} crumbs={crumbs} />
+  <section class="section">
+    <div class="container-x">
+      <BranchGrid branches={c.branches} locale={locale} showDesc={true} />
+    </div>
+  </section>
+  <section class="section services-closing">
+    <div class="container-x services-closing__inner">
+      <Reveal>
+        <h2 class="h3">{t.closing}</h2>
+        <BoxArrowLink href={p('/contact/')} label={t.cta} variant="accent" class="services-closing__cta" />
+      </Reveal>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .services-closing { border-top: 1px solid var(--color-line); text-align: center; }
+  .services-closing__inner { max-width: 44rem; margin-inline: auto; }
+  .services-closing__cta { justify-content: center; margin-top: 2rem; }
+</style>

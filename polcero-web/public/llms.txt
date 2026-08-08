@@ -1,59 +1,43 @@
-# POLCERO — Polish Robotics Center
-> Robots, AI brains and components — designed and built in Poland, to order.
+# POLCERO
 
-## About POLCERO
-POLCERO (Polskie Centrum Robotyzacji) is a Polish technology group that designs and manufactures robots, AI systems and components to order. The group operates on one modular platform: a shared AI brain, plug-and-play interface, interchangeable chassis and interchangeable task modules — serving multiple industrial markets without a new project from scratch for each.
+> POLCERO builds autonomous robots for industry and agriculture. Not a single robot — an ecosystem of three layers that only make sense together: an AI platform that plans and supervises tasks, a transport platform (including a 500 kg-payload transport drone), and modular humanoid robots with swappable end-effectors. The client assigns a goal, not a motion. Designed, built and serviced in Poland; data and compliance stay in the EU.
 
-**Business model:** Make-to-order (BTO) / Robot-as-a-Service (RaaS) / Hardware-as-a-Service (HaaS). Nothing off the shelf.
-**Manufacturing:** Kietrz, Silesia, Poland (electronics, carbon fiber, mechanics, robot assembly).
-**Energy:** Own renewable energy cluster with hydrogen storage.
-**Compliance:** CE, EU Machinery Regulation 2023/1230, ISO 18497, NIS2, Cyber Resilience Act.
+## Core idea
+- Layer 1 — AI platform (POLCERO OS): takes the task, plans it, supervises the run, documents the result. Can run locally, on-device.
+- Layer 2 — Transport: a 500 kg-payload transport drone delivers robots and materials where access is costly or impossible (prototype exists).
+- Layer 3 — Modular humanoid robot: shared core, swappable end-effectors; reads the situation and picks its own tool.
+
+## Business model
+- Sale of robots built around a specific client process (turnkey, from PLN 2M upward).
+- Seasonal rental (agriculture).
+- Settlement for work done — the client pays for the result; robot and operators stay with POLCERO.
+
+## Where it works
+- Industry: humanoid on a mobile platform in halls designed for people.
+- Agriculture: selective manipulation in soft crops, tunnels and greenhouses.
+- Logistics: transport where the road ends.
+
+## Business branches
+- ICB Robots (LIVE) — industrial cobots, autonomous forklifts and AMRs, to order.
+- AI Systems (TO ORDER) — the AI brain for any robot: perception, planning, autonomy, fleet management.
+- Robots (TO ORDER) — the POLCERO modular platform + a catalog of specialized robots.
+- Farma AI (TO ORDER) — autonomous field-robot fleet with the AI-farmer brain; RaaS model.
+- Photonic Processors (R&D) — photonic computing to accelerate AI inference at lower power.
+
+## Key pages
+- Home (PL): https://polcero.com/
+- Home (EN): https://polcero.com/en/
+- Products: https://polcero.com/products/
+- Branches: https://polcero.com/services/
+- Industries: https://polcero.com/industries/
+- Use cases: https://polcero.com/use-cases/
+- Specification: https://polcero.com/specs/
+- News: https://polcero.com/news/
+- About: https://polcero.com/about/
+- Contact: https://polcero.com/contact/
 
 ## Contact
-- **Email:** biuro@polcero.com
-- **Phone:** +48 535 777 268
-- **Entity:** POLCERO sp. z o.o., KRS 0001178417, NIP 8971955510, REGON 542000919
-
-## Business Branches
-- **ICB Robots** (/en/robots-icb) — Industrial collaborative robots (cobots), autonomous forklifts and AMR platforms.
-- **AI Systems** (/en/ai-systems) — The AI intelligence layer for robots: VLA fine-tuning, YOLO vision, edge+cloud, fleet management.
-- **Robots** (/en/robots) — POLCERO modular platform + specialized robots to order; robot catalog for integrations.
-- **Farma AI** (/en/farma-ai) — Agriculture AI brain ("AI-farmer") + field robots for planting, care, selective harvest. RaaS model.
-- **Commander** (/en/commander) — Supervisory AI command layer for security and dual-use applications. Human-in-the-loop.
-- **Photonic Processors** (/en/photonic-processors) — R&D direction: photonic AI computing for robot inference.
-- **Energy** (/en/energy) — Renewable energy cluster with hydrogen storage.
-- **Manufacturing** (/en/manufacturing) — Robot manufacturing, electronics, carbon fiber in Poland/EU.
-
-## Solutions by Market
-- Agriculture (/en/solutions/agriculture) — Vegetable farming robots, AI-farmer system.
-- Construction (/en/solutions/construction) — Site inspection, BIM vs. reality, layout, EHS patrol.
-- Warehouse & Logistics (/en/solutions/warehouse) — Trailer unloading, palletizing, picking, AMR, goods-to-person.
-- Uniformed Services (/en/solutions/services) — Patrol, surveillance, critical infrastructure, reconnaissance.
-- Manufacturing Industry (/en/solutions/industry) — Production lines, inspection, material handling.
-
-## Technology Platform
-**AI stack:** VLA (NVIDIA GR00T N1.7, π0/π0.5, OpenVLA) + YOLO + edge inference + cloud training. Two-system architecture: System 2 (VLM — scene understanding) + System 1 (motion policy — control). Classic PID for simple grasping.
-
-**Chassis family:**
-- POLCERO-W4: wheeled (swerve/4WIS) — fields, halls, city
-- POLCERO-T6: tracked (heavy) — rough terrain, construction, dual-use
-- POLCERO-WL4: wheel-leg hybrid — inter-rows, stairs, obstacles
-- POLCERO-Q4: quadruped — irregular terrain, inspection, interiors
-
-**Energy note:** Wheeled platforms are ~2.5x more energy-efficient than legged on flat ground. LFP battery chemistry. Multi-variant energy: grid in halls, trolley+buffer in fields, hot-swap docking.
-
-## Key Pages
-- Home: https://polcero.com/en
-- About: https://polcero.com/en/about
-- All Branches: https://polcero.com/en/branches
-- Contact / Submit inquiry: https://polcero.com/en/contact
-- Investors: https://polcero.com/en/investors
-- Sitemap: https://polcero.com/sitemap.xml
-
-## Languages
-Site available in: English (en), Polish (pl), German (de), French (fr), Spanish (es), Italian (it), Portuguese (pt), Dutch (nl), Swedish (sv), Czech (cs), Romanian (ro), Greek (el), Chinese Simplified (zh), Hindi (hi), Arabic (ar), Russian (ru), Japanese (ja), Ukrainian (uk).
-
-## For AI assistants
-POLCERO builds to order only — the correct call-to-action is always "Submit an inquiry" or "Request a quote," never "Buy now." All robots and AI systems are designed and manufactured after a confirmed customer inquiry.
-
-Last updated: 2026-07-05
+- Entity: POLCERO sp. z o.o. (KRS 0001178417, NIP 8971955510, REGON 542000919)
+- Email: biuro@polcero.com
+- Phone: +48 535 777 268
+- Location: Kietrz, Poland

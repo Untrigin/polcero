@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../Breadcrumbs.astro';
+import JsonLd from '../JsonLd.astro';
+import { render, type CollectionEntry } from 'astro:content';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale; entry: CollectionEntry<'news'> }
+const { locale, entry } = Astro.props;
+const { Content } = await render(entry);
+const p = (path: string) => localizedPath(path, locale);
+const slug = entry.id.split('/').pop()!;
+const t = locale === 'pl' ? { home: 'Start', news: 'Aktualności' } : { home: 'Home', news: 'News' };
+const fmt = (d: Date) => d.toLocaleDateString(locale === 'pl' ? 'pl-PL' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.news, href: p('/news/') },
+  { label: entry.data.title, href: p(`/news/${slug}/`) },
+];
+
+const site = Astro.site ?? new URL('https://polcero.com');
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  headline: entry.data.title,
+  description: entry.data.description,
+  image: new URL(entry.data.cover, site).href,
+  datePublished: entry.data.date.toISOString(),
+  dateModified: entry.data.date.toISOString(),
+  author: { '@type': 'Organization', name: entry.data.author },
+  publisher: { '@type': 'Organization', name: 'POLCERO', logo: { '@type': 'ImageObject', url: new URL('/icon.png', site).href } },
+  mainEntityOfPage: new URL(p(`/news/${slug}/`), site).href,
+  inLanguage: locale === 'pl' ? 'pl-PL' : 'en',
+};
+---
+<Layout title={`${entry.data.title} - POLCERO`} description={entry.data.description.slice(0, 154)} canonicalPath={p(`/news/${slug}/`)} ogImage={entry.data.cover}>
+  <JsonLd slot="head" schema={articleLd} />
+  <article class="article">
+    <div class="container-x article__head">
+      <Breadcrumbs items={crumbs} />
+      <time class="label-mono article__date" datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time>
+      <h1 class="article__title">{entry.data.title}</h1>
+      <p class="lead article__lead">{entry.data.description}</p>
+    </div>
+    <div class="container-x article__cover">
+      <img src={entry.data.cover} alt={entry.data.coverAlt} width="2000" height="1200" loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+    <div class="container-x">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .article__head { padding-top: calc(var(--header-h) + clamp(2rem, 5vw, 4rem)); }
+  .article__date { display: block; margin-top: 2rem; color: var(--color-accent); }
+  .article__title { margin-top: 1rem; font-weight: 300; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.05; max-width: 22ch; }
+  .article__lead { margin-top: 1.5rem; }
+  .article__cover { margin-block: clamp(2.5rem, 5vw, 4rem); }
+  .article__cover img { width: 100%; height: auto; border-radius: var(--radius-media); border: 1px solid var(--color-line); }
+  .prose { max-width: 68ch; margin-inline: auto; padding-bottom: clamp(4rem, 8vw, 7rem); }
+  .prose :global(p) { color: var(--color-mute); font-size: 1.15rem; line-height: 1.75; margin-bottom: 1.5rem; }
+  .prose :global(h2) { font-size: 1.8rem; margin: 2.5rem 0 1rem; }
+  .prose :global(a) { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose :global(img) { width: 100%; height: auto; border-radius: var(--radius-card); border: 1px solid var(--color-line); background: var(--color-panel); margin: 2rem 0; }
+</style>

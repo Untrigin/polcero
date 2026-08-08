@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import BoxArrowLink from '../BoxArrowLink.astro';
+import { getSpecs } from '../../data/specs';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const s = getSpecs(locale);
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl' ? { home: 'Start', cta: 'Zapytaj o szczegóły' } : { home: 'Home', cta: 'Ask for details' };
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: s.title, href: p('/specs/') },
+];
+const cell = (v: string) => (v === '✓' ? 'yes' : v === '-' ? 'no' : v === 'o' ? 'opt' : 'val');
+---
+<Layout title={`${s.title} - POLCERO`} description={s.lead.slice(0, 154)} canonicalPath={p('/specs/')}>
+  <PageHeader eyebrow={s.eyebrow} title={s.title} lead={s.lead} crumbs={crumbs} />
+
+  <section class="section">
+    <div class="container-x">
+      <p class="legend label-mono">{s.legend}</p>
+      <div class="spec-scroll">
+        <table class="spec">
+          <thead>
+            <tr>
+              <th scope="col" class="spec__param"></th>
+              {s.columns.map((c) => <th scope="col">{c}</th>)}
+            </tr>
+          </thead>
+          {s.groups.map((g) => (
+            <tbody>
+              <tr class="spec__grouprow"><th scope="colgroup" colspan={s.columns.length + 1}>{g.title}</th></tr>
+              {g.rows.map((r) => (
+                <tr>
+                  <th scope="row" class="spec__param">{r.label}</th>
+                  {r.values.map((v) => (
+                    <td data-kind={cell(v)}>
+                      {v === '✓' ? <span class="tick" aria-label="standard">✓</span>
+                        : v === '-' ? <span class="dash" aria-label="-">-</span>
+                        : v === 'o' ? <span class="opt" aria-label="opcja">o</span>
+                        : <span>{v}</span>}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          ))}
+        </table>
+      </div>
+      <p class="spec-note">{s.note}</p>
+      <div class="spec-cta"><BoxArrowLink href={p('/contact/')} label={t.cta} variant="accent" /></div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legend { color: var(--color-mute); margin-bottom: 1.25rem; }
+  .spec-scroll { overflow-x: auto; border: 1px solid var(--color-line); border-radius: var(--radius-card); }
+  .spec { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 0.95rem; }
+  .spec th, .spec td { text-align: left; padding: 0.85rem 1rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+  .spec thead th { position: sticky; top: 0; background: var(--color-surface); color: var(--color-ice); font-family: var(--font-display); font-weight: 500; font-size: 0.95rem; z-index: 1; }
+  .spec thead th:not(.spec__param) { text-align: center; }
+  .spec__param { color: var(--color-ice); font-weight: 400; width: 30%; }
+  .spec td { text-align: center; color: var(--color-mute); }
+  .spec__grouprow th { background: color-mix(in srgb, var(--color-accent) 10%, var(--color-void)); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); padding: 0.6rem 1rem; }
+  .tick { color: var(--color-accent); font-weight: 700; }
+  .dash { color: var(--color-line); }
+  .opt { color: var(--color-mute); font-family: var(--font-mono); }
+  .spec td[data-kind='val'] span { color: var(--color-ice); }
+  .spec-note { margin-top: 1.25rem; color: var(--color-mute); font-size: 0.85rem; line-height: 1.6; max-width: 80ch; }
+  .spec-cta { margin-top: 2rem; }
+</style>

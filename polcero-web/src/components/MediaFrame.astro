@@ -1,0 +1,64 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  eager?: boolean;
+  parallax?: boolean;
+  radius?: 'media' | 'card';
+  class?: string;
+  sizes?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  eager = false,
+  parallax = false,
+  radius = 'media',
+  class: className = '',
+  sizes = '(min-width: 1024px) 900px, 100vw',
+} = Astro.props;
+---
+<figure class:list={['media-frame', `media-frame--${radius}`, className]}>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    sizes={sizes}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding={eager ? 'sync' : 'async'}
+    data-parallax={parallax ? '' : undefined}
+    style={`aspect-ratio:${width}/${height}`}
+  />
+</figure>
+
+<style>
+  .media-frame {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+  .media-frame--media { border-radius: var(--radius-media); }
+  .media-frame--card { border-radius: var(--radius-card); }
+  .media-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .media-frame img[data-parallax] {
+    scale: 1.12;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .media-frame img[data-parallax] { scale: 1; transform: none !important; }
+  }
+</style>

@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import MediaFrame from '../MediaFrame.astro';
+import BoxArrowLink from '../BoxArrowLink.astro';
+import Reveal from '../Reveal.astro';
+import ProductCard from '../ProductCard.astro';
+import BranchGrid from '../BranchGrid.astro';
+import { getContent } from '../../data/content';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale; slug: string }
+const { locale, slug } = Astro.props;
+const c = getContent(locale);
+const industry = c.industries.find((i) => i.slug === slug)!;
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl'
+  ? { home: 'Start', industries: 'Branże', title: 'Rozwiązania dla branży', products: 'Powiązane produkty', cta: 'Porozmawiajmy', order: 'Zobacz produkt', services: 'Kierunki dla tej branży', servicesLead: 'Kierunki POLCERO, które najczęściej wdrażamy w tej branży.', all: 'Wszystkie kierunki', challenges: 'Wyzwania', challengesLead: 'Z czym mierzy się ta branża.', approach: 'Jak pomagamy', approachLead: 'Jak POLCERO odpowiada na te wyzwania.' }
+  : { home: 'Home', industries: 'Industries', title: 'Solutions for', products: 'Related products', cta: 'Talk to us', order: 'View product', services: 'Branches for this industry', servicesLead: 'The POLCERO branches we most often deploy in this industry.', all: 'All branches', challenges: 'Challenges', challengesLead: 'What this industry is up against.', approach: 'How we help', approachLead: 'How POLCERO answers those challenges.' };
+
+const industryBranches = c.branches.filter((b) => industry.branchSlugs.includes(b.slug));
+
+// map industry → relevant product categories
+const catMap: Record<string, string[]> = {
+  industry: ['Humanoid', 'Humanoid na platformie jezdnej', 'Humanoid on a mobile platform', 'Roboty specjalistyczne', 'Specialized robots'],
+  agriculture: ['Roboty specjalistyczne', 'Specialized robots', 'Humanoid'],
+  construction: ['Roboty specjalistyczne', 'Specialized robots', 'Dron transportowy', 'Transport drone'],
+  logistics: ['Dron transportowy', 'Transport drone', 'Roboty specjalistyczne', 'Specialized robots'],
+  'public-sector': ['Oprogramowanie', 'Software', 'Roboty specjalistyczne', 'Specialized robots'],
+};
+const cats = catMap[slug] ?? [];
+let picked = c.products.filter((prod) => cats.includes(prod.category)).slice(0, 3);
+if (picked.length < 2) picked = c.products.slice(0, 3);
+
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.industries, href: p('/industries/') },
+  { label: industry.name, href: p(`/industries/${slug}/`) },
+];
+
+const title = `${industry.name} - POLCERO`;
+const description = industry.blurb.slice(0, 154);
+---
+<Layout title={title} description={description} canonicalPath={p(`/industries/${slug}/`)}>
+  <PageHeader eyebrow={t.industries} title={`${industry.name}`} lead={industry.blurb} crumbs={crumbs} />
+
+  <section class="section">
+    <div class="container-x">
+      <Reveal class="industry-intro"><p class="lead">{industry.intro}</p></Reveal>
+      <Reveal delay={80}>
+        <MediaFrame src={industry.image} alt={`POLCERO - ${industry.name}`} width={2000} height={1200} parallax />
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="section challenges">
+    <div class="container-x">
+      <div class="block-head">
+        <p class="eyebrow">{t.challenges}</p>
+        <p class="lead block-head__lead">{t.challengesLead}</p>
+      </div>
+      <div class="challenge-grid">
+        {industry.challenges.map((item, i) => (
+          <Reveal delay={i * 50}>
+            <div class="challenge">
+              <span class="challenge__num label-mono">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="challenge__title">{item.title}</h3>
+              <p class="challenge__text">{item.text}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section approach">
+    <div class="container-x">
+      <div class="block-head">
+        <p class="eyebrow">{t.approach}</p>
+        <p class="lead block-head__lead">{t.approachLead}</p>
+      </div>
+      <div class="approach-grid">
+        {industry.approach.map((item, i) => (
+          <Reveal delay={i * 60}>
+            <div class="approach-item">
+              <h3 class="approach-item__title">{item.title}</h3>
+              <p class="approach-item__text">{item.text}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {industryBranches.length > 0 && (
+    <section class="section services">
+      <div class="container-x">
+        <div class="services__head">
+          <div>
+            <h2 class="h3">{t.services}</h2>
+            <p class="lead services__lead">{t.servicesLead}</p>
+          </div>
+          <BoxArrowLink href={p('/services/')} label={t.all} variant="dark" />
+        </div>
+        <BranchGrid branches={industryBranches} locale={locale} showDesc={true} />
+      </div>
+    </section>
+  )}
+
+  <section class="section products">
+    <div class="container-x">
+      <div class="products__head">
+        <h2 class="h3">{t.products}</h2>
+        <BoxArrowLink href={p('/contact/')} label={t.cta} variant="dark" />
+      </div>
+      <div class="products__grid">
+        {picked.map((product) => (
+          <ProductCard product={product} locale={locale} ctaLabel={t.order} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .industry-intro { max-width: 62ch; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .block-head { max-width: 60rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .block-head .eyebrow { margin-bottom: 1rem; }
+  .block-head__lead { color: var(--color-mute); }
+
+  .challenges { background: var(--color-surface); border-block: 1px solid var(--color-line); }
+  .challenge-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); }
+  .challenge { padding-top: 1.5rem; border-top: 1px solid var(--color-line); height: 100%; }
+  .challenge__num { color: var(--color-accent); }
+  .challenge__title { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; margin: 0.75rem 0 0.6rem; color: var(--color-ice); }
+  .challenge__text { color: var(--color-mute); font-size: 0.95rem; line-height: 1.6; }
+
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .approach-item { padding: clamp(1.5rem, 2.2vw, 2rem); border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); height: 100%; }
+  .approach-item__title { font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--color-ice); }
+  .approach-item__text { color: var(--color-mute); line-height: 1.6; }
+
+  @media (max-width: 900px) { .challenge-grid { grid-template-columns: repeat(2, 1fr); } .approach-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .challenge-grid { grid-template-columns: 1fr; } }
+
+  .services { border-top: 1px solid var(--color-line); }
+  .services__head { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .services__lead { margin-top: 1rem; }
+  .products { background: var(--color-surface); border-top: 1px solid var(--color-line); }
+  .products__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; gap: 1rem; flex-wrap: wrap; }
+  .products__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 2.5vw, 2.25rem); }
+  @media (max-width: 900px) { .products__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .products__grid { grid-template-columns: 1fr; } }
+</style>

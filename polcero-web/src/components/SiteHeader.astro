@@ -1,0 +1,169 @@
+---
+import './SiteHeader.css';
+import { Menu, X, ChevronDown, ArrowRight, ArrowUpRight } from '@lucide/astro';
+import type { SiteContent } from '../data/content';
+import { localizedPath, alternatePath, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  content: SiteContent;
+  pathname: string;
+}
+const { locale, content, pathname } = Astro.props;
+const c = content;
+const p = (path: string) => localizedPath(path, locale);
+const home = locale === 'en' ? '/en/' : '/';
+
+const industries = c.industries.map((i) => ({ slug: i.slug, label: i.name }));
+const company = [
+  { href: p('/about/'), label: locale === 'pl' ? 'O nas' : 'About' },
+  { href: p('/news/'), label: c.nav.news },
+  { href: p('/contact/'), label: c.nav.contact },
+];
+const altPl = alternatePath(pathname, 'pl');
+const altEn = alternatePath(pathname, 'en');
+---
+<header class="hdr" data-header>
+  <div class="hdr__bar container-x">
+    <a href={home} class="hdr__logo" aria-label={c.brand}>
+      <img src="/polcero_white.svg" alt="POLCERO" width="367" height="70" />
+    </a>
+
+    <nav class="hdr__nav" aria-label={locale === 'pl' ? 'Główna' : 'Main'}>
+      <div class="hdr__item" data-menu>
+        <button class="hdr__trigger" aria-expanded="false" aria-haspopup="true" data-menu-trigger>
+          {c.nav.products} <ChevronDown size={15} aria-hidden="true" />
+        </button>
+        <div class="hdr__mega">
+          <div class="hdr__mega-grid">
+            {c.products.map((prod) => (
+              <a class="hdr__mega-card" href={p(`/products/${prod.slug}/`)}>
+                <span class="hdr__mega-thumb"><img src={prod.image} alt="" width="72" height="72" loading="lazy" /></span>
+                <span class="hdr__mega-text">
+                  <span class="hdr__mega-name">{prod.name}</span>
+                  <span class="hdr__mega-cat">{prod.category}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+          <a class="hdr__mega-more" href={p('/specs/')}>{locale === 'pl' ? 'Specyfikacja platformy' : 'Platform specification'} <ArrowRight size={14} aria-hidden="true" /></a>
+        </div>
+      </div>
+
+      <div class="hdr__item" data-menu>
+        <button class="hdr__trigger" aria-expanded="false" aria-haspopup="true" data-menu-trigger>
+          {c.nav.services} <ChevronDown size={15} aria-hidden="true" />
+        </button>
+        <div class="hdr__mega">
+          <div class="hdr__mega-grid hdr__mega-grid--branches">
+            {c.branches.map((b) => (
+              <a class="hdr__mega-card hdr__mega-card--text" href={p(`/services/${b.slug}/`)}>
+                <span class="hdr__mega-text">
+                  <span class="hdr__mega-name">{b.name}</span>
+                  <span class="hdr__mega-cat">{b.tagline}</span>
+                </span>
+                <span class="hdr__mega-badge label-mono">{b.badge}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="hdr__item" data-menu>
+        <button class="hdr__trigger" aria-expanded="false" aria-haspopup="true" data-menu-trigger>
+          {c.nav.industries} <ChevronDown size={15} aria-hidden="true" />
+        </button>
+        <div class="hdr__mega hdr__mega--sm">
+          <div class="hdr__mega-list">
+            {industries.map((i) => (
+              <a class="hdr__mega-link" href={p(`/industries/${i.slug}/`)}>{i.label} <ArrowRight size={15} aria-hidden="true" /></a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <a class="hdr__link" href={p('/about/')}>{c.nav.company}</a>
+      <a class="hdr__link" href={p('/news/')}>{c.nav.news}</a>
+    </nav>
+
+    <div class="hdr__actions">
+      <div class="hdr__lang" role="group" aria-label="Language">
+        <a href={altPl} class={locale === 'pl' ? 'is-active' : ''} hreflang="pl">PL</a>
+        <span aria-hidden="true">/</span>
+        <a href={altEn} class={locale === 'en' ? 'is-active' : ''} hreflang="en">EN</a>
+      </div>
+      <a class="btn-pill btn-accent hdr__cta" href={p('/contact/')}>{c.nav.cta}</a>
+      <button class="hdr__burger" aria-label="Menu" aria-expanded="false" data-drawer-open>
+        <Menu size={24} aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+
+  <div class="drawer" data-drawer role="dialog" aria-modal="true" aria-hidden="true" aria-label={locale === 'pl' ? 'Menu' : 'Menu'}>
+    <div class="drawer__bar container-x">
+      <a href={home} class="hdr__logo"><img src="/polcero_white.svg" alt="POLCERO" width="367" height="70" /></a>
+      <button class="hdr__burger" aria-label={locale === 'pl' ? 'Zamknij' : 'Close'} data-drawer-close><X size={24} aria-hidden="true" /></button>
+    </div>
+    <nav class="drawer__nav container-x" aria-label={locale === 'pl' ? 'Mobilne' : 'Mobile'}>
+      <p class="drawer__group">{c.nav.products}</p>
+      {c.products.map((prod) => (<a href={p(`/products/${prod.slug}/`)}>{prod.name}</a>))}
+      <p class="drawer__group">{c.nav.services}</p>
+      {c.branches.map((b) => (<a href={p(`/services/${b.slug}/`)}>{b.name}</a>))}
+      <p class="drawer__group">{c.nav.industries}</p>
+      {industries.map((i) => (<a href={p(`/industries/${i.slug}/`)}>{i.label}</a>))}
+      <p class="drawer__group">{c.nav.company}</p>
+      <a href={p('/specs/')}>{locale === 'pl' ? 'Specyfikacja' : 'Specification'}</a>
+      {company.map((co) => (<a href={co.href}>{co.label}</a>))}
+      <a class="btn-pill btn-accent drawer__cta" href={p('/contact/')}>{c.nav.cta} <ArrowUpRight size={18} aria-hidden="true" /></a>
+      <div class="drawer__lang">
+        <a href={altPl} class={locale === 'pl' ? 'is-active' : ''}>Polski</a>
+        <a href={altEn} class={locale === 'en' ? 'is-active' : ''}>English</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  if (header) {
+    const onScroll = () => header.classList.toggle('hdr--scrolled', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Mobile drawer
+    const drawer = header.querySelector<HTMLElement>('[data-drawer]');
+    const openBtn = header.querySelector<HTMLElement>('[data-drawer-open]');
+    const closeBtn = header.querySelector<HTMLElement>('[data-drawer-close]');
+    const setDrawer = (open: boolean) => {
+      drawer?.classList.toggle('is-open', open);
+      drawer?.setAttribute('aria-hidden', String(!open));
+      openBtn?.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    openBtn?.addEventListener('click', () => setDrawer(true));
+    closeBtn?.addEventListener('click', () => setDrawer(false));
+
+    // Mega-menu: hover works via CSS; JS adds click/tap toggle for touch + a11y
+    const menus = header.querySelectorAll<HTMLElement>('[data-menu]');
+    menus.forEach((menu) => {
+      const trigger = menu.querySelector<HTMLButtonElement>('[data-menu-trigger]');
+      trigger?.addEventListener('click', () => {
+        const open = menu.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', String(open));
+        menus.forEach((m) => { if (m !== menu) { m.classList.remove('is-open'); m.querySelector('[data-menu-trigger]')?.setAttribute('aria-expanded', 'false'); } });
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        setDrawer(false);
+        menus.forEach((m) => { m.classList.remove('is-open'); m.querySelector('[data-menu-trigger]')?.setAttribute('aria-expanded', 'false'); });
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!(e.target as HTMLElement).closest('[data-menu]')) {
+        menus.forEach((m) => { m.classList.remove('is-open'); m.querySelector('[data-menu-trigger]')?.setAttribute('aria-expanded', 'false'); });
+      }
+    });
+  }
+</script>

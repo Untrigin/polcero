@@ -1,0 +1,109 @@
+---
+import './TabsShowcase.css';
+import type { SiteContent } from '../data/content';
+
+interface Props {
+  items: SiteContent['tabs']['items'];
+  id?: string;
+}
+const { items, id = 'showcase' } = Astro.props;
+---
+<div class="tabs" data-tabs>
+  <div class="tabs__list" role="tablist" aria-label="POLCERO">
+    <span class="tabs__indicator" data-tabs-indicator aria-hidden="true"></span>
+    {items.map((it, i) => (
+      <button
+        class="tabs__trigger"
+        role="tab"
+        id={`${id}-tab-${it.id}`}
+        aria-controls={`${id}-panel-${it.id}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        tabindex={i === 0 ? '0' : '-1'}
+        data-tab={it.id}
+      >{it.label}</button>
+    ))}
+  </div>
+
+  <div class="tabs__panelwrap">
+    <div class="tabs__media">
+      {items.map((it, i) => (
+        <img
+          src={it.image}
+          alt={it.alt}
+          width={1600}
+          height={1200}
+          loading="lazy"
+          decoding="async"
+          class:list={['tabs__img', { 'is-active': i === 0 }]}
+          data-tab-img={it.id}
+        />
+      ))}
+    </div>
+
+    {/* All panels stay in the DOM (CSS-hidden) → crawlers index every tab (§3 ⚠) */}
+    <div class="tabs__panels">
+      {items.map((it, i) => (
+        <div
+          class:list={['tabs__content', { 'is-active': i === 0 }]}
+          role="tabpanel"
+          id={`${id}-panel-${it.id}`}
+          aria-labelledby={`${id}-tab-${it.id}`}
+          data-tab-panel={it.id}
+          hidden={i !== 0}
+        >
+          <h3 class="tabs__title">{it.title}</h3>
+          <p class="tabs__body">{it.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-tab]'));
+    const imgs = Array.from(root.querySelectorAll<HTMLElement>('[data-tab-img]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-tab-panel]'));
+    const indicator = root.querySelector<HTMLElement>('[data-tabs-indicator]');
+
+    const moveIndicator = (tab: HTMLElement) => {
+      if (!indicator) return;
+      indicator.style.width = `${tab.offsetWidth}px`;
+      indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
+    };
+
+    const activate = (id: string, focus = false) => {
+      tabs.forEach((t) => {
+        const on = t.dataset.tab === id;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        if (on) { moveIndicator(t); if (focus) t.focus(); }
+      });
+      imgs.forEach((im) => im.classList.toggle('is-active', im.dataset.tabImg === id));
+      panels.forEach((pn) => {
+        const on = pn.dataset.tabPanel === id;
+        pn.classList.toggle('is-active', on);
+        pn.hidden = !on;
+      });
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activate(tab.dataset.tab!));
+      tab.addEventListener('keydown', (e) => {
+        let next = -1;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        if (next >= 0) { e.preventDefault(); activate(tabs[next].dataset.tab!, true); }
+      });
+    });
+
+    const init = tabs.find((t) => t.getAttribute('aria-selected') === 'true') ?? tabs[0];
+    if (init) requestAnimationFrame(() => moveIndicator(init));
+    window.addEventListener('resize', () => {
+      const cur = tabs.find((t) => t.getAttribute('aria-selected') === 'true');
+      if (cur) moveIndicator(cur);
+    }, { passive: true });
+  });
+</script>

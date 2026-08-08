@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import Reveal from '../Reveal.astro';
+import { getContent } from '../../data/content';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = getContent(locale);
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl'
+  ? { home: 'Start', industries: 'Branże', lead: 'Wchodzimy tam, gdzie duzi nie wchodzą - selektywna manipulacja, praca w tunelach i transport tam, gdzie kończy się droga.', title: 'Branże' }
+  : { home: 'Home', industries: 'Industries', lead: 'We go where the big players do not - selective manipulation, work in tunnels, and transport where the road ends.', title: 'Industries' };
+
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.industries, href: p('/industries/') },
+];
+---
+<Layout title={`${t.industries} - POLCERO`} description={t.lead.slice(0, 154)} canonicalPath={p('/industries/')}>
+  <PageHeader eyebrow="POLCERO" title={t.title} lead={t.lead} crumbs={crumbs} />
+  <section class="section">
+    <div class="container-x">
+      <div class="grid">
+        {c.industries.map((ind, i) => (
+          <Reveal delay={i * 60}>
+            <a class="ind-card" href={p(`/industries/${ind.slug}/`)}>
+              <span class="ind-card__media"><img src={ind.image} alt="" width="800" height="600" loading="lazy" /></span>
+              <span class="ind-card__body">
+                <span class="ind-card__name">{ind.name}</span>
+                <span class="ind-card__blurb">{ind.blurb}</span>
+              </span>
+            </a>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .ind-card { display: flex; flex-direction: column; border: 1px solid var(--color-line); border-radius: var(--radius-card); overflow: hidden; transition: border-color 0.2s var(--ease-out); }
+  .ind-card:hover { border-color: var(--color-accent); }
+  .ind-card__media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--color-surface); }
+  .ind-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--ease-out); }
+  .ind-card:hover .ind-card__media img { transform: scale(1.03); }
+  .ind-card__body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .ind-card__name { font-family: var(--font-display); font-size: 1.5rem; }
+  .ind-card__blurb { color: var(--color-mute); }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .ind-card:hover .ind-card__media img { transform: none; } }
+</style>

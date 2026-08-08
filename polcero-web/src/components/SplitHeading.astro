@@ -1,0 +1,27 @@
+---
+import type { HeadingPart } from '../data/content';
+
+interface Props {
+  parts: HeadingPart[];
+  as?: 'h1' | 'h2' | 'h3';
+  class?: string;
+  id?: string;
+}
+
+const { parts, as: Tag = 'h2', class: className = '', id } = Astro.props;
+const sizeClass = Tag === 'h1' ? 'h1' : Tag === 'h3' ? 'h3' : 'h2';
+---
+<Tag id={id} class:list={[sizeClass, className, 'split-heading']}>
+  {parts.map((p: HeadingPart) => (
+    <span style={`font-weight:${p.weight ?? 300}`}>{p.text}</span>
+  ))}
+</Tag>
+
+<style>
+  .split-heading {
+    color: var(--color-ice);
+  }
+  .split-heading span {
+    white-space: pre-wrap;
+  }
+</style>

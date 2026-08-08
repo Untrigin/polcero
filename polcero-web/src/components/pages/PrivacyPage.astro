@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl'
+  ? { home: 'Start', title: 'Polityka prywatności', label: 'Polityka prywatności',
+      lead: 'Ta strona jest w przygotowaniu. Ostateczna treść polityki prywatności zostanie opublikowana przed uruchomieniem serwisu.',
+      body: 'W razie pytań dotyczących przetwarzania danych osobowych prosimy o kontakt: kontakt@polcero.com.' }
+  : { home: 'Home', title: 'Privacy policy', label: 'Privacy policy',
+      lead: 'This page is being prepared. The final privacy policy will be published before the site goes live.',
+      body: 'For questions about the processing of personal data, please contact: kontakt@polcero.com.' };
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.label, href: p('/privacy/') },
+];
+---
+<Layout title={`${t.title} - POLCERO`} description={t.lead.slice(0, 154)} canonicalPath={p('/privacy/')} noindex>
+  <PageHeader title={t.title} lead={t.lead} crumbs={crumbs} />
+  <section class="section">
+    <div class="container-x">
+      <p class="lead">{t.body}</p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import { alternatePath, htmlLang, getLocale, type Locale } from '../lib/i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path without origin, e.g. "/products/dron-500/". Defaults to current URL path. */
+  canonicalPath?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { title, description, canonicalPath, ogImage = '/og/default.png', noindex = false } = Astro.props;
+
+const site = Astro.site ?? new URL('https://polcero.com');
+const path = canonicalPath ?? Astro.url.pathname;
+const locale: Locale = getLocale(Astro.url.pathname);
+const canonical = new URL(path, site).href;
+const ogImageUrl = new URL(ogImage, site).href;
+
+// Reciprocal hreflang pairs (+ x-default → PL)
+const alternates = [
+  { hreflang: 'pl', href: new URL(alternatePath(path, 'pl'), site).href },
+  { hreflang: 'en', href: new URL(alternatePath(path, 'en'), site).href },
+  { hreflang: 'x-default', href: new URL(alternatePath(path, 'pl'), site).href },
+];
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+{alternates.map((a) => (
+  <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+))}
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="POLCERO" />
+<meta property="og:locale" content={htmlLang[locale].replace('-', '_')} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />

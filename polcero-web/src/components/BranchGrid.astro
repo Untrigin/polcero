@@ -1,0 +1,73 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import type { Branch } from '../data/content';
+import { localizedPath, type Locale } from '../lib/i18n';
+import Reveal from './Reveal.astro';
+
+interface Props {
+  branches: Branch[];
+  locale: Locale;
+  showDesc?: boolean;
+}
+const { branches, locale, showDesc = true } = Astro.props;
+const href = (slug: string) => localizedPath(`/services/${slug}/`, locale);
+---
+<div class="branch-grid">
+  {branches.map((b, i) => (
+    <Reveal delay={i * 55} class="branch">
+      <a class="branch__card" href={href(b.slug)} id={showDesc ? b.slug : undefined}>
+        <span class="branch__badge label-mono">{b.badge}</span>
+        <span class="branch__name">{b.name}</span>
+        <span class="branch__tagline">{b.tagline}</span>
+        {showDesc && <span class="branch__desc">{b.desc}</span>}
+        <ArrowUpRight class="branch__arrow" size={20} aria-hidden="true" />
+      </a>
+    </Reveal>
+  ))}
+</div>
+
+<style>
+  .branch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .branch { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
+  .branch__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    height: 100%;
+    padding: clamp(1.5rem, 2.2vw, 2rem);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    transition: border-color 0.2s var(--ease-out);
+  }
+  .branch__card:hover { border-color: var(--color-accent); }
+  .branch__badge { color: var(--color-accent); }
+  .branch__name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+    letter-spacing: -0.01em;
+    color: var(--color-ice);
+    margin-top: 0.15rem;
+  }
+  .branch__tagline { font-size: 1rem; color: var(--color-ice); }
+  .branch__desc { font-size: 0.95rem; color: var(--color-mute); line-height: 1.6; }
+  .branch__card :global(.branch__arrow) {
+    position: absolute;
+    top: clamp(1.5rem, 2.2vw, 2rem);
+    right: clamp(1.5rem, 2.2vw, 2rem);
+    color: var(--color-mute);
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out), color 0.2s var(--ease-out);
+  }
+  .branch__card:hover :global(.branch__arrow) { opacity: 1; transform: none; color: var(--color-accent); }
+
+  @media (max-width: 900px) { .branch-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .branch-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Home from '../components/Home.astro';
+import JsonLd from '../components/JsonLd.astro';
+
+const site = Astro.site?.href ?? 'https://polcero.com/';
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'POLCERO',
+  legalName: 'POLCERO sp. z o.o.',
+  url: site,
+  logo: new URL('/icon.png', site).href,
+  description: 'Autonomiczne roboty humanoidalne i modułowe platformy dla przemysłu i rolnictwa.',
+  email: 'biuro@polcero.com',
+  telephone: '+48535777268',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kietrz',
+    addressCountry: 'PL',
+  },
+  identifier: [
+    { '@type': 'PropertyValue', propertyID: 'KRS', value: '0001178417' },
+    { '@type': 'PropertyValue', propertyID: 'NIP', value: '8971955510' },
+    { '@type': 'PropertyValue', propertyID: 'REGON', value: '542000919' },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/company/polskiecentrumrobotyzacji',
+    'https://www.facebook.com/PolskieCentrumRobotyzacji',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'biuro@polcero.com',
+    telephone: '+48535777268',
+    areaServed: 'PL',
+    availableLanguage: ['pl', 'en'],
+  },
+};
+
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'POLCERO',
+  url: site,
+  inLanguage: 'pl-PL',
+};
+---
+<Layout
+  title="POLCERO - autonomiczne roboty humanoidalne"
+  description="Autonomiczne roboty humanoidalne i modułowe platformy dla przemysłu i rolnictwa. Platforma AI, dron transportowy 500 kg i wymienne moduły. Zlecasz cel, nie ruch."
+>
+  <JsonLd slot="head" schema={[organization, website]} />
+  <Home locale="pl" />
+</Layout>

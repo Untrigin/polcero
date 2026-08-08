@@ -1,0 +1,60 @@
+---
+import './ProductHoverList.css';
+import { ArrowUpRight } from '@lucide/astro';
+import type { Product } from '../data/content';
+import { localizedPath, type Locale } from '../lib/i18n';
+
+interface Props {
+  products: Product[];
+  locale: Locale;
+}
+const { products, locale } = Astro.props;
+---
+<div class="phl" data-phl>
+  <ul class="phl__list">
+    {products.map((prod, i) => (
+      <li>
+        <a
+          href={localizedPath(`/products/${prod.slug}/`, locale)}
+          class:list={['phl__row', { 'is-active': i === 0 }]}
+          data-phl-row={i}
+        >
+          <span class="phl__thumb" aria-hidden="true"><img src={prod.image} alt="" width="120" height="120" loading="lazy" /></span>
+          <span class="phl__name">{prod.name}</span>
+          <span class="phl__cat">{prod.category}</span>
+          <ArrowUpRight class="phl__arrow" size={22} aria-hidden="true" />
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="phl__preview" aria-hidden="true">
+    {products.map((prod, i) => (
+      <img
+        src={prod.image}
+        alt=""
+        width="512"
+        height="512"
+        loading="lazy"
+        decoding="async"
+        class:list={['phl__preview-img', { 'is-active': i === 0 }]}
+        data-phl-img={i}
+      />
+    ))}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-phl]').forEach((root) => {
+    const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-phl-row]'));
+    const imgs = Array.from(root.querySelectorAll<HTMLElement>('[data-phl-img]'));
+    const select = (i: number) => {
+      rows.forEach((r, ri) => r.classList.toggle('is-active', ri === i));
+      imgs.forEach((im, ii) => im.classList.toggle('is-active', ii === i));
+    };
+    rows.forEach((row, i) => {
+      row.addEventListener('mouseenter', () => select(i));
+      row.addEventListener('focus', () => select(i));
+    });
+  });
+</script>

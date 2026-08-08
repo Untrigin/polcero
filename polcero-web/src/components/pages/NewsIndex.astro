@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import Reveal from '../Reveal.astro';
+import { getCollection } from 'astro:content';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl'
+  ? { home: 'Start', news: 'Aktualności', lead: 'Postępy we wdrożeniach, prototypach i rozwoju platformy POLCERO.', title: 'Aktualności', read: 'Czytaj' }
+  : { home: 'Home', news: 'News', lead: 'Progress on deployments, prototypes and the POLCERO platform.', title: 'News', read: 'Read' };
+
+const posts = (await getCollection('news', (e) => e.data.locale === locale && !e.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const slugOf = (id: string) => id.split('/').pop()!;
+const fmt = (d: Date) => d.toLocaleDateString(locale === 'pl' ? 'pl-PL' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.news, href: p('/news/') },
+];
+---
+<Layout title={`${t.news} - POLCERO`} description={t.lead} canonicalPath={p('/news/')}>
+  <PageHeader eyebrow="POLCERO" title={t.title} lead={t.lead} crumbs={crumbs} />
+  <section class="section">
+    <div class="container-x">
+      <div class="news-grid">
+        {posts.map((post, i) => (
+          <Reveal delay={i * 60}>
+            <article class="news-card">
+              <a class="news-card__media" href={p(`/news/${slugOf(post.id)}/`)}>
+                <img src={post.data.cover} alt={post.data.coverAlt} width="800" height="500" loading="lazy" />
+              </a>
+              <div class="news-card__body">
+                <time class="label-mono" datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+                <h2 class="news-card__title"><a href={p(`/news/${slugOf(post.id)}/`)}>{post.data.title}</a></h2>
+                <p class="news-card__desc">{post.data.description}</p>
+              </div>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .news-card { display: flex; flex-direction: column; }
+  .news-card__media { display: block; aspect-ratio: 16 / 10; border-radius: var(--radius-card); overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-line); }
+  .news-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--ease-out); }
+  .news-card:hover .news-card__media img { transform: scale(1.03); }
+  .news-card__body { padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; position: relative; }
+  .news-card__title { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; line-height: 1.15; }
+  .news-card__title a::after { content: ''; position: absolute; inset: -1.25rem 0 0 0; }
+  .news-card__desc { color: var(--color-mute); line-height: 1.6; }
+  @media (max-width: 640px) { .news-grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .news-card:hover .news-card__media img { transform: none; } }
+</style>

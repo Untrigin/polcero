@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../PageHeader.astro';
+import BoxArrowLink from '../BoxArrowLink.astro';
+import Reveal from '../Reveal.astro';
+import { getContent } from '../../data/content';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props { locale: Locale; slug: string }
+const { locale, slug } = Astro.props;
+const c = getContent(locale);
+const branch = c.branches.find((b) => b.slug === slug)!;
+const p = (path: string) => localizedPath(path, locale);
+const t = locale === 'pl'
+  ? { home: 'Start', services: 'Kierunki', back: 'Wszystkie kierunki', delivers: 'Co dostarczamy', industries: 'Branże', cta: 'Zapytaj o wdrożenie' }
+  : { home: 'Home', services: 'Branches', back: 'All branches', delivers: 'What we deliver', industries: 'Industries', cta: 'Ask about deployment' };
+
+// industries that list this branch
+const relIndustries = c.industries.filter((i) => i.branchSlugs.includes(slug));
+
+const crumbs = [
+  { label: t.home, href: p('/') },
+  { label: t.services, href: p('/services/') },
+  { label: branch.name, href: p(`/services/${slug}/`) },
+];
+const title = `${branch.name} - POLCERO`;
+const description = (branch.intro ?? branch.desc).slice(0, 154);
+---
+<Layout title={title} description={description} canonicalPath={p(`/services/${slug}/`)}>
+  <PageHeader eyebrow={branch.tagline} title={branch.name} lead={branch.intro ?? branch.desc} crumbs={crumbs} />
+
+  <section class="section">
+    <div class="container-x branch-detail">
+      <div class="branch-detail__main">
+        <span class="branch-detail__badge label-mono">{branch.badge}</span>
+        {branch.note && <p class="branch-detail__note">{branch.note}</p>}
+        {branch.sections && branch.sections.length > 0 ? (
+          <>
+            <h2 class="h3 branch-detail__h">{t.delivers}</h2>
+            <div class="branch-sections">
+              {branch.sections.map((s, i) => (
+                <Reveal delay={(i % 2) * 50}>
+                  <div class="branch-section">
+                    <h3 class="branch-section__title">{s.title}</h3>
+                    <p class="branch-section__desc">{s.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </>
+        ) : branch.points && (
+          <>
+            <h2 class="h3 branch-detail__h">{t.delivers}</h2>
+            <Reveal>
+              <ul class="branch-points">
+                {branch.points.map((pt) => (
+                  <li class="branch-point">{pt}</li>
+                ))}
+              </ul>
+            </Reveal>
+          </>
+        )}
+        <div class="branch-detail__cta">
+          <a class="btn-pill btn-accent" href={p('/contact/')}>{t.cta}</a>
+          <BoxArrowLink href={p('/services/')} label={t.back} variant="dark" />
+        </div>
+      </div>
+
+      {relIndustries.length > 0 && (
+        <aside class="branch-detail__aside">
+          <p class="label-mono">{t.industries}</p>
+          <ul>
+            {relIndustries.map((i) => (
+              <li><a href={p(`/industries/${i.slug}/`)}>{i.name}</a></li>
+            ))}
+          </ul>
+        </aside>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .branch-detail { display: grid; grid-template-columns: 1fr 18rem; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .branch-detail__badge { display: inline-block; color: var(--color-accent); padding: 0.3rem 0.6rem; border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent); border-radius: 999px; }
+  .branch-detail__note { margin-top: 1rem; color: var(--color-mute); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; }
+  .branch-detail__h { margin-top: 2.25rem; margin-bottom: 1.25rem; }
+  .branch-points { list-style: none; margin: 0; padding: 0; }
+  .branch-point {
+    position: relative;
+    padding: 1rem 0 1rem 1.75rem;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-ice);
+    font-size: 1.05rem;
+  }
+  .branch-points li:last-child { border-bottom: 1px solid var(--color-line); }
+  .branch-point::before { content: '→'; position: absolute; left: 0; color: var(--color-accent); }
+  .branch-sections { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .branch-section { padding: clamp(1.25rem, 2vw, 1.6rem); border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); height: 100%; }
+  .branch-section__title { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; color: var(--color-ice); margin-bottom: 0.6rem; }
+  .branch-section__desc { color: var(--color-mute); font-size: 0.95rem; line-height: 1.6; }
+  @media (max-width: 720px) { .branch-sections { grid-template-columns: 1fr; } }
+  .branch-detail__cta { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-top: 2rem; }
+  .branch-detail__aside { border: 1px solid var(--color-line); border-radius: var(--radius-card); padding: 1.5rem; position: sticky; top: calc(var(--header-h) + 1.5rem); }
+  .branch-detail__aside ul { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+  .branch-detail__aside a { color: var(--color-ice); }
+  .branch-detail__aside a:hover { color: var(--color-accent); }
+  @media (max-width: 860px) { .branch-detail { grid-template-columns: 1fr; } .branch-detail__aside { position: static; } }
+</style>

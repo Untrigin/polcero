@@ -3,11 +3,13 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://polcero.com',
-  output: 'static',
+  output: 'static', // pages stay prerendered; only /api/contact opts into SSR
+  adapter: node({ mode: 'standalone' }),
   trailingSlash: 'always',
 
   i18n: {

@@ -8,6 +8,26 @@ single orange accent (`#FF6A1A`).
 - **Interactivity:** lightweight vanilla-TS enhancement only (header, tabs, hover-list, reveal/parallax).
   Homepage ships **~1.4 KB gzipped JS** (well under the 60 KB budget). No React/framework on the client.
 - **i18n:** Polish at `/` (primary), English at `/en/`. Reciprocal `hreflang` + `x-default` on every page.
+- **Rendering:** pages are prerendered; only the contact form endpoint (`/api/contact`) runs on the server
+  (`@astrojs/node`, standalone), so the site now runs as a Node process rather than pure static files.
+
+## Contact form (SMTP)
+
+The contact form posts to `src/pages/api/contact.ts`, which sends mail via **nodemailer** using SMTP.
+Configure the SMTP vars (see `.env.example`) in the server environment. It includes a honeypot field and
+relies on Astro's built-in CSRF origin check.
+
+**Deploy on the Node server (Hetzner):**
+
+```bash
+npm ci
+npm run build
+# run the standalone server (serves the static pages AND /api/contact):
+HOST=0.0.0.0 PORT=4321 node --env-file=.env ./dist/server/entry.mjs
+```
+
+Put a real `.env` (from `.env.example`, gitignored) next to the app, or set the vars via systemd/pm2.
+Reverse-proxy nginx → `127.0.0.1:4321`. (Node 20+ is required for `--env-file`.)
 
 ## Commands
 

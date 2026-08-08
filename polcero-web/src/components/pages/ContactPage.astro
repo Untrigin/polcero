@@ -18,7 +18,9 @@ const pl = {
   company: 'Firma / organizacja', companyPh: 'Nazwa firmy',
   subject: 'Temat', subjectPh: 'Krótki opis Twojej potrzeby',
   message: 'Wiadomość', messagePh: 'Opisz szczegółowo swój proces, wyzwanie lub pytanie…',
-  send: 'Wyślij zapytanie', response: 'Odpowiemy w ciągu 1-2 dni roboczych.',
+  send: 'Wyślij zapytanie', sending: 'Wysyłanie…', response: 'Odpowiemy w ciągu 1-2 dni roboczych.',
+  success: 'Dziękujemy! Wiadomość została wysłana.',
+  error: 'Nie udało się wysłać. Spróbuj ponownie lub napisz na biuro@polcero.com.',
   entity: 'POLCERO sp. z o.o.', reg: 'KRS 0001178417 · NIP 8971955510 · REGON 542000919',
   info: 'Dane kontaktowe', faqTitle: 'Najczęstsze pytania',
   faqs: [
@@ -35,7 +37,9 @@ const en = {
   company: 'Company / organization', companyPh: 'Company name',
   subject: 'Subject', subjectPh: 'Brief description of your need',
   message: 'Message', messagePh: 'Describe your process, challenge or question in detail…',
-  send: 'Send inquiry', response: 'We will respond within 1-2 business days.',
+  send: 'Send inquiry', sending: 'Sending…', response: 'We will respond within 1-2 business days.',
+  success: 'Thank you! Your message has been sent.',
+  error: 'Could not send. Please try again or email biuro@polcero.com.',
   entity: 'POLCERO sp. z o.o.', reg: 'KRS 0001178417 · NIP 8971955510 · REGON 542000919',
   info: 'Contact details', faqTitle: 'Frequently asked questions',
   faqs: [
@@ -62,7 +66,21 @@ const faqLd = {
   <section class="section">
     <div class="container-x contact">
       <Reveal class="contact__form-col">
-        <form class="contact__form" method="post" action="#" novalidate>
+        <form
+          class="contact__form"
+          method="post"
+          action="/api/contact/"
+          data-contact-form
+          data-sending={t.sending}
+          data-success={t.success}
+          data-error={t.error}
+          novalidate
+        >
+          {/* anti-spam honeypot - hidden from users, bots fill it */}
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="field">
             <label for="name">{t.name}</label>
             <input id="name" name="name" type="text" autocomplete="name" placeholder={t.namePh} required />
@@ -83,8 +101,9 @@ const faqLd = {
             <label for="message">{t.message}</label>
             <textarea id="message" name="message" rows="5" placeholder={t.messagePh} required></textarea>
           </div>
-          <button type="submit" class="btn-pill btn-accent">{t.send}</button>
+          <button type="submit" class="btn-pill btn-accent" data-submit>{t.send}</button>
           <p class="contact__response">{t.response}</p>
+          <p class="contact__feedback" data-feedback role="status" aria-live="polite" hidden></p>
         </form>
       </Reveal>
 
@@ -126,8 +145,46 @@ const faqLd = {
   </section>
 </Layout>
 
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  if (form) {
+    const btn = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const fb = form.querySelector<HTMLElement>('[data-feedback]');
+    const original = btn?.textContent ?? '';
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      if (fb) { fb.hidden = true; fb.classList.remove('is-ok', 'is-error'); }
+      if (btn) { btn.disabled = true; btn.textContent = form.dataset.sending || 'Sending…'; }
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { accept: 'application/json' },
+        });
+        const data = await res.json().catch(() => ({}));
+        const ok = res.ok && data.ok;
+        if (fb) {
+          fb.textContent = ok ? form.dataset.success! : form.dataset.error!;
+          fb.classList.add(ok ? 'is-ok' : 'is-error');
+          fb.hidden = false;
+        }
+        if (ok) form.reset();
+      } catch {
+        if (fb) { fb.textContent = form.dataset.error!; fb.classList.add('is-error'); fb.hidden = false; }
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = original; }
+      }
+    });
+  }
+</script>
+
 <style>
   .contact { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .contact__feedback { margin: 0; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.95rem; }
+  .contact__feedback.is-ok { background: color-mix(in srgb, #34d399 14%, transparent); border: 1px solid color-mix(in srgb, #34d399 40%, transparent); color: #d1fae5; }
+  .contact__feedback.is-error { background: color-mix(in srgb, var(--color-destructive, #ef4444) 14%, transparent); border: 1px solid color-mix(in srgb, #ef4444 40%, transparent); color: #fecaca; }
   .contact__form { display: flex; flex-direction: column; gap: 1.5rem; }
   .field { display: flex; flex-direction: column; gap: 0.5rem; }
   .field label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-mute); }

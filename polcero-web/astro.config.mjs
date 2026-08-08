@@ -26,7 +26,6 @@ export default defineConfig({
   // reverse proxy (see deploy/nginx-polcero.conf) because Astro dynamic
   // redirects require a matching catch-all destination route.
   redirects: {
-    '/en': '/',
     '/en/': '/',
   },
 

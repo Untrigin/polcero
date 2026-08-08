@@ -4,16 +4,18 @@ import PageHeader from '../PageHeader.astro';
 import BoxArrowLink from '../BoxArrowLink.astro';
 import Reveal from '../Reveal.astro';
 import { getContent } from '../../data/content';
+import { getBranchRich } from '../../data/branchRich';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale; slug: string }
 const { locale, slug } = Astro.props;
 const c = getContent(locale);
 const branch = c.branches.find((b) => b.slug === slug)!;
+const rich = getBranchRich(slug);
 const p = (path: string) => localizedPath(path, locale);
 const t = locale === 'pl'
-  ? { home: 'Start', services: 'Kierunki', back: 'Wszystkie kierunki', delivers: 'Co dostarczamy', industries: 'Branże', cta: 'Zapytaj o wdrożenie' }
-  : { home: 'Home', services: 'Branches', back: 'All branches', delivers: 'What we deliver', industries: 'Industries', cta: 'Ask about deployment' };
+  ? { home: 'Start', services: 'Kierunki', back: 'Wszystkie kierunki', delivers: 'Co dostarczamy', industries: 'Branże', cta: 'Zapytaj o wdrożenie', stack: 'Stos programowania' }
+  : { home: 'Home', services: 'Branches', back: 'All branches', delivers: 'What we deliver', industries: 'Industries', cta: 'Ask about deployment', stack: 'Programming stack' };
 
 // industries that list this branch
 const relIndustries = c.industries.filter((i) => i.branchSlugs.includes(slug));
@@ -29,70 +31,347 @@ const description = (branch.intro ?? branch.desc).slice(0, 154);
 <Layout title={title} description={description} canonicalPath={p(`/services/${slug}/`)}>
   <PageHeader eyebrow={branch.tagline} title={branch.name} lead={branch.intro ?? branch.desc} crumbs={crumbs} />
 
-  <section class="section">
-    <div class="container-x branch-detail">
-      <div class="branch-detail__main">
-        <span class="branch-detail__badge label-mono">{branch.badge}</span>
-        {branch.note && <p class="branch-detail__note">{branch.note}</p>}
-        {branch.sections && branch.sections.length > 0 ? (
-          <>
-            <h2 class="h3 branch-detail__h">{t.delivers}</h2>
-            <div class="branch-sections">
-              {branch.sections.map((s, i) => (
-                <Reveal delay={(i % 2) * 50}>
-                  <div class="branch-section">
-                    <h3 class="branch-section__title">{s.title}</h3>
-                    <p class="branch-section__desc">{s.desc}</p>
-                  </div>
+  {rich ? (
+    <>
+      {/* Stat band */}
+      {rich.stats && (
+        <section class="section section--tight">
+          <div class="container-x">
+            <p class="label-mono rb-badge">{branch.badge}</p>
+            <div class="rb-stats">
+              {rich.stats.map((s) => (
+                <div class="rb-stat">
+                  <span class="rb-stat__v">{s.value}</span>
+                  <span class="rb-stat__l">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Product specifications */}
+      {rich.products && rich.productsHeading && (
+        <section class="section">
+          <div class="container-x">
+            <header class="rb-head">
+              <p class="eyebrow">{rich.productsHeading.eyebrow}</p>
+              <h2 class="h2">{rich.productsHeading.title}</h2>
+              {rich.productsHeading.desc && <p class="lead">{rich.productsHeading.desc}</p>}
+            </header>
+            <div class="rb-products">
+              {rich.products.map((pr) => (
+                <Reveal>
+                  <article class="rb-product">
+                    <div class="rb-product__body">
+                      <h3 class="rb-product__name">{pr.name}</h3>
+                      <p class="rb-product__desc">{pr.desc}</p>
+                      {pr.stack && (
+                        <div class="rb-stack">
+                          <span class="rb-stack__label label-mono">{t.stack}</span>
+                          <span class="rb-chips">{pr.stack.map((s) => <span class="rb-chip">{s}</span>)}</span>
+                        </div>
+                      )}
+                      <ul class="rb-plist">{pr.points.map((pt) => <li>{pt}</li>)}</ul>
+                    </div>
+                    <table class="rb-spec">
+                      <tbody>
+                        {pr.specs.map((row) => (
+                          <tr><th scope="row">{row.label}</th><td>{row.value}</td></tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </article>
                 </Reveal>
               ))}
             </div>
-          </>
-        ) : branch.points && (
-          <>
-            <h2 class="h3 branch-detail__h">{t.delivers}</h2>
-            <Reveal>
-              <ul class="branch-points">
-                {branch.points.map((pt) => (
-                  <li class="branch-point">{pt}</li>
-                ))}
-              </ul>
-            </Reveal>
-          </>
-        )}
-        <div class="branch-detail__cta">
+          </div>
+        </section>
+      )}
+
+      {/* Service categories */}
+      {rich.services && rich.servicesHeading && (
+        <section class="section section--alt">
+          <div class="container-x">
+            <header class="rb-head">
+              <p class="eyebrow">{rich.servicesHeading.eyebrow}</p>
+              <h2 class="h2">{rich.servicesHeading.title}</h2>
+              {rich.servicesHeading.desc && <p class="lead">{rich.servicesHeading.desc}</p>}
+            </header>
+            <div class="rb-cats">
+              {rich.services.map((s, i) => (
+                <Reveal delay={(i % 3) * 60}>
+                  <article class="rb-cat">
+                    <span class="rb-cat__badge label-mono">{s.badge}</span>
+                    <h3 class="rb-cat__name">{s.name}</h3>
+                    <p class="rb-cat__tagline">{s.tagline}</p>
+                    <p class="rb-cat__desc">{s.desc}</p>
+                    <ul class="rb-plist">{s.points.map((pt) => <li>{pt}</li>)}</ul>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Case studies */}
+      {rich.cases && rich.casesHeading && (
+        <section class="section">
+          <div class="container-x">
+            <header class="rb-head">
+              <p class="eyebrow">{rich.casesHeading.eyebrow}</p>
+              <h2 class="h2">{rich.casesHeading.title}</h2>
+              {rich.casesHeading.desc && <p class="lead">{rich.casesHeading.desc}</p>}
+            </header>
+            <div class="rb-cases">
+              {rich.cases.map((cs, i) => (
+                <Reveal delay={(i % 3) * 60}>
+                  <article class="rb-case">
+                    <div class="rb-case__meta">
+                      <span class="rb-case__sector">{cs.sector}</span>
+                      <span class="rb-case__stage label-mono">{cs.stage}</span>
+                    </div>
+                    <h3 class="rb-case__title">{cs.title}</h3>
+                    <p class="rb-case__desc">{cs.desc}</p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Industry sectors */}
+      {rich.sectors && rich.sectorsHeading && (
+        <section class="section section--alt">
+          <div class="container-x">
+            <header class="rb-head">
+              <p class="eyebrow">{rich.sectorsHeading.eyebrow}</p>
+              <h2 class="h2">{rich.sectorsHeading.title}</h2>
+              {rich.sectorsHeading.desc && <p class="lead">{rich.sectorsHeading.desc}</p>}
+            </header>
+            <div class="rb-sectors">
+              {rich.sectors.map((s) => (
+                <div class="rb-sector">
+                  <h3 class="rb-sector__name">{s.name}</h3>
+                  <p class="rb-sector__desc">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* How we deliver */}
+      {rich.process && rich.processHeading && (
+        <section class="section">
+          <div class="container-x">
+            <header class="rb-head">
+              <p class="eyebrow">{rich.processHeading.eyebrow}</p>
+              <h2 class="h2">{rich.processHeading.title}</h2>
+              {rich.processHeading.desc && <p class="lead">{rich.processHeading.desc}</p>}
+            </header>
+            <ol class="rb-steps">
+              {rich.process.map((st) => (
+                <Reveal>
+                  <li class="rb-step">
+                    <span class="rb-step__n">{st.n}</span>
+                    <div>
+                      <h3 class="rb-step__title">{st.title}</h3>
+                      <p class="rb-step__desc">{st.desc}</p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* AI brain callout */}
+      {rich.aiBrain && (
+        <section class="section section--tight">
+          <div class="container-x">
+            <div class="rb-brain">
+              <div>
+                <p class="eyebrow">{rich.aiBrain.eyebrow}</p>
+                <h2 class="h3 rb-brain__title">{rich.aiBrain.title}</h2>
+                <p class="rb-brain__desc">{rich.aiBrain.desc}</p>
+              </div>
+              <BoxArrowLink href={p(rich.aiBrain.ctaHref)} label={rich.aiBrain.ctaLabel} variant="dark" />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Compliance */}
+      {rich.compliance && (
+        <section class="section section--tight">
+          <div class="container-x">
+            <p class="eyebrow">{rich.compliance.eyebrow}</p>
+            <div class="rb-compliance">
+              {rich.compliance.items.map((it) => <span class="rb-compliance__item">{it}</span>)}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Final CTA */}
+      <section class="section">
+        <div class="container-x rb-cta">
           <a class="btn-pill btn-accent" href={p('/contact/')}>{t.cta}</a>
           <BoxArrowLink href={p('/services/')} label={t.back} variant="dark" />
         </div>
-      </div>
+      </section>
+    </>
+  ) : (
+    <section class="section">
+      <div class="container-x branch-detail">
+        <div class="branch-detail__main">
+          <span class="branch-detail__badge label-mono">{branch.badge}</span>
+          {branch.note && <p class="branch-detail__note">{branch.note}</p>}
+          {branch.sections && branch.sections.length > 0 ? (
+            <>
+              <h2 class="h3 branch-detail__h">{t.delivers}</h2>
+              <div class="branch-sections">
+                {branch.sections.map((s, i) => (
+                  <Reveal delay={(i % 2) * 50}>
+                    <div class="branch-section">
+                      <h3 class="branch-section__title">{s.title}</h3>
+                      <p class="branch-section__desc">{s.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </>
+          ) : branch.points && (
+            <>
+              <h2 class="h3 branch-detail__h">{t.delivers}</h2>
+              <Reveal>
+                <ul class="branch-points">
+                  {branch.points.map((pt) => (
+                    <li class="branch-point">{pt}</li>
+                  ))}
+                </ul>
+              </Reveal>
+            </>
+          )}
+          <div class="branch-detail__cta">
+            <a class="btn-pill btn-accent" href={p('/contact/')}>{t.cta}</a>
+            <BoxArrowLink href={p('/services/')} label={t.back} variant="dark" />
+          </div>
+        </div>
 
-      {relIndustries.length > 0 && (
-        <aside class="branch-detail__aside">
-          <p class="label-mono">{t.industries}</p>
-          <ul>
-            {relIndustries.map((i) => (
-              <li><a href={p(`/industries/${i.slug}/`)}>{i.name}</a></li>
-            ))}
-          </ul>
-        </aside>
-      )}
-    </div>
-  </section>
+        {relIndustries.length > 0 && (
+          <aside class="branch-detail__aside">
+            <p class="label-mono">{t.industries}</p>
+            <ul>
+              {relIndustries.map((i) => (
+                <li><a href={p(`/industries/${i.slug}/`)}>{i.name}</a></li>
+              ))}
+            </ul>
+          </aside>
+        )}
+      </div>
+    </section>
+  )}
 </Layout>
 
 <style>
+  /* ---- shared ---- */
+  .section--tight { padding-top: clamp(1.5rem, 4vw, 2.5rem); padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+  .section--alt { background: var(--color-surface); }
+  .rb-head { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .rb-head .h2 { margin: 0.75rem 0 1rem; }
+  .rb-head .lead { color: var(--color-mute); }
+  .rb-badge { display: inline-block; color: var(--color-accent); padding: 0.3rem 0.6rem; border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent); border-radius: 999px; margin-bottom: 1.5rem; }
+
+  /* ---- stat band ---- */
+  .rb-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 3vw, 2rem); border-top: 1px solid var(--color-line); padding-top: 1.75rem; }
+  .rb-stat { display: flex; flex-direction: column; gap: 0.35rem; }
+  .rb-stat__v { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--color-accent); line-height: 1; }
+  .rb-stat__l { color: var(--color-mute); font-size: 0.9rem; }
+  @media (max-width: 720px) { .rb-stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+
+  /* ---- product specs ---- */
+  .rb-products { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); }
+  .rb-product { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: start; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(1.5rem, 3vw, 2.25rem); }
+  .rb-product__name { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--color-ice); }
+  .rb-product__desc { color: var(--color-mute); line-height: 1.6; margin: 0.75rem 0 1.25rem; }
+  .rb-stack { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .rb-stack__label { color: var(--color-mute); }
+  .rb-chips { display: inline-flex; gap: 0.4rem; flex-wrap: wrap; }
+  .rb-chip { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.55rem; border: 1px solid var(--color-line); border-radius: 999px; color: var(--color-ice); }
+  .rb-spec { width: 100%; border-collapse: collapse; }
+  .rb-spec th, .rb-spec td { text-align: left; padding: 0.7rem 0; border-top: 1px solid var(--color-line); font-size: 0.95rem; vertical-align: top; }
+  .rb-spec th { color: var(--color-mute); font-weight: 400; padding-right: 1rem; }
+  .rb-spec td { color: var(--color-ice); text-align: right; font-variant-numeric: tabular-nums; }
+  .rb-spec tr:first-child th, .rb-spec tr:first-child td { border-top: none; }
+
+  /* ---- shared point list ---- */
+  .rb-plist { list-style: none; margin: 0; padding: 0; }
+  .rb-plist li { position: relative; padding: 0.5rem 0 0.5rem 1.5rem; color: var(--color-ice); font-size: 0.95rem; }
+  .rb-plist li::before { content: '→'; position: absolute; left: 0; color: var(--color-accent); }
+
+  /* ---- service categories ---- */
+  .rb-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .rb-cat { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-void); padding: clamp(1.4rem, 2.2vw, 1.8rem); }
+  .rb-cat__badge { color: var(--color-accent); font-size: 0.7rem; }
+  .rb-cat__name { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; color: var(--color-ice); margin: 0.75rem 0 0.4rem; }
+  .rb-cat__tagline { color: var(--color-accent); font-size: 0.85rem; margin-bottom: 0.75rem; }
+  .rb-cat__desc { color: var(--color-mute); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem; }
+  .rb-cat .rb-plist { margin-top: auto; }
+  .rb-cat .rb-plist li { font-size: 0.88rem; padding-top: 0.35rem; padding-bottom: 0.35rem; }
+  @media (max-width: 960px) { .rb-cats { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .rb-cats { grid-template-columns: 1fr; } }
+
+  /* ---- case studies ---- */
+  .rb-cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .rb-case { border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(1.4rem, 2.2vw, 1.8rem); height: 100%; }
+  .rb-case__meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .rb-case__sector { color: var(--color-mute); font-size: 0.85rem; }
+  .rb-case__stage { color: var(--color-accent); font-size: 0.7rem; border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent); border-radius: 999px; padding: 0.2rem 0.55rem; }
+  .rb-case__title { font-family: var(--font-display); font-weight: 500; font-size: 1.1rem; color: var(--color-ice); margin-bottom: 0.6rem; }
+  .rb-case__desc { color: var(--color-mute); font-size: 0.92rem; line-height: 1.6; }
+  @media (max-width: 960px) { .rb-cases { grid-template-columns: 1fr; } }
+
+  /* ---- sectors ---- */
+  .rb-sectors { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .rb-sector { padding: 1.4rem 0; border-top: 1px solid var(--color-line); }
+  .rb-sector__name { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; color: var(--color-ice); margin-bottom: 0.5rem; }
+  .rb-sector__desc { color: var(--color-mute); font-size: 0.9rem; line-height: 1.6; }
+  @media (max-width: 860px) { .rb-sectors { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .rb-sectors { grid-template-columns: 1fr; } }
+
+  /* ---- process steps ---- */
+  .rb-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .rb-step { display: grid; grid-template-columns: auto 1fr; gap: clamp(1rem, 3vw, 2rem); padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; border-top: 1px solid var(--color-line); align-items: start; }
+  .rb-step:last-child { border-bottom: 1px solid var(--color-line); }
+  .rb-step__n { font-family: var(--font-mono); color: var(--color-accent); font-size: 1.1rem; }
+  .rb-step__title { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; color: var(--color-ice); margin-bottom: 0.5rem; }
+  .rb-step__desc { color: var(--color-mute); line-height: 1.65; max-width: 52rem; }
+
+  /* ---- AI brain callout ---- */
+  .rb-brain { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(1.75rem, 4vw, 3rem); }
+  .rb-brain__title { margin: 0.75rem 0 1rem; }
+  .rb-brain__desc { color: var(--color-mute); line-height: 1.65; max-width: 46rem; }
+
+  /* ---- compliance ---- */
+  .rb-compliance { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
+  .rb-compliance__item { font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-ice); border: 1px solid var(--color-line); border-radius: 999px; padding: 0.45rem 0.9rem; }
+
+  .rb-cta { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+
+  @media (max-width: 720px) { .rb-product { grid-template-columns: 1fr; } }
+
+  /* ---- generic (non-rich) branch layout ---- */
   .branch-detail { display: grid; grid-template-columns: 1fr 18rem; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
   .branch-detail__badge { display: inline-block; color: var(--color-accent); padding: 0.3rem 0.6rem; border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent); border-radius: 999px; }
   .branch-detail__note { margin-top: 1rem; color: var(--color-mute); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; }
   .branch-detail__h { margin-top: 2.25rem; margin-bottom: 1.25rem; }
   .branch-points { list-style: none; margin: 0; padding: 0; }
-  .branch-point {
-    position: relative;
-    padding: 1rem 0 1rem 1.75rem;
-    border-top: 1px solid var(--color-line);
-    color: var(--color-ice);
-    font-size: 1.05rem;
-  }
+  .branch-point { position: relative; padding: 1rem 0 1rem 1.75rem; border-top: 1px solid var(--color-line); color: var(--color-ice); font-size: 1.05rem; }
   .branch-points li:last-child { border-bottom: 1px solid var(--color-line); }
   .branch-point::before { content: '→'; position: absolute; left: 0; color: var(--color-accent); }
   .branch-sections { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }

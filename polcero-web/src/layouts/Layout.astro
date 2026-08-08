@@ -3,7 +3,7 @@ import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { getLocale, htmlLang, type Locale } from '../lib/i18n';
+import { getLocale, htmlLang, htmlDir, type Locale } from '../lib/i18n';
 import { getContent } from '../data/content';
 
 interface Props {
@@ -20,7 +20,7 @@ const locale: Locale = getLocale(Astro.url.pathname);
 const c = getContent(locale);
 ---
 <!doctype html>
-<html lang={htmlLang[locale]}>
+<html lang={htmlLang[locale]} dir={htmlDir[locale]}>
   <head>
     <meta charset="utf-8" />
     <script is:inline>document.documentElement.classList.add('js');</script>

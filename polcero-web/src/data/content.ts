@@ -854,8 +854,10 @@ for (const loc of ['pl', 'en'] as Locale[]) {
   }
 }
 
-const content: Record<Locale, SiteContent> = { pl, en };
+// Only fully-authored locales are present here; every other active locale
+// falls back to English until its translation batch lands.
+const content: Partial<Record<Locale, SiteContent>> = { en, pl };
 
 export function getContent(locale: Locale): SiteContent {
-  return content[locale];
+  return content[locale] ?? (en as SiteContent);
 }

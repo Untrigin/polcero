@@ -2,7 +2,7 @@
 import './SiteHeader.css';
 import { Menu, X, ChevronDown, ArrowRight, ArrowUpRight } from '@lucide/astro';
 import type { SiteContent } from '../data/content';
-import { localizedPath, alternatePath, type Locale } from '../lib/i18n';
+import { localizedPath, alternatePath, locales, localeShort, localeLabels, type Locale } from '../lib/i18n';
 
 interface Props {
   locale: Locale;
@@ -12,7 +12,14 @@ interface Props {
 const { locale, content, pathname } = Astro.props;
 const c = content;
 const p = (path: string) => localizedPath(path, locale);
-const home = locale === 'en' ? '/en/' : '/';
+const home = localizedPath('/', locale);
+const langLinks = locales.map((l) => ({
+  code: l,
+  short: localeShort[l],
+  label: localeLabels[l],
+  href: alternatePath(pathname, l),
+  active: l === locale,
+}));
 
 const industries = c.industries.map((i) => ({ slug: i.slug, label: i.name }));
 const company = [
@@ -20,8 +27,6 @@ const company = [
   { href: p('/news/'), label: c.nav.news },
   { href: p('/contact/'), label: c.nav.contact },
 ];
-const altPl = alternatePath(pathname, 'pl');
-const altEn = alternatePath(pathname, 'en');
 ---
 <header class="hdr" data-header>
   <div class="hdr__bar container-x">
@@ -88,9 +93,12 @@ const altEn = alternatePath(pathname, 'en');
 
     <div class="hdr__actions">
       <div class="hdr__lang" role="group" aria-label="Language">
-        <a href={altPl} class={locale === 'pl' ? 'is-active' : ''} hreflang="pl">PL</a>
-        <span aria-hidden="true">/</span>
-        <a href={altEn} class={locale === 'en' ? 'is-active' : ''} hreflang="en">EN</a>
+        {langLinks.map((l, i) => (
+          <Fragment>
+            {i > 0 && <span aria-hidden="true">/</span>}
+            <a href={l.href} class={l.active ? 'is-active' : ''} hreflang={l.code}>{l.short}</a>
+          </Fragment>
+        ))}
       </div>
       <a class="btn-pill btn-accent hdr__cta" href={p('/contact/')}>{c.nav.cta}</a>
       <button class="hdr__burger" aria-label="Menu" aria-expanded="false" data-drawer-open>
@@ -116,8 +124,9 @@ const altEn = alternatePath(pathname, 'en');
       {company.map((co) => (<a href={co.href}>{co.label}</a>))}
       <a class="btn-pill btn-accent drawer__cta" href={p('/contact/')}>{c.nav.cta} <ArrowUpRight size={18} aria-hidden="true" /></a>
       <div class="drawer__lang">
-        <a href={altPl} class={locale === 'pl' ? 'is-active' : ''}>Polski</a>
-        <a href={altEn} class={locale === 'en' ? 'is-active' : ''}>English</a>
+        {langLinks.map((l) => (
+          <a href={l.href} class={l.active ? 'is-active' : ''} hreflang={l.code}>{l.label}</a>
+        ))}
       </div>
     </nav>
   </div>

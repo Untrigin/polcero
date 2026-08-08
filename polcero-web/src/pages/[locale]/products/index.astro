@@ -1,0 +1,9 @@
+---
+import ProductsIndex from '../../../components/pages/ProductsIndex.astro';
+import { secondaryLocales, type Locale } from '../../../lib/i18n';
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale } }));
+}
+const locale = Astro.params.locale as Locale;
+---
+<ProductsIndex locale={locale} />

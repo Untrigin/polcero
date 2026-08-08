@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Home from '../../components/Home.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import { secondaryLocales, htmlLang, type Locale } from '../../lib/i18n';
+
+export function getStaticPaths() {
+  return secondaryLocales.map((locale) => ({ params: { locale } }));
+}
+const locale = Astro.params.locale as Locale;
+const isPl = locale === 'pl';
+
+const site = Astro.site?.href ?? 'https://polcero.com/';
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'POLCERO',
+  legalName: 'POLCERO sp. z o.o.',
+  description: isPl ? 'Autonomiczne roboty humanoidalne i modułowe platformy dla przemysłu i rolnictwa.' : 'Autonomous humanoid robots and modular platforms for industry and agriculture.',
+  url: site,
+  logo: new URL('/icon.png', site).href,
+  email: 'biuro@polcero.com',
+  telephone: '+48535777268',
+  address: { '@type': 'PostalAddress', addressLocality: 'Kietrz', addressCountry: 'PL' },
+  identifier: [
+    { '@type': 'PropertyValue', propertyID: 'KRS', value: '0001178417' },
+    { '@type': 'PropertyValue', propertyID: 'NIP', value: '8971955510' },
+    { '@type': 'PropertyValue', propertyID: 'REGON', value: '542000919' },
+  ],
+  sameAs: ['https://www.linkedin.com/company/polskiecentrumrobotyzacji', 'https://www.facebook.com/PolskieCentrumRobotyzacji'],
+  contactPoint: {
+    '@type': 'ContactPoint', contactType: 'sales', email: 'biuro@polcero.com',
+    telephone: '+48535777268', areaServed: 'PL', availableLanguage: ['en', 'pl'],
+  },
+};
+const website = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'POLCERO', url: site, inLanguage: htmlLang[locale] };
+const meta = isPl
+  ? { title: 'POLCERO - autonomiczne roboty humanoidalne', description: 'Autonomiczne roboty humanoidalne i modułowe platformy dla przemysłu i rolnictwa. Platforma AI, dron transportowy 500 kg i wymienne moduły. Zlecasz cel, nie ruch.' }
+  : { title: 'POLCERO - autonomous humanoid robots', description: 'Autonomous humanoid robots and modular platforms for industry and agriculture. AI platform, 500 kg transport drone and swappable modules. You assign a goal, not a motion.' };
+---
+<Layout title={meta.title} description={meta.description}>
+  <JsonLd slot="head" schema={[organization, website]} />
+  <Home locale={locale} />
+</Layout>

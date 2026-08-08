@@ -1,0 +1,23 @@
+[Unit]
+Description=POLCERO website (Astro + Node standalone server)
+After=network.target
+
+[Service]
+Type=simple
+# Adjust User and paths to your Hetzner setup:
+User=www-data
+WorkingDirectory=/var/www/polcero
+# Secrets (SMTP_*, MAIL_*) live in /var/www/polcero/.env (chmod 600, NOT in git).
+Environment=HOST=127.0.0.1
+Environment=PORT=4321
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node --env-file=.env ./dist/server/entry.mjs
+Restart=on-failure
+RestartSec=3
+# Basic hardening:
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

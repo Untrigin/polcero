@@ -7,7 +7,10 @@ single orange accent (`#FF6A1A`).
 - **Output:** 100% static HTML (`output: 'static'`), zero JS by default.
 - **Interactivity:** lightweight vanilla-TS enhancement only (header, tabs, hover-list, reveal/parallax).
   Homepage ships **~1.4 KB gzipped JS** (well under the 60 KB budget). No React/framework on the client.
-- **i18n:** Polish at `/` (primary), English at `/en/`. Reciprocal `hreflang` + `x-default` on every page.
+- **i18n:** English at `/` (primary), every other locale under `/xx/` (Polish live at `/pl/`). Built to support
+  18 languages (`src/lib/i18n.ts` → `allLocales`); a locale flips on by adding it to `locales` once translated.
+  Reciprocal `hreflang` for each active locale + `x-default` → EN. Old `/en/...` URLs 301 → `/...`
+  (`/en`,`/en/` via Astro `redirects`; nested paths via `deploy/nginx-polcero.conf`).
 - **Rendering:** pages are prerendered; only the contact form endpoint (`/api/contact`) runs on the server
   (`@astrojs/node`, standalone), so the site now runs as a Node process rather than pure static files.
 

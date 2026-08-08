@@ -1,0 +1,13 @@
+---
+import IndustryDetail from '../../../components/pages/IndustryDetail.astro';
+import { getContent } from '../../../data/content';
+import { secondaryLocales, type Locale } from '../../../lib/i18n';
+export function getStaticPaths() {
+  return secondaryLocales.flatMap((locale) =>
+    getContent(locale).industries.map((x) => ({ params: { locale, slug: x.slug } })),
+  );
+}
+const locale = Astro.params.locale as Locale;
+const { slug } = Astro.params;
+---
+<IndustryDetail locale={locale} slug={slug!} />

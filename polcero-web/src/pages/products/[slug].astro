@@ -1,10 +1,9 @@
 ---
 import ProductDetail from '../../components/pages/ProductDetail.astro';
 import { getContent } from '../../data/content';
-
 export function getStaticPaths() {
-  return getContent('pl').products.map((p) => ({ params: { slug: p.slug } }));
+  return getContent('en').products.map((p) => ({ params: { slug: p.slug } }));
 }
 const { slug } = Astro.params;
 ---
-<ProductDetail locale="pl" slug={slug!} />
+<ProductDetail locale="en" slug={slug!} />

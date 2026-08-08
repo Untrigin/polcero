@@ -4,53 +4,31 @@ import Home from '../components/Home.astro';
 import JsonLd from '../components/JsonLd.astro';
 
 const site = Astro.site?.href ?? 'https://polcero.com/';
-
 const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'POLCERO',
   legalName: 'POLCERO sp. z o.o.',
+  description: 'Autonomous humanoid robots and modular platforms for industry and agriculture.',
   url: site,
   logo: new URL('/icon.png', site).href,
-  description: 'Autonomiczne roboty humanoidalne i modułowe platformy dla przemysłu i rolnictwa.',
   email: 'biuro@polcero.com',
   telephone: '+48535777268',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Kietrz',
-    addressCountry: 'PL',
-  },
+  address: { '@type': 'PostalAddress', addressLocality: 'Kietrz', addressCountry: 'PL' },
   identifier: [
     { '@type': 'PropertyValue', propertyID: 'KRS', value: '0001178417' },
     { '@type': 'PropertyValue', propertyID: 'NIP', value: '8971955510' },
     { '@type': 'PropertyValue', propertyID: 'REGON', value: '542000919' },
   ],
-  sameAs: [
-    'https://www.linkedin.com/company/polskiecentrumrobotyzacji',
-    'https://www.facebook.com/PolskieCentrumRobotyzacji',
-  ],
+  sameAs: ['https://www.linkedin.com/company/polskiecentrumrobotyzacji', 'https://www.facebook.com/PolskieCentrumRobotyzacji'],
   contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'sales',
-    email: 'biuro@polcero.com',
-    telephone: '+48535777268',
-    areaServed: 'PL',
-    availableLanguage: ['pl', 'en'],
+    '@type': 'ContactPoint', contactType: 'sales', email: 'biuro@polcero.com',
+    telephone: '+48535777268', areaServed: 'PL', availableLanguage: ['en', 'pl'],
   },
 };
-
-const website = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'POLCERO',
-  url: site,
-  inLanguage: 'pl-PL',
-};
+const website = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'POLCERO', url: site, inLanguage: 'en' };
 ---
-<Layout
-  title="POLCERO - autonomiczne roboty humanoidalne"
-  description="Autonomiczne roboty humanoidalne i modułowe platformy dla przemysłu i rolnictwa. Platforma AI, dron transportowy 500 kg i wymienne moduły. Zlecasz cel, nie ruch."
->
+<Layout title="POLCERO - autonomous humanoid robots" description="Autonomous humanoid robots and modular platforms for industry and agriculture. AI platform, 500 kg transport drone and swappable modules. You assign a goal, not a motion.">
   <JsonLd slot="head" schema={[organization, website]} />
-  <Home locale="pl" />
+  <Home locale="en" />
 </Layout>

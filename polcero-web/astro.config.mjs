@@ -13,19 +13,28 @@ export default defineConfig({
   trailingSlash: 'always',
 
   i18n: {
-    defaultLocale: 'pl',
-    locales: ['pl', 'en'],
+    defaultLocale: 'en',
+    locales: ['en', 'pl'],
     routing: {
-      prefixDefaultLocale: false, // pl at /, en at /en/
+      prefixDefaultLocale: false, // en at /, other locales at /xx/
       redirectToDefaultLocale: false,
     },
+  },
+
+  // EN became the primary locale served at "/". The old English home lived at
+  // "/en/"; redirect it to root. Nested "/en/<path>/" URLs are redirected at the
+  // reverse proxy (see deploy/nginx-polcero.conf) because Astro dynamic
+  // redirects require a matching catch-all destination route.
+  redirects: {
+    '/en': '/',
+    '/en/': '/',
   },
 
   integrations: [
     sitemap({
       i18n: {
-        defaultLocale: 'pl',
-        locales: { pl: 'pl-PL', en: 'en' },
+        defaultLocale: 'en',
+        locales: { en: 'en', pl: 'pl-PL' },
       },
     }),
   ],

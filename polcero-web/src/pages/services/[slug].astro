@@ -1,10 +1,9 @@
 ---
 import BranchDetail from '../../components/pages/BranchDetail.astro';
 import { getContent } from '../../data/content';
-
 export function getStaticPaths() {
-  return getContent('pl').branches.map((b) => ({ params: { slug: b.slug } }));
+  return getContent('en').branches.map((b) => ({ params: { slug: b.slug } }));
 }
 const { slug } = Astro.params;
 ---
-<BranchDetail locale="pl" slug={slug!} />
+<BranchDetail locale="en" slug={slug!} />

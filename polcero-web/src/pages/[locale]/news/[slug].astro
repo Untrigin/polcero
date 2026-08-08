@@ -1,0 +1,16 @@
+---
+import NewsArticle from '../../../components/pages/NewsArticle.astro';
+import { getCollection } from 'astro:content';
+import { secondaryLocales, type Locale } from '../../../lib/i18n';
+export async function getStaticPaths() {
+  const out = [];
+  for (const locale of secondaryLocales) {
+    const posts = await getCollection('news', (e) => e.data.locale === locale && !e.data.draft);
+    for (const entry of posts) out.push({ params: { locale, slug: entry.id.split('/').pop() }, props: { entry } });
+  }
+  return out;
+}
+const locale = Astro.params.locale as Locale;
+const { entry } = Astro.props;
+---
+<NewsArticle locale={locale} entry={entry} />

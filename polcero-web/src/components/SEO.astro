@@ -1,5 +1,5 @@
 ---
-import { alternatePath, htmlLang, getLocale, type Locale } from '../lib/i18n';
+import { alternatePath, htmlLang, getLocale, locales, defaultLocale, type Locale } from '../lib/i18n';
 
 interface Props {
   title: string;
@@ -18,11 +18,10 @@ const locale: Locale = getLocale(Astro.url.pathname);
 const canonical = new URL(path, site).href;
 const ogImageUrl = new URL(ogImage, site).href;
 
-// Reciprocal hreflang pairs (+ x-default → PL)
+// Reciprocal hreflang for every active locale (+ x-default → English).
 const alternates = [
-  { hreflang: 'pl', href: new URL(alternatePath(path, 'pl'), site).href },
-  { hreflang: 'en', href: new URL(alternatePath(path, 'en'), site).href },
-  { hreflang: 'x-default', href: new URL(alternatePath(path, 'pl'), site).href },
+  ...locales.map((l) => ({ hreflang: l, href: new URL(alternatePath(path, l), site).href })),
+  { hreflang: 'x-default', href: new URL(alternatePath(path, defaultLocale), site).href },
 ];
 ---
 <title>{title}</title>

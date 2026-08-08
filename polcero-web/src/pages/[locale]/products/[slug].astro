@@ -1,0 +1,13 @@
+---
+import ProductDetail from '../../../components/pages/ProductDetail.astro';
+import { getContent } from '../../../data/content';
+import { secondaryLocales, type Locale } from '../../../lib/i18n';
+export function getStaticPaths() {
+  return secondaryLocales.flatMap((locale) =>
+    getContent(locale).products.map((x) => ({ params: { locale, slug: x.slug } })),
+  );
+}
+const locale = Astro.params.locale as Locale;
+const { slug } = Astro.params;
+---
+<ProductDetail locale={locale} slug={slug!} />

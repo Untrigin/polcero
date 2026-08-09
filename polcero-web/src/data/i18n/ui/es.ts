@@ -160,7 +160,7 @@ export const es: DeepPartial<UI> = {
     faqTitle: 'Preguntas frecuentes',
     country: 'Polonia',
     faqs: [
-      { q: '¿Cuál es el valor inicial de una implantación?', a: 'El valor de los primeros pedidos parte de 2 millones de PLN en adelante y se entrega llave en mano - desde el diseño y la construcción del robot hasta la puesta en marcha, la documentación y el servicio.' },
+      { q: '¿Cuál es el valor inicial de una implantación?', a: 'El valor de los primeros pedidos parte de 2 millones de € en adelante y se entrega llave en mano - desde el diseño y la construcción del robot hasta la puesta en marcha, la documentación y el servicio.' },
       { q: '¿Tengo que comprar un robot?', a: 'No siempre. Ofrecemos venta, alquiler estacional y liquidación por trabajo realizado - el cliente paga por el resultado, mientras que el robot y los operadores permanecen de nuestro lado.' },
       { q: '¿Dónde se quedan los datos?', a: 'Nuestros modelos pueden ejecutarse localmente, en el dispositivo, sin enviar imágenes al exterior. Los datos y el cumplimiento normativo permanecen en la Unión Europea.' },
     ],

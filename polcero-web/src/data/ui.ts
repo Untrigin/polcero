@@ -359,7 +359,7 @@ const en: UI = {
     faqTitle: 'Frequently asked questions',
     country: 'Poland',
     faqs: [
-      { q: 'What is the entry value for a deployment?', a: 'The value of the first orders starts from PLN 2 million upward and is delivered turnkey - from robot design and build to commissioning, documentation and service.' },
+      { q: 'What is the entry value for a deployment?', a: 'The value of the first orders starts from €2 million upward and is delivered turnkey - from robot design and build to commissioning, documentation and service.' },
       { q: 'Do I have to buy a robot?', a: 'Not always. We offer sale, seasonal rental and settlement for work done - the client pays for the result while the robot and operators stay on our side.' },
       { q: 'Where does the data stay?', a: 'Our models can run locally, on-device, without sending imagery outside. Data and compliance stay in the European Union.' },
     ],
@@ -534,7 +534,7 @@ const pl: DeepPartial<UI> = {
     faqTitle: 'Najczęstsze pytania',
     country: 'Polska',
     faqs: [
-      { q: 'Od jakiej wartości zaczynają się wdrożenia?', a: 'Wartość pierwszych zamówień zaczyna się od 2 milionów złotych wzwyż i jest realizowana pod klucz - od projektu i budowy robotów po uruchomienie, dokumentację i serwis.' },
+      { q: 'Od jakiej wartości zaczynają się wdrożenia?', a: 'Wartość pierwszych zamówień zaczyna się od 2 milionów euro wzwyż i jest realizowana pod klucz - od projektu i budowy robotów po uruchomienie, dokumentację i serwis.' },
       { q: 'Czy trzeba kupić robota?', a: 'Nie zawsze. Oferujemy sprzedaż, wynajem sezonowy oraz rozliczenie za wykonaną pracę - klient płaci za rezultat, a robot i operatorzy pozostają po naszej stronie.' },
       { q: 'Gdzie zostają dane?', a: 'Nasze modele mogą pracować lokalnie, na urządzeniu, bez wysyłania obrazu na zewnątrz. Dane i zgodność zostają w Unii Europejskiej.' },
     ],

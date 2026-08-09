@@ -160,7 +160,7 @@ export const fr: DeepPartial<UI> = {
     faqTitle: 'Questions fréquentes',
     country: 'Pologne',
     faqs: [
-      { q: "Quel est le montant d'entrée pour un déploiement ?", a: 'La valeur des premières commandes démarre à partir de 2 millions de PLN et est livrée clé en main - de la conception et de la construction du robot à la mise en service, la documentation et le service.' },
+      { q: "Quel est le montant d'entrée pour un déploiement ?", a: 'La valeur des premières commandes démarre à partir de 2 millions de € et est livrée clé en main - de la conception et de la construction du robot à la mise en service, la documentation et le service.' },
       { q: 'Suis-je obligé d\'acheter un robot ?', a: "Pas toujours. Nous proposons la vente, la location saisonnière et la facturation au travail réalisé - le client paie pour le résultat tandis que le robot et les opérateurs restent de notre côté." },
       { q: 'Où sont conservées les données ?', a: "Nos modèles peuvent fonctionner localement, sur l'appareil, sans envoyer d'images à l'extérieur. Les données et la conformité restent dans l'Union européenne." },
     ],

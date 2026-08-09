@@ -166,7 +166,7 @@ export const sv: DeepPartial<UI> = {
     faqTitle: 'Vanliga frågor',
     country: 'Polen',
     faqs: [
-      { q: 'Vilket är ingångsvärdet för en driftsättning?', a: 'Värdet på de första beställningarna börjar från 2 miljoner PLN och uppåt och levereras nyckelfärdigt - från robotens konstruktion och bygge till driftsättning, dokumentation och service.' },
+      { q: 'Vilket är ingångsvärdet för en driftsättning?', a: 'Värdet på de första beställningarna börjar från 2 miljoner € och uppåt och levereras nyckelfärdigt - från robotens konstruktion och bygge till driftsättning, dokumentation och service.' },
       { q: 'Måste jag köpa en robot?', a: 'Inte alltid. Vi erbjuder försäljning, säsongsuthyrning och avräkning för utfört arbete - kunden betalar för resultatet medan roboten och operatörerna stannar på vår sida.' },
       { q: 'Var stannar datan?', a: 'Våra modeller kan köras lokalt, på enheten, utan att skicka bilder utanför. Data och regelefterlevnad stannar inom Europeiska unionen.' },
     ],

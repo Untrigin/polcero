@@ -79,11 +79,11 @@ export const pt: SiteContentOverride = {
     {
       tagline: 'Computação de IA com luz', desc: 'Direção de I&D: computação fotónica para acelerar a inferência de IA nos nossos robôs - menos consumo, maior desempenho.',
       intro: 'Os Processadores Fotónicos são a direção de I&D da POLCERO: acelerar a inferência de IA nos nossos robôs usando luz em vez de apenas eletrónica. A multiplicação óptica de matrizes - a operação central nas redes neuronais - pode ser feita numa única passagem óptica por um chip fotónico, proporcionando latência sub-nanossegundo e um consumo de energia por operação ordens de grandeza inferior ao dos chips GPU/ASIC.',
-      points: ['Multiplicação óptica de matrizes', 'Arquitetura híbrida fotónica-eletrónica', 'Mercado: de 1,8 mil milhões para 14,6 mil milhões USD', 'A fotónica como futura camada de computação'],
+      points: ['Multiplicação óptica de matrizes', 'Arquitetura híbrida fotónica-eletrónica', 'Mercado: de 1,8 mil milhões para 14,6 mil milhões EUR', 'A fotónica como futura camada de computação'],
       sections: [
         { title: 'Multiplicação óptica de matrizes', desc: 'A inferência de redes neuronais é dominada pela multiplicação matriz-vetor (GEMM). Os chips fotónicos executam-na com luz que atravessa malhas de interferómetros de Mach-Zehnder - fazendo numa única passagem óptica o que a eletrónica precisa de milhares de ciclos de relógio para calcular.' },
         { title: 'Arquitetura híbrida fotónica-eletrónica', desc: 'Os chips fotónicos destacam-se em operações lineares (matemática de matrizes), mas não nas não lineares (funções de ativação). A arquitetura de consenso combina núcleos ópticos para a matemática de matrizes com unidades eletrónicas para as ativações - um projeto híbrido que aproveita o melhor de ambos.' },
-        { title: 'Mercado: de 1,8 mil milhões para 14,6 mil milhões USD', desc: 'O mercado global de aceleradores de IA fotónicos, de 2025 a 2034 (CAGR de 26,3%). Em 2026, acompanhamos 52 empresas de computação fotónica a nível mundial.' },
+        { title: 'Mercado: de 1,8 mil milhões para 14,6 mil milhões EUR', desc: 'O mercado global de aceleradores de IA fotónicos, de 2025 a 2034 (CAGR de 26,3%). Em 2026, acompanhamos 52 empresas de computação fotónica a nível mundial.' },
         { title: 'A fotónica como futura camada de computação', desc: 'À medida que os aceleradores fotónicos atinjam a maturidade (uma janela de 2027-2031 para produtos de classe centro de dados), a arquitetura do cérebro de IA POLCERO está preparada para os absorver - a camada de abstração permite trocar o substrato de computação sem voltar a treinar a inteligência das tarefas.' },
       ],
     },
@@ -282,7 +282,7 @@ export const pt: SiteContentOverride = {
       approach: [
         { title: 'O robô desloca-se até ao posto', text: 'Um humanoide sobre plataforma móvel atende vários postos em vez de ficar num só e fecha as lacunas entre máquinas.' },
         { title: 'Duas operações por ciclo', text: 'Uma configuração de dois braços com rotação na cintura aumenta o rendimento do posto em trabalho repetitivo.' },
-        { title: 'Implementação chave na mão', text: 'Projeto, construção, integração, comissionamento, documentação e assistência - a partir de 2 milhões de PLN, com avaliação de conformidade.' },
+        { title: 'Implementação chave na mão', text: 'Projeto, construção, integração, comissionamento, documentação e assistência - a partir de 2 milhões de €, com avaliação de conformidade.' },
       ],
     },
     {
@@ -290,13 +290,13 @@ export const pt: SiteContentOverride = {
       intro: 'Os grandes fabricantes agrícolas são muito bons na colheita em massa e na navegação em campo aberto. A manipulação seletiva em culturas macias e delicadas, e o trabalho em túneis e estufas onde o sinal de satélite falha, permanecem mal servidos. Esta é a nossa área, e escolhemo-la deliberadamente.',
       challenges: [
         { title: 'Escassez de mão de obra sazonal', text: 'Uma única exploração emprega de cem a cento e cinquenta pessoas no pico - e há cada vez menos disponíveis.' },
-        { title: 'Custos de mão de obra crescentes', text: 'O custo total de um trabalhador sazonal ronda hoje os 15 900 PLN por mês, e continua a subir.' },
+        { title: 'Custos de mão de obra crescentes', text: 'O custo total de um trabalhador sazonal ronda hoje os 15 900 € por mês, e continua a subir.' },
         { title: 'Pressão para reduzir a química', text: 'O tratamento e a monda têm de ser cada vez mais precisos e localizados.' },
         { title: 'Uma época curta', text: 'Uma exploração precisa da máquina durante seis meses - não faz sentido imobilizar capital nela o ano inteiro.' },
       ],
       approach: [
         { title: 'Um módulo de tarefa agrícola', text: 'Um robô com braços e garra colhe a cultura e, quando necessário, troca a ferramenta por um laser para monda.' },
-        { title: 'Faturação por resultado', text: 'Visamos 9-12 groszy por unidade contra 15-20 na colheita manual - cerca de 40% menos.' },
+        { title: 'Faturação por resultado', text: 'Visamos 9-12 eurocent por unidade contra 15-20 na colheita manual - cerca de 40% menos.' },
         { title: 'Trabalha sem GPS', text: 'Colheita seletiva e tratamento em túneis e estufas onde a navegação por satélite falha.' },
       ],
     },

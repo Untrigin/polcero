@@ -114,13 +114,13 @@ export const de: SiteContentOverride = {
       points: [
         'Optische Matrixmultiplikation',
         'Hybride photonisch-elektronische Architektur',
-        'Markt: von 1,8 Mrd. auf 14,6 Mrd. USD',
+        'Markt: von 1,8 Mrd. auf 14,6 Mrd. EUR',
         'Photonik als künftige Rechenschicht',
       ],
       sections: [
         { title: 'Optische Matrixmultiplikation', desc: 'Die Inferenz neuronaler Netze wird von der Matrix-Vektor-Multiplikation (GEMM) dominiert. Photonische Chips führen sie mit Licht aus, das durch Netze aus Mach-Zehnder-Interferometern läuft - sie leisten in einem einzigen optischen Durchgang, wofür Elektronik Tausende von Taktzyklen benötigt.' },
         { title: 'Hybride photonisch-elektronische Architektur', desc: 'Photonische Chips sind hervorragend bei linearen Operationen (Matrixmathematik), aber nicht bei nichtlinearen (Aktivierungsfunktionen). Die Konsens-Architektur kombiniert optische Kerne für die Matrixmathematik mit elektronischen Einheiten für die Aktivierungen - ein hybrides Design, das das Beste aus beiden vereint.' },
-        { title: 'Markt: von 1,8 Mrd. auf 14,6 Mrd. USD', desc: 'Der globale Markt für photonische KI-Beschleuniger, 2025 bis 2034 (CAGR 26,3 %). Stand 2026 verfolgen wir weltweit 52 Unternehmen im Bereich photonisches Rechnen.' },
+        { title: 'Markt: von 1,8 Mrd. auf 14,6 Mrd. EUR', desc: 'Der globale Markt für photonische KI-Beschleuniger, 2025 bis 2034 (CAGR 26,3 %). Stand 2026 verfolgen wir weltweit 52 Unternehmen im Bereich photonisches Rechnen.' },
         { title: 'Photonik als künftige Rechenschicht', desc: 'Wenn photonische Beschleuniger die Reife erreichen (ein Zeitfenster 2027-2031 für Produkte der Rechenzentrumsklasse), ist die Architektur des POLCERO-KI-Gehirns darauf ausgelegt, sie aufzunehmen - die Abstraktionsschicht erlaubt den Austausch des Rechensubstrats, ohne die Aufgabenintelligenz neu zu trainieren.' },
       ],
     },
@@ -341,7 +341,7 @@ export const de: SiteContentOverride = {
       approach: [
         { title: 'Der Roboter fährt an die Station heran', text: 'Ein Humanoid auf einer mobilen Plattform bedient mehrere Stationen, statt an einer zu stehen, und schließt die Lücken zwischen den Maschinen.' },
         { title: 'Zwei Operationen pro Zyklus', text: 'Eine zweiarmige Anordnung mit Drehung in der Taille erhöht den Stationsdurchsatz bei wiederholbarer Arbeit.' },
-        { title: 'Schlüsselfertiger Einsatz', text: 'Konzeption, Bau, Integration, Inbetriebnahme, Dokumentation und Service - ab 2 Mio. PLN, mit Konformitätsbewertung.' },
+        { title: 'Schlüsselfertiger Einsatz', text: 'Konzeption, Bau, Integration, Inbetriebnahme, Dokumentation und Service - ab 2 Mio. €, mit Konformitätsbewertung.' },
       ],
     },
     {
@@ -350,13 +350,13 @@ export const de: SiteContentOverride = {
       intro: 'Die großen Landmaschinenhersteller sind sehr gut in der Masseernte und der Navigation auf offenem Feld. Die selektive Manipulation in weichen, empfindlichen Kulturen sowie die Arbeit in Tunneln und Gewächshäusern, wo das Satellitensignal versagt, bleiben schlecht bedient. Das ist unser Bereich, und wir haben ihn bewusst gewählt.',
       challenges: [
         { title: 'Mangel an Saisonkräften', text: 'Ein einzelner Betrieb beschäftigt in der Spitze hundert bis hundertfünfzig Personen - und jedes Jahr sind weniger verfügbar.' },
-        { title: 'Steigende Arbeitskosten', text: 'Die Vollkosten einer Saisonkraft liegen heute bei etwa 15.900 PLN pro Monat und steigen weiter.' },
+        { title: 'Steigende Arbeitskosten', text: 'Die Vollkosten einer Saisonkraft liegen heute bei etwa 15.900 € pro Monat und steigen weiter.' },
         { title: 'Druck, Chemie zu reduzieren', text: 'Pflege und Unkrautbekämpfung müssen immer präziser und punktueller werden.' },
         { title: 'Eine kurze Saison', text: 'Ein Betrieb braucht die Maschine sechs Monate lang - kein Grund, dafür das ganze Jahr Kapital zu binden.' },
       ],
       approach: [
         { title: 'Ein Landwirtschafts-Aufgabenmodul', text: 'Ein Roboter mit Armen und Greifer erntet die Kultur und tauscht bei Bedarf das Werkzeug gegen einen Laser zur Unkrautbekämpfung.' },
-        { title: 'Abrechnung nach Ergebnis', text: 'Wir zielen auf 9-12 Groszy pro Einheit gegenüber 15-20 bei der Handernte - etwa 40 % weniger.' },
+        { title: 'Abrechnung nach Ergebnis', text: 'Wir zielen auf 9-12 Eurocent pro Einheit gegenüber 15-20 bei der Handernte - etwa 40 % weniger.' },
         { title: 'Arbeitet ohne GPS', text: 'Selektive Ernte und Pflege in Tunneln und Gewächshäusern, wo die Satellitennavigation versagt.' },
       ],
     },

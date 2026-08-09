@@ -145,7 +145,7 @@ html[data-theme="light"] .hdr__icon-btn .icon-moon { display: inline; }
 .hdr__lang { display: none; align-items: center; }
 .hdr__lang-select {
   appearance: none; -webkit-appearance: none;
-  background-color: var(--color-surface);
+  background-color: transparent;
   color: var(--color-ice);
   border: 1px solid var(--color-line);
   border-radius: 8px;

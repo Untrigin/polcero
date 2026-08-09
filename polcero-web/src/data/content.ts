@@ -145,7 +145,7 @@ const pl: SiteContent = {
   },
   stats: [
     { value: '500 kg', label: 'udźwig drona transportowego' },
-    { value: '$200B+', label: 'globalny rynek robotyki do 2030' },
+    { value: '€200B+', label: 'globalny rynek robotyki do 2030' },
     { value: '≈40%', label: 'niższy koszt zbioru na sztukę' },
     { value: '2027', label: 'start wdrożeń u klientów' },
   ],
@@ -301,7 +301,7 @@ const pl: SiteContent = {
       approach: [
         { title: 'Robot dojeżdża do stanowiska', text: 'Humanoid na platformie jezdnej obsługuje kilka stanowisk zamiast stać przy jednym i domyka luki między maszynami klienta.' },
         { title: 'Dwie operacje w jednym cyklu', text: 'Układ dwuramienny z obrotem w pasie zwiększa przepustowość stanowiska przy pracy powtarzalnej.' },
-        { title: 'Wdrożenie pod klucz', text: 'Projekt, budowa, integracja, uruchomienie, dokumentacja i serwis - od 2 mln zł, z oceną zgodności.' },
+        { title: 'Wdrożenie pod klucz', text: 'Projekt, budowa, integracja, uruchomienie, dokumentacja i serwis - od 2 mln €, z oceną zgodności.' },
       ],
     },
     {
@@ -309,13 +309,13 @@ const pl: SiteContent = {
       intro: 'Wielcy producenci maszyn rolniczych są bardzo dobrzy w zbiorze masowym i w nawigacji po otwartym polu. Selektywna manipulacja w miękkim, wrażliwym plonie oraz praca w tunelach i szklarniach, gdzie zawodzi sygnał satelitarny, pozostają obszarem słabo obsadzonym. To jest nasz obszar i wybraliśmy go świadomie.',
       challenges: [
         { title: 'Brak pracowników sezonowych', text: 'Przy jednej farmie pracuje w szczycie od stu do stu pięćdziesięciu osób, a chętnych jest coraz mniej.' },
-        { title: 'Rosnące koszty pracy', text: 'Pełny koszt jednego pracownika sezonowego to dziś około 15 900 zł miesięcznie - i rośnie.' },
+        { title: 'Rosnące koszty pracy', text: 'Pełny koszt jednego pracownika sezonowego to dziś około 15 900 € miesięcznie - i rośnie.' },
         { title: 'Presja na ograniczenie chemii', text: 'Pielęgnacja i odchwaszczanie muszą być coraz bardziej precyzyjne i punktowe.' },
         { title: 'Krótki sezon', text: 'Gospodarstwo potrzebuje maszyny przez sześć miesięcy - nie ma powodu zamrażać kapitału na cały rok.' },
       ],
       approach: [
         { title: 'Moduł zadaniowy do rolnictwa', text: 'Robot z ramionami i chwytakiem zbiera plon, a gdy trzeba wymienia narzędzie na laser do odchwaszczania.' },
-        { title: 'Rozliczenie za rezultat', text: 'Celujemy w 9-12 groszy za sztukę wobec 15-20 groszy przy zbiorze ręcznym - około 40% mniej.' },
+        { title: 'Rozliczenie za rezultat', text: 'Celujemy w 9-12 eurocent za sztukę wobec 15-20 eurocent przy zbiorze ręcznym - około 40% mniej.' },
         { title: 'Praca bez sygnału GPS', text: 'Selektywny zbiór i pielęgnacja w tunelach i szklarniach, gdzie nawigacja satelitarna zawodzi.' },
       ],
     },
@@ -418,7 +418,7 @@ const en: SiteContent = {
   },
   stats: [
     { value: '500 kg', label: 'transport drone payload' },
-    { value: '$200B+', label: 'global robotics market by 2030' },
+    { value: '€200B+', label: 'global robotics market by 2030' },
     { value: '≈40%', label: 'lower harvest cost per unit' },
     { value: '2027', label: 'first client deployments' },
   ],
@@ -573,7 +573,7 @@ const en: SiteContent = {
       approach: [
         { title: 'The robot drives up to the station', text: 'A humanoid on a mobile platform serves several stations instead of standing at one and closes the gaps between machines.' },
         { title: 'Two operations per cycle', text: 'A dual-arm layout with waist rotation raises station throughput on repetitive work.' },
-        { title: 'Turnkey deployment', text: 'Design, build, integration, commissioning, documentation and service - from PLN 2M, with conformity assessment.' },
+        { title: 'Turnkey deployment', text: 'Design, build, integration, commissioning, documentation and service - from €2M, with conformity assessment.' },
       ],
     },
     {
@@ -581,13 +581,13 @@ const en: SiteContent = {
       intro: 'The large agricultural manufacturers are very good at mass harvest and open-field navigation. Selective manipulation in soft, delicate crops, and work in tunnels and greenhouses where satellite signal fails, remain poorly served. This is our area, and we chose it deliberately.',
       challenges: [
         { title: 'Seasonal labour shortage', text: 'A single farm employs a hundred to a hundred-fifty people at peak - and fewer are available each year.' },
-        { title: 'Rising labour cost', text: 'The full cost of one seasonal worker is about PLN 15,900 per month today, and climbing.' },
+        { title: 'Rising labour cost', text: 'The full cost of one seasonal worker is about €15,900 per month today, and climbing.' },
         { title: 'Pressure to cut chemistry', text: 'Care and weeding must become ever more precise and spot-level.' },
         { title: 'A short season', text: 'A farm needs the machine for six months - no reason to freeze capital on it all year.' },
       ],
       approach: [
         { title: 'An agriculture task module', text: 'A robot with arms and a gripper harvests the crop, and when needed swaps the tool for a laser to weed.' },
-        { title: 'Settlement for the result', text: 'We target 9-12 groszy per unit versus 15-20 for manual harvest - about 40% less.' },
+        { title: 'Settlement for the result', text: 'We target 9-12 eurocent per unit versus 15-20 for manual harvest - about 40% less.' },
         { title: 'Works without GPS', text: 'Selective harvest and care in tunnels and greenhouses where satellite navigation fails.' },
       ],
     },
@@ -814,20 +814,20 @@ const branchMeta: Record<string, BMeta> = {
       en: 'Photonic Processors is POLCERO\'s R&D direction: accelerating AI inference in our robots using light instead of electronics alone. Optical matrix multiplication - the core operation in neural networks - can be done in a single optical pass through a photonic chip, delivering sub-nanosecond latency and orders-of-magnitude lower energy per operation than GPU/ASIC chips.',
     },
     points: {
-      pl: ['Optyczne mnożenie macierzy', 'Architektura hybrydowa fotoniczno-elektroniczna', 'Rynek: z 1,8 mld do 14,6 mld USD', 'Fotonika jako przyszła warstwa obliczeniowa'],
-      en: ['Optical matrix multiplication', 'Hybrid photonic-electronic architecture', 'Market: from $1.8B to $14.6B', 'Photonics as the future compute layer'],
+      pl: ['Optyczne mnożenie macierzy', 'Architektura hybrydowa fotoniczno-elektroniczna', 'Rynek: z 1,8 mld do 14,6 mld EUR', 'Fotonika jako przyszła warstwa obliczeniowa'],
+      en: ['Optical matrix multiplication', 'Hybrid photonic-electronic architecture', 'Market: from €1.8B to €14.6B', 'Photonics as the future compute layer'],
     },
     sections: {
       pl: [
         { title: 'Optyczne mnożenie macierzy', desc: 'Wnioskowanie sieci neuronowych zdominowane jest przez mnożenie macierz-wektor (GEMM). Chipy fotoniczne wykonują je światłem przechodzącym przez siatki interferometrów Macha-Zehndera - w jednym przejściu robią to, co elektronika liczy przez tysiące cykli zegara.' },
         { title: 'Architektura hybrydowa fotoniczno-elektroniczna', desc: 'Chipy fotoniczne świetnie liczą operacje liniowe (macierze), ale nie funkcje nieliniowe. Konsensusowa architektura łączy rdzenie optyczne do matematyki macierzowej z jednostkami elektronicznymi do aktywacji - projekt hybrydowy łączy zalety obu.' },
-        { title: 'Rynek: z 1,8 mld do 14,6 mld USD', desc: 'Globalny rynek fotonicznych akceleratorów AI, od 2025 do 2034 (CAGR 26,3%). Na 2026 rok śledzimy 52 firmy zajmujące się obliczeniami fotonicznymi.' },
+        { title: 'Rynek: z 1,8 mld do 14,6 mld EUR', desc: 'Globalny rynek fotonicznych akceleratorów AI, od 2025 do 2034 (CAGR 26,3%). Na 2026 rok śledzimy 52 firmy zajmujące się obliczeniami fotonicznymi.' },
         { title: 'Fotonika jako przyszła warstwa obliczeniowa', desc: 'Gdy akceleratory fotoniczne osiągną dojrzałość (horyzont 2027-2031 dla produktów klasy centrum danych), architektura mózgu AI POLCERO jest gotowa je wchłonąć - warstwa abstrakcji pozwala wymienić substrat obliczeniowy bez ponownego trenowania inteligencji zadań.' },
       ],
       en: [
         { title: 'Optical matrix multiplication', desc: 'Neural-network inference is dominated by matrix-vector multiplication (GEMM). Photonic chips perform it with light passing through Mach-Zehnder interferometer meshes - doing in a single optical pass what electronics need thousands of clock cycles to compute.' },
         { title: 'Hybrid photonic-electronic architecture', desc: 'Photonic chips excel at linear operations (matrix math) but not nonlinear ones (activation functions). The consensus architecture pairs optical cores for matrix math with electronic units for activations - a hybrid design taking the best of both.' },
-        { title: 'Market: from $1.8B to $14.6B', desc: 'The global photonic AI-accelerator market, 2025 to 2034 (CAGR 26.3%). As of 2026 we track 52 photonic-computing companies worldwide.' },
+        { title: 'Market: from €1.8B to €14.6B', desc: 'The global photonic AI-accelerator market, 2025 to 2034 (CAGR 26.3%). As of 2026 we track 52 photonic-computing companies worldwide.' },
         { title: 'Photonics as the future compute layer', desc: 'As photonic accelerators reach maturity (a 2027-2031 window for datacenter-class products), the POLCERO AI-brain architecture is built to absorb them - the abstraction layer lets us swap the compute substrate without retraining the task intelligence.' },
       ],
     },

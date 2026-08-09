@@ -166,7 +166,7 @@ export const ro: DeepPartial<UI> = {
     faqTitle: 'Întrebări frecvente',
     country: 'Polonia',
     faqs: [
-      { q: 'Care este valoarea de intrare pentru o implementare?', a: 'Valoarea primelor comenzi începe de la 2 milioane PLN în sus și este livrată la cheie - de la proiectarea și construcția robotului până la punerea în funcțiune, documentație și service.' },
+      { q: 'Care este valoarea de intrare pentru o implementare?', a: 'Valoarea primelor comenzi începe de la 2 milioane € în sus și este livrată la cheie - de la proiectarea și construcția robotului până la punerea în funcțiune, documentație și service.' },
       { q: 'Trebuie să cumpăr un robot?', a: 'Nu întotdeauna. Oferim vânzare, închiriere sezonieră și decontare pentru munca prestată - clientul plătește pentru rezultat, în timp ce robotul și operatorii rămân de partea noastră.' },
       { q: 'Unde rămân datele?', a: 'Modelele noastre pot rula local, pe dispozitiv, fără a trimite imagini în afară. Datele și conformitatea rămân în Uniunea Europeană.' },
     ],

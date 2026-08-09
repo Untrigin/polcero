@@ -84,11 +84,11 @@ export const fr: SiteContentOverride = {
       tagline: 'Calcul IA par la lumière',
       desc: 'Axe R&D : le calcul photonique pour accélérer l\'inférence IA dans nos robots - moins d\'énergie, plus de débit.',
       intro: 'Photonic Processors est l\'axe R&D de POLCERO : accélérer l\'inférence IA dans nos robots grâce à la lumière plutôt qu\'à la seule électronique. La multiplication matricielle optique - l\'opération centrale des réseaux de neurones - peut s\'effectuer en un seul passage optique à travers une puce photonique, offrant une latence sous la nanoseconde et une énergie par opération inférieure de plusieurs ordres de grandeur à celle des puces GPU/ASIC.',
-      points: ['Multiplication matricielle optique', 'Architecture hybride photonique-électronique', 'Marché : de 1,8 à 14,6 milliards USD', 'La photonique comme future couche de calcul'],
+      points: ['Multiplication matricielle optique', 'Architecture hybride photonique-électronique', 'Marché : de 1,8 à 14,6 milliards EUR', 'La photonique comme future couche de calcul'],
       sections: [
         { title: 'Multiplication matricielle optique', desc: 'L\'inférence des réseaux de neurones est dominée par la multiplication matrice-vecteur (GEMM). Les puces photoniques l\'exécutent avec de la lumière traversant des réseaux d\'interféromètres de Mach-Zehnder - réalisant en un seul passage optique ce que l\'électronique met des milliers de cycles d\'horloge à calculer.' },
         { title: 'Architecture hybride photonique-électronique', desc: 'Les puces photoniques excellent dans les opérations linéaires (calcul matriciel) mais pas dans les opérations non linéaires (fonctions d\'activation). L\'architecture de consensus associe des cœurs optiques pour le calcul matriciel à des unités électroniques pour les activations - une conception hybride qui prend le meilleur des deux.' },
-        { title: 'Marché : de 1,8 à 14,6 milliards USD', desc: 'Le marché mondial des accélérateurs IA photoniques, de 2025 à 2034 (TCAC 26,3 %). En 2026, nous suivons 52 entreprises de calcul photonique dans le monde.' },
+        { title: 'Marché : de 1,8 à 14,6 milliards EUR', desc: 'Le marché mondial des accélérateurs IA photoniques, de 2025 à 2034 (TCAC 26,3 %). En 2026, nous suivons 52 entreprises de calcul photonique dans le monde.' },
         { title: 'La photonique comme future couche de calcul', desc: 'Lorsque les accélérateurs photoniques atteindront leur maturité (horizon 2027-2031 pour les produits de classe centre de données), l\'architecture du cerveau IA POLCERO est prête à les intégrer - la couche d\'abstraction permet de remplacer le substrat de calcul sans réentraîner l\'intelligence des tâches.' },
       ],
     },
@@ -295,7 +295,7 @@ export const fr: SiteContentOverride = {
       approach: [
         { title: 'Le robot vient jusqu\'au poste', text: 'Un humanoïde sur plateforme mobile dessert plusieurs postes au lieu de rester à un seul et comble les écarts entre les machines.' },
         { title: 'Deux opérations par cycle', text: 'Une architecture à deux bras avec rotation à la taille augmente le débit du poste sur les travaux répétitifs.' },
-        { title: 'Déploiement clé en main', text: 'Conception, fabrication, intégration, mise en service, documentation et maintenance - à partir de 2 M PLN, avec évaluation de conformité.' },
+        { title: 'Déploiement clé en main', text: 'Conception, fabrication, intégration, mise en service, documentation et maintenance - à partir de 2 M €, avec évaluation de conformité.' },
       ],
     },
     {
@@ -304,13 +304,13 @@ export const fr: SiteContentOverride = {
       intro: 'Les grands constructeurs de matériel agricole excellent dans la récolte de masse et la navigation en plein champ. La manipulation sélective dans des cultures tendres et délicates, ainsi que le travail en tunnels et serres où le signal satellite fait défaut, restent mal couverts. C\'est notre domaine, et nous l\'avons choisi délibérément.',
       challenges: [
         { title: 'Pénurie de saisonniers', text: 'Une seule ferme emploie de cent à cent cinquante personnes en pleine saison - et il y a chaque année moins de candidats.' },
-        { title: 'Coût de la main-d\'œuvre en hausse', text: 'Le coût complet d\'un travailleur saisonnier avoisine aujourd\'hui 15 900 PLN par mois, et il grimpe.' },
+        { title: 'Coût de la main-d\'œuvre en hausse', text: 'Le coût complet d\'un travailleur saisonnier avoisine aujourd\'hui 15 900 € par mois, et il grimpe.' },
         { title: 'Pression pour réduire la chimie', text: 'L\'entretien et le désherbage doivent devenir toujours plus précis et ponctuels.' },
         { title: 'Une saison courte', text: 'Une exploitation a besoin de la machine six mois - aucune raison d\'y immobiliser du capital toute l\'année.' },
       ],
       approach: [
         { title: 'Un module de tâche agricole', text: 'Un robot doté de bras et d\'une pince récolte la culture et remplace au besoin l\'outil par un laser pour désherber.' },
-        { title: 'Facturation au résultat', text: 'Nous visons 9 à 12 groszy par unité contre 15 à 20 pour la récolte manuelle - environ 40 % de moins.' },
+        { title: 'Facturation au résultat', text: 'Nous visons 9 à 12 eurocent par unité contre 15 à 20 pour la récolte manuelle - environ 40 % de moins.' },
         { title: 'Fonctionne sans GPS', text: 'Récolte sélective et entretien en tunnels et serres où la navigation satellite fait défaut.' },
       ],
     },

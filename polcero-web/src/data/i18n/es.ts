@@ -84,11 +84,11 @@ export const es: SiteContentOverride = {
       tagline: 'Cómputo de IA con luz',
       desc: 'Línea de I+D: computación fotónica para acelerar la inferencia de IA en nuestros robots - menos consumo, mayor rendimiento.',
       intro: 'Photonic Processors es la línea de I+D de POLCERO: acelerar la inferencia de IA en nuestros robots usando luz en lugar de solo electrónica. La multiplicación óptica de matrices - la operación central en las redes neuronales - puede realizarse en un único paso óptico a través de un chip fotónico, ofreciendo latencia sub-nanosegundo y un consumo de energía por operación varios órdenes de magnitud menor que los chips GPU/ASIC.',
-      points: ['Multiplicación óptica de matrices', 'Arquitectura híbrida fotónica-electrónica', 'Mercado: de 1,8 mil M a 14,6 mil M USD', 'La fotónica como futura capa de cómputo'],
+      points: ['Multiplicación óptica de matrices', 'Arquitectura híbrida fotónica-electrónica', 'Mercado: de 1,8 mil M a 14,6 mil M EUR', 'La fotónica como futura capa de cómputo'],
       sections: [
         { title: 'Multiplicación óptica de matrices', desc: 'La inferencia de redes neuronales está dominada por la multiplicación matriz-vector (GEMM). Los chips fotónicos la realizan con luz que atraviesa mallas de interferómetros Mach-Zehnder - haciendo en un único paso óptico lo que la electrónica necesita miles de ciclos de reloj para calcular.' },
         { title: 'Arquitectura híbrida fotónica-electrónica', desc: 'Los chips fotónicos destacan en las operaciones lineales (matemática de matrices) pero no en las no lineales (funciones de activación). La arquitectura de consenso combina núcleos ópticos para la matemática de matrices con unidades electrónicas para las activaciones - un diseño híbrido que toma lo mejor de ambos.' },
-        { title: 'Mercado: de 1,8 mil M a 14,6 mil M USD', desc: 'El mercado mundial de aceleradores de IA fotónicos, de 2025 a 2034 (CAGR del 26,3%). A fecha de 2026 seguimos a 52 empresas de computación fotónica en todo el mundo.' },
+        { title: 'Mercado: de 1,8 mil M a 14,6 mil M EUR', desc: 'El mercado mundial de aceleradores de IA fotónicos, de 2025 a 2034 (CAGR del 26,3%). A fecha de 2026 seguimos a 52 empresas de computación fotónica en todo el mundo.' },
         { title: 'La fotónica como futura capa de cómputo', desc: 'Cuando los aceleradores fotónicos alcancen la madurez (una ventana de 2027-2031 para productos de clase centro de datos), la arquitectura del cerebro de IA POLCERO está preparada para incorporarlos - la capa de abstracción permite cambiar el sustrato de cómputo sin reentrenar la inteligencia de tareas.' },
       ],
     },
@@ -319,7 +319,7 @@ export const es: SiteContentOverride = {
       approach: [
         { title: 'El robot se acerca al puesto', text: 'Un humanoide sobre plataforma móvil atiende varios puestos en lugar de quedarse en uno y cubre los huecos entre máquinas.' },
         { title: 'Dos operaciones por ciclo', text: 'Una configuración de doble brazo con giro de cintura aumenta el rendimiento del puesto en trabajos repetitivos.' },
-        { title: 'Despliegue llave en mano', text: 'Diseño, fabricación, integración, puesta en marcha, documentación y servicio - desde 2 mln PLN, con evaluación de conformidad.' },
+        { title: 'Despliegue llave en mano', text: 'Diseño, fabricación, integración, puesta en marcha, documentación y servicio - desde 2 mln €, con evaluación de conformidad.' },
       ],
     },
     {
@@ -328,13 +328,13 @@ export const es: SiteContentOverride = {
       intro: 'Los grandes fabricantes de maquinaria agrícola son muy buenos en la cosecha masiva y en la navegación en campo abierto. La manipulación selectiva en cultivos blandos y delicados, y el trabajo en túneles e invernaderos donde falla la señal por satélite, siguen estando poco atendidos. Este es nuestro terreno, y lo hemos elegido de forma deliberada.',
       challenges: [
         { title: 'Escasez de temporeros', text: 'Una sola explotación emplea de cien a ciento cincuenta personas en el pico - y cada año hay menos disponibles.' },
-        { title: 'Coste laboral creciente', text: 'El coste total de un temporero ronda hoy los 15 900 PLN al mes, y sigue subiendo.' },
+        { title: 'Coste laboral creciente', text: 'El coste total de un temporero ronda hoy los 15 900 € al mes, y sigue subiendo.' },
         { title: 'Presión para reducir la química', text: 'El cuidado y el desherbado deben ser cada vez más precisos y localizados.' },
         { title: 'Una temporada corta', text: 'Una explotación necesita la máquina seis meses - no tiene sentido inmovilizar capital en ella todo el año.' },
       ],
       approach: [
         { title: 'Un módulo de tarea agrícola', text: 'Un robot con brazos y pinza cosecha el cultivo y, cuando hace falta, cambia la herramienta por un láser para desherbar.' },
-        { title: 'Facturación por resultado', text: 'Apuntamos a 9-12 groszy por unidad frente a 15-20 en la cosecha manual - alrededor de un 40% menos.' },
+        { title: 'Facturación por resultado', text: 'Apuntamos a 9-12 eurocent por unidad frente a 15-20 en la cosecha manual - alrededor de un 40% menos.' },
         { title: 'Funciona sin GPS', text: 'Cosecha selectiva y cuidado en túneles e invernaderos donde falla la navegación por satélite.' },
       ],
     },

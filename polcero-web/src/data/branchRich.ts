@@ -378,7 +378,7 @@ const farmaAi: RichBranch = {
 const photonic: RichBranch = {
   stats: [
     { value: 'sub-ns', label: 'Optical matrix-multiply latency' },
-    { value: '$1.8B → $14.6B', label: 'Market 2025-2034' },
+    { value: '€1.8B → €14.6B', label: 'Market 2025-2034' },
     { value: '26.3%', label: 'CAGR' },
     { value: '52', label: 'Photonic-compute firms tracked (2026)' },
   ],
@@ -390,7 +390,7 @@ const photonic: RichBranch = {
   services: [
     { badge: 'R&D', name: 'Optical matrix multiplication', tagline: 'One optical pass vs thousands of clock cycles', desc: 'Neural-network inference is dominated by matrix-vector multiplication (GEMM). Photonic chips perform it with light passing through Mach-Zehnder interferometer meshes - doing in a single optical pass what electronics need thousands of clock cycles to compute.' },
     { badge: 'R&D', name: 'Hybrid photonic-electronic architecture', tagline: 'Optical math, electronic activations', desc: 'Photonic chips excel at linear operations (matrix math) but not nonlinear ones (activation functions). The consensus architecture pairs optical cores for matrix math with electronic units for activations - a hybrid design taking the best of both.' },
-    { badge: 'MARKET', name: 'From $1.8B to $14.6B', tagline: 'A fast-growing accelerator market', desc: 'The global photonic AI-accelerator market, 2025 to 2034 (CAGR 26.3%). As of 2026 we track 52 photonic-computing companies worldwide.' },
+    { badge: 'MARKET', name: 'From €1.8B to €14.6B', tagline: 'A fast-growing accelerator market', desc: 'The global photonic AI-accelerator market, 2025 to 2034 (CAGR 26.3%). As of 2026 we track 52 photonic-computing companies worldwide.' },
     { badge: 'STRATEGY', name: 'Photonics as the future compute layer', tagline: 'Swap the substrate, keep the intelligence', desc: 'As photonic accelerators reach maturity (a 2027-2031 window for datacenter-class products), the POLCERO AI-brain architecture is built to absorb them - the abstraction layer lets us swap the compute substrate without retraining the task intelligence.' },
   ],
 };

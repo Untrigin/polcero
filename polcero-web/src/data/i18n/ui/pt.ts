@@ -160,7 +160,7 @@ export const pt: DeepPartial<UI> = {
     faqTitle: 'Perguntas frequentes',
     country: 'Polónia',
     faqs: [
-      { q: 'Qual é o valor de entrada para uma implementação?', a: 'O valor das primeiras encomendas começa a partir de 2 milhões de PLN e é entregue chave na mão - desde a conceção e construção do robô até à colocação em serviço, documentação e assistência.' },
+      { q: 'Qual é o valor de entrada para uma implementação?', a: 'O valor das primeiras encomendas começa a partir de 2 milhões de € e é entregue chave na mão - desde a conceção e construção do robô até à colocação em serviço, documentação e assistência.' },
       { q: 'Tenho de comprar um robô?', a: 'Nem sempre. Oferecemos venda, aluguer sazonal e pagamento pelo trabalho realizado - o cliente paga pelo resultado, enquanto o robô e os operadores ficam do nosso lado.' },
       { q: 'Onde ficam os dados?', a: 'Os nossos modelos podem funcionar localmente, no dispositivo, sem enviar imagens para o exterior. Os dados e a conformidade permanecem na União Europeia.' },
     ],

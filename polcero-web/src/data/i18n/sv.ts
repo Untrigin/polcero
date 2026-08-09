@@ -114,13 +114,13 @@ export const sv: SiteContentOverride = {
       points: [
         'Optisk matrismultiplikation',
         'Hybrid fotonisk-elektronisk arkitektur',
-        'Marknad: från 1,8 mdr till 14,6 mdr USD',
+        'Marknad: från 1,8 mdr till 14,6 mdr EUR',
         'Fotonik som framtidens beräkningslager',
       ],
       sections: [
         { title: 'Optisk matrismultiplikation', desc: 'Inferens i neurala nätverk domineras av matris-vektor-multiplikation (GEMM). Fotoniska chip utför den med ljus som passerar genom nät av Mach-Zehnder-interferometrar - de gör i ett enda optiskt pass det som elektronik behöver tusentals klockcykler för att beräkna.' },
         { title: 'Hybrid fotonisk-elektronisk arkitektur', desc: 'Fotoniska chip är utmärkta på linjära operationer (matrismatematik) men inte på icke-linjära (aktiveringsfunktioner). Konsensusarkitekturen kombinerar optiska kärnor för matrismatematik med elektroniska enheter för aktiveringar - en hybriddesign som tar det bästa av båda.' },
-        { title: 'Marknad: från 1,8 mdr till 14,6 mdr USD', desc: 'Den globala marknaden för fotoniska AI-acceleratorer, 2025 till 2034 (CAGR 26,3 %). Per 2026 följer vi 52 företag inom fotonisk beräkning världen över.' },
+        { title: 'Marknad: från 1,8 mdr till 14,6 mdr EUR', desc: 'Den globala marknaden för fotoniska AI-acceleratorer, 2025 till 2034 (CAGR 26,3 %). Per 2026 följer vi 52 företag inom fotonisk beräkning världen över.' },
         { title: 'Fotonik som framtidens beräkningslager', desc: 'När fotoniska acceleratorer når mognad (ett fönster 2027-2031 för produkter i datacenterklass) är POLCEROs AI-hjärnarkitektur byggd för att ta emot dem - abstraktionslagret låter oss byta beräkningssubstrat utan att träna om uppgiftsintelligensen.' },
       ],
     },
@@ -341,7 +341,7 @@ export const sv: SiteContentOverride = {
       approach: [
         { title: 'Roboten kör fram till stationen', text: 'En humanoid på en mobil plattform betjänar flera stationer i stället för att stå vid en och sluter luckorna mellan maskinerna.' },
         { title: 'Två operationer per cykel', text: 'En tvåarmad uppställning med midjerotation ökar stationens genomströmning vid repetitivt arbete.' },
-        { title: 'Nyckelfärdig driftsättning', text: 'Design, byggnation, integration, driftsättning, dokumentation och service - från 2 mln PLN, med bedömning av överensstämmelse.' },
+        { title: 'Nyckelfärdig driftsättning', text: 'Design, byggnation, integration, driftsättning, dokumentation och service - från 2 mln €, med bedömning av överensstämmelse.' },
       ],
     },
     {
@@ -350,13 +350,13 @@ export const sv: SiteContentOverride = {
       intro: 'De stora tillverkarna av jordbruksmaskiner är mycket bra på massköld och navigering på öppna fält. Selektiv manipulation i mjuka, känsliga grödor, samt arbete i tunnlar och växthus där satellitsignalen sviker, förblir dåligt betjänade. Detta är vårt område, och vi valde det medvetet.',
       challenges: [
         { title: 'Brist på säsongsarbetare', text: 'En enda gård sysselsätter hundra till hundrafemtio personer under toppen - och färre är tillgängliga varje år.' },
-        { title: 'Stigande arbetskostnader', text: 'Den fulla kostnaden för en säsongsarbetare är i dag omkring 15 900 PLN per månad, och den stiger.' },
+        { title: 'Stigande arbetskostnader', text: 'Den fulla kostnaden för en säsongsarbetare är i dag omkring 15 900 € per månad, och den stiger.' },
         { title: 'Tryck att minska kemikalier', text: 'Skötsel och ogräsrensning måste bli allt mer precisa och punktvisa.' },
         { title: 'En kort säsong', text: 'En gård behöver maskinen i sex månader - det finns ingen anledning att binda kapital i den hela året.' },
       ],
       approach: [
         { title: 'En jordbruksuppgiftsmodul', text: 'En robot med armar och gripdon skördar grödan och byter vid behov verktyget mot en laser för ogräsrensning.' },
-        { title: 'Betalning för resultat', text: 'Vi siktar på 9-12 groszy per enhet mot 15-20 vid handskörd - cirka 40 % mindre.' },
+        { title: 'Betalning för resultat', text: 'Vi siktar på 9-12 eurocent per enhet mot 15-20 vid handskörd - cirka 40 % mindre.' },
         { title: 'Fungerar utan GPS', text: 'Selektiv skörd och skötsel i tunnlar och växthus där satellitnavigering sviker.' },
       ],
     },

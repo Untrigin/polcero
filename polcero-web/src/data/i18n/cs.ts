@@ -114,13 +114,13 @@ export const cs: SiteContentOverride = {
       points: [
         'Optické násobení matic',
         'Hybridní fotonicko-elektronická architektura',
-        'Trh: z 1,8 mld. na 14,6 mld. USD',
+        'Trh: z 1,8 mld. na 14,6 mld. EUR',
         'Fotonika jako budoucí výpočetní vrstva',
       ],
       sections: [
         { title: 'Optické násobení matic', desc: 'Inferenci neuronových sítí dominuje násobení matice a vektoru (GEMM). Fotonické čipy je provádějí světlem procházejícím sítěmi interferometrů Mach-Zehnder - v jediném optickém průchodu udělají to, co elektronika počítá tisíce hodinových cyklů.' },
         { title: 'Hybridní fotonicko-elektronická architektura', desc: 'Fotonické čipy vynikají v lineárních operacích (maticová matematika), ale ne v nelineárních (aktivační funkce). Konsenzuální architektura spojuje optická jádra pro maticovou matematiku s elektronickými jednotkami pro aktivace - hybridní návrh bere to nejlepší z obou.' },
-        { title: 'Trh: z 1,8 mld. na 14,6 mld. USD', desc: 'Globální trh fotonických akcelerátorů AI, 2025 až 2034 (CAGR 26,3 %). K roku 2026 sledujeme celosvětově 52 firem zabývajících se fotonickými výpočty.' },
+        { title: 'Trh: z 1,8 mld. na 14,6 mld. EUR', desc: 'Globální trh fotonických akcelerátorů AI, 2025 až 2034 (CAGR 26,3 %). K roku 2026 sledujeme celosvětově 52 firem zabývajících se fotonickými výpočty.' },
         { title: 'Fotonika jako budoucí výpočetní vrstva', desc: 'Jakmile fotonické akcelerátory dosáhnou zralosti (okno 2027-2031 pro produkty třídy datových center), architektura mozku AI POLCERO je připravena je pojmout - vrstva abstrakce umožňuje vyměnit výpočetní substrát bez nového trénování inteligence úloh.' },
       ],
     },
@@ -324,7 +324,7 @@ export const cs: SiteContentOverride = {
       approach: [
         { title: 'Robot dojede ke stanovišti', text: 'Humanoid na pojízdné platformě obsluhuje několik stanovišť místo stání u jednoho a uzavírá mezery mezi stroji.' },
         { title: 'Dvě operace na cyklus', text: 'Dvouramenné uspořádání s rotací v pase zvyšuje propustnost stanoviště při opakované práci.' },
-        { title: 'Nasazení na klíč', text: 'Návrh, stavba, integrace, uvedení do provozu, dokumentace a servis - od 2 mil. PLN, s posouzením shody.' },
+        { title: 'Nasazení na klíč', text: 'Návrh, stavba, integrace, uvedení do provozu, dokumentace a servis - od 2 mil. €, s posouzením shody.' },
       ],
     },
     {
@@ -333,7 +333,7 @@ export const cs: SiteContentOverride = {
       intro: 'Velcí výrobci zemědělské techniky jsou velmi dobří v hromadné sklizni a navigaci na otevřeném poli. Selektivní manipulace v měkkých, jemných plodinách a práce v tunelech a sklenících, kde satelitní signál selhává, zůstávají špatně obsloužené. To je naše oblast a zvolili jsme ji záměrně.',
       challenges: [
         { title: 'Nedostatek sezonních pracovníků', text: 'Jedna farma zaměstnává ve špičce sto až sto padesát lidí - a zájemců je každý rok méně.' },
-        { title: 'Rostoucí náklady na práci', text: 'Plné náklady na jednoho sezonního pracovníka činí dnes zhruba 15 900 PLN měsíčně a rostou.' },
+        { title: 'Rostoucí náklady na práci', text: 'Plné náklady na jednoho sezonního pracovníka činí dnes zhruba 15 900 € měsíčně a rostou.' },
         { title: 'Tlak na omezení chemie', text: 'Ošetřování a odplevelování musí být stále přesnější a bodovější.' },
         { title: 'Krátká sezona', text: 'Farma potřebuje stroj šest měsíců - není důvod v něm zmrazit kapitál na celý rok.' },
       ],

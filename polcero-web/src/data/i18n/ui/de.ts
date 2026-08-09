@@ -160,7 +160,7 @@ export const de: DeepPartial<UI> = {
     faqTitle: 'Häufig gestellte Fragen',
     country: 'Polen',
     faqs: [
-      { q: 'Ab welchem Wert beginnt eine Einführung?', a: 'Der Wert der ersten Aufträge beginnt ab 2 Millionen PLN aufwärts und wird schlüsselfertig geliefert - von Design und Bau des Roboters bis hin zu Inbetriebnahme, Dokumentation und Service.' },
+      { q: 'Ab welchem Wert beginnt eine Einführung?', a: 'Der Wert der ersten Aufträge beginnt ab 2 Millionen € aufwärts und wird schlüsselfertig geliefert - von Design und Bau des Roboters bis hin zu Inbetriebnahme, Dokumentation und Service.' },
       { q: 'Muss ich einen Roboter kaufen?', a: 'Nicht immer. Wir bieten Verkauf, saisonale Vermietung und Abrechnung nach geleisteter Arbeit - der Kunde zahlt für das Ergebnis, während Roboter und Bediener auf unserer Seite bleiben.' },
       { q: 'Wo bleiben die Daten?', a: 'Unsere Modelle können lokal auf dem Gerät laufen, ohne Bilder nach außen zu senden. Daten und Compliance bleiben in der Europäischen Union.' },
     ],

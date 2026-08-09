@@ -84,11 +84,11 @@ export const ro: SiteContentOverride = {
       tagline: 'Calcul AI cu lumină',
       desc: 'Direcție de cercetare-dezvoltare: calcul fotonic pentru accelerarea inferenței AI în roboții noștri - consum mai redus, debit mai mare.',
       intro: 'Photonic Processors este direcția de cercetare-dezvoltare a POLCERO: accelerarea inferenței AI în roboții noștri folosind lumina în locul electronicii singure. Înmulțirea optică de matrice - operația fundamentală în rețelele neuronale - poate fi efectuată într-o singură trecere optică printr-un cip fotonic, oferind latență sub-nanosecundă și un consum energetic pe operație cu ordine de mărime mai mic decât cipurile GPU/ASIC.',
-      points: ['Înmulțire optică de matrice', 'Arhitectură hibridă fotonic-electronic', 'Piață: de la 1,8 mld. la 14,6 mld. USD', 'Fotonica drept viitorul nivel de calcul'],
+      points: ['Înmulțire optică de matrice', 'Arhitectură hibridă fotonic-electronic', 'Piață: de la 1,8 mld. la 14,6 mld. EUR', 'Fotonica drept viitorul nivel de calcul'],
       sections: [
         { title: 'Înmulțire optică de matrice', desc: 'Inferența rețelelor neuronale este dominată de înmulțirea matrice-vector (GEMM). Cipurile fotonice o efectuează cu lumină care trece prin rețele de interferometre Mach-Zehnder - într-o singură trecere optică fac ceea ce electronica calculează în mii de cicluri de ceas.' },
         { title: 'Arhitectură hibridă fotonic-electronic', desc: 'Cipurile fotonice excelează la operațiile liniare (matematica matricelor), dar nu la cele neliniare (funcții de activare). Arhitectura de consens combină nuclee optice pentru matematica matricelor cu unități electronice pentru activări - un proiect hibrid care ia ce e mai bun din ambele.' },
-        { title: 'Piață: de la 1,8 mld. la 14,6 mld. USD', desc: 'Piața globală a acceleratoarelor AI fotonice, între 2025 și 2034 (CAGR 26,3%). La nivelul anului 2026 urmărim 52 de companii de calcul fotonic din întreaga lume.' },
+        { title: 'Piață: de la 1,8 mld. la 14,6 mld. EUR', desc: 'Piața globală a acceleratoarelor AI fotonice, între 2025 și 2034 (CAGR 26,3%). La nivelul anului 2026 urmărim 52 de companii de calcul fotonic din întreaga lume.' },
         { title: 'Fotonica drept viitorul nivel de calcul', desc: 'Când acceleratoarele fotonice vor atinge maturitatea (o fereastră 2027-2031 pentru produsele de clasă datacenter), arhitectura creierului AI POLCERO este pregătită să le absoarbă - nivelul de abstractizare ne permite să schimbăm substratul de calcul fără a reantrena inteligența sarcinilor.' },
       ],
     },
@@ -291,7 +291,7 @@ export const ro: SiteContentOverride = {
       approach: [
         { title: 'Robotul se apropie de post', text: 'Un umanoid pe platformă mobilă deservește mai multe posturi în loc să stea la unul singur și închide golurile dintre mașini.' },
         { title: 'Două operațiuni pe ciclu', text: 'O configurație cu două brațe și rotație în talie crește productivitatea postului la munca repetitivă.' },
-        { title: 'Implementare la cheie', text: 'Proiectare, construcție, integrare, punere în funcțiune, documentație și service - de la 2 mil. PLN, cu evaluarea conformității.' },
+        { title: 'Implementare la cheie', text: 'Proiectare, construcție, integrare, punere în funcțiune, documentație și service - de la 2 mil. €, cu evaluarea conformității.' },
       ],
     },
     {
@@ -299,13 +299,13 @@ export const ro: SiteContentOverride = {
       intro: 'Marii producători de utilaje agricole sunt foarte buni la recoltarea în masă și la navigarea în câmp deschis. Manipularea selectivă a culturilor moi și delicate, precum și munca în tuneluri și sere unde semnalul satelitar nu ajunge, rămân slab acoperite. Acesta este domeniul nostru și l-am ales în mod deliberat.',
       challenges: [
         { title: 'Lipsa forței de muncă sezoniere', text: 'O singură fermă angajează între o sută și o sută cincizeci de persoane în vârf de sezon - și sunt tot mai puține disponibile în fiecare an.' },
-        { title: 'Costul crescând al muncii', text: 'Costul total al unui lucrător sezonier este astăzi de aproximativ 15.900 PLN pe lună și continuă să crească.' },
+        { title: 'Costul crescând al muncii', text: 'Costul total al unui lucrător sezonier este astăzi de aproximativ 15.900 € pe lună și continuă să crească.' },
         { title: 'Presiunea de a reduce chimia', text: 'Îngrijirea și plivitul trebuie să devină tot mai precise și la nivel punctual.' },
         { title: 'Un sezon scurt', text: 'O fermă are nevoie de mașină șase luni - nu există niciun motiv să blocheze capital în ea tot anul.' },
       ],
       approach: [
         { title: 'Un modul de sarcină agricol', text: 'Un robot cu brațe și clește recoltează cultura, iar când este nevoie schimbă unealta cu un laser pentru plivit.' },
-        { title: 'Plată pentru rezultat', text: 'Vizăm 9-12 groszy pe unitate față de 15-20 la recoltarea manuală - cu aproximativ 40% mai puțin.' },
+        { title: 'Plată pentru rezultat', text: 'Vizăm 9-12 eurocent pe unitate față de 15-20 la recoltarea manuală - cu aproximativ 40% mai puțin.' },
         { title: 'Funcționează fără GPS', text: 'Recoltare selectivă și îngrijire în tuneluri și sere unde navigația satelitară nu ajunge.' },
       ],
     },

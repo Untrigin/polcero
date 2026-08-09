@@ -84,11 +84,11 @@ export const nl: SiteContentOverride = {
       tagline: 'AI-rekenkracht met licht',
       desc: 'R&D-richting: fotonisch rekenen om AI-inferentie in onze robots te versnellen - minder vermogen, hogere doorvoer.',
       intro: 'Photonic Processors is de R&D-richting van POLCERO: AI-inferentie in onze robots versnellen met licht in plaats van elektronica alleen. Optische matrixvermenigvuldiging - de kernbewerking in neurale netwerken - kan in één optische passage door een fotonische chip worden uitgevoerd, met een latentie onder de nanoseconde en een energieverbruik per bewerking dat orden van grootte lager is dan bij GPU/ASIC-chips.',
-      points: ['Optische matrixvermenigvuldiging', 'Hybride fotonisch-elektronische architectuur', 'Markt: van 1,8 mld naar 14,6 mld USD', 'Fotonica als de toekomstige rekenlaag'],
+      points: ['Optische matrixvermenigvuldiging', 'Hybride fotonisch-elektronische architectuur', 'Markt: van 1,8 mld naar 14,6 mld EUR', 'Fotonica als de toekomstige rekenlaag'],
       sections: [
         { title: 'Optische matrixvermenigvuldiging', desc: 'Inferentie van neurale netwerken wordt gedomineerd door matrix-vectorvermenigvuldiging (GEMM). Fotonische chips voeren die uit met licht dat door meshes van Mach-Zehnder-interferometers gaat - in één optische passage doen wat elektronica duizenden klokcycli kost om te berekenen.' },
         { title: 'Hybride fotonisch-elektronische architectuur', desc: 'Fotonische chips blinken uit in lineaire bewerkingen (matrixwiskunde) maar niet in niet-lineaire (activatiefuncties). De consensusarchitectuur koppelt optische kernen voor matrixwiskunde aan elektronische eenheden voor activaties - een hybride ontwerp dat het beste van beide neemt.' },
-        { title: 'Markt: van 1,8 mld naar 14,6 mld USD', desc: 'De wereldwijde markt voor fotonische AI-versnellers, 2025 tot 2034 (CAGR 26,3%). Vanaf 2026 volgen we wereldwijd 52 bedrijven in fotonisch rekenen.' },
+        { title: 'Markt: van 1,8 mld naar 14,6 mld EUR', desc: 'De wereldwijde markt voor fotonische AI-versnellers, 2025 tot 2034 (CAGR 26,3%). Vanaf 2026 volgen we wereldwijd 52 bedrijven in fotonisch rekenen.' },
         { title: 'Fotonica als de toekomstige rekenlaag', desc: 'Wanneer fotonische versnellers volwassen worden (een venster van 2027-2031 voor producten van datacenterklasse), is de POLCERO AI-breinarchitectuur gebouwd om ze op te nemen - de abstractielaag laat ons het rekensubstraat verwisselen zonder de taakintelligentie opnieuw te trainen.' },
       ],
     },
@@ -318,7 +318,7 @@ export const nl: SiteContentOverride = {
       approach: [
         { title: 'De robot rijdt naar het station', text: 'Een humanoïde op een mobiel platform bedient meerdere stations in plaats van bij één te staan en dicht de gaten tussen machines.' },
         { title: 'Twee handelingen per cyclus', text: 'Een dubbelarmige opzet met taillerotatie verhoogt de doorvoer per station bij repetitief werk.' },
-        { title: 'Kant-en-klare implementatie', text: 'Ontwerp, bouw, integratie, inbedrijfstelling, documentatie en service - vanaf 2 mln PLN, met conformiteitsbeoordeling.' },
+        { title: 'Kant-en-klare implementatie', text: 'Ontwerp, bouw, integratie, inbedrijfstelling, documentatie en service - vanaf 2 mln €, met conformiteitsbeoordeling.' },
       ],
     },
     {
@@ -327,13 +327,13 @@ export const nl: SiteContentOverride = {
       intro: 'De grote fabrikanten van landbouwmachines zijn zeer goed in massale oogst en navigatie op open velden. Selectieve manipulatie in zacht, kwetsbaar gewas en werk in tunnels en kassen waar het satellietsignaal wegvalt, blijven onderbediend. Dit is ons terrein, en we hebben er bewust voor gekozen.',
       challenges: [
         { title: 'Tekort aan seizoensarbeiders', text: 'Eén boerderij zet in de piek honderd tot honderdvijftig mensen in - en er zijn er elk jaar minder beschikbaar.' },
-        { title: 'Stijgende arbeidskosten', text: 'De volledige kosten van één seizoensarbeider bedragen vandaag ongeveer 15.900 PLN per maand, en stijgen.' },
+        { title: 'Stijgende arbeidskosten', text: 'De volledige kosten van één seizoensarbeider bedragen vandaag ongeveer 15.900 € per maand, en stijgen.' },
         { title: 'Druk om chemie te beperken', text: 'Verzorging en wieden moeten steeds preciezer en gerichter worden.' },
         { title: 'Een kort seizoen', text: 'Een boerderij heeft de machine zes maanden nodig - geen reden om er het hele jaar kapitaal in vast te leggen.' },
       ],
       approach: [
         { title: 'Een landbouwtaakmodule', text: 'Een robot met armen en een grijper oogst het gewas en verwisselt zo nodig het gereedschap voor een laser om te wieden.' },
-        { title: 'Afrekenen op resultaat', text: 'We mikken op 9-12 groszy per stuk tegenover 15-20 bij handmatige oogst - ongeveer 40% minder.' },
+        { title: 'Afrekenen op resultaat', text: 'We mikken op 9-12 eurocent per stuk tegenover 15-20 bij handmatige oogst - ongeveer 40% minder.' },
         { title: 'Werkt zonder GPS', text: 'Selectief oogsten en verzorgen in tunnels en kassen waar satellietnavigatie wegvalt.' },
       ],
     },

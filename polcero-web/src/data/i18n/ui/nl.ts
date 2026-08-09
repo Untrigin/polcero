@@ -160,7 +160,7 @@ export const nl: DeepPartial<UI> = {
     faqTitle: 'Veelgestelde vragen',
     country: 'Polen',
     faqs: [
-      { q: 'Wat is de instapwaarde voor een implementatie?', a: 'De waarde van de eerste orders begint vanaf 2 miljoen PLN en hoger en wordt sleutelklaar geleverd - van ontwerp en bouw van de robot tot inbedrijfstelling, documentatie en service.' },
+      { q: 'Wat is de instapwaarde voor een implementatie?', a: 'De waarde van de eerste orders begint vanaf 2 miljoen € en hoger en wordt sleutelklaar geleverd - van ontwerp en bouw van de robot tot inbedrijfstelling, documentatie en service.' },
       { q: 'Moet ik een robot kopen?', a: 'Niet altijd. Wij bieden verkoop, seizoensverhuur en afrekening op verricht werk - de klant betaalt voor het resultaat terwijl de robot en de operators aan onze kant blijven.' },
       { q: 'Waar blijven de data?', a: 'Onze modellen kunnen lokaal draaien, op het apparaat, zonder beeldmateriaal naar buiten te sturen. Data en compliance blijven binnen de Europese Unie.' },
     ],

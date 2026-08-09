@@ -160,7 +160,7 @@ export const it: DeepPartial<UI> = {
     faqTitle: 'Domande frequenti',
     country: 'Polonia',
     faqs: [
-      { q: 'Qual è il valore minimo di un\'implementazione?', a: 'Il valore dei primi ordini parte da 2 milioni di PLN in su e viene realizzato chiavi in mano - dalla progettazione e costruzione del robot fino alla messa in servizio, alla documentazione e all\'assistenza.' },
+      { q: 'Qual è il valore minimo di un\'implementazione?', a: 'Il valore dei primi ordini parte da 2 milioni di € in su e viene realizzato chiavi in mano - dalla progettazione e costruzione del robot fino alla messa in servizio, alla documentazione e all\'assistenza.' },
       { q: 'Devo per forza acquistare un robot?', a: 'Non sempre. Offriamo vendita, noleggio stagionale e pagamento in base al lavoro svolto - il cliente paga per il risultato mentre il robot e gli operatori restano a nostro carico.' },
       { q: 'Dove restano i dati?', a: 'I nostri modelli possono funzionare in locale, a bordo del dispositivo, senza inviare immagini all\'esterno. I dati e la conformità restano nell\'Unione Europea.' },
     ],

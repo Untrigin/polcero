@@ -84,11 +84,11 @@ export const it: SiteContentOverride = {
       tagline: 'Calcolo AI con la luce',
       desc: 'Direzione R&S: calcolo fotonico per accelerare l\'inferenza AI nei nostri robot - meno consumo, maggiore throughput.',
       intro: 'Photonic Processors è la direzione di R&S di POLCERO: accelerare l\'inferenza AI nei nostri robot usando la luce anziché la sola elettronica. La moltiplicazione ottica di matrici - l\'operazione fondamentale nelle reti neurali - può essere eseguita in un singolo passaggio ottico attraverso un chip fotonico, offrendo una latenza sub-nanosecondo e un consumo energetico per operazione inferiore di ordini di grandezza rispetto ai chip GPU/ASIC.',
-      points: ['Moltiplicazione ottica di matrici', 'Architettura ibrida fotonico-elettronica', 'Mercato: da 1,8 a 14,6 miliardi di USD', 'La fotonica come futuro livello di calcolo'],
+      points: ['Moltiplicazione ottica di matrici', 'Architettura ibrida fotonico-elettronica', 'Mercato: da 1,8 a 14,6 miliardi di EUR', 'La fotonica come futuro livello di calcolo'],
       sections: [
         { title: 'Moltiplicazione ottica di matrici', desc: 'L\'inferenza delle reti neurali è dominata dalla moltiplicazione matrice-vettore (GEMM). I chip fotonici la eseguono con la luce che attraversa reticoli di interferometri di Mach-Zehnder - in un singolo passaggio fanno ciò che l\'elettronica calcola in migliaia di cicli di clock.' },
         { title: 'Architettura ibrida fotonico-elettronica', desc: 'I chip fotonici eccellono nelle operazioni lineari (matematica delle matrici) ma non in quelle non lineari (funzioni di attivazione). L\'architettura consensuale abbina core ottici per la matematica delle matrici a unità elettroniche per le attivazioni - un progetto ibrido che prende il meglio di entrambi.' },
-        { title: 'Mercato: da 1,8 a 14,6 miliardi di USD', desc: 'Il mercato globale degli acceleratori AI fotonici, dal 2025 al 2034 (CAGR 26,3%). Al 2026 monitoriamo 52 aziende di calcolo fotonico nel mondo.' },
+        { title: 'Mercato: da 1,8 a 14,6 miliardi di EUR', desc: 'Il mercato globale degli acceleratori AI fotonici, dal 2025 al 2034 (CAGR 26,3%). Al 2026 monitoriamo 52 aziende di calcolo fotonico nel mondo.' },
         { title: 'La fotonica come futuro livello di calcolo', desc: 'Quando gli acceleratori fotonici raggiungeranno la maturità (una finestra 2027-2031 per i prodotti di classe datacenter), l\'architettura del cervello AI POLCERO è pronta ad assorbirli - il livello di astrazione consente di sostituire il substrato di calcolo senza riaddestrare l\'intelligenza dei compiti.' },
       ],
     },
@@ -291,7 +291,7 @@ export const it: SiteContentOverride = {
       approach: [
         { title: 'Il robot raggiunge la postazione', text: 'Un umanoide su piattaforma mobile serve più postazioni invece di restare fermo a una sola e colma i vuoti tra le macchine.' },
         { title: 'Due operazioni per ciclo', text: 'Una configurazione a doppio braccio con rotazione in vita aumenta la produttività della postazione nei lavori ripetitivi.' },
-        { title: 'Implementazione chiavi in mano', text: 'Progettazione, costruzione, integrazione, messa in servizio, documentazione e assistenza - da 2 milioni di PLN, con valutazione di conformità.' },
+        { title: 'Implementazione chiavi in mano', text: 'Progettazione, costruzione, integrazione, messa in servizio, documentazione e assistenza - da 2 milioni di €, con valutazione di conformità.' },
       ],
     },
     {
@@ -299,13 +299,13 @@ export const it: SiteContentOverride = {
       intro: 'I grandi produttori di macchine agricole sono molto bravi nella raccolta di massa e nella navigazione in campo aperto. La manipolazione selettiva di colture morbide e delicate, e il lavoro in tunnel e serre dove il segnale satellitare non arriva, restano poco presidiati. Questo è il nostro ambito, e lo abbiamo scelto deliberatamente.',
       challenges: [
         { title: 'Carenza di manodopera stagionale', text: 'Una singola azienda agricola impiega da cento a centocinquanta persone nei periodi di punta - e ogni anno se ne trovano meno.' },
-        { title: 'Costo del lavoro crescente', text: 'Il costo pieno di un lavoratore stagionale è oggi di circa 15.900 PLN al mese, ed è in aumento.' },
+        { title: 'Costo del lavoro crescente', text: 'Il costo pieno di un lavoratore stagionale è oggi di circa 15.900 € al mese, ed è in aumento.' },
         { title: 'Pressione a ridurre la chimica', text: 'La cura e il diserbo devono diventare sempre più precisi e puntuali.' },
         { title: 'Una stagione breve', text: 'Un\'azienda agricola ha bisogno della macchina per sei mesi - non c\'è motivo di immobilizzare capitale per tutto l\'anno.' },
       ],
       approach: [
         { title: 'Un modulo di lavoro agricolo', text: 'Un robot con braccia e pinza raccoglie il prodotto e, quando serve, sostituisce lo strumento con un laser per il diserbo.' },
-        { title: 'Pagamento a risultato', text: 'Puntiamo a 9-12 groszy per unità contro 15-20 della raccolta manuale - circa il 40% in meno.' },
+        { title: 'Pagamento a risultato', text: 'Puntiamo a 9-12 eurocent per unità contro 15-20 della raccolta manuale - circa il 40% in meno.' },
         { title: 'Funziona senza GPS', text: 'Raccolta selettiva e cura in tunnel e serre dove la navigazione satellitare non arriva.' },
       ],
     },

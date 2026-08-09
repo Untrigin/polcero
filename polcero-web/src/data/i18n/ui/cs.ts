@@ -160,7 +160,7 @@ export const cs: DeepPartial<UI> = {
     faqTitle: 'Časté dotazy',
     country: 'Polsko',
     faqs: [
-      { q: 'Jaká je vstupní hodnota nasazení?', a: 'Hodnota prvních zakázek začíná od 2 milionů PLN výše a je realizována na klíč - od návrhu a stavby robotů po uvedení do provozu, dokumentaci a servis.' },
+      { q: 'Jaká je vstupní hodnota nasazení?', a: 'Hodnota prvních zakázek začíná od 2 milionů € výše a je realizována na klíč - od návrhu a stavby robotů po uvedení do provozu, dokumentaci a servis.' },
       { q: 'Musím robota koupit?', a: 'Ne vždy. Nabízíme prodej, sezónní pronájem i vyúčtování za vykonanou práci - klient platí za výsledek, zatímco robot a operátoři zůstávají na naší straně.' },
       { q: 'Kde zůstávají data?', a: 'Naše modely mohou běžet lokálně, přímo v zařízení, bez odesílání obrazu ven. Data a soulad s předpisy zůstávají v Evropské unii.' },
     ],

@@ -2,6 +2,12 @@
 // pages (../../legal.md) but rewritten for POLCERO (a robotics company) and its
 // entity details. Authored in EN (primary) + PL; other locales fall back to EN.
 import type { Locale } from '../lib/i18n';
+import { de } from './i18n/legal/de';
+import { fr } from './i18n/legal/fr';
+import { es } from './i18n/legal/es';
+import { it } from './i18n/legal/it';
+import { pt } from './i18n/legal/pt';
+import { nl } from './i18n/legal/nl';
 
 export interface LegalSection { heading: string; body: string[] }
 export interface LegalDoc {
@@ -381,7 +387,7 @@ const pl: Record<string, LegalDoc> = {
   },
 };
 
-const byLocale: Partial<Record<Locale, Record<string, LegalDoc>>> = { en, pl };
+const byLocale: Partial<Record<Locale, Record<string, LegalDoc>>> = { en, pl, de, fr, es, it, pt, nl };
 
 export function getLegalDoc(slug: 'privacy' | 'cookies' | 'terms', locale: Locale): LegalDoc {
   return (byLocale[locale] ?? en)[slug] ?? en[slug];

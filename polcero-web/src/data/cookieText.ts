@@ -1,6 +1,12 @@
 // Cookie-consent banner/modal strings. English base + per-locale overrides
 // (deep-merged, EN fallback), so the CMP localizes with the rest of the site.
 import type { Locale } from '../lib/i18n';
+import { de } from './i18n/specs/de';
+import { fr } from './i18n/specs/fr';
+import { es } from './i18n/specs/es';
+import { it } from './i18n/specs/it';
+import { pt } from './i18n/specs/pt';
+import { nl } from './i18n/specs/nl';
 
 export interface CookieText {
   title: string; desc: string;
@@ -46,7 +52,9 @@ const pl: CookieText = {
 };
 
 /** Overrides for locales beyond en/pl land here as translation batches complete. */
-export const cookieOverrides: Partial<Record<Locale, Partial<CookieText>>> = {};
+export const cookieOverrides: Partial<Record<Locale, Partial<CookieText>>> = {
+  de: de.cookie, fr: fr.cookie, es: es.cookie, it: it.cookie, pt: pt.cookie, nl: nl.cookie,
+};
 
 export function getCookieText(locale: Locale): CookieText {
   if (locale === 'en') return en;

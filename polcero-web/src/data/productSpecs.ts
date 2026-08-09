@@ -1,5 +1,11 @@
 import type { Locale } from '../lib/i18n';
 import type { Product } from './content';
+import { de } from './i18n/specs/de';
+import { fr } from './i18n/specs/fr';
+import { es } from './i18n/specs/es';
+import { it } from './i18n/specs/it';
+import { pt } from './i18n/specs/pt';
+import { nl } from './i18n/specs/nl';
 
 export interface SpecGroup { title: string; rows: { label: string; value: string }[] }
 
@@ -41,8 +47,15 @@ const drive: Record<string, Record<'pl' | 'en', [string, string]>> = {
 };
 
 // Translations for locales beyond en/pl: label set + per-slug drive/terrain.
-export const specLabelOverrides: Partial<Record<Locale, Partial<typeof L.en>>> = {};
-export const driveOverrides: Partial<Record<Locale, Record<string, [string, string]>>> = {};
+export const specLabelOverrides: Partial<Record<Locale, Partial<typeof L.en>>> = {
+  de: de.specLabels, fr: fr.specLabels, es: es.specLabels, it: it.specLabels, pt: pt.specLabels, nl: nl.specLabels,
+};
+type DrivePairs = Record<string, [string, string]>;
+export const driveOverrides: Partial<Record<Locale, DrivePairs>> = {
+  de: de.drive as unknown as DrivePairs, fr: fr.drive as unknown as DrivePairs,
+  es: es.drive as unknown as DrivePairs, it: it.drive as unknown as DrivePairs,
+  pt: pt.drive as unknown as DrivePairs, nl: nl.drive as unknown as DrivePairs,
+};
 
 export function getProductSpecs(product: Product, locale: Locale): SpecGroup[] {
   const loc: 'pl' | 'en' = locale === 'pl' ? 'pl' : 'en';

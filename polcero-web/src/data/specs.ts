@@ -1,4 +1,10 @@
 import type { Locale } from '../lib/i18n';
+import { de } from './i18n/specs/de';
+import { fr } from './i18n/specs/fr';
+import { es } from './i18n/specs/es';
+import { it } from './i18n/specs/it';
+import { pt } from './i18n/specs/pt';
+import { nl } from './i18n/specs/nl';
 
 export interface SpecGroup {
   title: string;
@@ -152,7 +158,9 @@ const en: SpecsContent = {
   ],
 };
 
-const content: Partial<Record<Locale, SpecsContent>> = { pl, en };
+const content: Partial<Record<Locale, SpecsContent>> = {
+  pl, en, de: de.specs, fr: fr.specs, es: es.specs, it: it.specs, pt: pt.specs, nl: nl.specs,
+};
 export function getSpecs(locale: Locale): SpecsContent {
   return content[locale] ?? (en as SpecsContent);
 }

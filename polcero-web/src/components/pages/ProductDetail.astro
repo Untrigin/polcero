@@ -206,7 +206,7 @@ const description = product.blurb.slice(0, 154);
 
 <style>
   .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
-  .product-detail__body { display: flex; flex-direction: column; gap: 1.25rem; }
+  .product-detail :global(.product-detail__body) { display: flex; flex-direction: column; gap: 1.5rem; }
   .product-detail__subtitle { color: var(--color-accent); font-family: var(--font-display); font-weight: 500; font-size: clamp(1.15rem, 1.8vw, 1.45rem); }
   .product-detail__price { display: flex; align-items: baseline; gap: 0.75rem; font-family: var(--font-display); font-weight: 500; font-size: 1.35rem; color: var(--color-ice); }
   .product-detail__price span { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-mute); }

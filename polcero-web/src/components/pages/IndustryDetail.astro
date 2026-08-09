@@ -43,7 +43,7 @@ const description = industry.blurb.slice(0, 154);
 <Layout title={title} description={description} canonicalPath={p(`/industries/${slug}/`)}>
   <PageHeader eyebrow={t.industries} title={`${industry.name}`} lead={industry.blurb} crumbs={crumbs} />
 
-  <section class="section">
+  <section class="section industry-lead">
     <div class="container-x">
       <Reveal class="industry-intro"><p class="lead">{industry.intro}</p></Reveal>
       <Reveal delay={80}>
@@ -122,7 +122,7 @@ const description = industry.blurb.slice(0, 154);
 </Layout>
 
 <style>
-  .industry-intro { max-width: 62ch; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .industry-lead :global(.industry-intro) { max-width: 62ch; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
   .block-head { max-width: 60rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
   .block-head .eyebrow { margin-bottom: 1rem; }
   .block-head__lead { color: var(--color-mute); }

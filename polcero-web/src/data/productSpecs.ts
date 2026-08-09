@@ -14,6 +14,7 @@ const L = {
     platform: 'Platforma', functions: 'Funkcje', planning: 'Planowanie i nadzór zadań', fleet: 'Zarządzanie flotą', compat: 'Zgodność', chassis: 'Współpraca z podwoziami',
     yes: 'Tak', optArms: 'Opcja (0-2)', opt: 'Opcja', dev: 'W rozwoju', allTypes: 'Wszystkie typy podwozi',
     tasksVal: 'Chwytak · głowica zbioru · laser', percCam: 'Kamery, LiDAR', demoVal: 'do 10× mniej programowania',
+    carbon: 'Kompozyty węglowe', aluminium: 'Aluminium i kompozyty', multirotor: 'Wielowirnikowy',
   },
   en: {
     construction: 'Construction', material: 'Material', modular: 'Modular construction', core: 'Core module (control + AI)', coupler: 'Quick-release tool connector',
@@ -25,6 +26,7 @@ const L = {
     platform: 'Platform', functions: 'Functions', planning: 'Task planning and supervision', fleet: 'Fleet management', compat: 'Compatibility', chassis: 'Works with chassis',
     yes: 'Yes', optArms: 'Optional (0-2)', opt: 'Optional', dev: 'In development', allTypes: 'All chassis types',
     tasksVal: 'Gripper · harvest head · laser', percCam: 'Cameras, LiDAR', demoVal: 'up to 10× less programming',
+    carbon: 'Carbon composites', aluminium: 'Aluminium & composites', multirotor: 'Multirotor',
   },
 };
 
@@ -38,14 +40,18 @@ const drive: Record<string, Record<'pl' | 'en', [string, string]>> = {
   'specialized-robots': { pl: ['4 wymienne podwozia', 'Kroczące · gąsienicowe · kołowe · kołowo-nożne'], en: ['4 interchangeable chassis', 'Legged · tracked · wheeled · wheel-leg'] },
 };
 
+// Translations for locales beyond en/pl: label set + per-slug drive/terrain.
+export const specLabelOverrides: Partial<Record<Locale, Partial<typeof L.en>>> = {};
+export const driveOverrides: Partial<Record<Locale, Record<string, [string, string]>>> = {};
+
 export function getProductSpecs(product: Product, locale: Locale): SpecGroup[] {
   const loc: 'pl' | 'en' = locale === 'pl' ? 'pl' : 'en';
-  const t = L[loc];
+  const t = { ...L.en, ...(locale === 'pl' ? L.pl : specLabelOverrides[locale] ?? {}) };
   if (product.kind === 'drone') {
     return [
-      { title: t.construction, rows: [{ label: t.material, value: locale === 'pl' ? 'Kompozyty węglowe' : 'Carbon composites' }, { label: t.modular, value: t.yes }] },
+      { title: t.construction, rows: [{ label: t.material, value: t.carbon }, { label: t.modular, value: t.yes }] },
       { title: t.transport, rows: [{ label: t.payload, value: '500 kg' }, { label: t.weight, value: '90 kg' }, { label: t.carry, value: t.yes }] },
-      { title: t.mobility, rows: [{ label: t.drive, value: locale === 'pl' ? 'Wielowirnikowy' : 'Multirotor' }] },
+      { title: t.mobility, rows: [{ label: t.drive, value: t.multirotor }] },
       { title: t.ai, rows: [{ label: t.autonomy, value: t.yes }, { label: t.gear, value: t.dev }, { label: t.eu, value: t.yes }] },
     ];
   }
@@ -57,10 +63,10 @@ export function getProductSpecs(product: Product, locale: Locale): SpecGroup[] {
     ];
   }
   // robots
-  const d = drive[product.slug]?.[loc] ?? drive.humanoid[loc];
+  const d = driveOverrides[locale]?.[product.slug] ?? drive[product.slug]?.[loc] ?? drive.humanoid[loc];
   const isHumanoid = product.kind === 'humanoid' || product.kind === 'mobile-humanoid';
   return [
-    { title: t.construction, rows: [{ label: t.material, value: locale === 'pl' ? 'Aluminium i kompozyty' : 'Aluminium & composites' }, { label: t.modular, value: t.yes }, { label: t.core, value: t.yes }, { label: t.coupler, value: t.yes }] },
+    { title: t.construction, rows: [{ label: t.material, value: t.aluminium }, { label: t.modular, value: t.yes }, { label: t.core, value: t.yes }, { label: t.coupler, value: t.yes }] },
     { title: t.mobility, rows: [{ label: t.drive, value: d[0] }, { label: t.terrain, value: d[1] }] },
     { title: t.manip, rows: [{ label: t.arms, value: isHumanoid ? '2' : t.optArms }, { label: t.tasks, value: t.tasksVal }, { label: t.ends, value: isHumanoid ? t.yes : t.opt }] },
     { title: t.power, rows: [{ label: t.batt, value: '3' }, { label: t.swap, value: t.yes }, { label: t.local, value: t.yes }] },

@@ -4,47 +4,13 @@
 // Consent is stored in localStorage and broadcast as a `polcero:consent` event so
 // any non-essential script can gate itself on window.__polceroConsent.
 import { localizedPath, type Locale } from '../lib/i18n';
+import { getCookieText } from '../data/cookieText';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const p = (path: string) => localizedPath(path, locale);
 
-const dict = {
-  en: {
-    title: 'We value your privacy',
-    desc: 'We use essential cookies to make this site work. With your consent we also use analytics and marketing cookies to improve it. You can change your choice at any time.',
-    acceptAll: 'Accept all',
-    rejectOptional: 'Reject optional',
-    moreOptions: 'More options',
-    prefTitle: 'Cookie preferences',
-    prefDesc: 'Choose which categories of cookies you allow. Essential cookies are always on.',
-    essential: 'Essential', essentialDesc: 'Required for core site functionality and security. Always active.',
-    alwaysActive: 'Always active',
-    analytics: 'Analytics', analyticsDesc: 'Help us understand how the site is used so we can improve it.',
-    marketing: 'Marketing', marketingDesc: 'Used to measure and personalise campaigns.',
-    save: 'Save choices', cancel: 'Cancel',
-    footer: 'Read our', privacyLink: 'Privacy Policy', cookieLink: 'Cookie Policy',
-    close: 'Close',
-  },
-  pl: {
-    title: 'Szanujemy Twoją prywatność',
-    desc: 'Używamy niezbędnych plików cookie, aby strona działała. Za Twoją zgodą używamy też cookie analitycznych i marketingowych, aby ją ulepszać. Możesz zmienić wybór w każdej chwili.',
-    acceptAll: 'Akceptuj wszystkie',
-    rejectOptional: 'Odrzuć opcjonalne',
-    moreOptions: 'Więcej opcji',
-    prefTitle: 'Ustawienia cookie',
-    prefDesc: 'Wybierz, które kategorie plików cookie akceptujesz. Niezbędne cookie są zawsze włączone.',
-    essential: 'Niezbędne', essentialDesc: 'Wymagane do podstawowego działania i bezpieczeństwa strony. Zawsze aktywne.',
-    alwaysActive: 'Zawsze aktywne',
-    analytics: 'Analityczne', analyticsDesc: 'Pomagają nam zrozumieć, jak używana jest strona, abyśmy mogli ją ulepszać.',
-    marketing: 'Marketingowe', marketingDesc: 'Służą do pomiaru i personalizacji kampanii.',
-    save: 'Zapisz wybór', cancel: 'Anuluj',
-    footer: 'Przeczytaj naszą', privacyLink: 'Politykę prywatności', cookieLink: 'Politykę cookie',
-    close: 'Zamknij',
-  },
-} as const;
-
-const t = dict[locale as 'pl' | 'en'] ?? dict.en;
+const t = getCookieText(locale);
 ---
 <div class="cc" data-cookie-consent hidden>
   <!-- Preferences modal -->

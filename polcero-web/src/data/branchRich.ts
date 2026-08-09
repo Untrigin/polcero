@@ -3,6 +3,12 @@
 // their translation batch lands. Add more branch entries to expand the others.
 
 import type { Locale } from '../lib/i18n';
+import { de } from './i18n/branchRich/de';
+import { fr } from './i18n/branchRich/fr';
+import { es } from './i18n/branchRich/es';
+import { it } from './i18n/branchRich/it';
+import { pt } from './i18n/branchRich/pt';
+import { nl } from './i18n/branchRich/nl';
 
 export interface SpecRow { label: string; value: string }
 export interface RichProduct {
@@ -408,7 +414,7 @@ export type DeepPartial<T> = T extends (infer U)[]
 
 // Per-locale translation overrides, keyed by slug. Empty for now — translation
 // batches are added here later; anything omitted falls back to the English base.
-export const branchRichOverrides: Partial<Record<Locale, Record<string, DeepPartial<RichBranch>>>> = {};
+export const branchRichOverrides: Partial<Record<Locale, Record<string, DeepPartial<RichBranch>>>> = { de, fr, es, it, pt, nl };
 
 // Merge an override onto a base: objects recurse, arrays merge element-by-element,
 // and an `undefined` override value keeps the base value.

@@ -152,7 +152,7 @@ const en: SpecsContent = {
   ],
 };
 
-const content: Record<Locale, SpecsContent> = { pl, en };
+const content: Partial<Record<Locale, SpecsContent>> = { pl, en };
 export function getSpecs(locale: Locale): SpecsContent {
-  return content[locale];
+  return content[locale] ?? (en as SpecsContent);
 }

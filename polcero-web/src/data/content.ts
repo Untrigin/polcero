@@ -1,4 +1,5 @@
 import type { Locale } from '../lib/i18n';
+import { overrides } from './i18n/overrides';
 
 export type HeadingPart = { text: string; weight?: 300 | 400 | 500 | 700 };
 
@@ -629,7 +630,9 @@ const en: SiteContent = {
 };
 
 // Per-product task subtitle, price and uses (applications). Prices are provisional ("on request").
-type Meta = { subtitle: Record<Locale, string>; price: Record<Locale, string>; uses: Record<Locale, string[]> };
+// Only en/pl are authored inline; these bilingual merge blocks key to that pair.
+type FullLocale = 'en' | 'pl';
+type Meta = { subtitle: Record<FullLocale, string>; price: Record<FullLocale, string>; uses: Record<FullLocale, string[]> };
 const onRequest = { pl: 'Na zapytanie', en: 'On request' };
 const productMeta: Record<string, Meta> = {
   humanoid: {
@@ -690,7 +693,7 @@ const productMeta: Record<string, Meta> = {
   },
 };
 
-for (const loc of ['pl', 'en'] as Locale[]) {
+for (const loc of ['pl', 'en'] as FullLocale[]) {
   for (const product of ({ pl, en })[loc].products) {
     const m = productMeta[product.slug];
     if (m) {
@@ -703,7 +706,7 @@ for (const loc of ['pl', 'en'] as Locale[]) {
 
 // Per-branch detail (intro, points, note, detailed sections) - brought over from the polcero-web branch pages.
 type Sec = { title: string; desc: string }[];
-type BMeta = { intro: Record<Locale, string>; points: Record<Locale, string[]>; note?: Record<Locale, string>; sections: Record<Locale, Sec> };
+type BMeta = { intro: Record<FullLocale, string>; points: Record<FullLocale, string[]>; note?: Record<FullLocale, string>; sections: Record<FullLocale, Sec> };
 const branchMeta: Record<string, BMeta> = {
   'icb-robots': {
     intro: {
@@ -842,7 +845,7 @@ const branchMeta: Record<string, BMeta> = {
   },
 };
 
-for (const loc of ['pl', 'en'] as Locale[]) {
+for (const loc of ['pl', 'en'] as FullLocale[]) {
   for (const branch of ({ pl, en })[loc].branches) {
     const m = branchMeta[branch.slug];
     if (m) {
@@ -854,10 +857,36 @@ for (const loc of ['pl', 'en'] as Locale[]) {
   }
 }
 
-// Only fully-authored locales are present here; every other active locale
-// falls back to English until its translation batch lands.
+// Fully-authored locales live here; others are built by deep-merging their
+// translation override (src/data/i18n/overrides.ts) over English, so untranslated
+// fields fall back to EN and languages can be translated incrementally.
 const content: Partial<Record<Locale, SiteContent>> = { en, pl };
 
+function isObject(v: unknown): v is Record<string, unknown> {
+  return typeof v === 'object' && v !== null && !Array.isArray(v);
+}
+// Merge `over` onto a deep copy of `base`. Arrays merge element-by-element.
+function deepMerge<T>(base: T, over: unknown): T {
+  if (over === undefined) return base;
+  if (Array.isArray(base)) {
+    const o = Array.isArray(over) ? over : [];
+    return base.map((item, i) => deepMerge(item, o[i])) as unknown as T;
+  }
+  if (isObject(base)) {
+    const out: Record<string, unknown> = { ...base };
+    if (isObject(over)) for (const k of Object.keys(over)) out[k] = deepMerge((base as any)[k], over[k]);
+    return out as T;
+  }
+  return (over as T) ?? base;
+}
+
+const cache: Partial<Record<Locale, SiteContent>> = {};
+
 export function getContent(locale: Locale): SiteContent {
-  return content[locale] ?? (en as SiteContent);
+  if (content[locale]) return content[locale]!;
+  if (cache[locale]) return cache[locale]!;
+  const over = overrides[locale];
+  const merged = over ? deepMerge(en, over) : (en as SiteContent);
+  cache[locale] = merged;
+  return merged;
 }

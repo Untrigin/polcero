@@ -28,7 +28,7 @@ const L = {
   },
 };
 
-const drive: Record<string, Record<Locale, [string, string]>> = {
+const drive: Record<string, Record<'pl' | 'en', [string, string]>> = {
   humanoid: { pl: ['Nogi (dwunożny)', 'Schody, progi, otoczenie pod człowieka'], en: ['Legs (bipedal)', 'Stairs, curbs, human-designed spaces'] },
   'mobile-humanoid': { pl: ['Platforma jezdna', 'Hale i posadzki przemysłowe'], en: ['Mobile platform', 'Halls and industrial floors'] },
   'quadruped-robot': { pl: ['Podwozie kroczące (4 nogi)', 'Schody, przeszkody, teren nierówny'], en: ['Legged chassis (4 legs)', 'Stairs, obstacles, uneven ground'] },
@@ -38,7 +38,8 @@ const drive: Record<string, Record<Locale, [string, string]>> = {
 };
 
 export function getProductSpecs(product: Product, locale: Locale): SpecGroup[] {
-  const t = L[locale];
+  const loc: 'pl' | 'en' = locale === 'pl' ? 'pl' : 'en';
+  const t = L[loc];
   if (product.kind === 'drone') {
     return [
       { title: t.construction, rows: [{ label: t.material, value: locale === 'pl' ? 'Kompozyty węglowe' : 'Carbon composites' }, { label: t.modular, value: t.yes }] },
@@ -55,7 +56,7 @@ export function getProductSpecs(product: Product, locale: Locale): SpecGroup[] {
     ];
   }
   // robots
-  const d = drive[product.slug]?.[locale] ?? drive.humanoid[locale];
+  const d = drive[product.slug]?.[loc] ?? drive.humanoid[loc];
   const isHumanoid = product.kind === 'humanoid' || product.kind === 'mobile-humanoid';
   return [
     { title: t.construction, rows: [{ label: t.material, value: locale === 'pl' ? 'Aluminium i kompozyty' : 'Aluminium & composites' }, { label: t.modular, value: t.yes }, { label: t.core, value: t.yes }, { label: t.coupler, value: t.yes }] },

@@ -35,6 +35,7 @@ const drive: Record<string, Record<'pl' | 'en', [string, string]>> = {
   'tracked-robot': { pl: ['Podwozie gąsienicowe', 'Nieutwardzony, ciężki teren, place budowy'], en: ['Tracked chassis', 'Unpaved, rough terrain, construction sites'] },
   'wheeled-robot': { pl: ['Podwozie kołowe', 'Posadzki, magazyny, płaski teren'], en: ['Wheeled chassis', 'Floors, warehouses, flat ground'] },
   'wheel-leg-robot': { pl: ['Podwozie kołowo-nożne', 'Płaski teren, przeszkody i szyny'], en: ['Wheel-leg chassis', 'Flat ground, obstacles and rails'] },
+  'specialized-robots': { pl: ['4 wymienne podwozia', 'Kroczące · gąsienicowe · kołowe · kołowo-nożne'], en: ['4 interchangeable chassis', 'Legged · tracked · wheeled · wheel-leg'] },
 };
 
 export function getProductSpecs(product: Product, locale: Locale): SpecGroup[] {

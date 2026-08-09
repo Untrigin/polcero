@@ -4,9 +4,15 @@
 // in src/lib/i18n.ts to publish it. Arrays merge element-by-element (by index),
 // so you can translate a single product/industry/branch field and inherit the rest.
 //
-// Batch order (18 total): en, pl live. Next batches: de fr es it pt nl · sv cs ro el · zh hi ar ru ja uk.
+// Batch order (18 total): en, pl live. Batch 1: de fr es it pt nl. Next: sv cs ro el · zh hi ar ru ja uk.
 import type { Locale } from '../../lib/i18n';
 import type { SiteContent } from '../content';
+import { de } from './de';
+import { fr } from './fr';
+import { es } from './es';
+import { it } from './it';
+import { pt } from './pt';
+import { nl } from './nl';
 
 type DeepPartial<T> = T extends (infer U)[]
   ? DeepPartial<U>[]
@@ -17,5 +23,10 @@ type DeepPartial<T> = T extends (infer U)[]
 export type SiteContentOverride = DeepPartial<SiteContent>;
 
 export const overrides: Partial<Record<Locale, SiteContentOverride>> = {
-  // de: { ... }, fr: { ... }, ... — added per translation batch.
+  de,
+  fr,
+  es,
+  it,
+  pt,
+  nl,
 };

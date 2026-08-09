@@ -19,8 +19,8 @@ const specNote = locale === 'pl'
   : 'Values are design assumptions; the product is under development and configuration may change. Please confirm details with sales.';
 const p = (path: string) => localizedPath(path, locale);
 const t = locale === 'pl'
-  ? { home: 'Start', products: 'Produkty', related: 'Powiązane', cta: 'Zapytaj o wdrożenie', specs: 'W skrócie', industries: 'Branże', back: 'Wszystkie produkty', uses: 'Zastosowania', usesLead: 'Do czego wykorzystujemy ten model.' }
-  : { home: 'Home', products: 'Products', related: 'Related', cta: 'Ask about deployment', specs: 'At a glance', industries: 'Industries', back: 'All products', uses: 'Use cases', usesLead: 'What we use this model for.' };
+  ? { home: 'Start', products: 'Produkty', related: 'Powiązane', cta: 'Zapytaj o wdrożenie', specs: 'W skrócie', industries: 'Branże', back: 'Wszystkie produkty', uses: 'Zastosowania', usesLead: 'Do czego wykorzystujemy ten model.', platforms: 'Platformy', platformsLead: 'Ten sam moduł korpusu na czterech wymiennych podwoziach - wybierz platformę pod swój teren.', drive: 'Napęd', terrain: 'Teren' }
+  : { home: 'Home', products: 'Products', related: 'Related', cta: 'Ask about deployment', specs: 'At a glance', industries: 'Industries', back: 'All products', uses: 'Use cases', usesLead: 'What we use this model for.', platforms: 'Platforms', platformsLead: 'The same core module on four interchangeable chassis - choose the platform for your terrain.', drive: 'Drive', terrain: 'Terrain' };
 
 const related = c.products.filter((x) => x.slug !== slug && x.category === product.category).slice(0, 2);
 const fallback = c.products.filter((x) => x.slug !== slug && !related.includes(x)).slice(0, 2 - related.length);
@@ -111,6 +111,32 @@ const description = product.blurb.slice(0, 154);
       </Reveal>
     </div>
   </section>
+
+  {product.platforms && product.platforms.length > 0 && (
+    <section class="section platforms">
+      <div class="container-x">
+        <div class="platforms__head">
+          <p class="eyebrow">{t.platforms}</p>
+          <p class="lead platforms__lead">{t.platformsLead}</p>
+        </div>
+        <div class="platforms__grid">
+          {product.platforms.map((pf, i) => (
+            <Reveal delay={(i % 4) * 60}>
+              <article class="platform">
+                <span class="platform__tile"><img src={pf.image} alt={pf.name} width="360" height="360" loading="lazy" decoding="async" /></span>
+                <h3 class="platform__name">{pf.name}</h3>
+                <p class="platform__blurb">{pf.blurb}</p>
+                <dl class="platform__specs">
+                  <div><dt>{t.drive}</dt><dd>{pf.drive}</dd></div>
+                  <div><dt>{t.terrain}</dt><dd>{pf.terrain}</dd></div>
+                </dl>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   {product.uses && product.uses.length > 0 && (
     <section class="section uses-section">
@@ -217,6 +243,23 @@ const description = product.blurb.slice(0, 154);
   .use__text { color: var(--color-ice); font-size: 1.05rem; line-height: 1.5; }
   @media (min-width: 721px) { .use:nth-child(2) { border-top: 1px solid var(--color-line); } }
   @media (max-width: 720px) { .uses-grid { grid-template-columns: 1fr; } }
+
+  .platforms { border-top: 1px solid var(--color-line); }
+  .platforms__head { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .platforms__head .eyebrow { margin-bottom: 0.85rem; }
+  .platforms__lead { color: var(--color-mute); }
+  .platforms__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .platform { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); overflow: hidden; }
+  .platform__tile { display: block; aspect-ratio: 1 / 1; background: var(--color-panel); border-bottom: 1px solid var(--color-line); }
+  .platform__tile img { width: 100%; height: 100%; object-fit: cover; }
+  .platform__name { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; color: var(--color-ice); margin: 1rem 1.1rem 0.4rem; }
+  .platform__blurb { color: var(--color-mute); font-size: 0.9rem; line-height: 1.55; margin: 0 1.1rem 1rem; }
+  .platform__specs { margin: auto 1.1rem 1.1rem; display: grid; gap: 0; }
+  .platform__specs > div { display: flex; justify-content: space-between; gap: 0.75rem; padding: 0.5rem 0; border-top: 1px solid var(--color-line); }
+  .platform__specs dt { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mute); }
+  .platform__specs dd { margin: 0; font-size: 0.82rem; color: var(--color-ice); text-align: right; }
+  @media (max-width: 900px) { .platforms__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .platforms__grid { grid-template-columns: 1fr; } }
 
   .construction { background: var(--color-surface); border-top: 1px solid var(--color-line); }
   .construction__head { max-width: 60rem; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }

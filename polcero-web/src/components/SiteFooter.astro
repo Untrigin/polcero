@@ -9,6 +9,10 @@ interface Props {
 const { locale, content } = Astro.props;
 const year = 2026;
 const homeHref = localizedPath('/', locale);
+// Footer column hrefs are stored unprefixed; localize internal page paths only
+// (skip files like /rss.xml or the About PDF, and any external/anchor links).
+const locHref = (href: string) =>
+  href.startsWith('/') && !href.startsWith('//') && !href.includes('.') ? localizedPath(href, locale) : href;
 ---
 <footer class="site-footer">
   <div class="container-x">
@@ -38,7 +42,7 @@ const homeHref = localizedPath('/', locale);
             <h2 class="site-footer__col-title">{col.title}</h2>
             <ul>
               {col.links.map((link) => (
-                <li><a href={link.href}>{link.label}</a></li>
+                <li><a href={locHref(link.href)}>{link.label}</a></li>
               ))}
             </ul>
           </div>

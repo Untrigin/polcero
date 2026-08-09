@@ -1,0 +1,390 @@
+import type { SiteContentOverride } from './overrides';
+
+export const es: SiteContentOverride = {
+  tagline: 'Robots modulares autónomos para la industria y la agricultura',
+  nav: {
+    products: 'Productos',
+    solutions: 'Soluciones',
+    services: 'Divisiones',
+    industries: 'Sectores',
+    useCases: 'Casos de uso',
+    company: 'Empresa',
+    news: 'Novedades',
+    contact: 'Contacto',
+    cta: 'Hablemos',
+  },
+  services: {
+    eyebrow: 'DIVISIONES DE NEGOCIO',
+    h2: [
+      { text: 'Cinco divisiones, ', weight: 300 },
+      { text: 'un cerebro de IA', weight: 700 },
+    ],
+    lead: 'Desde cobots listos para usar hasta la fotónica en el laboratorio - cada división funciona sobre la misma capa de inteligencia POLCERO.',
+    cta: 'Descubre las divisiones',
+    all: 'Todas las divisiones',
+  },
+  branches: [
+    {
+      tagline: 'Cobots industriales y AMR',
+      desc: 'Robots colaborativos industriales, carretillas elevadoras autónomas y plataformas AMR - diseñados y entregados a medida.',
+      intro: 'Los robots ya existen - lo que falta son los sistemas que los controlan. Construimos esa capa que falta: instalamos en la máquina conocimiento, un plan y "ojos" (cámaras, sensores), la conectamos con la IA y hacemos que trabaje por sí sola - sin conductor y sin supervisión constante. ICB Robots es la división operativa en marcha de POLCERO: diseñamos, fabricamos y desplegamos cobots, carretillas elevadoras autónomas, plataformas AMR y sistemas de producción automatizados.',
+      points: ['Robots colaborativos (cobots)', 'Carretillas elevadoras autónomas', 'Plataformas AMR', 'Centro de control', 'Producción autónoma', 'Líneas de producción'],
+      note: 'División en marcha · experiencia del equipo desde 1980',
+      sections: [
+        { title: 'Cobots', desc: 'Apoyan a las personas, automatizan, alimentan, montan y transportan.' },
+        { title: 'Carretillas elevadoras autónomas', desc: 'Transportan, elevan, escanean, se localizan y esquivan obstáculos.' },
+        { title: 'Plataforma AMR', desc: 'Accede, eleva, transporta, navega, esquiva y entrega.' },
+        { title: 'Centro de control', desc: 'Monitoriza, analiza, alerta, responde, protege e informa.' },
+        { title: 'Producción autónoma', desc: 'Clasifica, empaqueta, etiqueta, inspecciona, mueve y sincroniza.' },
+        { title: 'Líneas de producción', desc: 'Optimiza, automatiza, controla, integra, monitoriza y mejora.' },
+        { title: 'El cerebro de IA POLCERO en cada robot', desc: 'Cada producto ICB funciona con la capa de inteligencia POLCERO AI Systems: modelos VLA, detección de clase YOLO, navegación SLAM y gestión de flotas. El mismo cerebro se ajusta con los datos de tu proceso. Programación: Python, C++ y ROS.' },
+      ],
+    },
+    {
+      tagline: 'El cerebro de IA para cualquier robot',
+      desc: 'Construimos la capa de inteligencia para robots humanoides y especializados: percepción, planificación, autonomía y gestión de flotas.',
+      intro: 'POLCERO construye una capa de inteligencia de IA - percepción, planificación, control y gestión de flotas - para robots humanoides y especializados. El mismo stack de IA da servicio a todas las divisiones de POLCERO: modelos VLA ajustados, visión YOLO, arquitectura edge+cloud y un volante de datos. El hardware del robot puede ser el propio del cliente o de nuestro catálogo; nosotros aportamos la inteligencia.',
+      points: ['Ajuste de modelos VLA', 'Visión y percepción', 'Arquitectura edge + cloud', 'Control clásico donde basta', 'Gestión de flotas'],
+      sections: [
+        { title: 'Ajuste de VLA', desc: 'Modelos VLA abiertos (GR00T N1.7, π0, OpenVLA) ajustados con los datos del cliente. Una capa de abstracción permite intercambiar los modelos base sin reentrenar la inteligencia de tareas.' },
+        { title: 'Visión y percepción', desc: 'Detección de clase YOLO para el reconocimiento de objetos en tiempo real, cámaras de profundidad (RGB-D), LiDAR, imagen multiespectral y térmica, más un VLM para la comprensión de la escena y el lenguaje.' },
+        { title: 'Arquitectura edge + cloud', desc: 'Inferencia en el borde a bordo para un control con latencia inferior a 10 ms. La nube para las actualizaciones de modelos, la analítica y la gestión de flotas. Un volante de datos mejora el rendimiento de forma continua.' },
+        { title: 'Control clásico donde basta', desc: 'Controladores PID para agarre y corte simples y repetitivos - menor coste, mayor fiabilidad. Reservamos la IA para la percepción compleja y las decisiones de comprensión de la escena.' },
+      ],
+    },
+    {
+      tagline: 'Plataforma + robots especializados',
+      desc: 'La plataforma modular POLCERO y un catálogo de robots que desplegamos con nuestro cerebro de IA - para cualquier mercado, a medida.',
+      intro: 'La división Robots es la plataforma modular en el núcleo de todo lo que construimos - un cerebro de IA común, una interfaz normalizada, chasis intercambiables y módulos de tarea plug-and-play. También desplegamos robots del catálogo de nuestros socios, superponiéndoles nuestro cerebro de IA para cualquier mercado.',
+      points: ['Cerebro de IA', 'Interfaz plug-and-play', 'Familia de chasis', 'Módulos de tarea', 'Robots agrícolas', 'Robots para obras', 'Máquinas de IA estacionarias'],
+      sections: [
+        { title: 'Cerebro de IA', desc: 'Modelos VLA + YOLO ajustados con los datos del cliente. Inferencia en el borde y entrenamiento en la nube. La misma capa de inteligencia se adapta a cada chasis y mercado.' },
+        { title: 'Interfaz plug-and-play', desc: 'Un conector mecánico y eléctrico normalizado. Cambia el chasis o los módulos de tarea sin rediseñar la capa de inteligencia - un único punto de integración para todas las combinaciones.' },
+        { title: 'Familia de chasis', desc: 'W4 (ruedas), T6 (orugas), WL4 (rueda-pata), Q4 (patas). Las plataformas con ruedas son unas 2,5 veces más eficientes energéticamente que las de patas en terreno llano - se ajustan al terreno y a la tarea.' },
+        { title: 'Módulos de tarea', desc: 'Pinza blanda, cabezal de pulverización/fertirrigación, mástil de sensores (RGB-D / multiespectral / térmico), portador logístico, manipulador remoto - conecta la herramienta adecuada para cada trabajo.' },
+        { title: 'Robots agrícolas', desc: 'Plataformas de campo autónomas para siembra, cuidado, pulverización de precisión y cosecha selectiva. Fusión de sensores RGB-D + multiespectral + térmico para la monitorización del estado del cultivo.' },
+        { title: 'Robots para obras', desc: 'Replanteo del modelo BIM al terreno, perforación, movimiento de tierras autónomo, inspección frente a un gemelo digital. Autonomía supervisada por humanos en todo momento.' },
+        { title: 'Máquinas de IA estacionarias', desc: 'Robots de brazo fijo y estaciones de trabajo inteligentes para inspección, control de calidad, montaje repetitivo y manejo de materiales en líneas de producción.' },
+      ],
+    },
+    {
+      tagline: 'IA agrícola + robots de campo',
+      desc: 'Flota de robots de campo autónomos con el cerebro de IA-agricultor: siembra, cuidado, cosecha selectiva - modelo RaaS (robot como servicio).',
+      intro: 'Farma AI es la división agrícola de POLCERO: una flota de robots de campo autónomos gobernada por el cerebro supervisor "IA-agricultor" para el ciclo completo del cultivo - siembra, cuidado (desherbado, pulverización localizada), monitorización y cosecha selectiva de hortalizas delicadas. Pensada para grandes explotaciones hortícolas, entregada como Robot-as-a-Service (RaaS) - sin inversión de capital.',
+      points: ['Siembra', 'Cuidado - desherbado y aclareo', 'Pulverización localizada / microdosificación', 'Monitorización', 'Cosecha selectiva'],
+      sections: [
+        { title: 'Siembra', desc: 'Trasplante hilera a hilera de precisión o siembra directa con navegación RTK/SLAM. Precisión de colocación por debajo del centímetro sobre el chasis POLCERO-W4.' },
+        { title: 'Cuidado - desherbado y aclareo', desc: 'Detección de malas hierbas por visión artificial más desherbado mecánico o térmico. Sin herbicida para las malas hierbas identificadas - solo pulverización localizada dirigida.' },
+        { title: 'Pulverización localizada / microdosificación', desc: 'Aplicación selectiva de fertilizante o productos fitosanitarios solo donde la IA detecta la necesidad. Reduce el uso de química hasta un 90% frente a la pulverización general.' },
+        { title: 'Monitorización', desc: 'Escaneo diario del campo con cámaras RGB-D + multiespectrales + térmicas. Mapa del estado del cultivo, alerta temprana de enfermedades y previsión de la madurez de cosecha.' },
+        { title: 'Cosecha selectiva', desc: 'Cosecha selectiva de hortalizas delicadas (empezando por las lechugas) - la brecha sin resolver más difícil de la automatización agrícola. Pinza blanda más detección de madurez por IA.' },
+      ],
+    },
+    {
+      tagline: 'Cómputo de IA con luz',
+      desc: 'Línea de I+D: computación fotónica para acelerar la inferencia de IA en nuestros robots - menos consumo, mayor rendimiento.',
+      intro: 'Photonic Processors es la línea de I+D de POLCERO: acelerar la inferencia de IA en nuestros robots usando luz en lugar de solo electrónica. La multiplicación óptica de matrices - la operación central en las redes neuronales - puede realizarse en un único paso óptico a través de un chip fotónico, ofreciendo latencia sub-nanosegundo y un consumo de energía por operación varios órdenes de magnitud menor que los chips GPU/ASIC.',
+      points: ['Multiplicación óptica de matrices', 'Arquitectura híbrida fotónica-electrónica', 'Mercado: de 1,8 mil M a 14,6 mil M USD', 'La fotónica como futura capa de cómputo'],
+      sections: [
+        { title: 'Multiplicación óptica de matrices', desc: 'La inferencia de redes neuronales está dominada por la multiplicación matriz-vector (GEMM). Los chips fotónicos la realizan con luz que atraviesa mallas de interferómetros Mach-Zehnder - haciendo en un único paso óptico lo que la electrónica necesita miles de ciclos de reloj para calcular.' },
+        { title: 'Arquitectura híbrida fotónica-electrónica', desc: 'Los chips fotónicos destacan en las operaciones lineales (matemática de matrices) pero no en las no lineales (funciones de activación). La arquitectura de consenso combina núcleos ópticos para la matemática de matrices con unidades electrónicas para las activaciones - un diseño híbrido que toma lo mejor de ambos.' },
+        { title: 'Mercado: de 1,8 mil M a 14,6 mil M USD', desc: 'El mercado mundial de aceleradores de IA fotónicos, de 2025 a 2034 (CAGR del 26,3%). A fecha de 2026 seguimos a 52 empresas de computación fotónica en todo el mundo.' },
+        { title: 'La fotónica como futura capa de cómputo', desc: 'Cuando los aceleradores fotónicos alcancen la madurez (una ventana de 2027-2031 para productos de clase centro de datos), la arquitectura del cerebro de IA POLCERO está preparada para incorporarlos - la capa de abstracción permite cambiar el sustrato de cómputo sin reentrenar la inteligencia de tareas.' },
+      ],
+    },
+  ],
+  hero: {
+    eyebrow: 'ROBOTS MODULARES · POLONIA',
+    h1: [
+      { text: 'Robots ', weight: 300 },
+      { text: 'modulares', weight: 700 },
+      { text: ' autónomos', weight: 300 },
+    ],
+    subhead: 'No construimos un solo robot. Construimos un ecosistema que solo cobra sentido en conjunto.',
+    h2: [
+      { text: 'Una plataforma, ', weight: 300 },
+      { text: 'módulos intercambiables', weight: 700 },
+      { text: ', cualquier tarea.', weight: 300 },
+    ],
+    body: 'POLCERO une tres capas: una plataforma de IA que planifica y supervisa el trabajo, el transporte que lleva el robot al lugar, y un robot modular que elige su propio chasis y módulo de tarea según lo que encuentra. Tú asignas un objetivo, no un movimiento.',
+    ctaPrimary: 'Hablemos del despliegue',
+    ctaSecondary: 'Ver la plataforma',
+    imageAlt: 'Robot modular POLCERO sobre una plataforma móvil en una nave de producción',
+  },
+  stats: [
+    { label: 'carga útil del dron de transporte' },
+    { label: 'valor de los primeros despliegues' },
+    { label: 'menor coste de cosecha por unidad' },
+    { label: 'primeros despliegues en clientes' },
+  ],
+  platform: {
+    h2: [
+      { text: 'Un cerebro que ', weight: 300 },
+      { text: 'asigna un objetivo', weight: 700 },
+      { text: ' - no un movimiento preprogramado.', weight: 300 },
+    ],
+    body: 'La plataforma de IA recibe la tarea, planifica su ejecución, supervisa el proceso y documenta el resultado. El robot aprende por demostración - un operario realiza la tarea, el sistema la comprende y actúa de forma autónoma, sin programación compleja. Los modelos pueden ejecutarse localmente, en el propio dispositivo, sin enviar imágenes al exterior.',
+    cta: 'Cómo funciona la plataforma',
+    layers: [
+      { title: 'Capa de IA', body: 'Planificación, supervisión y documentación de la tarea. Los datos y el cumplimiento normativo permanecen en la Unión Europea.' },
+      { title: 'Capa de transporte', body: 'Un dron de transporte lleva el robot allí donde el acceso es costoso o imposible - con el tiempo, los propios robots.' },
+      { title: 'Robot modular', body: 'Un módulo central común, chasis y módulos de tarea intercambiables. Interpreta la situación y elige su propia herramienta.' },
+    ],
+  },
+  tabs: {
+    h2: [
+      { text: 'Dónde ', weight: 300 },
+      { text: 'trabaja POLCERO', weight: 700 },
+    ],
+    items: [
+      {
+        label: 'Industria',
+        title: 'El robot se acerca al puesto - no está atornillado a él',
+        body: 'Un humanoide sobre una plataforma móvil entra en una nave diseñada para personas sin necesidad de reformarla. Alcanza donde alcanza un operario, atiende varios puestos en lugar de quedarse en uno y realiza dos operaciones en un mismo ciclo.',
+        alt: 'Robot humanoide POLCERO operando un puesto de montaje en una nave',
+      },
+      {
+        label: 'Agricultura',
+        title: 'Manipulación selectiva donde falla la cosecha masiva',
+        body: 'Un robot con un módulo de tarea agrícola cosecha hortalizas en invernaderos, túneles y campos, y cuando hace falta cambia la pinza por un láser para desherbar. Trabaja donde falla la señal por satélite.',
+        alt: 'Robot POLCERO trabajando entre hileras de cultivo en un túnel de plástico',
+      },
+      {
+        label: 'Logística',
+        title: 'Transporte donde termina la carretera',
+        body: 'Un dron de transporte lleva piezas, materiales y los propios robots a terreno montañoso, obras sin caminos pavimentados y zonas aisladas tras una avería o inundación. El eslabón que faltaba en el modelo de alquiler por horas.',
+        alt: 'Dron de transporte POLCERO llevando una carga sobre terreno de difícil acceso',
+      },
+    ],
+  },
+  overview: {
+    h2: [
+      { text: 'Una plataforma en ', weight: 300 },
+      { text: 'múltiples configuraciones', weight: 700 },
+    ],
+    lead: 'No construimos una máquina distinta para cada tarea. Construimos un único módulo central, lo montamos sobre el chasis elegido y lo equipamos con un módulo de tarea - la misma máquina, con otra herramienta y otro programa, resuelve una tarea distinta.',
+  },
+  cards: {
+    eyebrow: 'DISPONIBLES A MEDIDA',
+    h2: [
+      { text: 'Robots construidos ', weight: 300 },
+      { text: 'en torno al proceso', weight: 700 },
+      { text: ' del cliente', weight: 300 },
+    ],
+  },
+  mission: {
+    h2: [
+      { text: 'Cada nuevo despliegue ', weight: 300 },
+      { text: 'más barato y rápido', weight: 700 },
+      { text: ' que el anterior', weight: 300 },
+    ],
+    body: 'El módulo central común es reutilizable, y los datos de despliegues anteriores acortan el entrenamiento de los modelos. Este es nuestro principal criterio de éxito - el camino de una empresa de proyectos a un fabricante de robots.',
+    imageAlt: 'Una flota de robots autónomos POLCERO en una planta de producción moderna',
+  },
+  closing: {
+    h2: [
+      { text: 'Vendemos el ', weight: 300 },
+      { text: 'resultado', weight: 700 },
+      { text: ', no la máquina.', weight: 300 },
+    ],
+    body: 'Facturamos por hectáreas cosechadas, volumen gestionado y plazos cumplidos. Asumimos el riesgo técnico, porque respondemos por la tecnología. Hablemos de tu proceso.',
+    cta: 'Hablemos',
+  },
+  footer: {
+    tagline: 'Robots modulares autónomos para la industria y la agricultura. Diseñados, fabricados y mantenidos en Polonia.',
+    columns: [
+      {
+        title: 'Productos',
+        links: [
+          { label: 'Humanoide' },
+          { label: 'Humanoide sobre plataforma móvil' },
+          { label: 'Robots especializados' },
+          { label: 'Dron de transporte' },
+          { label: 'Especificaciones' },
+        ],
+      },
+      {
+        title: 'Sectores',
+        links: [
+          { label: 'Industria' },
+          { label: 'Agricultura' },
+          { label: 'Construcción' },
+          { label: 'Logística' },
+          { label: 'Sector público' },
+        ],
+      },
+      {
+        title: 'Empresa',
+        links: [
+          { label: 'Divisiones' },
+          { label: 'Quiénes somos' },
+          { label: 'Novedades' },
+          { label: 'Contacto' },
+        ],
+      },
+      {
+        title: 'Recursos',
+        links: [
+          { label: 'Plataforma POLCERO OS' },
+          { label: 'Quiénes somos (PDF)' },
+          { label: 'RSS' },
+        ],
+      },
+    ],
+    legal: 'Política de privacidad',
+    rights: 'Todos los derechos reservados.',
+  },
+  products: [
+    {
+      category: 'Humanoide',
+      blurb: 'El módulo central completado con piernas y dos brazos. Entra en espacios diseñados para personas y opera máquinas concebidas para el manejo manual.',
+      subtitle: 'Trabaja donde trabajan las personas',
+      price: 'Bajo petición',
+      uses: ['Atención de puestos diseñados para personas', 'Montaje y trabajo físico repetitivo', 'Manejo de máquinas concebidas para el manejo manual', 'Ayuda doméstica y tareas de limpieza (hoja de ruta)'],
+    },
+    {
+      name: 'Humanoide sobre plataforma móvil',
+      category: 'Humanoide',
+      blurb: 'El mismo humanoide sobre una base móvil. Se acerca al puesto y atiende varios lugares en vez de quedarse en uno.',
+      subtitle: 'Un robot, muchos puestos',
+      price: 'Bajo petición',
+      uses: ['Atención de varios puestos desde una sola máquina', 'Cierre de huecos entre máquinas en la planta', 'Transporte interno entre puestos', 'Dos operaciones en un mismo ciclo'],
+    },
+    {
+      name: 'Robots especializados',
+      category: 'Robots especializados',
+      blurb: 'El mismo módulo central - control, IA y baterías de cambio rápido - sobre el chasis que exige tu terreno: con patas, de orugas, con ruedas o rueda-pata. Cambia la plataforma y conserva el cerebro y los módulos de tarea.',
+      subtitle: 'Un módulo central, cuatro chasis',
+      price: 'Bajo petición',
+      uses: ['Inspección y monitorización en terreno difícil', 'Patrulla de infraestructuras e instalaciones', 'Trabajo de campo y transporte sin pavimentar', 'Trabajo y transporte de materiales en obras', 'Transporte interno y monitorización sobre suelos'],
+      platforms: [
+        {
+          name: 'Robot con patas',
+          drive: 'Chasis con patas (4 patas)',
+          terrain: 'Escaleras, obstáculos, suelo irregular',
+          blurb: 'El módulo central sobre un chasis con patas. Supera escaleras, bordillos y terrenos que las ruedas no pueden.',
+        },
+        {
+          name: 'Robot de orugas',
+          drive: 'Chasis de orugas',
+          terrain: 'Terreno sin pavimentar, accidentado, obras',
+          blurb: 'Un chasis de orugas para terreno accidentado e irregular, obras y trabajo de campo.',
+        },
+        {
+          name: 'Robot con ruedas',
+          drive: 'Chasis con ruedas',
+          terrain: 'Suelos, almacenes, terreno llano',
+          blurb: 'Un chasis con ruedas, rápido y silencioso, para suelos industriales, almacenes y monitorización.',
+        },
+        {
+          name: 'Robot rueda-pata',
+          drive: 'Chasis rueda-pata',
+          terrain: 'Terreno llano, obstáculos y raíles',
+          blurb: 'Un chasis híbrido rueda-pata: rueda sobre terreno llano y supera obstáculos y raíles.',
+        },
+      ],
+    },
+    {
+      category: 'Dron de transporte',
+      blurb: 'Un dron de transporte pesado para llevar robots, módulos y cargas a lugares de difícil acceso. Llevamos el robot allí donde el acceso es imposible.',
+      specs: [
+        { label: 'Carga útil máxima' },
+        { label: 'Peso del dron' },
+        { label: 'Construcción', value: 'modular' },
+        { label: 'Transporta', value: 'robots · módulos · cargas' },
+      ],
+      subtitle: 'Lleva el robot donde no hay carretera',
+      price: 'Bajo petición',
+      uses: ['Entrega de robots, módulos y cargas a lugares de difícil acceso', 'Entregas tras una avería o inundación', 'Transporte a terreno montañoso y boscoso', 'Abastecimiento de obras sin caminos'],
+    },
+    {
+      category: 'Software',
+      blurb: 'El módulo central con la capa de IA: control, percepción y planificación. El robot aprende por demostración - un operario realiza la tarea, el sistema la comprende y actúa de forma autónoma, reduciendo el tiempo de programación hasta diez veces.',
+      subtitle: 'El cerebro de IA que aprende por demostración',
+      price: 'Incluido con el despliegue',
+      uses: ['Enseñar al robot por demostración', 'Planificación, supervisión y documentación de tareas', 'Gestión de flotas de robots', 'Operación local con los datos en la UE'],
+    },
+  ],
+  industries: [
+    {
+      name: 'Industria',
+      blurb: 'Un humanoide sobre plataforma móvil en naves diseñadas para personas.',
+      intro: 'Las naves de producción, los puestos, las cintas transportadoras y las alturas de trabajo llevan décadas diseñadas para personas. Un robot con proporciones humanas entra en ese entorno sin reformarlo - alcanza donde alcanza un operario y opera máquinas concebidas para el manejo manual. El cliente no adapta la planta al robot, solo el robot a la planta.',
+      challenges: [
+        { title: 'Escasez de mano de obra', text: 'El trabajo físico repetitivo y de limpieza es cada vez más difícil de cubrir, y la rotación sigue creciendo.' },
+        { title: 'Puestos fijos', text: 'Los robots industriales están atornillados a un único lugar y no pueden adaptarse cuando cambia el proceso.' },
+        { title: 'Reformas costosas', text: 'La automatización suele implicar rediseñar la nave en torno a la máquina, elevando la barrera de entrada.' },
+        { title: 'Integración con máquinas existentes', text: 'Un equipo nuevo debe trabajar con las máquinas que el cliente ya utiliza.' },
+      ],
+      approach: [
+        { title: 'El robot se acerca al puesto', text: 'Un humanoide sobre plataforma móvil atiende varios puestos en lugar de quedarse en uno y cubre los huecos entre máquinas.' },
+        { title: 'Dos operaciones por ciclo', text: 'Una configuración de doble brazo con giro de cintura aumenta el rendimiento del puesto en trabajos repetitivos.' },
+        { title: 'Despliegue llave en mano', text: 'Diseño, fabricación, integración, puesta en marcha, documentación y servicio - desde 2 mln PLN, con evaluación de conformidad.' },
+      ],
+    },
+    {
+      name: 'Agricultura',
+      blurb: 'Cosecha selectiva y cuidado en túneles e invernaderos.',
+      intro: 'Los grandes fabricantes de maquinaria agrícola son muy buenos en la cosecha masiva y en la navegación en campo abierto. La manipulación selectiva en cultivos blandos y delicados, y el trabajo en túneles e invernaderos donde falla la señal por satélite, siguen estando poco atendidos. Este es nuestro terreno, y lo hemos elegido de forma deliberada.',
+      challenges: [
+        { title: 'Escasez de temporeros', text: 'Una sola explotación emplea de cien a ciento cincuenta personas en el pico - y cada año hay menos disponibles.' },
+        { title: 'Coste laboral creciente', text: 'El coste total de un temporero ronda hoy los 15 900 PLN al mes, y sigue subiendo.' },
+        { title: 'Presión para reducir la química', text: 'El cuidado y el desherbado deben ser cada vez más precisos y localizados.' },
+        { title: 'Una temporada corta', text: 'Una explotación necesita la máquina seis meses - no tiene sentido inmovilizar capital en ella todo el año.' },
+      ],
+      approach: [
+        { title: 'Un módulo de tarea agrícola', text: 'Un robot con brazos y pinza cosecha el cultivo y, cuando hace falta, cambia la herramienta por un láser para desherbar.' },
+        { title: 'Facturación por resultado', text: 'Apuntamos a 9-12 groszy por unidad frente a 15-20 en la cosecha manual - alrededor de un 40% menos.' },
+        { title: 'Funciona sin GPS', text: 'Cosecha selectiva y cuidado en túneles e invernaderos donde falla la navegación por satélite.' },
+      ],
+    },
+    {
+      name: 'Construcción',
+      blurb: 'Inspección, transporte pesado y patrulla de PRL - trabajo humano que los robots pueden asumir.',
+      intro: 'En la obra, los robots asumen el trabajo arriesgado o tedioso para las personas: inspección y captura de la realidad frente al modelo BIM, replanteo, transporte pesado y patrullas de PRL. Un chasis de orugas afronta el terreno sin pavimentar e irregular, mientras que el dron de transporte completa el abastecimiento desde el exterior.',
+      challenges: [
+        { title: 'Riesgos de seguridad', text: 'El trabajo en altura, con polvo y entre maquinaria en movimiento es peligroso para las personas.' },
+        { title: 'Desfase BIM-realidad', text: 'El estado real diverge del modelo, y detectar las diferencias lleva tiempo.' },
+        { title: 'Monitorización del avance tardía', text: 'La documentación del avance se hace de forma esporádica y manual.' },
+        { title: 'Terreno difícil, sin pavimentar', text: 'El acceso y el transporte de materiales por una obra sin caminos es costoso.' },
+      ],
+      approach: [
+        { title: 'Inspección y captura de la realidad frente al BIM', text: 'El robot captura el estado de la obra y lo compara con el modelo, señalando las diferencias.' },
+        { title: 'Transporte en terreno difícil', text: 'Un chasis de orugas mueve materiales entre zonas mientras el dron los trae desde el exterior.' },
+        { title: 'Patrulla de PRL y monitorización', text: 'Rondas y documentación periódicas sin exponer a las personas, con los datos del lado del cliente.' },
+      ],
+    },
+    {
+      name: 'Logística',
+      blurb: 'Un dron de transporte donde termina la carretera.',
+      intro: 'Un robot vale lo que vale en el lugar donde se necesita. La capa de transporte - con un dron capaz de llevar hasta 500 kilogramos, un prototipo que ya tenemos - lleva piezas, materiales y los propios robots allí donde el acceso es costoso, lento o imposible.',
+      challenges: [
+        { title: 'Terreno de difícil acceso', text: 'Zonas montañosas y boscosas, obras sin caminos pavimentados, áreas aisladas tras una avería o inundación.' },
+        { title: 'Coste de flota y conductores', text: 'Mantener vehículos y conductores, y depender del tráfico y del estado de las carreteras, lastra cada servicio.' },
+        { title: 'Descarga y paletizado', text: 'El transporte interno pesado y repetitivo en el almacén sigue necesitando manos.' },
+        { title: 'La última milla del robot', text: 'El coste y el tiempo de llevar el robot deciden la rentabilidad del alquiler por horas.' },
+      ],
+      approach: [
+        { title: 'Dron de transporte', text: 'Lleva cargas, personas y robots donde termina la carretera - sin mantener una flota.' },
+        { title: 'Cobots y plataformas AMR', text: 'ICB Robots para descarga, preparación de pedidos y transporte interno, entregados a medida.' },
+        { title: 'Robot entregado en el sitio', text: 'El eslabón que faltaba en el modelo de alquiler por horas - el robot atiende a varios clientes el mismo día.' },
+      ],
+    },
+    {
+      name: 'Sector público',
+      blurb: 'Datos y cumplimiento en la UE. En el dispositivo, sin enviar imágenes al exterior.',
+      intro: 'Para muchas instituciones, los datos de las naves de producción y de las infraestructuras son información sensible. Nuestros modelos pueden ejecutarse localmente, en el propio dispositivo, sin enviar imágenes al exterior. Con unos requisitos normativos crecientes, eso deja de ser un argumento técnico y pasa a ser una condición de compra.',
+      challenges: [
+        { title: 'Requisitos normativos', text: 'El cumplimiento y la auditabilidad son una condición de la conversación, no un extra.' },
+        { title: 'Sensibilidad de los datos', text: 'Las imágenes y los datos operativos no pueden salir de la organización ni de la Unión Europea.' },
+        { title: 'Control de la cadena de suministro', text: 'Las instituciones públicas esperan una cadena de suministro transparente y europea.' },
+        { title: 'Fabricación en la UE', text: 'El valor añadido - diseño, software, montaje y servicio - debe generarse aquí.' },
+      ],
+      approach: [
+        { title: 'Modelos en el dispositivo', text: 'La percepción y la inferencia se ejecutan localmente; los datos y el cumplimiento permanecen en la Unión Europea.' },
+        { title: 'Diseñado y fabricado en Polonia', text: 'Una planta en Kietrz y proveedores polacos para la mayoría de los componentes - control sobre la cadena de suministro.' },
+        { title: 'Línea fotónica (I+D)', text: 'La computación fotónica acelera la inferencia de IA con menor consumo.' },
+      ],
+    },
+  ],
+};

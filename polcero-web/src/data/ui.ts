@@ -19,6 +19,16 @@ import { es } from './i18n/ui/es';
 import { it } from './i18n/ui/it';
 import { pt } from './i18n/ui/pt';
 import { nl } from './i18n/ui/nl';
+import { sv } from './i18n/ui/sv';
+import { cs } from './i18n/ui/cs';
+import { ro } from './i18n/ui/ro';
+import { el } from './i18n/ui/el';
+import { zh } from './i18n/ui/zh';
+import { hi } from './i18n/ui/hi';
+import { ar } from './i18n/ui/ar';
+import { ru } from './i18n/ui/ru';
+import { ja } from './i18n/ui/ja';
+import { uk } from './i18n/ui/uk';
 
 type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends readonly (infer U)[]
@@ -540,7 +550,9 @@ const pl: DeepPartial<UI> = {
 };
 
 /** Translations for locales beyond en/pl land here as they are produced. */
-export const uiOverrides: Partial<Record<Locale, DeepPartial<UI>>> = { de, fr, es, it, pt, nl };
+export const uiOverrides: Partial<Record<Locale, DeepPartial<UI>>> = {
+  de, fr, es, it, pt, nl, sv, cs, ro, el, zh, hi, ar, ru, ja, uk,
+};
 
 // Merge an override on top of the English base: objects recurse, arrays merge
 // by index, and any `undefined` value falls back to the English original.

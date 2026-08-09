@@ -7,6 +7,7 @@ import Reveal from '../Reveal.astro';
 import ProductCard from '../ProductCard.astro';
 import BranchGrid from '../BranchGrid.astro';
 import { getContent } from '../../data/content';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale; slug: string }
@@ -14,9 +15,7 @@ const { locale, slug } = Astro.props;
 const c = getContent(locale);
 const industry = c.industries.find((i) => i.slug === slug)!;
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl'
-  ? { home: 'Start', industries: 'Branże', title: 'Rozwiązania dla branży', products: 'Powiązane produkty', cta: 'Porozmawiajmy', order: 'Zobacz produkt', services: 'Kierunki dla tej branży', servicesLead: 'Kierunki POLCERO, które najczęściej wdrażamy w tej branży.', all: 'Wszystkie kierunki', challenges: 'Wyzwania', challengesLead: 'Z czym mierzy się ta branża.', approach: 'Jak pomagamy', approachLead: 'Jak POLCERO odpowiada na te wyzwania.' }
-  : { home: 'Home', industries: 'Industries', title: 'Solutions for', products: 'Related products', cta: 'Talk to us', order: 'View product', services: 'Branches for this industry', servicesLead: 'The POLCERO branches we most often deploy in this industry.', all: 'All branches', challenges: 'Challenges', challengesLead: 'What this industry is up against.', approach: 'How we help', approachLead: 'How POLCERO answers those challenges.' };
+const t = getUI(locale).industryDetail;
 
 const industryBranches = c.branches.filter((b) => industry.branchSlugs.includes(b.slug));
 

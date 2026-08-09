@@ -2,6 +2,7 @@
 import type { Locale } from '../lib/i18n';
 import { localizedPath } from '../lib/i18n';
 import { getContent } from '../data/content';
+import { getUI } from '../data/ui';
 import SplitHeading from './SplitHeading.astro';
 import BoxArrowLink from './BoxArrowLink.astro';
 import MediaFrame from './MediaFrame.astro';
@@ -16,8 +17,9 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 const c = getContent(locale);
 const p = (path: string) => localizedPath(path, locale);
+const t = getUI(locale).home;
 const cardProducts = c.products.slice(0, 4);
-const orderLabel = locale === 'pl' ? 'Zobacz produkt' : 'View product';
+const orderLabel = t.order;
 ---
 
 {/* ── 01 HERO - full-screen looping video (mobile = image) ── */}
@@ -36,7 +38,7 @@ const orderLabel = locale === 'pl' ? 'Zobacz produkt' : 'View product';
       <a class="btn-pill btn-glass" href={p('/products/polcero-os/')}>{c.hero.ctaSecondary} <ArrowUpRight size={18} aria-hidden="true" /></a>
     </div>
   </div>
-  <a class="hero-full__scroll" href="#ekosystem" aria-label={locale === 'pl' ? 'Przewiń w dół' : 'Scroll down'}>
+  <a class="hero-full__scroll" href="#ekosystem" aria-label={t.scrollDown}>
     <span class="hero-full__scroll-dot"></span>
   </a>
 </section>
@@ -55,7 +57,7 @@ const orderLabel = locale === 'pl' ? 'Zobacz produkt' : 'View product';
     <Reveal delay={120} class="ecosystem__media">
       <MediaFrame
         src="/media/ecosystem.webp"
-        alt={locale === 'pl' ? 'Humanoid POLCERO w kabinie drona transportowego' : 'POLCERO humanoid seated in the transport drone'}
+        alt={t.ecosystemAlt}
         width={1400}
         height={611}
         parallax
@@ -108,7 +110,7 @@ const orderLabel = locale === 'pl' ? 'Zobacz produkt' : 'View product';
 <section class="section tabs-section">
   <div class="container-x">
     <Reveal class="tabs-section__head">
-      <p class="eyebrow">{locale === 'pl' ? 'ZASTOSOWANIA' : 'APPLICATIONS'}</p>
+      <p class="eyebrow">{t.applications}</p>
       <SplitHeading parts={c.tabs.h2} as="h2" />
     </Reveal>
     <Reveal delay={80}>

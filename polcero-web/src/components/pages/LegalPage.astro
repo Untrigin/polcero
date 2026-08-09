@@ -2,16 +2,16 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../PageHeader.astro';
 import { getLegalDoc } from '../../data/legal';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale; slug: 'privacy' | 'cookies' | 'terms' }
 const { locale, slug } = Astro.props;
 const p = (path: string) => localizedPath(path, locale);
 const doc = getLegalDoc(slug, locale);
-const homeLabel = locale === 'pl' ? 'Start' : 'Home';
-const updatedLabel = locale === 'pl' ? 'Ostatnia aktualizacja' : 'Last updated';
+const t = getUI(locale).legalPage;
 const crumbs = [
-  { label: homeLabel, href: p('/') },
+  { label: t.home, href: p('/') },
   { label: doc.title, href: p(`/${slug}/`) },
 ];
 ---
@@ -19,7 +19,7 @@ const crumbs = [
   <PageHeader title={doc.title} lead={doc.intro} crumbs={crumbs} />
   <section class="section">
     <div class="container-x legal">
-      <p class="legal__updated label-mono">{updatedLabel}: {doc.updated}</p>
+      <p class="legal__updated label-mono">{t.updated}: {doc.updated}</p>
       {doc.sections.map((s) => (
         <div class="legal__section">
           <h2 class="h3 legal__heading">{s.heading}</h2>

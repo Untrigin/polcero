@@ -2,6 +2,8 @@
 // Authored in English (the primary locale); other locales fall back to EN until
 // their translation batch lands. Add more branch entries to expand the others.
 
+import type { Locale } from '../lib/i18n';
+
 export interface SpecRow { label: string; value: string }
 export interface RichProduct {
   name: string;
@@ -395,6 +397,44 @@ const data: Record<string, RichBranch> = {
   'photonic-processors': photonic,
 };
 
-export function getBranchRich(slug: string): RichBranch | undefined {
-  return data[slug];
+// A deep-partial mirror of a type: every field optional, recursively. Arrays are
+// treated by index (each element itself deep-partial), so an override can supply
+// only the entries/fields it wants translated.
+export type DeepPartial<T> = T extends (infer U)[]
+  ? DeepPartial<U>[]
+  : T extends object
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : T;
+
+// Per-locale translation overrides, keyed by slug. Empty for now — translation
+// batches are added here later; anything omitted falls back to the English base.
+export const branchRichOverrides: Partial<Record<Locale, Record<string, DeepPartial<RichBranch>>>> = {};
+
+// Merge an override onto a base: objects recurse, arrays merge element-by-element,
+// and an `undefined` override value keeps the base value.
+function deepMerge<T>(base: T, over: DeepPartial<T>): T {
+  if (over === undefined) return base;
+  if (Array.isArray(base)) {
+    const ov = over as unknown as unknown[];
+    return (base as unknown[]).map((el, i) =>
+      i < ov.length ? deepMerge(el, ov[i] as DeepPartial<typeof el>) : el,
+    ) as unknown as T;
+  }
+  if (base !== null && typeof base === 'object') {
+    const result: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+    for (const key of Object.keys(over as Record<string, unknown>)) {
+      const bv = (base as Record<string, unknown>)[key];
+      const ov = (over as Record<string, unknown>)[key];
+      result[key] = bv === undefined ? ov : deepMerge(bv, ov as DeepPartial<typeof bv>);
+    }
+    return result as T;
+  }
+  return over as T;
+}
+
+export function getBranchRich(slug: string, locale: Locale): RichBranch | undefined {
+  const base = data[slug];
+  if (!base) return undefined;
+  const over = branchRichOverrides[locale]?.[slug];
+  return over ? deepMerge(base, over) : base;
 }

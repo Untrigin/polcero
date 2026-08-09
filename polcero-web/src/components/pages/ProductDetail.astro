@@ -7,6 +7,7 @@ import JsonLd from '../JsonLd.astro';
 import Reveal from '../Reveal.astro';
 import { getContent } from '../../data/content';
 import { getProductSpecs } from '../../data/productSpecs';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale; slug: string }
@@ -14,13 +15,9 @@ const { locale, slug } = Astro.props;
 const c = getContent(locale);
 const product = c.products.find((p) => p.slug === slug)!;
 const specGroups = getProductSpecs(product, locale);
-const specNote = locale === 'pl'
-  ? 'Wartości mają charakter założeń projektowych; produkt jest w rozwoju, a konfiguracja może się zmienić. Prosimy potwierdzić szczegóły z działem sprzedaży.'
-  : 'Values are design assumptions; the product is under development and configuration may change. Please confirm details with sales.';
+const t = getUI(locale).productDetail;
+const specNote = t.specNote;
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl'
-  ? { home: 'Start', products: 'Produkty', related: 'Powiązane', cta: 'Zapytaj o wdrożenie', specs: 'W skrócie', industries: 'Branże', back: 'Wszystkie produkty', uses: 'Zastosowania', usesLead: 'Do czego wykorzystujemy ten model.', platforms: 'Platformy', platformsLead: 'Ten sam moduł korpusu na czterech wymiennych podwoziach - wybierz platformę pod swój teren.', drive: 'Napęd', terrain: 'Teren' }
-  : { home: 'Home', products: 'Products', related: 'Related', cta: 'Ask about deployment', specs: 'At a glance', industries: 'Industries', back: 'All products', uses: 'Use cases', usesLead: 'What we use this model for.', platforms: 'Platforms', platformsLead: 'The same core module on four interchangeable chassis - choose the platform for your terrain.', drive: 'Drive', terrain: 'Terrain' };
 
 const related = c.products.filter((x) => x.slug !== slug && x.category === product.category).slice(0, 2);
 const fallback = c.products.filter((x) => x.slug !== slug && !related.includes(x)).slice(0, 2 - related.length);
@@ -29,27 +26,17 @@ const relatedIndustry = c.industries[0];
 
 // Shared modular core - robots only (skipped for the transport drone).
 const showConstruction = product.kind !== 'drone';
-const construction = locale === 'pl'
-  ? {
-      title: 'Budowa modułowa',
-      lead: 'Wspólny rdzeń pozostaje ten sam: podwozie, sterowanie, percepcja i szybkozłącze narzędziowe. Zmienia się końcówka robocza i program - nie cała maszyna. Moduł korpusu z systemem sterowania i AI łączymy z dowolnym podwoziem specjalistycznym albo uzupełniamy o nogi i ramiona, tworząc humanoida. Po dołożeniu modułu zadaniowego - ramion z chwytakiem, głowicy zbioru czy lasera do odchwaszczania - ten sam robot wykonuje kolejne prace.',
-      parts: [
-        { img: '/media/module-front.webp', name: 'Moduł korpusu', spec: 'Sterowanie, percepcja i AI w jednym module.' },
-        { img: '/media/chassis-lineup.webp', name: 'Wymienne podwozie', spec: 'Kołowe, gąsienicowe, kroczące lub kołowo-nożne.' },
-        { img: '/media/module-back.webp', name: 'Wymienne baterie', spec: 'Trzy baterie hot-swap z tyłu korpusu.' },
-        { img: '/media/part-head.webp', name: 'Percepcja', spec: 'Kamery, LiDAR, przetwarzanie na urządzeniu.' },
-      ],
-    }
-  : {
-      title: 'Modular construction',
-      lead: 'The common core stays the same: chassis, controls, perception and a quick-release tool connector. The working end and the program change - not the whole machine. We mount the core module (control system + AI) on any specialized chassis, or add legs and arms to make a humanoid. Add a task module - arms with a gripper, a harvest head or a weeding laser - and the same robot takes on the next job.',
-      parts: [
-        { img: '/media/module-front.webp', name: 'Core module', spec: 'Control, perception and AI in one module.' },
-        { img: '/media/chassis-lineup.webp', name: 'Swappable chassis', spec: 'Wheeled, tracked, legged or wheel-leg.' },
-        { img: '/media/module-back.webp', name: 'Swappable batteries', spec: 'Three hot-swap batteries in the back.' },
-        { img: '/media/part-head.webp', name: 'Perception', spec: 'Cameras, LiDAR, on-device compute.' },
-      ],
-    };
+const constructionImgs = [
+  '/media/module-front.webp',
+  '/media/chassis-lineup.webp',
+  '/media/module-back.webp',
+  '/media/part-head.webp',
+];
+const construction = {
+  title: t.construction.title,
+  lead: t.construction.lead,
+  parts: t.construction.parts.map((part, i) => ({ ...part, img: constructionImgs[i] })),
+};
 
 const crumbs = [
   { label: t.home, href: p('/') },
@@ -96,13 +83,9 @@ const description = product.blurb.slice(0, 154);
             ))}
           </dl>
         )}
-        <p class="product-detail__note">
-          {locale === 'pl'
-            ? 'Roboty budujemy pod konkretny proces u klienta - punktem wyjścia są nasze własne prototypy, które modyfikujemy pod przeznaczenie. Dopasowujemy technologię do procesu, a nie odwrotnie.'
-            : 'We build robots around the client’s specific process - starting from our own prototypes, adapted to purpose. We fit the technology to the process, not the other way around.'}
-        </p>
+        <p class="product-detail__note">{t.note}</p>
         {product.price && (
-          <p class="product-detail__price"><span>{locale === 'pl' ? 'Cena' : 'Price'}</span>{product.price}</p>
+          <p class="product-detail__price"><span>{t.price}</span>{product.price}</p>
         )}
         <div class="product-detail__cta">
           <a class="btn-pill btn-accent" href={p('/contact/')}>{t.cta}</a>
@@ -183,7 +166,7 @@ const description = product.blurb.slice(0, 154);
 
   <section class="section pspec">
     <div class="container-x">
-      <h2 class="h3 pspec__title">{locale === 'pl' ? 'Specyfikacja' : 'Specification'}</h2>
+      <h2 class="h3 pspec__title">{t.specification}</h2>
       <div class="pspec__grid">
         {specGroups.map((g) => (
           <div class="pspec__group">

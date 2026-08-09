@@ -3,14 +3,13 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../PageHeader.astro';
 import Reveal from '../Reveal.astro';
 import { getCollection } from 'astro:content';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl'
-  ? { home: 'Start', news: 'Aktualności', lead: 'Postępy we wdrożeniach, prototypach i rozwoju platformy POLCERO.', title: 'Aktualności', read: 'Czytaj' }
-  : { home: 'Home', news: 'News', lead: 'Progress on deployments, prototypes and the POLCERO platform.', title: 'News', read: 'Read' };
+const t = getUI(locale).newsIndex;
 
 const posts = (await getCollection('news', (e) => e.data.locale === locale && !e.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());

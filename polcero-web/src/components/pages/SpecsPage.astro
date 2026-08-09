@@ -3,13 +3,14 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../PageHeader.astro';
 import BoxArrowLink from '../BoxArrowLink.astro';
 import { getSpecs } from '../../data/specs';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const s = getSpecs(locale);
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl' ? { home: 'Start', cta: 'Zapytaj o szczegóły' } : { home: 'Home', cta: 'Ask for details' };
+const t = getUI(locale).specsPage;
 const crumbs = [
   { label: t.home, href: p('/') },
   { label: s.title, href: p('/specs/') },

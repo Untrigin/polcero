@@ -2,6 +2,7 @@
 import './SiteHeader.css';
 import { Menu, X, ChevronDown, ArrowRight, ArrowUpRight, Sun, Moon } from '@lucide/astro';
 import type { SiteContent } from '../data/content';
+import { getUI } from '../data/ui';
 import { localizedPath, alternatePath, locales, localeShort, localeLabels, type Locale } from '../lib/i18n';
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 }
 const { locale, content, pathname } = Astro.props;
 const c = content;
+const t = getUI(locale).header;
 const p = (path: string) => localizedPath(path, locale);
 const home = localizedPath('/', locale);
 const langLinks = locales.map((l) => ({
@@ -23,7 +25,7 @@ const langLinks = locales.map((l) => ({
 
 const industries = c.industries.map((i) => ({ slug: i.slug, label: i.name }));
 const company = [
-  { href: p('/about/'), label: locale === 'pl' ? 'O nas' : 'About' },
+  { href: p('/about/'), label: t.about },
   { href: p('/news/'), label: c.nav.news },
   { href: p('/contact/'), label: c.nav.contact },
 ];
@@ -34,7 +36,7 @@ const company = [
       <img src="/polcero_white.svg" alt="POLCERO" width="367" height="70" />
     </a>
 
-    <nav class="hdr__nav" aria-label={locale === 'pl' ? 'Główna' : 'Main'}>
+    <nav class="hdr__nav" aria-label={t.nav}>
       <div class="hdr__item" data-menu>
         <button class="hdr__trigger" aria-expanded="false" aria-haspopup="true" data-menu-trigger>
           {c.nav.products} <ChevronDown size={15} aria-hidden="true" />
@@ -51,7 +53,7 @@ const company = [
               </a>
             ))}
           </div>
-          <a class="hdr__mega-more" href={p('/specs/')}>{locale === 'pl' ? 'Specyfikacja platformy' : 'Platform specification'} <ArrowRight size={14} aria-hidden="true" /></a>
+          <a class="hdr__mega-more" href={p('/specs/')}>{t.platformSpec} <ArrowRight size={14} aria-hidden="true" /></a>
         </div>
       </div>
 
@@ -92,12 +94,12 @@ const company = [
     </nav>
 
     <div class="hdr__actions">
-      <button class="hdr__icon-btn" type="button" data-theme-toggle aria-label={locale === 'pl' ? 'Przełącz motyw' : 'Toggle theme'}>
+      <button class="hdr__icon-btn" type="button" data-theme-toggle aria-label={t.themeToggle}>
         <Sun class="icon-sun" size={18} aria-hidden="true" />
         <Moon class="icon-moon" size={18} aria-hidden="true" />
       </button>
       <div class="hdr__lang">
-        <select class="hdr__lang-select" data-lang-select aria-label={locale === 'pl' ? 'Język' : 'Language'}>
+        <select class="hdr__lang-select" data-lang-select aria-label={t.language}>
           {langLinks.map((l) => (
             <option value={l.href} selected={l.active}>{l.short} - {l.label}</option>
           ))}
@@ -110,12 +112,12 @@ const company = [
     </div>
   </div>
 
-  <div class="drawer" data-drawer role="dialog" aria-modal="true" aria-hidden="true" aria-label={locale === 'pl' ? 'Menu' : 'Menu'}>
+  <div class="drawer" data-drawer role="dialog" aria-modal="true" aria-hidden="true" aria-label={t.drawerMenu}>
     <div class="drawer__bar container-x">
       <a href={home} class="hdr__logo"><img src="/polcero_white.svg" alt="POLCERO" width="367" height="70" /></a>
-      <button class="hdr__burger" aria-label={locale === 'pl' ? 'Zamknij' : 'Close'} data-drawer-close><X size={24} aria-hidden="true" /></button>
+      <button class="hdr__burger" aria-label={t.close} data-drawer-close><X size={24} aria-hidden="true" /></button>
     </div>
-    <nav class="drawer__nav container-x" aria-label={locale === 'pl' ? 'Mobilne' : 'Mobile'}>
+    <nav class="drawer__nav container-x" aria-label={t.mobileNav}>
       <p class="drawer__group">{c.nav.products}</p>
       {c.products.map((prod) => (<a href={p(`/products/${prod.slug}/`)}>{prod.name}</a>))}
       <p class="drawer__group">{c.nav.services}</p>
@@ -123,11 +125,11 @@ const company = [
       <p class="drawer__group">{c.nav.industries}</p>
       {industries.map((i) => (<a href={p(`/industries/${i.slug}/`)}>{i.label}</a>))}
       <p class="drawer__group">{c.nav.company}</p>
-      <a href={p('/specs/')}>{locale === 'pl' ? 'Specyfikacja' : 'Specification'}</a>
+      <a href={p('/specs/')}>{t.specification}</a>
       {company.map((co) => (<a href={co.href}>{co.label}</a>))}
       <a class="btn-pill btn-accent drawer__cta" href={p('/contact/')}>{c.nav.cta} <ArrowUpRight size={18} aria-hidden="true" /></a>
       <div class="drawer__lang">
-        <select class="hdr__lang-select drawer__lang-select" data-lang-select aria-label={locale === 'pl' ? 'Język' : 'Language'}>
+        <select class="hdr__lang-select drawer__lang-select" data-lang-select aria-label={t.language}>
           {langLinks.map((l) => (
             <option value={l.href} selected={l.active}>{l.label}</option>
           ))}

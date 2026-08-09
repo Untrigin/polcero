@@ -4,51 +4,13 @@ import PageHeader from '../PageHeader.astro';
 import JsonLd from '../JsonLd.astro';
 import Reveal from '../Reveal.astro';
 import { Mail, MapPin, Phone } from '@lucide/astro';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const p = (path: string) => localizedPath(path, locale);
-
-const pl = {
-  home: 'Start', contact: 'Kontakt', badge: 'NAPISZ DO NAS', title: 'Złóż zapytanie',
-  lead: 'Opisz swój proces lub wyzwanie - zaprojektujemy i zbudujemy rozwiązanie na zamówienie.',
-  name: 'Imię i nazwisko', namePh: 'Jan Kowalski',
-  email: 'E-mail', emailPh: 'jan@firma.pl',
-  company: 'Firma / organizacja', companyPh: 'Nazwa firmy',
-  subject: 'Temat', subjectPh: 'Krótki opis Twojej potrzeby',
-  message: 'Wiadomość', messagePh: 'Opisz szczegółowo swój proces, wyzwanie lub pytanie…',
-  send: 'Wyślij zapytanie', sending: 'Wysyłanie…', response: 'Odpowiemy w ciągu 1-2 dni roboczych.',
-  success: 'Dziękujemy! Wiadomość została wysłana.',
-  error: 'Nie udało się wysłać. Spróbuj ponownie lub napisz na biuro@polcero.com.',
-  entity: 'POLCERO sp. z o.o.', reg: 'KRS 0001178417 · NIP 8971955510 · REGON 542000919',
-  info: 'Dane kontaktowe', faqTitle: 'Najczęstsze pytania',
-  faqs: [
-    { q: 'Od jakiej wartości zaczynają się wdrożenia?', a: 'Wartość pierwszych zamówień zaczyna się od 2 milionów złotych wzwyż i jest realizowana pod klucz - od projektu i budowy robotów po uruchomienie, dokumentację i serwis.' },
-    { q: 'Czy trzeba kupić robota?', a: 'Nie zawsze. Oferujemy sprzedaż, wynajem sezonowy oraz rozliczenie za wykonaną pracę - klient płaci za rezultat, a robot i operatorzy pozostają po naszej stronie.' },
-    { q: 'Gdzie zostają dane?', a: 'Nasze modele mogą pracować lokalnie, na urządzeniu, bez wysyłania obrazu na zewnątrz. Dane i zgodność zostają w Unii Europejskiej.' },
-  ],
-};
-const en = {
-  home: 'Home', contact: 'Contact', badge: 'GET IN TOUCH', title: 'Submit an inquiry',
-  lead: "Describe your process or challenge - we'll design and build a solution to order.",
-  name: 'Your name', namePh: 'Jan Kowalski',
-  email: 'Email', emailPh: 'jan@company.com',
-  company: 'Company / organization', companyPh: 'Company name',
-  subject: 'Subject', subjectPh: 'Brief description of your need',
-  message: 'Message', messagePh: 'Describe your process, challenge or question in detail…',
-  send: 'Send inquiry', sending: 'Sending…', response: 'We will respond within 1-2 business days.',
-  success: 'Thank you! Your message has been sent.',
-  error: 'Could not send. Please try again or email biuro@polcero.com.',
-  entity: 'POLCERO sp. z o.o.', reg: 'KRS 0001178417 · NIP 8971955510 · REGON 542000919',
-  info: 'Contact details', faqTitle: 'Frequently asked questions',
-  faqs: [
-    { q: 'What is the entry value for a deployment?', a: 'The value of the first orders starts from PLN 2 million upward and is delivered turnkey - from robot design and build to commissioning, documentation and service.' },
-    { q: 'Do I have to buy a robot?', a: 'Not always. We offer sale, seasonal rental and settlement for work done - the client pays for the result while the robot and operators stay on our side.' },
-    { q: 'Where does the data stay?', a: 'Our models can run locally, on-device, without sending imagery outside. Data and compliance stay in the European Union.' },
-  ],
-};
-const t = locale === 'pl' ? pl : en;
+const t = getUI(locale).contactPage;
 const crumbs = [
   { label: t.home, href: p('/') },
   { label: t.contact, href: p('/contact/') },
@@ -112,7 +74,7 @@ const faqLd = {
         <ul>
           <li><Mail size={18} aria-hidden="true" /> <a href="mailto:biuro@polcero.com">biuro@polcero.com</a></li>
           <li><Phone size={18} aria-hidden="true" /> <a href="tel:+48535777268">+48 535 777 268</a></li>
-          <li><MapPin size={18} aria-hidden="true" /> Kietrz, {locale === 'pl' ? 'Polska' : 'Poland'}</li>
+          <li><MapPin size={18} aria-hidden="true" /> Kietrz, {t.country}</li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.4 8.65 22 10.6 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9V9Z"/></svg>
             <a href="https://www.linkedin.com/company/polskiecentrumrobotyzacji" rel="noopener" target="_blank">LinkedIn</a>

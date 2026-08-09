@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../Breadcrumbs.astro';
 import JsonLd from '../JsonLd.astro';
 import { render, type CollectionEntry } from 'astro:content';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale; entry: CollectionEntry<'news'> }
@@ -10,7 +11,7 @@ const { locale, entry } = Astro.props;
 const { Content } = await render(entry);
 const p = (path: string) => localizedPath(path, locale);
 const slug = entry.id.split('/').pop()!;
-const t = locale === 'pl' ? { home: 'Start', news: 'Aktualności' } : { home: 'Home', news: 'News' };
+const t = getUI(locale).newsArticle;
 const fmt = (d: Date) => d.toLocaleDateString(locale === 'pl' ? 'pl-PL' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 
 const crumbs = [

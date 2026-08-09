@@ -4,15 +4,14 @@ import PageHeader from '../PageHeader.astro';
 import ProductCard from '../ProductCard.astro';
 import Reveal from '../Reveal.astro';
 import { getContent } from '../../data/content';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const c = getContent(locale);
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl'
-  ? { home: 'Start', products: 'Produkty', lead: 'Jedna platforma w wielu konfiguracjach. Wspólny rdzeń, wymienne końcówki robocze i różne programy dla różnych zadań.', order: 'Zobacz produkt', title: 'Produkty' }
-  : { home: 'Home', products: 'Products', lead: 'One platform in many configurations. A shared core, swappable end-effectors and different programs for different tasks.', order: 'View product', title: 'Products' };
+const t = getUI(locale).productsIndex;
 
 const crumbs = [
   { label: t.home, href: p('/') },

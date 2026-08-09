@@ -5,15 +5,14 @@ import BranchGrid from '../BranchGrid.astro';
 import BoxArrowLink from '../BoxArrowLink.astro';
 import Reveal from '../Reveal.astro';
 import { getContent } from '../../data/content';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const c = getContent(locale);
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl'
-  ? { home: 'Start', services: 'Kierunki', title: 'Kierunki biznesowe', cta: 'Złóż zapytanie', closing: 'Nie wiesz, który kierunek pasuje do Twojego procesu?' }
-  : { home: 'Home', services: 'Branches', title: 'Business branches', cta: 'Submit an inquiry', closing: 'Not sure which branch fits your process?' };
+const t = getUI(locale).servicesPage;
 
 const crumbs = [
   { label: t.home, href: p('/') },

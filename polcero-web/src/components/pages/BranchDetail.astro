@@ -5,17 +5,16 @@ import BoxArrowLink from '../BoxArrowLink.astro';
 import Reveal from '../Reveal.astro';
 import { getContent } from '../../data/content';
 import { getBranchRich } from '../../data/branchRich';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale; slug: string }
 const { locale, slug } = Astro.props;
 const c = getContent(locale);
 const branch = c.branches.find((b) => b.slug === slug)!;
-const rich = getBranchRich(slug);
+const rich = getBranchRich(slug, locale);
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl'
-  ? { home: 'Start', services: 'Kierunki', back: 'Wszystkie kierunki', delivers: 'Co dostarczamy', industries: 'Branże', cta: 'Zapytaj o wdrożenie', stack: 'Stos programowania' }
-  : { home: 'Home', services: 'Branches', back: 'All branches', delivers: 'What we deliver', industries: 'Industries', cta: 'Ask about deployment', stack: 'Programming stack' };
+const t = getUI(locale).branchDetail;
 
 // industries that list this branch
 const relIndustries = c.industries.filter((i) => i.branchSlugs.includes(slug));

@@ -3,15 +3,14 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../PageHeader.astro';
 import Reveal from '../Reveal.astro';
 import { getContent } from '../../data/content';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const c = getContent(locale);
 const p = (path: string) => localizedPath(path, locale);
-const t = locale === 'pl'
-  ? { home: 'Start', industries: 'Branże', lead: 'Wchodzimy tam, gdzie duzi nie wchodzą - selektywna manipulacja, praca w tunelach i transport tam, gdzie kończy się droga.', title: 'Branże' }
-  : { home: 'Home', industries: 'Industries', lead: 'We go where the big players do not - selective manipulation, work in tunnels, and transport where the road ends.', title: 'Industries' };
+const t = getUI(locale).industriesIndex;
 
 const crumbs = [
   { label: t.home, href: p('/') },

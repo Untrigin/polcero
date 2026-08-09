@@ -4,37 +4,13 @@ import PageHeader from '../PageHeader.astro';
 import MediaFrame from '../MediaFrame.astro';
 import BoxArrowLink from '../BoxArrowLink.astro';
 import Reveal from '../Reveal.astro';
+import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const p = (path: string) => localizedPath(path, locale);
-
-const pl = {
-  home: 'Start', about: 'O nas', title: 'O nas',
-  lead: 'POLCERO nie buduje robota. Budujemy ekosystem złożony z trzech warstw, które mają sens dopiero razem.',
-  cta: 'Porozmawiajmy', imageAlt: 'Zespół POLCERO w hali produkcyjnej',
-  pdf: 'Pobierz prezentację POLCERO (PDF)',
-  blocks: [
-    { h: 'Sprzedajemy rezultat, nie maszynę', b: 'Globalni producenci sprzedają urządzenie i przenoszą na klienta całe ryzyko. My możemy wziąć to ryzyko na siebie i rozliczyć się za zebrany areał albo obsłużony wolumen.' },
-    { h: 'Wchodzimy tam, gdzie duzi nie wchodzą', b: 'Selektywna manipulacja w miękkim plonie oraz praca w tunelach i szklarniach, gdzie zawodzi sygnał satelitarny, to obszar słabo obsadzony. Wybraliśmy go świadomie.' },
-    { h: 'Projektujemy i budujemy w Polsce', b: 'Dążymy do tego, żeby cała wartość dodana - projekt, konstrukcja, oprogramowanie, montaż i serwis - powstawała u nas. Dane i zgodność zostają w Unii Europejskiej.' },
-    { h: 'Czas reakcji', b: 'Zmiana konstrukcji chwytaka zajmuje nam tygodnie, a nie cykl produktowy dużego koncernu. Klient rozmawia z inżynierem, który tę konstrukcję projektuje.' },
-  ],
-};
-const en = {
-  home: 'Home', about: 'About', title: 'About',
-  lead: 'POLCERO does not build a robot. We build an ecosystem of three layers that only make sense together.',
-  cta: 'Talk to us', imageAlt: 'The POLCERO team in a production hall',
-  pdf: 'Download the POLCERO presentation (PDF)',
-  blocks: [
-    { h: 'We sell the result, not the machine', b: 'Global manufacturers sell a device and shift all the risk to the client. We can take that risk on ourselves and settle for hectares harvested or volume handled.' },
-    { h: 'We go where the big players do not', b: 'Selective manipulation in soft crops and work in tunnels and greenhouses, where satellite signal fails, is poorly served. We chose it deliberately.' },
-    { h: 'Designed and built in Poland', b: 'We aim for all the added value - design, engineering, software, assembly and service - to be created here. Data and compliance stay in the European Union.' },
-    { h: 'Response time', b: 'Changing a gripper design takes us weeks, not a large corporation’s product cycle. The client talks to the engineer who designs it.' },
-  ],
-};
-const t = locale === 'pl' ? pl : en;
+const t = getUI(locale).aboutPage;
 const crumbs = [
   { label: t.home, href: p('/') },
   { label: t.about, href: p('/about/') },

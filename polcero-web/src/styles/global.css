@@ -37,6 +37,33 @@
   --header-h: 72px;
 }
 
+/* ── Light theme ("lite mode") — token overrides; dark stays the default ── */
+html[data-theme="light"] {
+  color-scheme: light;
+  --color-void:      #FFFFFF;   /* page background */
+  --color-surface:   #F3F4F6;   /* alternating sections */
+  --color-panel:     #EAECEF;   /* product tiles */
+  --color-panel-ink: #0A0A0B;
+  --color-ice:       #14161A;   /* primary text (now dark) */
+  --color-mute:      #565C66;   /* secondary text, ~5:1 on white */
+  --color-line:      #E2E4E9;
+  /* accent stays POLCERO orange; ink on accent stays near-black */
+}
+
+/* The full-screen hero sits over dark media -> keep its text light in any theme. */
+html[data-theme="light"] .hero-full {
+  --color-ice:  #F4F5F7;
+  --color-mute: #C7CBD2;
+  --color-line: #2A2C31;
+  color: var(--color-ice);
+}
+/* In light mode the header may sit over the dark hero -> give it a readable bar. */
+html[data-theme="light"] .hdr {
+  background: color-mix(in srgb, var(--color-void) 82%, transparent);
+  backdrop-filter: blur(12px) saturate(1.2);
+  border-bottom: 1px solid var(--color-line);
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;

@@ -24,7 +24,10 @@ const c = getContent(locale);
 <html lang={htmlLang[locale]} dir={htmlDir[locale]}>
   <head>
     <meta charset="utf-8" />
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      try { if (localStorage.getItem('polcero_theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

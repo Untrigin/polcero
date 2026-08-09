@@ -1,6 +1,6 @@
 ---
 import './SiteHeader.css';
-import { Menu, X, ChevronDown, ArrowRight, ArrowUpRight } from '@lucide/astro';
+import { Menu, X, ChevronDown, ArrowRight, ArrowUpRight, Sun, Moon } from '@lucide/astro';
 import type { SiteContent } from '../data/content';
 import { localizedPath, alternatePath, locales, localeShort, localeLabels, type Locale } from '../lib/i18n';
 
@@ -92,13 +92,16 @@ const company = [
     </nav>
 
     <div class="hdr__actions">
-      <div class="hdr__lang" role="group" aria-label="Language">
-        {langLinks.map((l, i) => (
-          <Fragment>
-            {i > 0 && <span aria-hidden="true">/</span>}
-            <a href={l.href} class={l.active ? 'is-active' : ''} hreflang={l.code}>{l.short}</a>
-          </Fragment>
-        ))}
+      <button class="hdr__icon-btn" type="button" data-theme-toggle aria-label={locale === 'pl' ? 'Przełącz motyw' : 'Toggle theme'}>
+        <Sun class="icon-sun" size={18} aria-hidden="true" />
+        <Moon class="icon-moon" size={18} aria-hidden="true" />
+      </button>
+      <div class="hdr__lang">
+        <select class="hdr__lang-select" data-lang-select aria-label={locale === 'pl' ? 'Język' : 'Language'}>
+          {langLinks.map((l) => (
+            <option value={l.href} selected={l.active}>{l.short} - {l.label}</option>
+          ))}
+        </select>
       </div>
       <a class="btn-pill btn-accent hdr__cta" href={p('/contact/')}>{c.nav.cta}</a>
       <button class="hdr__burger" aria-label="Menu" aria-expanded="false" data-drawer-open>
@@ -124,15 +127,32 @@ const company = [
       {company.map((co) => (<a href={co.href}>{co.label}</a>))}
       <a class="btn-pill btn-accent drawer__cta" href={p('/contact/')}>{c.nav.cta} <ArrowUpRight size={18} aria-hidden="true" /></a>
       <div class="drawer__lang">
-        {langLinks.map((l) => (
-          <a href={l.href} class={l.active ? 'is-active' : ''} hreflang={l.code}>{l.label}</a>
-        ))}
+        <select class="hdr__lang-select drawer__lang-select" data-lang-select aria-label={locale === 'pl' ? 'Język' : 'Language'}>
+          {langLinks.map((l) => (
+            <option value={l.href} selected={l.active}>{l.label}</option>
+          ))}
+        </select>
       </div>
     </nav>
   </div>
 </header>
 
 <script>
+  // Language <select> -> navigate to the chosen locale's equivalent URL.
+  document.querySelectorAll<HTMLSelectElement>('[data-lang-select]').forEach((sel) => {
+    sel.addEventListener('change', () => { if (sel.value) window.location.href = sel.value; });
+  });
+
+  // Theme ("lite mode") toggle -> flip data-theme on <html>, remember the choice.
+  const themeRoot = document.documentElement;
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isLight = themeRoot.getAttribute('data-theme') === 'light';
+      if (isLight) { themeRoot.removeAttribute('data-theme'); try { localStorage.setItem('polcero_theme', 'dark'); } catch (e) {} }
+      else { themeRoot.setAttribute('data-theme', 'light'); try { localStorage.setItem('polcero_theme', 'light'); } catch (e) {} }
+    });
+  });
+
   const header = document.querySelector<HTMLElement>('[data-header]');
   if (header) {
     const onScroll = () => header.classList.toggle('hdr--scrolled', window.scrollY > 40);

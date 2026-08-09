@@ -57,11 +57,21 @@ html[data-theme="light"] .hero-full {
   --color-line: #2A2C31;
   color: var(--color-ice);
 }
-/* In light mode the header may sit over the dark hero -> give it a readable bar. */
-html[data-theme="light"] .hdr {
-  background: color-mix(in srgb, var(--color-void) 82%, transparent);
-  backdrop-filter: blur(12px) saturate(1.2);
-  border-bottom: 1px solid var(--color-line);
+/* Header sits over the dark hero on the homepage -> keep its text + logo light
+   at the top in BOTH themes until the user scrolls (then the solid bar takes over). */
+body.has-hero .hdr:not(.hdr--scrolled) {
+  --color-ice: #F4F5F7;
+  --color-mute: #C7CBD2;
+  color: var(--color-ice);
+}
+
+/* Light mode: the white logo becomes black wherever the header bar is light
+   (scrolled, or on pages without a dark hero), and always in footer/drawer. */
+html[data-theme="light"] .hdr--scrolled .hdr__logo img,
+html[data-theme="light"] body:not(.has-hero) .hdr__logo img,
+html[data-theme="light"] .drawer .hdr__logo img,
+html[data-theme="light"] .site-footer__logo img {
+  filter: invert(1);
 }
 
 html {

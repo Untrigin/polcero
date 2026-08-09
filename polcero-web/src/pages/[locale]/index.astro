@@ -38,7 +38,7 @@ const meta = isPl
   ? { title: 'POLCERO - autonomiczne roboty humanoidalne', description: 'Autonomiczne roboty humanoidalne i modułowe platformy dla przemysłu i rolnictwa. Platforma AI, dron transportowy 500 kg i wymienne moduły. Zlecasz cel, nie ruch.' }
   : { title: 'POLCERO - autonomous humanoid robots', description: 'Autonomous humanoid robots and modular platforms for industry and agriculture. AI platform, 500 kg transport drone and swappable modules. You assign a goal, not a motion.' };
 ---
-<Layout title={meta.title} description={meta.description}>
+<Layout title={meta.title} description={meta.description} heroHeader>
   <JsonLd slot="head" schema={[organization, website]} />
   <Home locale={locale} />
 </Layout>

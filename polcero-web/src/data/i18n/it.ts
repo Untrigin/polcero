@@ -113,7 +113,7 @@ export const it: SiteContentOverride = {
   },
   stats: [
     { label: 'portata del drone da trasporto' },
-    { label: 'valore delle prime implementazioni' },
+    { label: 'mercato globale della robotica entro il 2030' },
     { label: 'costo di raccolta per unità inferiore' },
     { label: 'prime implementazioni presso i clienti' },
   ],

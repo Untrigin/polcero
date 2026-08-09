@@ -145,7 +145,7 @@ export const de: SiteContentOverride = {
   },
   stats: [
     { label: 'Nutzlast des Transportdrohne' },
-    { label: 'Wert der ersten Einsätze' },
+    { label: 'globaler Robotikmarkt bis 2030' },
     { label: 'geringere Erntekosten pro Einheit' },
     { label: 'erste Einsätze bei Kunden' },
   ],

@@ -113,7 +113,7 @@ export const nl: SiteContentOverride = {
   },
   stats: [
     { label: 'laadvermogen transportdrone' },
-    { label: 'waarde van eerste implementaties' },
+    { label: 'wereldwijde roboticamarkt tegen 2030' },
     { label: 'lagere oogstkosten per stuk' },
     { label: 'eerste implementaties bij klanten' },
   ],

@@ -14,9 +14,10 @@ interface Props {
   ogImage?: string;
   noindex?: boolean;
   chrome?: boolean; // header + footer
+  heroHeader?: boolean; // page opens with a full-screen dark hero (keeps header light over it)
 }
 
-const { title, description, canonicalPath, ogImage, noindex = false, chrome = true } = Astro.props;
+const { title, description, canonicalPath, ogImage, noindex = false, chrome = true, heroHeader = false } = Astro.props;
 const locale: Locale = getLocale(Astro.url.pathname);
 const c = getContent(locale);
 ---
@@ -43,7 +44,7 @@ const c = getContent(locale);
     />
     <slot name="head" />
   </head>
-  <body>
+  <body class:list={[{ 'has-hero': heroHeader }]}>
     <a href="#main" class="skip-link">{locale === 'pl' ? 'Przejdź do treści' : 'Skip to content'}</a>
     {chrome && <SiteHeader locale={locale} content={c} pathname={Astro.url.pathname} />}
     <main id="main">

@@ -108,7 +108,7 @@ export const pt: SiteContentOverride = {
   },
   stats: [
     { label: 'carga do drone de transporte' },
-    { label: 'valor das primeiras implementações' },
+    { label: 'mercado global de robótica até 2030' },
     { label: 'menor custo de colheita por unidade' },
     { label: 'primeiras implementações em clientes' },
   ],

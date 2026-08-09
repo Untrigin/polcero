@@ -145,7 +145,7 @@ const pl: SiteContent = {
   },
   stats: [
     { value: '500 kg', label: 'udźwig drona transportowego' },
-    { value: 'od 2 mln zł', label: 'wartość pierwszych wdrożeń' },
+    { value: '$200B+', label: 'globalny rynek robotyki do 2030' },
     { value: '≈40%', label: 'niższy koszt zbioru na sztukę' },
     { value: '2027', label: 'start wdrożeń u klientów' },
   ],
@@ -418,7 +418,7 @@ const en: SiteContent = {
   },
   stats: [
     { value: '500 kg', label: 'transport drone payload' },
-    { value: 'from PLN 2M', label: 'value of first deployments' },
+    { value: '$200B+', label: 'global robotics market by 2030' },
     { value: '≈40%', label: 'lower harvest cost per unit' },
     { value: '2027', label: 'first client deployments' },
   ],

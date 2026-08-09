@@ -113,7 +113,7 @@ export const fr: SiteContentOverride = {
   },
   stats: [
     { label: 'charge utile du drone de transport' },
-    { label: 'valeur des premiers déploiements' },
+    { label: 'marché mondial de la robotique d’ici 2030' },
     { label: 'coût de récolte par unité en moins' },
     { label: 'premiers déploiements clients' },
   ],

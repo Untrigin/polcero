@@ -14,7 +14,7 @@ export default defineConfig({
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'pl', 'de', 'fr', 'es', 'it', 'pt', 'nl'],
+    locales: ['en', 'pl', 'de', 'fr', 'es', 'it', 'pt', 'nl', 'sv', 'cs', 'ro', 'el', 'zh', 'hi', 'ar', 'ru', 'ja', 'uk'],
     routing: {
       prefixDefaultLocale: false, // en at /, other locales at /xx/
       redirectToDefaultLocale: false,
@@ -42,7 +42,7 @@ export default defineConfig({
     sitemap({
       i18n: {
         defaultLocale: 'en',
-        locales: { en: 'en', pl: 'pl-PL', de: 'de', fr: 'fr', es: 'es', it: 'it', pt: 'pt', nl: 'nl' },
+        locales: { en: 'en', pl: 'pl-PL', de: 'de', fr: 'fr', es: 'es', it: 'it', pt: 'pt', nl: 'nl', sv: 'sv', cs: 'cs', ro: 'ro', el: 'el', zh: 'zh-CN', hi: 'hi', ar: 'ar', ru: 'ru', ja: 'ja', uk: 'uk' },
       },
     }),
   ],

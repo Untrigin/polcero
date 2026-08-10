@@ -15,7 +15,7 @@ export const allLocales = [
 export type Locale = (typeof allLocales)[number];
 
 /** Locales that are actually built and offered in the UI. Grows per batch. */
-export const locales: readonly Locale[] = ['en', 'pl', 'de', 'fr', 'es', 'it', 'pt', 'nl'];
+export const locales: readonly Locale[] = ['en', 'pl', 'de', 'fr', 'es', 'it', 'pt', 'nl', 'sv', 'cs', 'ro', 'el', 'zh', 'hi', 'ar', 'ru', 'ja', 'uk'];
 
 export const defaultLocale: Locale = 'en';
 

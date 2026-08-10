@@ -112,7 +112,7 @@ export const ro: SiteContentOverride = {
     imageAlt: 'Robot modular POLCERO pe o platformă mobilă într-o hală de producție',
   },
   stats: [
-    { label: 'sarcină utilă a dronei de transport' },
+    { label: 'profit de la clienți' },
     { label: 'piața globală a roboticii până în 2030' },
     { label: 'cost de recoltare pe unitate mai mic' },
     { label: 'primele implementări la clienți' },

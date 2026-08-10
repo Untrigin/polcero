@@ -2,6 +2,7 @@
 import type { SiteContent } from '../data/content';
 import { getUI } from '../data/ui';
 import { localizedPath, type Locale } from '../lib/i18n';
+import { aboutPdfPath } from '../lib/aboutPdf';
 
 interface Props {
   locale: Locale;
@@ -13,8 +14,11 @@ const year = 2026;
 const homeHref = localizedPath('/', locale);
 // Footer column hrefs are stored unprefixed; localize internal page paths only
 // (skip files like /rss.xml or the About PDF, and any external/anchor links).
+// The About-us PDF marker resolves to the locale's brochure (EN fallback).
 const locHref = (href: string) =>
-  href.startsWith('/') && !href.startsWith('//') && !href.includes('.') ? localizedPath(href, locale) : href;
+  href === '/POLCERO-About-us.pdf'
+    ? aboutPdfPath(locale)
+    : href.startsWith('/') && !href.startsWith('//') && !href.includes('.') ? localizedPath(href, locale) : href;
 ---
 <footer class="site-footer">
   <div class="container-x">

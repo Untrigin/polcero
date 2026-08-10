@@ -144,7 +144,7 @@ export const zh: SiteContentOverride = {
     imageAlt: '生产车间中移动平台上的POLCERO模块化机器人',
   },
   stats: [
-    { label: '运输无人机载荷' },
+    { label: '来自客户的利润' },
     { label: '到2030年的全球机器人市场规模' },
     { label: '单位采收成本降幅' },
     { label: '首批客户部署' },

@@ -112,7 +112,7 @@ export const it: SiteContentOverride = {
     imageAlt: 'Robot modulare POLCERO su una piattaforma mobile in un capannone di produzione',
   },
   stats: [
-    { label: 'portata del drone da trasporto' },
+    { label: 'utili generati dai clienti' },
     { label: 'mercato globale della robotica entro il 2030' },
     { label: 'costo di raccolta per unità inferiore' },
     { label: 'prime implementazioni presso i clienti' },

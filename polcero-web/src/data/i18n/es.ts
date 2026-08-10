@@ -112,7 +112,7 @@ export const es: SiteContentOverride = {
     imageAlt: 'Robot modular POLCERO sobre una plataforma móvil en una nave de producción',
   },
   stats: [
-    { label: 'carga útil del dron de transporte' },
+    { label: 'beneficio generado por clientes' },
     { label: 'mercado mundial de la robótica para 2030' },
     { label: 'menor coste de cosecha por unidad' },
     { label: 'primeros despliegues en clientes' },

@@ -6,6 +6,7 @@ import BoxArrowLink from '../BoxArrowLink.astro';
 import Reveal from '../Reveal.astro';
 import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
+import { aboutPdfPath } from '../../lib/aboutPdf';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -22,7 +23,7 @@ const crumbs = [
     <div class="container-x">
       <Reveal><MediaFrame src="/media/mission.webp" alt={t.imageAlt} width={2000} height={1200} parallax /></Reveal>
       <Reveal delay={80} class="about-pdf">
-        <a class="btn-pill btn-glass" href="/POLCERO-About-us.pdf" target="_blank" rel="noopener">{t.pdf}</a>
+        <a class="btn-pill btn-glass" href={aboutPdfPath(locale)} target="_blank" rel="noopener">{t.pdf}</a>
       </Reveal>
     </div>
   </section>

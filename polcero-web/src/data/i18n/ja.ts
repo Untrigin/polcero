@@ -144,7 +144,7 @@ export const ja: SiteContentOverride = {
     imageAlt: '生産ホール内の移動プラットフォーム上のPOLCEROモジュラーロボット',
   },
   stats: [
-    { label: '輸送ドローンのペイロード' },
+    { label: '顧客からの利益' },
     { label: '2030年までの世界ロボティクス市場' },
     { label: '1単位あたりの収穫コスト削減' },
     { label: '最初の顧客導入' },

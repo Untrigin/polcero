@@ -144,7 +144,7 @@ export const sv: SiteContentOverride = {
     imageAlt: 'Modulär POLCERO-robot på en mobil plattform i en produktionshall',
   },
   stats: [
-    { label: 'transportdronarens lastkapacitet' },
+    { label: 'vinst från kunder' },
     { label: 'global robotikmarknad till 2030' },
     { label: 'lägre skördekostnad per enhet' },
     { label: 'första driftsättningar hos kund' },

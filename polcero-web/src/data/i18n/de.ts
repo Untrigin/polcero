@@ -144,7 +144,7 @@ export const de: SiteContentOverride = {
     imageAlt: 'Modularer POLCERO-Roboter auf einer mobilen Plattform in einer Produktionshalle',
   },
   stats: [
-    { label: 'Nutzlast des Transportdrohne' },
+    { label: 'Gewinn aus Kundenaufträgen' },
     { label: 'globaler Robotikmarkt bis 2030' },
     { label: 'geringere Erntekosten pro Einheit' },
     { label: 'erste Einsätze bei Kunden' },

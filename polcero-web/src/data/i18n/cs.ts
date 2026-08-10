@@ -144,7 +144,7 @@ export const cs: SiteContentOverride = {
     imageAlt: 'Modulární robot POLCERO na pojízdné platformě ve výrobní hale',
   },
   stats: [
-    { label: 'nosnost dopravního dronu' },
+    { label: 'zisk od zákazníků' },
     { label: 'globální trh robotiky do roku 2030' },
     { label: 'nižší náklady na sklizeň na kus' },
     { label: 'první nasazení u klientů' },

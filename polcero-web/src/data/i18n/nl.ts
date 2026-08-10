@@ -112,7 +112,7 @@ export const nl: SiteContentOverride = {
     imageAlt: 'Modulaire POLCERO-robot op een mobiel platform in een productiehal',
   },
   stats: [
-    { label: 'laadvermogen transportdrone' },
+    { label: 'winst uit klantopdrachten' },
     { label: 'wereldwijde roboticamarkt tegen 2030' },
     { label: 'lagere oogstkosten per stuk' },
     { label: 'eerste implementaties bij klanten' },

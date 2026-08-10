@@ -144,7 +144,7 @@ const pl: SiteContent = {
     imageAlt: 'Modułowy robot POLCERO na platformie jezdnej w hali produkcyjnej',
   },
   stats: [
-    { value: '500 kg', label: 'udźwig drona transportowego' },
+    { value: '€20M', label: 'zysk od klientów' },
     { value: '€200B+', label: 'globalny rynek robotyki do 2030' },
     { value: '≈40%', label: 'niższy koszt zbioru na sztukę' },
     { value: '2027', label: 'start wdrożeń u klientów' },
@@ -417,7 +417,7 @@ const en: SiteContent = {
     imageAlt: 'POLCERO modular robot on a mobile platform in a production hall',
   },
   stats: [
-    { value: '500 kg', label: 'transport drone payload' },
+    { value: '€20M', label: 'profit from customers' },
     { value: '€200B+', label: 'global robotics market by 2030' },
     { value: '≈40%', label: 'lower harvest cost per unit' },
     { value: '2027', label: 'first client deployments' },

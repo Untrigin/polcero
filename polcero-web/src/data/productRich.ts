@@ -1,4 +1,5 @@
 import type { Locale } from '../lib/i18n';
+import { pl } from './i18n/productRich/pl';
 import { de } from './i18n/productRich/de';
 import { fr } from './i18n/productRich/fr';
 import { es } from './i18n/productRich/es';
@@ -264,7 +265,7 @@ type DeepPartial<T> = { [K in keyof T]?: DeepPartial<T[K]> };
 export type ProductRichOverride = DeepPartial<ProductRich>;
 type RichSet = Record<string, ProductRichOverride>;
 
-const overrides: Partial<Record<Locale, RichSet>> = { de, fr, es, it, pt, nl };
+const overrides: Partial<Record<Locale, RichSet>> = { pl, de, fr, es, it, pt, nl };
 
 function isObject(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v);

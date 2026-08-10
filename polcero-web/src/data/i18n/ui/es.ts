@@ -33,6 +33,28 @@ export const es: DeepPartial<UI> = {
     scrollDown: 'Desplázate hacia abajo',
     ecosystemAlt: 'Humanoide POLCERO sentado en el dron de transporte',
     applications: 'APLICACIONES',
+    energy: {
+      eyebrow: 'ENERGÍA SIN INTERRUPCIONES',
+      title: 'Robots que cambian sus propias baterías',
+      lead: 'Cada robot funciona con tres baterías de cambio en caliente y conoce el estado de cada una. Una estación de carga de cuatro bahías mantiene baterías listas en rotación, y el robot se acopla para cambiar sus propias baterías durante el turno: el trabajo nunca se detiene por la batería.',
+      alt: 'Panel de estado de baterías POLCERO y estación de carga de cuatro bahías',
+      points: [
+        { title: 'Estado de cada batería en vivo', text: 'Carga, salud y temperatura de cada batería, en tiempo real.' },
+        { title: 'Cambio anticipado', text: 'El siguiente cambio se programa antes de que una batería se agote.' },
+        { title: 'Acoplamiento autónomo', text: 'El robot cambia sus baterías por sí mismo en la estación: sin operador, sin paradas.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'INFRAESTRUCTURA ELÉCTRICA',
+      title: 'Baterías — o directamente de la red',
+      lead: 'Los robots son autónomos con baterías, pero donde un sitio puede suministrar energía funcionan de la red mediante un cable. Menor coste operativo, sin rotación de baterías, sin paradas.',
+      modes: [
+        { name: 'Baterías de cambio en caliente', text: 'Totalmente móviles y autónomos: tres baterías rotan por la estación de carga.' },
+        { name: 'Raíles fijos en interior', text: 'En naves, fábricas e invernaderos, raíles de alimentación fijos alimentan al robot mientras trabaja.' },
+        { name: 'Líneas aéreas en exterior', text: 'En campos y patios, líneas aéreas como la catenaria de un tranvía alimentan la flota y recargan sus baterías.' },
+      ],
+    },
+    missionAlt: 'Robots POLCERO caminando por un almacén moderno',
   },
   productDetail: {
     home: 'Inicio',

@@ -33,6 +33,28 @@ export const it: DeepPartial<UI> = {
     scrollDown: 'Scorri verso il basso',
     ecosystemAlt: 'Umanoide POLCERO seduto nel drone da trasporto',
     applications: 'APPLICAZIONI',
+    energy: {
+      eyebrow: 'ALIMENTAZIONE CONTINUA',
+      title: 'Robot che cambiano da soli le batterie',
+      lead: `Ogni robot funziona con tre batterie hot-swap e conosce lo stato di ciascuna. Una stazione di ricarica a quattro alloggiamenti tiene pronte batterie in rotazione, e il robot si aggancia per cambiare da solo le batterie durante il turno: il lavoro non si ferma mai per la batteria.`,
+      alt: `Dashboard dello stato batterie POLCERO e stazione di ricarica a quattro alloggiamenti`,
+      points: [
+        { title: `Stato di ogni batteria in tempo reale`, text: `Carica, salute e temperatura di ogni batteria, in tempo reale.` },
+        { title: `Cambio anticipato`, text: `Il cambio successivo viene pianificato prima che una batteria si esaurisca.` },
+        { title: `Aggancio autonomo`, text: `Il robot cambia le batterie da solo alla stazione: nessun operatore, nessun fermo.` },
+      ],
+    },
+    grid: {
+      eyebrow: 'INFRASTRUTTURA ELETTRICA',
+      title: `Batterie — o direttamente dalla rete`,
+      lead: `I robot sono autonomi a batteria, ma dove un sito può fornire corrente funzionano dalla rete tramite un cavo. Costi di esercizio inferiori, nessuna rotazione di batterie, nessun fermo.`,
+      modes: [
+        { name: `Batterie hot-swap`, text: `Totalmente mobili e autonomi: tre batterie ruotano attraverso la stazione di ricarica.` },
+        { name: `Guide fisse all'interno`, text: `In capannoni, fabbriche e serre, guide di alimentazione fisse alimentano il robot mentre lavora.` },
+        { name: `Linee aeree all'esterno`, text: `Nei campi e nei piazzali, linee aeree come la catenaria del tram alimentano la flotta e ricaricano le batterie.` },
+      ],
+    },
+    missionAlt: `Robot POLCERO che attraversano un magazzino moderno`,
   },
   productDetail: {
     home: 'Home',

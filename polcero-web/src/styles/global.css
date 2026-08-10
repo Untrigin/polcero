@@ -64,6 +64,18 @@ body.has-hero .hdr:not(.hdr--scrolled) {
   --color-mute: #C7CBD2;
   color: var(--color-ice);
 }
+/* ...but the open dropdown panels have their OWN solid surface, so their text
+   must stay in the normal theme colours (else white-on-white in light mode at
+   the top of the homepage until you scroll). Reset the vars inside the panels. */
+body.has-hero .hdr:not(.hdr--scrolled) .hdr__mega {
+  --color-ice: #F4F5F7;
+  --color-mute: #9096A0;
+  color: var(--color-ice);
+}
+html[data-theme="light"] body.has-hero .hdr:not(.hdr--scrolled) .hdr__mega {
+  --color-ice: #14161A;
+  --color-mute: #565C66;
+}
 
 /* Light mode: the white logo becomes black wherever the header bar is light
    (scrolled, or on pages without a dark hero), and always in footer/drawer. */

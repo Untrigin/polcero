@@ -71,6 +71,9 @@ export interface UI {
     scrollDown: string;
     ecosystemAlt: string;
     applications: string;
+    energy: { eyebrow: string; title: string; lead: string; alt: string; points: { title: string; text: string }[] };
+    grid: { eyebrow: string; title: string; lead: string; modes: { name: string; text: string }[] };
+    missionAlt: string;
   };
   productDetail: {
     home: string;
@@ -90,6 +93,7 @@ export interface UI {
     note: string;
     price: string;
     specification: string;
+    modify: string;
     construction: {
       title: string;
       lead: string;
@@ -232,6 +236,28 @@ const en: UI = {
     scrollDown: 'Scroll down',
     ecosystemAlt: 'POLCERO humanoid seated in the transport drone',
     applications: 'APPLICATIONS',
+    energy: {
+      eyebrow: 'ALWAYS-ON POWER',
+      title: 'Robots that swap their own batteries',
+      lead: 'Every robot runs on three hot-swap packs and reads the state of each one. A four-bay charging station keeps a rotation of packs ready, and the robot docks to swap its own packs during a shift — so the work never stops for the battery.',
+      alt: 'POLCERO battery-status dashboard and 4-bay charging station',
+      points: [
+        { title: 'Live per-pack state', text: 'Charge, health and temperature for every pack, in real time.' },
+        { title: 'Predictive swap', text: 'The next swap is scheduled before a pack runs out.' },
+        { title: 'Self-docking', text: 'The robot rotates its own packs at the station — no operator, no downtime.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'POWER INFRASTRUCTURE',
+      title: 'Batteries — or run straight off the grid',
+      lead: 'Robots are autonomous on batteries, but where a site can supply power they run off the grid through a cable. Lower running cost, no packs to rotate, no downtime.',
+      modes: [
+        { name: 'Hot-swap batteries', text: 'Fully mobile and autonomous — three packs rotate through the charging dock.' },
+        { name: 'Fixed rails indoors', text: 'In halls, factories and greenhouses, fixed power rails feed the robot as it works.' },
+        { name: 'Overhead lines outdoors', text: 'On fields and yards, overhead conductor lines like tram catenary power the fleet and top up its packs.' },
+      ],
+    },
+    missionAlt: 'POLCERO robots walking through a modern warehouse',
   },
   productDetail: {
     home: 'Home',
@@ -251,6 +277,7 @@ const en: UI = {
     note: 'We build robots around the client’s specific process - starting from our own prototypes, adapted to purpose. We fit the technology to the process, not the other way around.',
     price: 'Price',
     specification: 'Specification',
+    modify: 'Modular options: ',
     construction: {
       title: 'Modular construction',
       lead: 'The common core stays the same: chassis, controls, perception and a quick-release tool connector. The working end and the program change - not the whole machine. We mount the core module (control system + AI) on any specialized chassis, or add legs and arms to make a humanoid. Add a task module - arms with a gripper, a harvest head or a weeding laser - and the same robot takes on the next job.',
@@ -407,6 +434,28 @@ const pl: DeepPartial<UI> = {
     scrollDown: 'Przewiń w dół',
     ecosystemAlt: 'Humanoid POLCERO w kabinie drona transportowego',
     applications: 'ZASTOSOWANIA',
+    energy: {
+      eyebrow: 'ZASILANIE BEZ PRZERW',
+      title: 'Roboty, które same wymieniają baterie',
+      lead: 'Każdy robot pracuje na trzech bateriach hot-swap i zna stan każdej z nich. Czterostanowiskowa stacja ładująca utrzymuje zapas gotowych baterii, a robot dokuje i sam wymienia je w trakcie zmiany - dzięki temu praca nigdy nie staje z powodu baterii.',
+      alt: 'Panel stanu baterii POLCERO i czterostanowiskowa stacja ładująca',
+      points: [
+        { title: 'Stan każdej baterii na żywo', text: 'Naładowanie, kondycja i temperatura każdej baterii w czasie rzeczywistym.' },
+        { title: 'Wymiana z wyprzedzeniem', text: 'Kolejna wymiana jest planowana, zanim bateria się wyczerpie.' },
+        { title: 'Samodzielne dokowanie', text: 'Robot sam wymienia baterie na stacji - bez operatora i bez przestoju.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'INFRASTRUKTURA ZASILANIA',
+      title: 'Baterie - albo zasilanie wprost z sieci',
+      lead: 'Roboty są autonomiczne na bateriach, ale tam, gdzie obiekt może dostarczyć prąd, pracują z sieci przez kabel. Niższy koszt pracy, brak wymiany baterii, zero przestojów.',
+      modes: [
+        { name: 'Baterie hot-swap', text: 'W pełni mobilne i autonomiczne - trzy baterie rotują przez stację ładującą.' },
+        { name: 'Stałe szyny w hali', text: 'W halach, fabrykach i szklarniach stałe szyny zasilające zasilają robota w trakcie pracy.' },
+        { name: 'Trakcja na zewnątrz', text: 'Na polach i placach napowietrzne linie zasilające jak trakcja tramwajowa zasilają flotę i doładowują baterie.' },
+      ],
+    },
+    missionAlt: 'Roboty POLCERO idące przez nowoczesny magazyn',
   },
   productDetail: {
     home: 'Start',
@@ -426,6 +475,7 @@ const pl: DeepPartial<UI> = {
     note: 'Roboty budujemy pod konkretny proces u klienta - punktem wyjścia są nasze własne prototypy, które modyfikujemy pod przeznaczenie. Dopasowujemy technologię do procesu, a nie odwrotnie.',
     price: 'Cena',
     specification: 'Specyfikacja',
+    modify: 'Opcje modułowe: ',
     construction: {
       title: 'Budowa modułowa',
       lead: 'Wspólny rdzeń pozostaje ten sam: podwozie, sterowanie, percepcja i szybkozłącze narzędziowe. Zmienia się końcówka robocza i program - nie cała maszyna. Moduł korpusu z systemem sterowania i AI łączymy z dowolnym podwoziem specjalistycznym albo uzupełniamy o nogi i ramiona, tworząc humanoida. Po dołożeniu modułu zadaniowego - ramion z chwytakiem, głowicy zbioru czy lasera do odchwaszczania - ten sam robot wykonuje kolejne prace.',

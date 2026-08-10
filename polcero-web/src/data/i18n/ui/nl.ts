@@ -33,6 +33,28 @@ export const nl: DeepPartial<UI> = {
     scrollDown: 'Scroll omlaag',
     ecosystemAlt: 'POLCERO-humanoïde gezeten in de transportdrone',
     applications: 'TOEPASSINGEN',
+    energy: {
+      eyebrow: 'ALTIJD STROOM',
+      title: `Robots die hun eigen accu's wisselen`,
+      lead: `Elke robot werkt op drie hot-swap-accu's en kent de status van elke accu. Een laadstation met vier vakken houdt een rotatie van accu's klaar, en de robot dockt om zijn eigen accu's tijdens een dienst te wisselen — zo ligt het werk nooit stil door de accu.`,
+      alt: `POLCERO accustatus-dashboard en laadstation met vier vakken`,
+      points: [
+        { title: `Status van elke accu live`, text: `Lading, conditie en temperatuur van elke accu, in realtime.` },
+        { title: `Wisselen met voorsprong`, text: `De volgende wissel wordt ingepland voordat een accu leeg is.` },
+        { title: `Zelf aandokken`, text: `De robot wisselt zijn accu's zelf bij het station — geen operator, geen stilstand.` },
+      ],
+    },
+    grid: {
+      eyebrow: 'ENERGIE-INFRASTRUCTUUR',
+      title: `Accu's — of rechtstreeks van het net`,
+      lead: `Robots zijn autonoom op accu's, maar waar een locatie stroom kan leveren, werken ze via een kabel rechtstreeks van het net. Lagere bedrijfskosten, geen accuwissel, geen stilstand.`,
+      modes: [
+        { name: `Hot-swap-accu's`, text: `Volledig mobiel en autonoom — drie accu's rouleren via het laadstation.` },
+        { name: `Vaste rails binnen`, text: `In hallen, fabrieken en kassen voeden vaste stroomrails de robot tijdens het werk.` },
+        { name: `Bovenleidingen buiten`, text: `Op velden en terreinen voeden bovenleidingen zoals een tramdraad de vloot en laden ze de accu's bij.` },
+      ],
+    },
+    missionAlt: `POLCERO-robots die door een modern magazijn lopen`,
   },
   productDetail: {
     home: 'Home',

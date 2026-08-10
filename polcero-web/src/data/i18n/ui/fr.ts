@@ -33,6 +33,28 @@ export const fr: DeepPartial<UI> = {
     scrollDown: 'Faire défiler vers le bas',
     ecosystemAlt: 'Humanoïde POLCERO installé dans le drone de transport',
     applications: 'APPLICATIONS',
+    energy: {
+      eyebrow: 'ALIMENTATION CONTINUE',
+      title: 'Des robots qui changent leurs propres batteries',
+      lead: `Chaque robot fonctionne avec trois batteries remplaçables à chaud et connaît l'état de chacune. Une station de charge à quatre baies garde des batteries prêtes en rotation, et le robot vient s'y connecter pour changer ses batteries en pleine équipe — le travail ne s'arrête jamais pour la batterie.`,
+      alt: `Tableau de bord de l'état des batteries POLCERO et station de charge à quatre baies`,
+      points: [
+        { title: `État de chaque batterie en direct`, text: `Charge, santé et température de chaque batterie, en temps réel.` },
+        { title: `Changement anticipé`, text: `Le prochain changement est planifié avant qu'une batterie ne soit vide.` },
+        { title: `Amarrage autonome`, text: `Le robot change ses batteries lui-même à la station — sans opérateur, sans arrêt.` },
+      ],
+    },
+    grid: {
+      eyebrow: 'INFRASTRUCTURE ÉLECTRIQUE',
+      title: `Batteries — ou directement sur le réseau`,
+      lead: `Les robots sont autonomes sur batterie, mais là où un site peut fournir du courant, ils fonctionnent sur le réseau via un câble. Coûts d'exploitation réduits, aucune rotation de batteries, aucun arrêt.`,
+      modes: [
+        { name: `Batteries remplaçables à chaud`, text: `Totalement mobiles et autonomes — trois batteries tournent par la station de charge.` },
+        { name: `Rails fixes en intérieur`, text: `Dans les halls, usines et serres, des rails d'alimentation fixes alimentent le robot pendant le travail.` },
+        { name: `Lignes aériennes en extérieur`, text: `Dans les champs et les cours, des lignes aériennes comme une caténaire de tramway alimentent la flotte et rechargent ses batteries.` },
+      ],
+    },
+    missionAlt: `Robots POLCERO traversant un entrepôt moderne`,
   },
   productDetail: {
     home: 'Accueil',

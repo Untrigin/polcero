@@ -132,6 +132,47 @@ const orderLabel = t.order;
   </div>
 </section>
 
+{/* ── ENERGY - self-swapping batteries + charging station ── */}
+<section class="section energy">
+  <div class="container-x energy__grid">
+    <Reveal class="energy__body">
+      <p class="eyebrow">{t.energy.eyebrow}</p>
+      <h2 class="h2 energy__title">{t.energy.title}</h2>
+      <p class="lead">{t.energy.lead}</p>
+      <dl class="energy__points">
+        {t.energy.points.map((pt) => (
+          <div><dt>{pt.title}</dt><dd>{pt.text}</dd></div>
+        ))}
+      </dl>
+    </Reveal>
+    <Reveal delay={80} class="energy__media">
+      <span class="energy__tile"><img src="/media/battery-status.webp" alt={t.energy.alt} width="960" height="640" loading="lazy" decoding="async" /></span>
+    </Reveal>
+  </div>
+</section>
+
+{/* ── POWER INFRASTRUCTURE - batteries or grid ───────────── */}
+<section class="section grid-power">
+  <div class="container-x">
+    <Reveal class="grid-power__head">
+      <p class="eyebrow">{t.grid.eyebrow}</p>
+      <h2 class="h2">{t.grid.title}</h2>
+      <p class="lead grid-power__lead">{t.grid.lead}</p>
+    </Reveal>
+    <div class="grid-power__grid">
+      {t.grid.modes.map((m, i) => (
+        <Reveal delay={i * 60}>
+          <div class="grid-power__mode">
+            <span class="grid-power__num label-mono">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="grid-power__name">{m.name}</h3>
+            <p class="grid-power__text">{m.text}</p>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>
+
 {/* ── 06 PRODUCT CARDS - "Available to order" ─────────────── */}
 <section class="section cards">
   <div class="container-x">
@@ -168,7 +209,18 @@ const orderLabel = t.order;
 
 {/* ── 07 MISSION ──────────────────────────────────────────── */}
 <section class="mission">
-  <img class="mission__bg" src="/media/mission.webp" alt={c.mission.imageAlt} width="2000" height="1200" loading="lazy" decoding="async" data-parallax />
+  <video
+    class="mission__bg"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="/media/warehouse-walk-poster.jpg"
+    aria-label={t.missionAlt}
+  >
+    <source src="/media/warehouse-walk.mp4" type="video/mp4" />
+  </video>
   <div class="mission__overlay"></div>
   <div class="container-x mission__inner">
     <Reveal>
@@ -257,7 +309,8 @@ const orderLabel = t.order;
 
   @media (min-width: 768px) { .hero-full__img { display: none; } }
   @media (max-width: 767px) {
-    .hero-full__anim { display: none; }
+    /* Mobile keeps the still as an instant poster; the looping hero fades in over it. */
+    .hero-full__anim { display: block; }
     .hero-full__scrim { background:
       linear-gradient(0deg, rgba(10,10,11,0.92) 0%, rgba(10,10,11,0.35) 55%, rgba(10,10,11,0.15) 100%); }
   }
@@ -331,6 +384,31 @@ const orderLabel = t.order;
     align-items: end;
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
   }
+
+  /* ENERGY (battery status + charging station) */
+  .energy { border-top: 1px solid var(--color-line); }
+  .energy__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .energy__grid :global(.energy__body) { display: flex; flex-direction: column; gap: 1.1rem; }
+  .energy__body .eyebrow { margin-bottom: 0.25rem; }
+  .energy__points { margin: 0.25rem 0 0; display: grid; gap: 0; }
+  .energy__points > div { padding: 0.85rem 0; border-top: 1px solid var(--color-line); }
+  .energy__points dt { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; color: var(--color-ice); }
+  .energy__points dd { margin: 0.25rem 0 0; color: var(--color-mute); line-height: 1.55; }
+  .energy__grid :global(.energy__media) { display: block; }
+  .energy__tile { display: block; border-radius: var(--radius-card); background: var(--color-panel); border: 1px solid var(--color-line); overflow: hidden; }
+  .energy__tile img { width: 100%; height: auto; display: block; }
+
+  /* POWER INFRASTRUCTURE */
+  .grid-power { border-top: 1px solid var(--color-line); }
+  .grid-power__head { max-width: 60rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .grid-power__head .eyebrow { margin-bottom: 1rem; }
+  .grid-power__lead { color: var(--color-mute); margin-top: 1rem; }
+  .grid-power__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); }
+  .grid-power__mode { padding: clamp(1.25rem, 2vw, 1.75rem); border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); height: 100%; }
+  .grid-power__num { color: var(--color-accent); }
+  .grid-power__name { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; color: var(--color-ice); margin: 0.6rem 0; }
+  .grid-power__text { color: var(--color-mute); line-height: 1.6; }
+  @media (max-width: 900px) { .energy__grid { grid-template-columns: 1fr; } .grid-power__grid { grid-template-columns: 1fr; } }
 
   /* CARDS */
   .cards { background: var(--color-surface); border-block: 1px solid var(--color-line); }

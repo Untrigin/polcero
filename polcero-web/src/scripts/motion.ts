@@ -60,15 +60,12 @@ function initParallax() {
 
 // ── Hero background (animated WebP) ─────────────────────────────────────
 // Decorative only (H1 text carries the meaning), so it never affects SEO.
-// The <img> ships with NO src; the src is set here only on desktop, so mobile
-// downloads zero bytes (it shows the static hero image instead). Under
+// The <img> ships with NO src; the src is set here (desktop and mobile) so the
+// looping hero fades in over the static poster on every device. Under
 // reduced-motion we load the still poster rather than the animation.
 function initHeroBg() {
   const img = document.querySelector<HTMLImageElement>('img[data-hero-bg]');
   if (!img) return;
-
-  const desktop = window.matchMedia('(min-width: 768px)').matches;
-  if (!desktop) return; // mobile → static hero image only
 
   img.addEventListener('load', () => img.classList.add('is-playing'), { once: true });
   img.src = reduce ? img.dataset.poster! : img.dataset.src!;

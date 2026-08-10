@@ -275,17 +275,17 @@ const pl: SiteContent = {
     rights: 'Wszelkie prawa zastrzeżone.',
   },
   products: [
-    { slug: 'humanoid', name: 'Humanoid', category: 'Humanoid', kind: 'humanoid', blurb: 'Moduł korpusu uzupełniony o nogi i dwa ramiona. Wchodzi w otoczenie zaprojektowane pod człowieka i obsługuje maszyny przeznaczone do obsługi ręcznej.', image: '/media/r-humanoid.webp' },
-    { slug: 'mobile-humanoid', name: 'Humanoid na platformie jezdnej', category: 'Humanoid', kind: 'mobile-humanoid', blurb: 'Ten sam humanoid osadzony na platformie jezdnej. Dojeżdża do stanowiska i obsługuje kilka miejsc zamiast stać przy jednym.', image: '/media/r-mobile.webp' },
+    { slug: 'humanoid', name: 'Humanoid', category: 'Humanoid', kind: 'humanoid', blurb: 'Moduł korpusu uzupełniony o nogi i dwa ramiona. Wchodzi w otoczenie zaprojektowane pod człowieka i obsługuje maszyny przeznaczone do obsługi ręcznej.', image: '/media/p-humanoid.webp' },
+    { slug: 'mobile-humanoid', name: 'Humanoid na platformie jezdnej', category: 'Humanoid', kind: 'mobile-humanoid', blurb: 'Ten sam humanoid osadzony na platformie jezdnej. Dojeżdża do stanowiska i obsługuje kilka miejsc zamiast stać przy jednym.', image: '/media/p-mobile.webp' },
     { slug: 'specialized-robots', name: 'Roboty specjalistyczne', category: 'Roboty specjalistyczne', kind: 'specialized', image: '/media/chassis-lineup.webp',
       blurb: 'Ten sam moduł korpusu - sterowanie, AI i baterie hot-swap - na podwoziu, którego wymaga Twój teren: kroczącym, gąsienicowym, kołowym lub kołowo-nożnym. Wymień platformę, zachowaj mózg i moduły zadaniowe.',
       platforms: [
-        { name: 'Robot kroczący', image: '/media/r-quadruped.webp', drive: 'Podwozie kroczące (4 nogi)', terrain: 'Schody, przeszkody, teren nierówny', blurb: 'Moduł korpusu na podwoziu kroczącym. Pokonuje schody, progi i teren niedostępny dla kół.' },
-        { name: 'Robot gąsienicowy', image: '/media/r-tracked.webp', drive: 'Podwozie gąsienicowe', terrain: 'Nieutwardzony, ciężki teren, place budowy', blurb: 'Podwozie gąsienicowe do trudnego, nierównego terenu, placów budowy i pracy w terenie.' },
-        { name: 'Robot kołowy', image: '/media/r-wheeled.webp', drive: 'Podwozie kołowe', terrain: 'Posadzki, magazyny, płaski teren', blurb: 'Szybkie, ciche podwozie kołowe do posadzek przemysłowych, magazynów i monitoringu.' },
-        { name: 'Robot kołowo-nożny', image: '/media/r-wheelleg.webp', drive: 'Podwozie kołowo-nożne', terrain: 'Płaski teren, przeszkody i szyny', blurb: 'Hybrydowe podwozie kołowo-nożne: jedzie po płaskim i pokonuje przeszkody oraz szyny.' },
+        { name: 'Robot kroczący', image: '/media/chassis-legged.webp', drive: 'Podwozie kroczące (4 nogi)', terrain: 'Schody, przeszkody, teren nierówny', blurb: 'Moduł korpusu na podwoziu kroczącym. Pokonuje schody, progi i teren niedostępny dla kół.' },
+        { name: 'Robot gąsienicowy', image: '/media/chassis-tracked.webp', drive: 'Podwozie gąsienicowe', terrain: 'Nieutwardzony, ciężki teren, place budowy', blurb: 'Podwozie gąsienicowe do trudnego, nierównego terenu, placów budowy i pracy w terenie.' },
+        { name: 'Robot kołowy', image: '/media/chassis-wheeled.webp', drive: 'Podwozie kołowe', terrain: 'Posadzki, magazyny, płaski teren', blurb: 'Szybkie, ciche podwozie kołowe do posadzek przemysłowych, magazynów i monitoringu.' },
+        { name: 'Robot kołowo-nożny', image: '/media/chassis-wheelleg.webp', drive: 'Podwozie kołowo-nożne', terrain: 'Płaski teren, przeszkody i szyny', blurb: 'Hybrydowe podwozie kołowo-nożne: jedzie po płaskim i pokonuje przeszkody oraz szyny.' },
       ] },
-    { slug: 'transport-drone', name: 'Dron transportowy', category: 'Dron transportowy', kind: 'drone', blurb: 'Ciężki dron transportowy do przenoszenia robotów, modułów i ładunków w trudno dostępne miejsca. Dostarczamy robota tam, gdzie dojazd jest niemożliwy.', image: '/media/r-drone.webp', specs: [ { label: 'Nośność maksymalna', value: '500 kg' }, { label: 'Waga drona', value: '90 kg' }, { label: 'Konstrukcja', value: 'modułowa' }, { label: 'Przeznaczenie', value: 'roboty · moduły · ładunki' } ] },
+    { slug: 'transport-drone', name: 'Dron transportowy', category: 'Dron transportowy', kind: 'drone', blurb: 'Ciężki dron transportowy do przenoszenia robotów, modułów i ładunków w trudno dostępne miejsca. Dostarczamy robota tam, gdzie dojazd jest niemożliwy.', image: '/media/p-drone.webp', specs: [ { label: 'Nośność maksymalna', value: '500 kg' }, { label: 'Waga drona', value: '90 kg' }, { label: 'Konstrukcja', value: 'modułowa' }, { label: 'Przeznaczenie', value: 'roboty · moduły · ładunki' } ] },
     { slug: 'polcero-os', name: 'POLCERO OS', category: 'Oprogramowanie', kind: 'software', blurb: 'Moduł korpusu z warstwą AI: sterowanie, percepcja i planowanie. Robot uczy się z pokazu - operator wykonuje zadanie, system rozumie i działa autonomicznie, skracając czas programowania nawet dziesięciokrotnie.', image: '/media/r-os.webp' },
   ],
   industries: [
@@ -305,7 +305,7 @@ const pl: SiteContent = {
       ],
     },
     {
-      slug: 'agriculture', name: 'Rolnictwo', blurb: 'Selektywny zbiór i pielęgnacja w tunelach i szklarniach.', image: '/media/tab-services.webp', branchSlugs: ['farma-ai', 'robots'],
+      slug: 'agriculture', name: 'Rolnictwo', blurb: 'Selektywny zbiór i pielęgnacja w tunelach i szklarniach.', image: '/media/agri-field.webp', branchSlugs: ['farma-ai', 'robots'],
       intro: 'Wielcy producenci maszyn rolniczych są bardzo dobrzy w zbiorze masowym i w nawigacji po otwartym polu. Selektywna manipulacja w miękkim, wrażliwym plonie oraz praca w tunelach i szklarniach, gdzie zawodzi sygnał satelitarny, pozostają obszarem słabo obsadzonym. To jest nasz obszar i wybraliśmy go świadomie.',
       challenges: [
         { title: 'Brak pracowników sezonowych', text: 'Przy jednej farmie pracuje w szczycie od stu do stu pięćdziesięciu osób, a chętnych jest coraz mniej.' },
@@ -547,17 +547,17 @@ const en: SiteContent = {
     rights: 'All rights reserved.',
   },
   products: [
-    { slug: 'humanoid', name: 'Humanoid', category: 'Humanoid', kind: 'humanoid', blurb: 'The core module completed with legs and two arms. Enters spaces designed for people and operates machines built for manual handling.', image: '/media/r-humanoid.webp' },
-    { slug: 'mobile-humanoid', name: 'Humanoid on a mobile platform', category: 'Humanoid', kind: 'mobile-humanoid', blurb: 'The same humanoid on a mobile base. Drives up to the station and serves several spots instead of standing at one.', image: '/media/r-mobile.webp' },
+    { slug: 'humanoid', name: 'Humanoid', category: 'Humanoid', kind: 'humanoid', blurb: 'The core module completed with legs and two arms. Enters spaces designed for people and operates machines built for manual handling.', image: '/media/p-humanoid.webp' },
+    { slug: 'mobile-humanoid', name: 'Humanoid on a mobile platform', category: 'Humanoid', kind: 'mobile-humanoid', blurb: 'The same humanoid on a mobile base. Drives up to the station and serves several spots instead of standing at one.', image: '/media/p-mobile.webp' },
     { slug: 'specialized-robots', name: 'Specialized robots', category: 'Specialized robots', kind: 'specialized', image: '/media/chassis-lineup.webp',
       blurb: 'The same core module - control, AI and hot-swap batteries - on the chassis your terrain needs: legged, tracked, wheeled or wheel-leg. Swap the platform, keep the brain and the task modules.',
       platforms: [
-        { name: 'Legged robot', image: '/media/r-quadruped.webp', drive: 'Legged chassis (4 legs)', terrain: 'Stairs, obstacles, uneven ground', blurb: 'The core module on a legged chassis. Clears stairs, curbs and terrain that wheels cannot.' },
-        { name: 'Tracked robot', image: '/media/r-tracked.webp', drive: 'Tracked chassis', terrain: 'Unpaved, rough terrain, construction sites', blurb: 'A tracked chassis for rough, uneven ground, construction sites and fieldwork.' },
-        { name: 'Wheeled robot', image: '/media/r-wheeled.webp', drive: 'Wheeled chassis', terrain: 'Floors, warehouses, flat ground', blurb: 'A fast, quiet wheeled chassis for industrial floors, warehouses and monitoring.' },
-        { name: 'Wheel-leg robot', image: '/media/r-wheelleg.webp', drive: 'Wheel-leg chassis', terrain: 'Flat ground, obstacles and rails', blurb: 'A hybrid wheel-leg chassis: rolls on the flat and clears obstacles and rails.' },
+        { name: 'Legged robot', image: '/media/chassis-legged.webp', drive: 'Legged chassis (4 legs)', terrain: 'Stairs, obstacles, uneven ground', blurb: 'The core module on a legged chassis. Clears stairs, curbs and terrain that wheels cannot.' },
+        { name: 'Tracked robot', image: '/media/chassis-tracked.webp', drive: 'Tracked chassis', terrain: 'Unpaved, rough terrain, construction sites', blurb: 'A tracked chassis for rough, uneven ground, construction sites and fieldwork.' },
+        { name: 'Wheeled robot', image: '/media/chassis-wheeled.webp', drive: 'Wheeled chassis', terrain: 'Floors, warehouses, flat ground', blurb: 'A fast, quiet wheeled chassis for industrial floors, warehouses and monitoring.' },
+        { name: 'Wheel-leg robot', image: '/media/chassis-wheelleg.webp', drive: 'Wheel-leg chassis', terrain: 'Flat ground, obstacles and rails', blurb: 'A hybrid wheel-leg chassis: rolls on the flat and clears obstacles and rails.' },
       ] },
-    { slug: 'transport-drone', name: 'Transport drone', category: 'Transport drone', kind: 'drone', blurb: 'A heavy transport drone for carrying robots, modules and loads into hard-to-reach places. We deliver the robot where access is impossible.', image: '/media/r-drone.webp', specs: [ { label: 'Maximum payload', value: '500 kg' }, { label: 'Drone weight', value: '90 kg' }, { label: 'Construction', value: 'modular' }, { label: 'Carries', value: 'robots · modules · loads' } ] },
+    { slug: 'transport-drone', name: 'Transport drone', category: 'Transport drone', kind: 'drone', blurb: 'A heavy transport drone for carrying robots, modules and loads into hard-to-reach places. We deliver the robot where access is impossible.', image: '/media/p-drone.webp', specs: [ { label: 'Maximum payload', value: '500 kg' }, { label: 'Drone weight', value: '90 kg' }, { label: 'Construction', value: 'modular' }, { label: 'Carries', value: 'robots · modules · loads' } ] },
     { slug: 'polcero-os', name: 'POLCERO OS', category: 'Software', kind: 'software', blurb: 'The core module with the AI layer: control, perception and planning. The robot learns by demonstration - an operator performs the task, the system understands and acts autonomously, cutting programming time up to tenfold.', image: '/media/r-os.webp' },
   ],
   industries: [
@@ -577,7 +577,7 @@ const en: SiteContent = {
       ],
     },
     {
-      slug: 'agriculture', name: 'Agriculture', blurb: 'Selective harvest and care in tunnels and greenhouses.', image: '/media/tab-services.webp', branchSlugs: ['farma-ai', 'robots'],
+      slug: 'agriculture', name: 'Agriculture', blurb: 'Selective harvest and care in tunnels and greenhouses.', image: '/media/agri-field.webp', branchSlugs: ['farma-ai', 'robots'],
       intro: 'The large agricultural manufacturers are very good at mass harvest and open-field navigation. Selective manipulation in soft, delicate crops, and work in tunnels and greenhouses where satellite signal fails, remain poorly served. This is our area, and we chose it deliberately.',
       challenges: [
         { title: 'Seasonal labour shortage', text: 'A single farm employs a hundred to a hundred-fifty people at peak - and fewer are available each year.' },

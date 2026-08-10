@@ -109,7 +109,7 @@
   display: grid; place-items: center;
   overflow: hidden;
 }
-.hdr__mega-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.hdr__mega-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 12%; }
 .hdr__mega-text { display: flex; flex-direction: column; gap: 0.15rem; }
 .hdr__mega-name { font-weight: 500; font-size: 0.95rem; color: var(--color-ice); }
 .hdr__mega-cat { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-mute); }
@@ -132,11 +132,11 @@
 .hdr__icon-btn {
   display: inline-grid; place-items: center;
   width: 40px; height: 40px;
-  background: none; border: 1px solid var(--color-line); border-radius: 10px;
+  background: none; border: 0; border-radius: 10px;
   color: var(--color-ice); cursor: pointer;
-  transition: color 0.18s var(--ease-out), border-color 0.18s var(--ease-out);
+  transition: color 0.18s var(--ease-out);
 }
-.hdr__icon-btn:hover { color: var(--color-accent); border-color: var(--color-accent); }
+.hdr__icon-btn:hover { color: var(--color-accent); }
 .hdr__icon-btn .icon-moon { display: none; }
 html[data-theme="light"] .hdr__icon-btn .icon-sun { display: none; }
 html[data-theme="light"] .hdr__icon-btn .icon-moon { display: inline; }
@@ -147,7 +147,7 @@ html[data-theme="light"] .hdr__icon-btn .icon-moon { display: inline; }
   appearance: none; -webkit-appearance: none;
   background-color: transparent;
   color: var(--color-ice);
-  border: 1px solid var(--color-line);
+  border: 0;
   border-radius: 8px;
   font-family: var(--font-mono);
   font-size: 0.76rem;
@@ -157,10 +157,12 @@ html[data-theme="light"] .hdr__icon-btn .icon-moon { display: inline; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239096A0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.55rem center;
-  transition: border-color 0.18s var(--ease-out);
+  transition: color 0.18s var(--ease-out);
 }
-.hdr__lang-select:hover { border-color: var(--color-mute); }
-.hdr__lang-select option { background: var(--color-surface); color: var(--color-ice); }
+.hdr__lang-select:hover { color: var(--color-accent); }
+/* Fixed theme colours (not the hero-override vars) so the option list is never white-on-white. */
+.hdr__lang-select option { background: #121214; color: #F4F5F7; }
+html[data-theme="light"] .hdr__lang-select option { background: #F3F4F6; color: #14161A; }
 
 .hdr__cta { display: none; height: 44px; }
 .hdr__burger {

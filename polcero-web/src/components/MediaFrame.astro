@@ -7,6 +7,7 @@ interface Props {
   eager?: boolean;
   parallax?: boolean;
   radius?: 'media' | 'card';
+  fit?: 'cover' | 'contain';
   class?: string;
   sizes?: string;
 }
@@ -19,11 +20,12 @@ const {
   eager = false,
   parallax = false,
   radius = 'media',
+  fit = 'cover',
   class: className = '',
   sizes = '(min-width: 1024px) 900px, 100vw',
 } = Astro.props;
 ---
-<figure class:list={['media-frame', `media-frame--${radius}`, className]}>
+<figure class:list={['media-frame', `media-frame--${radius}`, `media-frame--${fit}`, className]}>
   <img
     src={src}
     alt={alt}
@@ -54,6 +56,9 @@ const {
     object-fit: cover;
     display: block;
   }
+  /* contain = show the whole (transparent) object, padded off the edges */
+  .media-frame--contain { background: var(--color-panel); }
+  .media-frame--contain img { object-fit: contain; padding: 6%; }
   .media-frame img[data-parallax] {
     scale: 1.12;
     will-change: transform;

@@ -33,6 +33,28 @@ export const pt: DeepPartial<UI> = {
     scrollDown: 'Deslizar para baixo',
     ecosystemAlt: 'Humanoide POLCERO sentado no drone de transporte',
     applications: 'APLICAÇÕES',
+    energy: {
+      eyebrow: 'ENERGIA SEM INTERRUPÇÕES',
+      title: 'Robôs que trocam as próprias baterias',
+      lead: 'Cada robô funciona com três baterias hot-swap e conhece o estado de cada uma. Uma estação de carregamento de quatro baias mantém baterias prontas em rotação, e o robô acopla para trocar as próprias baterias durante o turno — o trabalho nunca para por causa da bateria.',
+      alt: 'Painel de estado das baterias POLCERO e estação de carregamento de quatro baias',
+      points: [
+        { title: 'Estado de cada bateria em tempo real', text: 'Carga, saúde e temperatura de cada bateria, em tempo real.' },
+        { title: 'Troca antecipada', text: 'A próxima troca é agendada antes de uma bateria se esgotar.' },
+        { title: 'Acoplamento autónomo', text: 'O robô troca as próprias baterias na estação — sem operador, sem paragens.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'INFRAESTRUTURA ELÉTRICA',
+      title: 'Baterias — ou diretamente da rede',
+      lead: 'Os robôs são autónomos com baterias, mas onde um local pode fornecer energia funcionam da rede através de um cabo. Menor custo operacional, sem rotação de baterias, sem paragens.',
+      modes: [
+        { name: 'Baterias hot-swap', text: 'Totalmente móveis e autónomos — três baterias rodam pela estação de carregamento.' },
+        { name: 'Calhas fixas no interior', text: 'Em pavilhões, fábricas e estufas, calhas de alimentação fixas alimentam o robô enquanto trabalha.' },
+        { name: 'Linhas aéreas no exterior', text: 'Em campos e pátios, linhas aéreas como a catenária de um elétrico alimentam a frota e recarregam as baterias.' },
+      ],
+    },
+    missionAlt: 'Robôs POLCERO a caminhar por um armazém moderno',
   },
   productDetail: {
     home: 'Início',

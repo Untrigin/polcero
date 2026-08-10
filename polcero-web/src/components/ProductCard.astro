@@ -47,7 +47,8 @@ const href = localizedPath(`/products/${product.slug}/`, locale);
   .product-card__media img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 8%;
   }
   .product-card:hover .product-card__media { transform: translateY(-4px); }
   .product-card__body { display: flex; flex-direction: column; gap: 0.6rem; }

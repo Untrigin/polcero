@@ -7,6 +7,7 @@ import Reveal from '../Reveal.astro';
 import ProductCard from '../ProductCard.astro';
 import BranchGrid from '../BranchGrid.astro';
 import { getContent } from '../../data/content';
+import { getIndustryPower } from '../../data/industryPower';
 import { getUI } from '../../data/ui';
 import { localizedPath, type Locale } from '../../lib/i18n';
 
@@ -14,6 +15,7 @@ interface Props { locale: Locale; slug: string }
 const { locale, slug } = Astro.props;
 const c = getContent(locale);
 const industry = c.industries.find((i) => i.slug === slug)!;
+const power = getIndustryPower(slug, locale);
 const p = (path: string) => localizedPath(path, locale);
 const t = getUI(locale).industryDetail;
 
@@ -91,6 +93,29 @@ const description = industry.blurb.slice(0, 154);
     </div>
   </section>
 
+  {power && (
+    <section class="section ipower">
+      <div class="container-x">
+        <div class="block-head">
+          <p class="eyebrow">{power.eyebrow}</p>
+          <h2 class="h3 ipower__title">{power.title}</h2>
+          <p class="lead block-head__lead ipower__lead">{power.lead}</p>
+        </div>
+        <div class="ipower__grid">
+          {power.modes.map((m, i) => (
+            <Reveal delay={i * 60}>
+              <div class="ipower__mode">
+                <span class="ipower__num label-mono">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="ipower__name">{m.name}</h3>
+                <p class="ipower__text">{m.text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   {industryBranches.length > 0 && (
     <section class="section services">
       <div class="container-x">
@@ -141,6 +166,16 @@ const description = industry.blurb.slice(0, 154);
 
   @media (max-width: 900px) { .challenge-grid { grid-template-columns: repeat(2, 1fr); } .approach-grid { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .challenge-grid { grid-template-columns: 1fr; } }
+
+  .ipower { border-top: 1px solid var(--color-line); }
+  .ipower__title { margin-top: 0.25rem; }
+  .ipower__lead { margin-top: 1rem; }
+  .ipower__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.25rem, 2.5vw, 2rem); }
+  .ipower__mode { padding: clamp(1.25rem, 2vw, 1.75rem); border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); height: 100%; }
+  .ipower__num { color: var(--color-accent); }
+  .ipower__name { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; color: var(--color-ice); margin: 0.6rem 0; }
+  .ipower__text { color: var(--color-mute); line-height: 1.6; }
+  @media (max-width: 900px) { .ipower__grid { grid-template-columns: 1fr; } }
 
   .services { border-top: 1px solid var(--color-line); }
   .services__head { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }

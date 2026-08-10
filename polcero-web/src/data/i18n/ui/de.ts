@@ -33,6 +33,28 @@ export const de: DeepPartial<UI> = {
     scrollDown: 'Nach unten scrollen',
     ecosystemAlt: 'POLCERO Humanoid in der Transportdrohne sitzend',
     applications: 'ANWENDUNGEN',
+    energy: {
+      eyebrow: 'DAUERHAFTE STROMVERSORGUNG',
+      title: 'Roboter, die ihre Akkus selbst wechseln',
+      lead: 'Jeder Roboter läuft mit drei Hot-Swap-Akkus und kennt den Zustand jedes einzelnen. Eine Ladestation mit vier Schächten hält stets geladene Akkus bereit, und der Roboter dockt an, um seine Akkus während der Schicht selbst zu wechseln – so steht die Arbeit nie wegen des Akkus still.',
+      alt: 'POLCERO Akku-Status-Dashboard und Ladestation mit vier Schächten',
+      points: [
+        { title: 'Zustand jedes Akkus in Echtzeit', text: 'Ladung, Zustand und Temperatur jedes Akkus, in Echtzeit.' },
+        { title: 'Vorausschauender Wechsel', text: 'Der nächste Wechsel wird geplant, bevor ein Akku leer ist.' },
+        { title: 'Selbstständiges Andocken', text: 'Der Roboter wechselt seine Akkus selbst an der Station – ohne Bediener, ohne Stillstand.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'STROMINFRASTRUKTUR',
+      title: 'Akkus – oder direkt aus dem Netz',
+      lead: 'Roboter sind mit Akkus autonom, doch wo ein Standort Strom liefern kann, laufen sie über ein Kabel direkt aus dem Netz. Geringere Betriebskosten, kein Akkuwechsel, kein Stillstand.',
+      modes: [
+        { name: 'Hot-Swap-Akkus', text: 'Voll mobil und autonom – drei Akkus rotieren durch die Ladestation.' },
+        { name: 'Feste Schienen im Innenbereich', text: 'In Hallen, Fabriken und Gewächshäusern versorgen feste Stromschienen den Roboter während der Arbeit.' },
+        { name: 'Oberleitungen im Freien', text: 'Auf Feldern und Höfen versorgen Oberleitungen wie eine Straßenbahn-Fahrleitung die Flotte und laden ihre Akkus nach.' },
+      ],
+    },
+    missionAlt: 'POLCERO Roboter, die durch ein modernes Lager gehen',
   },
   productDetail: {
     home: 'Start',

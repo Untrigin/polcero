@@ -6,6 +6,16 @@ import { es } from './i18n/productRich/es';
 import { it } from './i18n/productRich/it';
 import { pt } from './i18n/productRich/pt';
 import { nl } from './i18n/productRich/nl';
+import { ro } from './i18n/productRich/ro';
+import { uk } from './i18n/productRich/uk';
+import { sv } from './i18n/productRich/sv';
+import { cs } from './i18n/productRich/cs';
+import { el } from './i18n/productRich/el';
+import { zh } from './i18n/productRich/zh';
+import { hi } from './i18n/productRich/hi';
+import { ar } from './i18n/productRich/ar';
+import { ru } from './i18n/productRich/ru';
+import { ja } from './i18n/productRich/ja';
 
 /**
  * Rich, per-product marketing sections beyond the base Product record.
@@ -265,7 +275,7 @@ type DeepPartial<T> = { [K in keyof T]?: DeepPartial<T[K]> };
 export type ProductRichOverride = DeepPartial<ProductRich>;
 type RichSet = Record<string, ProductRichOverride>;
 
-const overrides: Partial<Record<Locale, RichSet>> = { pl, de, fr, es, it, pt, nl };
+const overrides: Partial<Record<Locale, RichSet>> = { pl, de, fr, es, it, pt, nl, ro, uk, sv, cs, el, zh, hi, ar, ru, ja };
 
 function isObject(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v);

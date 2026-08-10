@@ -33,6 +33,28 @@ export const cs: DeepPartial<UI> = {
     scrollDown: 'Přejít dolů',
     ecosystemAlt: 'Humanoid POLCERO v kabině transportního dronu',
     applications: 'POUŽITÍ',
+    energy: {
+      eyebrow: 'STÁLE ZAPNUTÉ NAPÁJENÍ',
+      title: 'Roboti, kteří si sami vyměňují akumulátory',
+      lead: 'Každý robot běží na třech hot-swap paketech a čte stav každého z nich. 4-pozicová nabíjecí stanice udržuje připravenou rotaci paketů a robot se dokuje, aby si během směny vyměnil vlastní pakety — práce se tak kvůli akumulátoru nikdy nezastaví.',
+      alt: 'Přehled stavu akumulátorů POLCERO a 4-pozicová nabíjecí stanice',
+      points: [
+        { title: 'Živý stav každého paketu', text: 'Nabití, kondice a teplota každého paketu v reálném čase.' },
+        { title: 'Prediktivní výměna', text: 'Další výměna je naplánována dřív, než se paket vybije.' },
+        { title: 'Samodokování', text: 'Robot si u stanice sám rotuje vlastní pakety — bez obsluhy, bez prostojů.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'INFRASTRUKTURA NAPÁJENÍ',
+      title: 'Akumulátory — nebo běh přímo ze sítě',
+      lead: 'Roboti jsou na akumulátory autonomní, ale tam, kde místo umí dodat proud, běží ze sítě přes kabel. Nižší provozní náklady, žádné pakety k rotaci, žádné prostoje.',
+      modes: [
+        { name: 'Hot-swap akumulátory', text: 'Plně mobilní a autonomní — tři pakety rotují nabíjecí stanicí.' },
+        { name: 'Pevné lišty uvnitř', text: 'V halách, továrnách a sklenících napájejí robota při práci pevné napájecí lišty.' },
+        { name: 'Trolejové vedení venku', text: 'Na polích a dvorech napájí flotilu a dobíjí její pakety trolejové vedení jako tramvajová trakce.' },
+      ],
+    },
+    missionAlt: 'Roboti POLCERO procházejí moderním skladem',
   },
   productDetail: {
     home: 'Úvod',

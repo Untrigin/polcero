@@ -37,7 +37,7 @@
   --header-h: 72px;
 }
 
-/* ── Light theme ("lite mode") — token overrides; dark stays the default ── */
+/* ── Light theme — now the DEFAULT (applied unless the user chose dark); token overrides ── */
 html[data-theme="light"] {
   color-scheme: light;
   --color-void:      #FFFFFF;   /* page background */

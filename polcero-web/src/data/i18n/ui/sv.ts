@@ -39,6 +39,28 @@ export const sv: DeepPartial<UI> = {
     scrollDown: 'Skrolla ner',
     ecosystemAlt: 'POLCERO-humanoid sittande i transportdrönaren',
     applications: 'TILLÄMPNINGAR',
+    energy: {
+      eyebrow: 'ALLTID PÅ',
+      title: 'Robotar som byter sina egna batterier',
+      lead: 'Varje robot körs på tre hot-swap-paket och läser av tillståndet för varje. En 4-fackig laddstation håller en rotation av paket redo, och roboten dockar för att byta sina egna paket under ett arbetspass — så arbetet aldrig stannar för batteriet.',
+      alt: 'POLCERO batteristatus-panel och 4-fackig laddstation',
+      points: [
+        { title: 'Livetillstånd per paket', text: 'Laddning, hälsa och temperatur för varje paket, i realtid.' },
+        { title: 'Prediktivt byte', text: 'Nästa byte schemaläggs innan ett paket tar slut.' },
+        { title: 'Självdockning', text: 'Roboten roterar sina egna paket vid stationen — ingen operatör, ingen driftstopp.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'STRÖMINFRASTRUKTUR',
+      title: 'Batterier — eller kör direkt från nätet',
+      lead: 'Robotar är autonoma på batterier, men där en plats kan leverera ström kör de från nätet via en kabel. Lägre driftkostnad, inga paket att rotera, ingen driftstopp.',
+      modes: [
+        { name: 'Hot-swap-batterier', text: 'Fullt mobil och autonom — tre paket roterar genom laddstationen.' },
+        { name: 'Fasta skenor inomhus', text: 'I hallar, fabriker och växthus matar fasta strömskenor roboten medan den arbetar.' },
+        { name: 'Luftledningar utomhus', text: 'På fält och gårdar driver luftledningar som en spårvagns kontaktledning flottan och toppladdar dess paket.' },
+      ],
+    },
+    missionAlt: 'POLCERO-robotar som går genom ett modernt lager',
   },
   productDetail: {
     home: 'Hem',

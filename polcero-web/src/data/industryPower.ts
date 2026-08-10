@@ -5,6 +5,16 @@ import { es } from './i18n/industryPower/es';
 import { it } from './i18n/industryPower/it';
 import { pt } from './i18n/industryPower/pt';
 import { nl } from './i18n/industryPower/nl';
+import { ro } from './i18n/industryPower/ro';
+import { uk } from './i18n/industryPower/uk';
+import { sv } from './i18n/industryPower/sv';
+import { cs } from './i18n/industryPower/cs';
+import { el } from './i18n/industryPower/el';
+import { zh } from './i18n/industryPower/zh';
+import { hi } from './i18n/industryPower/hi';
+import { ar } from './i18n/industryPower/ar';
+import { ru } from './i18n/industryPower/ru';
+import { ja } from './i18n/industryPower/ja';
 
 /**
  * Per-industry "power infrastructure" section: robots run on batteries, or on the
@@ -124,7 +134,7 @@ const pl: Record<string, IndustryPower> = {
   },
 };
 
-const byLocale: Partial<Record<Locale, Record<string, IndustryPower>>> = { en, pl, de, fr, es, it, pt, nl };
+const byLocale: Partial<Record<Locale, Record<string, IndustryPower>>> = { en, pl, de, fr, es, it, pt, nl, ro, uk, sv, cs, el, zh, hi, ar, ru, ja };
 
 export function getIndustryPower(slug: string, locale: Locale): IndustryPower | undefined {
   const set = byLocale[locale] ?? en;

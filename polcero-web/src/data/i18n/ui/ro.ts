@@ -39,6 +39,28 @@ export const ro: DeepPartial<UI> = {
     scrollDown: 'Derulează în jos',
     ecosystemAlt: 'Humanoidul POLCERO așezat în drona de transport',
     applications: 'APLICAȚII',
+    energy: {
+      eyebrow: 'ENERGIE MEREU DISPONIBILĂ',
+      title: 'Roboți care își schimbă singuri bateriile',
+      lead: 'Fiecare robot funcționează pe trei acumulatori hot-swap și citește starea fiecăruia. O stație de încărcare cu patru locașuri ține pregătită o rotație de acumulatori, iar robotul se andochează pentru a-și schimba singur acumulatorii în timpul unui schimb — așa că munca nu se oprește niciodată din cauza bateriei.',
+      alt: 'Panoul de stare a bateriei POLCERO și stația de încărcare cu 4 locașuri',
+      points: [
+        { title: 'Stare live per acumulator', text: 'Încărcare, sănătate și temperatură pentru fiecare acumulator, în timp real.' },
+        { title: 'Schimb predictiv', text: 'Următorul schimb este programat înainte ca un acumulator să se descarce.' },
+        { title: 'Andocare autonomă', text: 'Robotul își rotește singur acumulatorii la stație — fără operator, fără opriri.' },
+      ],
+    },
+    grid: {
+      eyebrow: 'INFRASTRUCTURĂ DE ALIMENTARE',
+      title: 'Baterii — sau direct de la rețea',
+      lead: 'Roboții sunt autonomi pe baterii, dar acolo unde un amplasament poate furniza energie, funcționează de la rețea printr-un cablu. Cost de exploatare mai mic, fără acumulatori de rotit, fără opriri.',
+      modes: [
+        { name: 'Acumulatori hot-swap', text: 'Complet mobil și autonom — trei acumulatori se rotesc prin stația de încărcare.' },
+        { name: 'Șine fixe în interior', text: 'În hale, fabrici și sere, șine de alimentare fixe alimentează robotul în timp ce lucrează.' },
+        { name: 'Linii aeriene în exterior', text: 'Pe câmpuri și în curți, linii aeriene ca firul de tramvai alimentează flota și îi reîncarcă acumulatorii.' },
+      ],
+    },
+    missionAlt: 'Roboți POLCERO mergând printr-un depozit modern',
   },
   productDetail: {
     home: 'Acasă',

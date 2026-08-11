@@ -241,14 +241,15 @@ const en: Record<string, ProductRich> = {
   'transport-drone': {
     battery: {
       image: '/media/battery.webp',
-      alt: 'POLCERO transport-drone battery',
+      alt: 'POLCERO transport-drone flight battery',
       title: 'Battery and power',
-      lead: 'The transport drone flies on its own high-output pack and carries hot-swap packs for the robots it delivers. Its job is to move the robots so they arrive with their own batteries full and spend their energy on the work, not the journey.',
+      lead: 'The transport drone flies on its own high-output flight pack and also ferries charged hot-swap packs for the robots it delivers - so they arrive with full batteries and spend their energy on the work, not the journey.',
       rows: [
-        { label: 'Maximum payload', value: '500 kg' },
-        { label: 'Drone weight', value: '90 kg' },
-        { label: 'Carries', value: 'robots · modules · charged packs' },
-        { label: 'Construction', value: 'modular' },
+        { label: 'Battery', value: 'Hot-swap flight pack' },
+        { label: 'Pack energy', value: '≈ 30 kWh' },
+        { label: 'Endurance at max payload', value: '≈ 20 min' },
+        { label: 'Turnaround', value: 'Hot-swap between flights' },
+        { label: 'Also ferries', value: 'Charged 48 V robot packs' },
       ],
     },
     drone: {

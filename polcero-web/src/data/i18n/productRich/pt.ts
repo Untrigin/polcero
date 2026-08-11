@@ -205,12 +205,13 @@ export const pt: Record<string, ProductRichOverride> = {
       image: '/media/battery.webp',
       alt: 'Bateria do dron de transporte POLCERO',
       title: 'Bateria e energia',
-      lead: 'O dron de transporte voa com a sua própria bateria de alto rendimento e leva baterias hot-swap para os robôs que entrega. A sua função é mover os robôs para que cheguem com as próprias baterias cheias e gastem a sua energia no trabalho, não na viagem.',
+      lead: 'O dron de transporte voa com a sua própria bateria de voo de alto rendimento e leva também baterias hot-swap carregadas para os robôs que entrega — para que estes cheguem com as baterias cheias e gastem a sua energia no trabalho, não na viagem.',
       rows: [
-        { label: 'Carga máxima', value: '500 kg' },
-        { label: 'Peso do dron', value: '90 kg' },
-        { label: 'Transporta', value: 'robôs · módulos · baterias carregadas' },
-        { label: 'Construção', value: 'modular' },
+        { label: 'Bateria', value: 'bateria de voo hot-swap' },
+        { label: 'Energia da bateria', value: '≈ 30 kWh' },
+        { label: 'Autonomia com carga máxima', value: '≈ 20 min' },
+        { label: 'Reposição', value: 'troca hot-swap entre voos' },
+        { label: 'Transporta também', value: 'baterias de 48 V carregadas para os robôs' },
       ],
     },
     drone: {

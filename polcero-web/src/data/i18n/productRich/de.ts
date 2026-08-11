@@ -165,12 +165,13 @@ export const de: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: 'Akku und Energie',
-      lead: 'Die Transportdrohne fliegt mit ihrem eigenen Hochleistungspaket und trägt Hot-Swap-Pakete für die Roboter, die sie liefert. Ihre Aufgabe ist es, die Roboter zu befördern, damit sie mit vollen eigenen Akkus ankommen und ihre Energie in die Arbeit stecken, nicht in die Anreise.',
+      lead: `Die Transportdrohne fliegt mit ihrem eigenen Hochleistungs-Flugpaket und befördert zudem geladene Hot-Swap-Pakete für die Roboter, die sie liefert — so kommen diese mit vollen Akkus an und stecken ihre Energie in die Arbeit, nicht in die Anreise.`,
       rows: [
-        { label: 'Maximale Nutzlast', value: '500 kg' },
-        { label: 'Drohnengewicht', value: '90 kg' },
-        { label: 'Transportiert', value: 'Roboter · Module · geladene Pakete' },
-        { label: 'Bauweise', value: 'modular' },
+        { label: 'Akku', value: 'Hot-Swap-Flugpaket' },
+        { label: 'Paketenergie', value: '≈ 30 kWh' },
+        { label: 'Laufzeit bei maximaler Nutzlast', value: '≈ 20 min' },
+        { label: 'Umschlag', value: 'Hot-Swap zwischen den Flügen' },
+        { label: 'Befördert außerdem', value: 'Geladene 48-V-Roboterpakete' },
       ],
     },
     drone: {

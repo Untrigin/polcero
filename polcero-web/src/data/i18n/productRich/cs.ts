@@ -165,12 +165,13 @@ export const cs: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: 'Akumulátor a energie',
-      lead: 'Transportní dron létá na vlastním vysokovýkonovém paketu a veze hot-swap pakety pro roboty, které doručuje. Jeho úkolem je přemístit roboty tak, aby dorazili s vlastními akumulátory plnými a svou energii věnovali práci, ne cestě.',
+      lead: 'Transportní dron létá na vlastním vysokovýkonovém letovém paketu a zároveň veze nabité hot-swap pakety pro roboty, které doručuje — takže roboti dorazí s plnými akumulátory a svou energii věnují práci, ne cestě.',
       rows: [
-        { label: 'Maximální nosnost', value: '500 kg' },
-        { label: 'Hmotnost dronu', value: '90 kg' },
-        { label: 'Přepravuje', value: 'roboty · moduly · nabité pakety' },
-        { label: 'Konstrukce', value: 'modulární' },
+        { label: 'Akumulátor', value: 'Hot-swap letový paket' },
+        { label: 'Energie paketu', value: '≈ 30 kWh' },
+        { label: 'Výdrž při maximální nosnosti', value: '≈ 20 min' },
+        { label: 'Obrátka', value: 'Hot-swap mezi lety' },
+        { label: 'Také veze', value: 'Nabité 48V pakety pro roboty' },
       ],
     },
     drone: {

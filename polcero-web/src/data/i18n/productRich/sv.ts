@@ -165,12 +165,13 @@ export const sv: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: 'Batteri och energi',
-      lead: 'Transportdrönaren flyger på sitt eget högeffektspaket och bär hot-swap-paket för robotarna den levererar. Dess uppgift är att flytta robotarna så att de anländer med sina egna batterier fulla och lägger sin energi på arbetet, inte på resan.',
+      lead: 'Transportdrönaren flyger på sitt eget högeffekts-flygpaket och bär dessutom laddade hot-swap-paket för robotarna den levererar — så att de anländer med fulla batterier och lägger sin energi på arbetet, inte på resan.',
       rows: [
-        { label: 'Maximal nyttolast', value: '500 kg' },
-        { label: 'Drönarvikt', value: '90 kg' },
-        { label: 'Bär', value: 'robotar · moduler · laddade paket' },
-        { label: 'Konstruktion', value: 'modulär' },
+        { label: 'Batteri', value: 'Hot-swap-flygpaket' },
+        { label: 'Paketenergi', value: '≈ 30 kWh' },
+        { label: 'Flygtid vid maximal nyttolast', value: '≈ 20 min' },
+        { label: 'Omställning', value: 'Hot-swap mellan flygningar' },
+        { label: 'Bär även', value: 'Laddade 48 V robotpaket' },
       ],
     },
     drone: {

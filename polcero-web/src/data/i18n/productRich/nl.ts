@@ -177,12 +177,13 @@ export const nl: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: 'Accu en voeding',
-      lead: 'De transportdrone vliegt op zijn eigen pakket met hoog uitgangsvermogen en draagt hot-swap pakketten voor de robots die hij aflevert. Zijn taak is de robots te verplaatsen zodat ze aankomen met volle accu’s en hun energie aan het werk besteden, niet aan de reis.',
+      lead: `De transportdrone vliegt op zijn eigen vliegpakket met hoog uitgangsvermogen en vervoert daarnaast opgeladen hot-swap pakketten voor de robots die hij aflevert — zo komen ze aan met volle accu's en besteden ze hun energie aan het werk, niet aan de reis.`,
       rows: [
-        { label: 'Maximaal laadvermogen', value: '500 kg' },
-        { label: 'Gewicht drone', value: '90 kg' },
-        { label: 'Draagt', value: 'robots · modules · opgeladen pakketten' },
-        { label: 'Constructie', value: 'modulair' },
+        { label: 'Accu', value: 'Hot-swap vliegpakket' },
+        { label: 'Pakketenergie', value: '≈ 30 kWh' },
+        { label: 'Looptijd bij maximaal laadvermogen', value: '≈ 20 min' },
+        { label: 'Wisseltijd', value: 'Hot-swap tussen vluchten' },
+        { label: 'Vervoert ook', value: 'Opgeladen 48 V-robotpakketten' },
       ],
     },
     drone: {

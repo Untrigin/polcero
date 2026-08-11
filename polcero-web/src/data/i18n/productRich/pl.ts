@@ -165,12 +165,13 @@ export const pl: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: 'Bateria i zasilanie',
-      lead: 'Dron transportowy lata na własnej baterii o dużej mocy i wozi baterie hot-swap dla robotów, które dostarcza. Jego zadaniem jest przewożenie robotów, aby docierały z pełnymi własnymi bateriami i zużywały energię na pracę, a nie na dojazd.',
+      lead: 'Dron transportowy lata na własnej baterii lotniczej o dużej mocy i dodatkowo wozi naładowane baterie hot-swap dla robotów, które dostarcza - aby docierały z pełnymi bateriami i zużywały energię na pracę, a nie na dojazd.',
       rows: [
-        { label: 'Nośność maksymalna', value: '500 kg' },
-        { label: 'Waga drona', value: '90 kg' },
-        { label: 'Przewozi', value: 'roboty · moduły · naładowane baterie' },
-        { label: 'Konstrukcja', value: 'modułowa' },
+        { label: 'Bateria', value: 'Wymienna bateria lotnicza (hot-swap)' },
+        { label: 'Energia baterii', value: '≈ 30 kWh' },
+        { label: 'Czas lotu przy maks. ładunku', value: '≈ 20 min' },
+        { label: 'Wymiana', value: 'Hot-swap między lotami' },
+        { label: 'Dodatkowo wozi', value: 'Naładowane baterie robotów 48 V' },
       ],
     },
     drone: {

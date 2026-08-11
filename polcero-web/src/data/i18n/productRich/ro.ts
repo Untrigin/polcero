@@ -165,12 +165,13 @@ export const ro: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: 'Baterie și energie',
-      lead: 'Drona de transport zboară pe propriul acumulator de mare putere și transportă acumulatori hot-swap pentru roboții pe care îi livrează. Rolul ei este să mute roboții astfel încât aceștia să ajungă cu propriile baterii pline și să-și cheltuiască energia pe muncă, nu pe călătorie.',
+      lead: 'Drona de transport zboară pe propriul acumulator de zbor de mare putere și transportă totodată acumulatori hot-swap încărcați pentru roboții pe care îi livrează — astfel încât aceștia să ajungă cu bateriile pline și să-și cheltuiască energia pe muncă, nu pe călătorie.',
       rows: [
-        { label: 'Sarcină utilă maximă', value: '500 kg' },
-        { label: 'Greutatea dronei', value: '90 kg' },
-        { label: 'Transportă', value: 'roboți · module · acumulatori încărcați' },
-        { label: 'Construcție', value: 'modulară' },
+        { label: 'Acumulator', value: 'Acumulator de zbor hot-swap' },
+        { label: 'Energie pe acumulator', value: '≈ 30 kWh' },
+        { label: 'Autonomie la sarcină utilă maximă', value: '≈ 20 min' },
+        { label: 'Reîncărcare', value: 'Schimb hot-swap între zboruri' },
+        { label: 'Transportă și', value: 'Acumulatori de 48 V încărcați pentru roboți' },
       ],
     },
     drone: {

@@ -178,12 +178,13 @@ export const fr: Record<string, ProductRichOverride> = {
     battery: {
       alt: `Batterie du drone de transport POLCERO`,
       title: `Batterie et alimentation`,
-      lead: `Le drone de transport vole sur son propre pack à haut débit et emporte des packs hot-swap pour les robots qu'il livre. Sa mission est de déplacer les robots afin qu'ils arrivent avec leurs propres batteries pleines et dépensent leur énergie sur le travail, pas sur le trajet.`,
+      lead: `Le drone de transport vole sur son propre pack de vol à haut débit et convoie aussi des packs hot-swap chargés pour les robots qu'il livre — ils arrivent ainsi avec des batteries pleines et dépensent leur énergie sur le travail, pas sur le trajet.`,
       rows: [
-        { label: `Charge utile maximale`, value: '500 kg' },
-        { label: `Poids du drone`, value: '90 kg' },
-        { label: `Transporte`, value: `robots · modules · packs chargés` },
-        { label: `Construction`, value: `modulaire` },
+        { label: `Batterie`, value: `Pack de vol hot-swap` },
+        { label: `Énergie du pack`, value: '≈ 30 kWh' },
+        { label: `Autonomie à charge utile maximale`, value: '≈ 20 min' },
+        { label: `Rotation`, value: `Hot-swap entre les vols` },
+        { label: `Convoie aussi`, value: `Packs robot 48 V chargés` },
       ],
     },
     drone: {

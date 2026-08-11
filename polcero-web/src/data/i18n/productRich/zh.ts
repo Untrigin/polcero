@@ -165,12 +165,13 @@ export const zh: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: '电池与供电',
-      lead: '运输无人机依靠自身的大功率电池组飞行，并为其运送的机器人携带热插拔电池组。它的职责是转运机器人，使它们抵达时自身电池满电，把能量花在工作上，而非路途上。',
+      lead: '运输无人机依靠自身的大功率飞行电池组飞行，同时为其运送的机器人转运已充满电的热插拔电池组——因此机器人抵达时电池满电，把能量花在工作上，而非路途上。',
       rows: [
-        { label: '最大载荷', value: '500 kg' },
-        { label: '无人机重量', value: '90 kg' },
-        { label: '运载', value: '机器人 · 模块 · 满电电池组' },
-        { label: '结构', value: '模块化' },
+        { label: '电池', value: '热插拔飞行电池组' },
+        { label: '电池组能量', value: '≈ 30 kWh' },
+        { label: '满载续航', value: '≈ 20 min' },
+        { label: '周转', value: '飞行之间热插拔更换' },
+        { label: '同时转运', value: '已充电的 48 V 机器人电池组' },
       ],
     },
     drone: {

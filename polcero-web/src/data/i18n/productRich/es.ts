@@ -168,12 +168,13 @@ export const es: Record<string, ProductRichOverride> = {
   'transport-drone': {
     battery: {
       title: 'Batería y alimentación',
-      lead: 'El dron de transporte vuela con su propia batería de alta salida y transporta baterías hot-swap para los robots que entrega. Su función es mover los robots para que lleguen con sus propias baterías llenas y gasten su energía en el trabajo, no en el trayecto.',
+      lead: 'El dron de transporte vuela con su propia batería de vuelo de alta salida y además transporta baterías hot-swap cargadas para los robots que entrega, de modo que lleguen con las baterías llenas y gasten su energía en el trabajo, no en el trayecto.',
       rows: [
-        { label: 'Carga útil máxima', value: '500 kg' },
-        { label: 'Peso del dron', value: '90 kg' },
-        { label: 'Transporta', value: 'robots · módulos · baterías cargadas' },
-        { label: 'Construcción', value: 'modular' },
+        { label: 'Batería', value: 'Batería de vuelo hot-swap' },
+        { label: 'Energía de la batería', value: '≈ 30 kWh' },
+        { label: 'Autonomía con carga útil máxima', value: '≈ 20 min' },
+        { label: 'Reposición', value: 'Cambio hot-swap entre vuelos' },
+        { label: 'También transporta', value: 'Baterías de 48 V cargadas para los robots' },
       ],
     },
     drone: {

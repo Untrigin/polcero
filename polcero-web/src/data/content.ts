@@ -278,7 +278,7 @@ const pl: SiteContent = {
     { slug: 'humanoid', name: 'Humanoid', category: 'Humanoid', kind: 'humanoid', blurb: 'Moduł korpusu uzupełniony o nogi i dwa ramiona. Wchodzi w otoczenie zaprojektowane pod człowieka i obsługuje maszyny przeznaczone do obsługi ręcznej.', image: '/media/p-humanoid.webp' },
     { slug: 'mobile-humanoid', name: 'Humanoid na platformie jezdnej', category: 'Humanoid', kind: 'mobile-humanoid', blurb: 'Ten sam humanoid osadzony na platformie jezdnej. Dojeżdża do stanowiska i obsługuje kilka miejsc zamiast stać przy jednym.', image: '/media/p-mobile.webp' },
     { slug: 'specialized-robots', name: 'Roboty specjalistyczne', category: 'Roboty specjalistyczne', kind: 'specialized', image: '/media/chassis-lineup.webp',
-      blurb: 'Ten sam moduł korpusu - sterowanie, AI i baterie hot-swap - na podwoziu, którego wymaga Twój teren: kroczącym, gąsienicowym, kołowym lub kołowo-nożnym. Wymień platformę, zachowaj mózg i moduły zadaniowe.',
+      blurb: 'Ten sam moduł korpusu - sterowanie, AI i baterie hot-swap - na podwoziu, którego wymaga Twój teren: kroczącym, gąsienicowym, kołowym lub kołowo-nożnym.',
       platforms: [
         { name: 'Robot kroczący', image: '/media/chassis-legged.webp', drive: 'Podwozie kroczące (4 nogi)', terrain: 'Schody, przeszkody, teren nierówny', blurb: 'Moduł korpusu na podwoziu kroczącym. Pokonuje schody, progi i teren niedostępny dla kół.' },
         { name: 'Robot gąsienicowy', image: '/media/chassis-tracked.webp', drive: 'Podwozie gąsienicowe', terrain: 'Nieutwardzony, ciężki teren, place budowy', blurb: 'Podwozie gąsienicowe do trudnego, nierównego terenu, placów budowy i pracy w terenie.' },
@@ -550,7 +550,7 @@ const en: SiteContent = {
     { slug: 'humanoid', name: 'Humanoid', category: 'Humanoid', kind: 'humanoid', blurb: 'The core module completed with legs and two arms. Enters spaces designed for people and operates machines built for manual handling.', image: '/media/p-humanoid.webp' },
     { slug: 'mobile-humanoid', name: 'Humanoid on a mobile platform', category: 'Humanoid', kind: 'mobile-humanoid', blurb: 'The same humanoid on a mobile base. Drives up to the station and serves several spots instead of standing at one.', image: '/media/p-mobile.webp' },
     { slug: 'specialized-robots', name: 'Specialized robots', category: 'Specialized robots', kind: 'specialized', image: '/media/chassis-lineup.webp',
-      blurb: 'The same core module - control, AI and hot-swap batteries - on the chassis your terrain needs: legged, tracked, wheeled or wheel-leg. Swap the platform, keep the brain and the task modules.',
+      blurb: 'The same core module - control, AI and hot-swap batteries - on the chassis your terrain needs: legged, tracked, wheeled or wheel-leg.',
       platforms: [
         { name: 'Legged robot', image: '/media/chassis-legged.webp', drive: 'Legged chassis (4 legs)', terrain: 'Stairs, obstacles, uneven ground', blurb: 'The core module on a legged chassis. Clears stairs, curbs and terrain that wheels cannot.' },
         { name: 'Tracked robot', image: '/media/chassis-tracked.webp', drive: 'Tracked chassis', terrain: 'Unpaved, rough terrain, construction sites', blurb: 'A tracked chassis for rough, uneven ground, construction sites and fieldwork.' },

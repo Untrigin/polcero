@@ -34,6 +34,7 @@ const href = localizedPath(`/products/${product.slug}/`, locale);
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    height: 100%; /* fill the stretched grid cell so every card is equal height */
   }
   .product-card__media {
     display: block;
@@ -51,7 +52,7 @@ const href = localizedPath(`/products/${product.slug}/`, locale);
     padding: 8%;
   }
   .product-card:hover .product-card__media { transform: translateY(-4px); }
-  .product-card__body { display: flex; flex-direction: column; gap: 0.6rem; }
+  .product-card__body { display: flex; flex-direction: column; gap: 0.6rem; flex: 1 1 auto; }
   .product-card__name {
     font-family: var(--font-display);
     font-weight: 500;
@@ -69,18 +70,31 @@ const href = localizedPath(`/products/${product.slug}/`, locale);
     font-size: 0.92rem;
     font-weight: 500;
     margin-top: -0.15rem;
+    /* keep every subtitle to one line so the cards align */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .product-card__blurb {
     color: var(--color-mute);
     font-size: 0.95rem;
     line-height: 1.55;
+    /* uniform text block: reserve + cap at 3 lines so all columns match */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(0.95rem * 1.55 * 3);
   }
   .product-card__foot {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-top: 0.35rem;
+    margin-top: auto; /* pin price + CTA to the bottom so they align across cards */
     padding-top: 0.9rem;
     border-top: 1px solid var(--color-line);
   }

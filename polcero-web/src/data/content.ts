@@ -286,7 +286,7 @@ const pl: SiteContent = {
         { name: 'Robot kołowo-nożny', image: '/media/chassis-wheelleg.webp', drive: 'Podwozie kołowo-nożne', terrain: 'Płaski teren, przeszkody i szyny', blurb: 'Hybrydowe podwozie kołowo-nożne: jedzie po płaskim i pokonuje przeszkody oraz szyny.' },
       ] },
     { slug: 'transport-drone', name: 'Dron transportowy', category: 'Dron transportowy', kind: 'drone', blurb: 'Ciężki dron transportowy do przenoszenia robotów, modułów i ładunków w trudno dostępne miejsca. Dostarczamy robota tam, gdzie dojazd jest niemożliwy.', image: '/media/p-drone.webp', specs: [ { label: 'Nośność maksymalna', value: '500 kg' }, { label: 'Waga drona', value: '90 kg' }, { label: 'Konstrukcja', value: 'modułowa' }, { label: 'Przeznaczenie', value: 'roboty · moduły · ładunki' } ] },
-    { slug: 'polcero-os', name: 'POLCERO OS', category: 'Oprogramowanie', kind: 'software', blurb: 'Moduł korpusu z warstwą AI: sterowanie, percepcja i planowanie. Robot uczy się z pokazu - operator wykonuje zadanie, system rozumie i działa autonomicznie, skracając czas programowania nawet dziesięciokrotnie.', image: '/media/r-os.webp' },
+    { slug: 'polcero-os', name: 'POLCERO OS', category: 'Oprogramowanie', kind: 'software', blurb: 'Moduł korpusu z warstwą AI: sterowanie, percepcja i planowanie. Robot uczy się z pokazu - operator wykonuje zadanie, system rozumie i działa autonomicznie, skracając czas programowania nawet dziesięciokrotnie.', image: '/media/core-module.webp' },
   ],
   industries: [
     {
@@ -558,7 +558,7 @@ const en: SiteContent = {
         { name: 'Wheel-leg robot', image: '/media/chassis-wheelleg.webp', drive: 'Wheel-leg chassis', terrain: 'Flat ground, obstacles and rails', blurb: 'A hybrid wheel-leg chassis: rolls on the flat and clears obstacles and rails.' },
       ] },
     { slug: 'transport-drone', name: 'Transport drone', category: 'Transport drone', kind: 'drone', blurb: 'A heavy transport drone for carrying robots, modules and loads into hard-to-reach places. We deliver the robot where access is impossible.', image: '/media/p-drone.webp', specs: [ { label: 'Maximum payload', value: '500 kg' }, { label: 'Drone weight', value: '90 kg' }, { label: 'Construction', value: 'modular' }, { label: 'Carries', value: 'robots · modules · loads' } ] },
-    { slug: 'polcero-os', name: 'POLCERO OS', category: 'Software', kind: 'software', blurb: 'The core module with the AI layer: control, perception and planning. The robot learns by demonstration - an operator performs the task, the system understands and acts autonomously, cutting programming time up to tenfold.', image: '/media/r-os.webp' },
+    { slug: 'polcero-os', name: 'POLCERO OS', category: 'Software', kind: 'software', blurb: 'The core module with the AI layer: control, perception and planning. The robot learns by demonstration - an operator performs the task, the system understands and acts autonomously, cutting programming time up to tenfold.', image: '/media/core-module.webp' },
   ],
   industries: [
     {
